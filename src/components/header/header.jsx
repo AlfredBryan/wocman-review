@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/core";
 import { Nav } from "../nav/nav";
-import "./header.css";
 export const Header = ({ children, bgImage, vh }) => {
   return (
     <Box
