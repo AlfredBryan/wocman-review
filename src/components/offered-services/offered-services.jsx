@@ -1,8 +1,8 @@
 import { Box, Flex, Text } from "@chakra-ui/core";
 import { OfferedService } from "../offered-service/offered-service";
-import electricalFittings from "../../assets/images/electrical-fittings.jpg";
-import interiorFittings from "../../assets/images/interior-fittings.jpg";
-import generatorRepair from "../../assets/images/generator-repair.jpg";
+// import electricalFittings from "../../assets/images/electrical-fittings.jpg";
+// import interiorFittings from "../../assets/images/interior-fittings.jpg";
+// import generatorRepair from "../../assets/images/generator-repair.jpg";
 import paintingService from "../../assets/images/painting-service.jpg";
 import gardeningService from "../../assets/images/gardening-service.jpg";
 import cleaningService from "../../assets/images/cleaning-service.jpg";

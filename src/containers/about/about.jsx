@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/core";
 import { Header } from "../../components/header/header";
-import { Hero } from "../../components/hero/hero";
 import landing from "../../assets/images/about.jpg";
 import { NewsLetter } from "../../components/newsletter/newsletter";
 import { Footer } from "../../components/footer/footer";

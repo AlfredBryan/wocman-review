@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/core";
+import { Flex, Image, Text } from "@chakra-ui/core";
 import "./wocman-category.css";
 
 export const WocmanCategory = (props) => {

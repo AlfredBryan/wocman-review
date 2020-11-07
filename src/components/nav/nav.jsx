@@ -10,7 +10,6 @@ import { withRouter } from "react-router";
 
 export const NavBar = (props) => {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(0);
 
   const node = useRef();
 
@@ -64,7 +63,6 @@ export const NavBar = (props) => {
               <ListItem className="mt-2 text-sm" key={index}>
                 <Link
                   as={ReactLink}
-                  onClick={() => setActive(index)}
                   to={item.to}
                   _focus={{ outline: "none" }}
                   className={`link ${
