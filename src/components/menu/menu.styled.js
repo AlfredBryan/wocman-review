@@ -7,7 +7,8 @@ export const StyledMenu = styled.nav`
   background: #fff;
   min-height: 100vh;
   width: 100%;
-  text-align: left;
+  align-items: center;
+  /* text-align: left; */
   padding: 2rem;
   position: absolute;
   top: 0;

@@ -13,7 +13,7 @@ export const Header = ({ children, bgImage, vh }) => {
       bgRepeat="no-repeat"
       bg="transparent"
       bgSize="cover"
-      minHeight="100vh"
+      minHeight={vh}
       backgroundAttachment="fixed"
     >
       <Nav />

@@ -34,6 +34,7 @@ export const FeaturedServices = () => {
       flexDirection="column"
       bg="wocman.featuredService"
       h="auto"
+      zIndex="-1"
       px={[4, 8, 12, 16, 16]}
       py={16}
     >

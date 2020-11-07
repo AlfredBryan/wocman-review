@@ -11,18 +11,18 @@ export const OfferedServices = () => {
 
     const services = [
       {
-        image: electricalFittings,
+        image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604144197/wocman/IMG_20200701_141851_umrzny.jpg",
         heading: "Electrical Fittings",
         text: "As a holiday destination, Lisbon offers a rich and varied history",
       },
       {
-        image: interiorFittings,
+        image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604143974/wocman/IMG_3095_yjs1ws.jpg",
         heading: "Interior Fittings",
         text: "One of the most beautiful cities and center of Italian Renaissance.",
       },
       {
-        image: generatorRepair,
-        heading: "Generator Repair",
+        image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604147431/wocman/IMG_3484_o5licw.jpg",
+        heading: "Kitchen Fittings",
         text: "Modern skyscrapers, high-tech subways and pop culture meet ",
       },
       {

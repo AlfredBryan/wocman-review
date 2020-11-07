@@ -14,7 +14,7 @@ import { Footer } from "../../components/footer/footer";
 export const Home = () => {
   return (
     <Box>
-      <Header bgImage={landing} vh="80vh">
+      <Header bgImage={landing} vh="100vh">
           <Hero/>
       </Header>
       <FeaturedServices/>

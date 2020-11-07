@@ -46,8 +46,11 @@ const customTheme = {
       featuredServiceIconBg: "#E9F0F8",
       typography1: "#552D1E",
       typography2: "#778899",
+      typography3: "#363636",
       wocmanCategories: "#E8E2E7",
-      newsLetter: "#778899"
+      team: "#E5E5E5",
+      newsLetter: "#778899",
+      quotes: "#D8E3FE"
     },
   },
   icons: {

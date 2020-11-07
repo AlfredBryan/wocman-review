@@ -1,7 +1,7 @@
 import { Flex, Text } from "@chakra-ui/core";
-import tradesmen from "../../assets/images/home.jpg";
-import technicians from "../../assets/images/home.jpg";
-import professionals from "../../assets/images/home.jpg";
+import tradesmen from "../../assets/images/tradesmen.jpg";
+import technicians from "../../assets/images/technicians.jpg";
+import professionals from "../../assets/images/professionals.jpg";
 import { WocmanCategory } from "../wocman-category/wocman-category";
 
 export const WocmanCategories = () => {
