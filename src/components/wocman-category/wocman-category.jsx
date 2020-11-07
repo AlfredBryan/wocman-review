@@ -1,12 +1,15 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
+import "./wocman-category.css";
 
 export const WocmanCategory = (props) => {
   return (
     <Flex
-      w={["90%", "45%", "45%%", "25%"]}
+      w={["100%", "100%", "48%", "48%", "30%"]}
       bg="white"
+      className="wocman-category"
       h="auto"
-      mb={["2rem", "1rem", "2rem", 0]}
+      mb={["2rem", "2rem", "2rem", "2rem", 0]}
+      mr={[0, "1rem", 0]}
       borderRadius="13.5px"
      flexDirection="column"
      overflow="hidden"

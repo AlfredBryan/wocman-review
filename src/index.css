@@ -7,17 +7,86 @@
 }
 
 @font-face {
-    font-family: "Poppins-Light";
-    font-style: normal;
-    font-weight: 100;
-    src: local("Poppins"),
-      url("assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
-  }
+  font-family: "Poppins-Light";
+  font-style: normal;
+  font-weight: 100;
+  src: local("Poppins"),
+    url("assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-Extrabold";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Gilroy"),
+    url("assets/fonts/GilRoy/Gilroy-Extrabold.ttf") format("truetype");
+}
 
 @font-face {
   font-family: "Gilroy-SemiBold";
   font-style: normal;
   font-weight: 500;
-  src: local("Gilroy-SemiBold"),
-    url("assets/fonts/Gilroy-SemiBold/Gilroy-SemiBold.ttf") format("truetype");
+  src: local("Gilroy"),
+    url("assets/fonts/GilRoy/Gilroy-Semibold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-Light";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Gilroy"),
+    url("assets/fonts/GilRoy/Gilroy-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy-Regular";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Gilroy"),
+    url("assets/fonts/GilRoy/Gilroy-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Cera Pro";
+  font-style: italic;
+  font-weight: 500;
+  src: local("Cera Pro"),
+    url("assets/fonts/Cera\ Pro/Cera_Pro_Black_Italic.otf") format("opentype");
+}
+
+.slick-list {
+  width: 40vw;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.slick-dots {
+  bottom: -40px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .slick-list {
+    width: 90vw;
+    height: 49vh;
+    margin-bottom: 0;
+    margin: 0 auto;
+  }
+
+  #root > div > div > div.css-1xkdas3 > div.css-ty2gce > div {
+    display: flex;
+    height: 100%;
+  }
+
+  .slick-dots {
+    bottom: -4px !important;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .slick-list {
+    width: 90vw;
+    height: 60vh;
+    margin-bottom: 0;
+    margin: 0 auto;
+  }
 }

@@ -3,13 +3,13 @@ import { Flex, Image, Text } from "@chakra-ui/core";
 export const FeaturedService = (props) => {
   return (
     <Flex
-      w={["90%", "47%", "22%", "22%"]}
+      w={["90%", "90%", "47%","47%", "22%"]}
       bg="white"
       borderRadius="13.5px"
       h="250px"
       px={6}
       py={5}
-      mb={["2rem", "1rem", 0, 0]}
+      mb={["2rem", "1rem", "1rem", "1rem", 0]}
       flexDirection="column"
     >
       <Flex
@@ -33,7 +33,7 @@ export const FeaturedService = (props) => {
       </Text>
       <Text
         fontSize="sm"
-        fontFamily="Poppins-Light"
+        fontFamily="Gilroy-Light"
         mt={4}
         color="black"
       >

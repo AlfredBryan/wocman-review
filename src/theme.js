@@ -20,6 +20,17 @@ const customIcons = {
     ),
     viewBox: "0 0 18 18",
   },
+  chat: {
+    path: (
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M14.45 3.57188V11.2219H3.4V12.9219C3.4 13.4319 3.74 13.7719 4.25 13.7719H13.6L17 17.1719V4.42188C17 3.91188 16.66 3.57188 16.15 3.57188H14.45ZM12.75 1.02188C12.75 0.511875 12.41 0.171875 11.9 0.171875H0.85C0.34 0.171875 0 0.511875 0 1.02188V12.9219L3.4 9.52188H11.9C12.41 9.52188 12.75 9.18188 12.75 8.67188V1.02188Z"
+        fill="#F7F7F7"
+      />
+    ),
+    viewBox: "0 0 17 18",
+  },
 };
 
 const customTheme = {
@@ -34,7 +45,12 @@ const customTheme = {
       featuredService: "#F7F4F7",
       featuredServiceIconBg: "#E9F0F8",
       typography1: "#552D1E",
-      wocmanCategories: "#E8E2E7"
+      typography2: "#778899",
+      typography3: "#363636",
+      wocmanCategories: "#E8E2E7",
+      team: "#E5E5E5",
+      newsLetter: "#778899",
+      quotes: "#D8E3FE"
     },
   },
   icons: {

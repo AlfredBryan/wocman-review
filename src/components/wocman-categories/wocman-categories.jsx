@@ -1,7 +1,7 @@
 import { Flex, Text } from "@chakra-ui/core";
-import tradesmen from "../../assets/images/home.jpg";
-import technicians from "../../assets/images/home.jpg";
-import professionals from "../../assets/images/home.jpg";
+import tradesmen from "../../assets/images/tradesmen.jpg";
+import technicians from "../../assets/images/technicians.jpg";
+import professionals from "../../assets/images/professionals.jpg";
 import { WocmanCategory } from "../wocman-category/wocman-category";
 
 export const WocmanCategories = () => {
@@ -29,20 +29,24 @@ export const WocmanCategories = () => {
       flexDirection="column"
       bg="wocman.wocmanCategories"
       h="auto"
-      px={16}
+      px={["8", "10", "20", "20", "24"]}
       py={16}
     >
       <Flex w="20%" mb={16}>
         <Text
           fontFamily="Poppins"
-          fontSize="2rem"
+          fontSize={["1.3rem", "1.5rem", "1.5rem", "2rem"]}
           fontStyle="normal"
           fontWeight="600"
         >
           Wocman Categories
         </Text>
       </Flex>
-      <Flex justify="space-evenly" my={8} flexWrap="wrap">
+      <Flex
+        justify={["center", "center", "space-between"]}
+        my={8}
+        flexWrap="wrap"
+      >
         {services.map((service, index) => (
           <WocmanCategory
             key={index}

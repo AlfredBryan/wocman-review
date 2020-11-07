@@ -15,25 +15,25 @@ export const Hero = () => {
       justify="center"
       color="white"
       flexDirection="column"
-      w="50%"
+      w={["90%", "90%", "90%", "50%"]}
       justifySelf="center"
       margin="0 auto"
       textAlign="center"
       pt={16}
     >
-      <Text fontFamily="Poppins" fontSize="4rem" fontWeight="bold">
+      <Text fontFamily="Poppins" fontSize={["2rem", "3rem", "4rem", "4rem"]} fontWeight="bold">
         Get Vocational skills from{" "}
         <Text
           as="span"
           color="wocman.color1"
           fontFamily="Poppins"
-          fontSize="4rem"
+          fontSize={["2rem", "3rem", "4rem", "4rem"]}
           fontWeight="bold"
         >
           Wocman
         </Text>
       </Text>
-      <Flex w="50%" mt="2rem">
+      <Flex w={["90%", "90%", "90%", "50%"]} mt="2rem">
         <Text
           as="small"
           fontFamily="Poppins"
@@ -46,7 +46,7 @@ export const Hero = () => {
           technicians, and professionals on wocman.
         </Text>
       </Flex>
-      <Flex mt="3rem" w="120%" fontFamily="Poppins">
+      <Flex mt="3rem" w={["120%", "100%", "100%", "100%"]} fontFamily="Poppins">
         <InputGroup flex="5">
           <InputLeftElement
             children={
@@ -68,7 +68,7 @@ export const Hero = () => {
             h="5rem"
           />
         </InputGroup>
-        <InputGroup flex="2.5">
+        <InputGroup flex="2.5" display={["none", "none", "flex", "flex"]}>
           <InputLeftElement
             children={
               <Icon
@@ -92,7 +92,7 @@ export const Hero = () => {
           as="button"
           flex="1.5"
           fontSize="1rem"
-          h="5rem"
+          h="5.03rem"
           backgroundColor="wocman.color1"
           borderRadius="2px"
           _hover={{ bg: "wocman.color1", opacity: "0.7" }}

@@ -34,13 +34,14 @@ export const FeaturedServices = () => {
       flexDirection="column"
       bg="wocman.featuredService"
       h="auto"
-      px={16}
+      zIndex="-1"
+      px={[4, 8, 12, 16, 16]}
       py={16}
     >
-      <Flex w="20%">
+      <Flex w="20%"  ml={6}>
         <Text
           fontFamily="Poppins"
-          fontSize="2rem"
+          fontSize={["1.3rem", "1.5rem", "1.5rem", "2rem"]}
           fontStyle="normal"
           fontWeight="600"
         >
