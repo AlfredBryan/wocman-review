@@ -69,9 +69,18 @@ export const Team = () => {
           fontWeight="500"
           fontSize="2rem"
           color="wocman.typography1"
-          mb={16}
+          mb={8}
         >
           The Team
+        </Text>
+        <Text
+          fontFamily="Poppins"
+          fontWeight="500"
+          fontSize="1rem"
+          color="wocman.typography1"
+          mb={16}
+        >
+          We’re a team of traditional geeks seeking to build Africa's foremost workmen pool for collective prosperity. 
         </Text>
       </Box>
       <Flex flexWrap="wrap" justify={["center", "center", "center", "flex-start", "flex-start"]}>

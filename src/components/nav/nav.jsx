@@ -34,7 +34,7 @@ export const NavBar = (props) => {
     },
     {
       name: "Contact us",
-      to: "",
+      to: "/contact",
     },
   ];
 

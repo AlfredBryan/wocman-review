@@ -5,6 +5,7 @@ import { Router, Switch, Route } from "react-router-dom";
 import history from "./history";
 import { About } from "./containers/about/about";
 import { Services } from "./containers/services/services";
+import { Contact } from "./containers/contact/contact";
 function App() {
   return (
     <ThemeProvider theme={customTheme}>
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/services" component={Services} />
+          <Route exact path="/contact" component={Contact} />
           </Switch>
         </Router>
       </Box>

@@ -99,9 +99,9 @@ export const CustomerQuotes = () => {
               fontSize="0.7rem"
               color="wocman.newsLetter"
             >
-              Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu
-              usu vidit tractatos, vero tractatos ius an, in mel diceret
-              persecuti.
+              Wocman platform is home to skilled and trusted workmen. I live in
+              Europe, and through wocman, I track the execution of my
+              construction projects in Nigeria with no hassle. - Osuji Julia.
             </Text>
             <Image
               src={join}
@@ -138,9 +138,10 @@ export const CustomerQuotes = () => {
               fontSize="0.7rem"
               color="wocman.newsLetter"
             >
-              Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu
-              usu vidit tractatos, vero tractatos ius an, in mel diceret
-              persecuti.
+              I stay in an estate in Lagos where it is difficult to find a
+              trusted carpenter to fix bad door locks, but wocman came through
+              for me, I got a free quote from them, and my door locks replaced
+              within 30 minutes. - Adekojo Ajayi.
             </Text>
             <Image
               src={join}

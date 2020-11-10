@@ -50,7 +50,8 @@ const customTheme = {
       wocmanCategories: "#E8E2E7",
       team: "#E5E5E5",
       newsLetter: "#778899",
-      quotes: "#D8E3FE"
+      quotes: "#D8E3FE",
+      contact: "#552D1E"
     },
   },
   icons: {

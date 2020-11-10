@@ -10,22 +10,22 @@ export const FeaturedServices = () => {
     {
       image: makeup,
       heading: "Makeup",
-      subHeading: "Top artisans skilled with the craft of Makeup Design.",
+      subHeading: "Top makeup artist close to you.",
     },
     {
       image: plumbing,
       heading: "Plumbing",
-      subHeading: "Top artisans skilled with the craft of Plumbing.",
+      subHeading: "Top technicians skilled in plumbing works.",
     },
     {
       image: house,
       heading: "Architecture",
-      subHeading: "Top artisans skilled with the craft of Architecture.",
+      subHeading: "Top professionals skilled in drafting bespoke architectural designs",
     },
     {
       image: carpenter,
       heading: "Carpentry",
-      subHeading: "Top artisans skilled with the craft of Carpentry.",
+      subHeading: "Top technician skilled in woodworks and furniture. ",
     },
   ];
 
