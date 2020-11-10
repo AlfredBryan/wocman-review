@@ -14,7 +14,11 @@ export const Advisory = () => {
           Advisory
         </Text>
       </Box>
-      <Flex backgroundColor="transparent" zIndex="1" flexDirection={["column", "column", "column", "row", "row"]}>
+      <Flex
+        backgroundColor="transparent"
+        zIndex="1"
+        flexDirection={["column", "column", "column", "row", "row"]}
+      >
         <Flex flex={["", "", "", "1", "1"]} h="40vh" align="center">
           <Image
             src={mission}
@@ -28,7 +32,7 @@ export const Advisory = () => {
         <Flex
           flex={["", "", "", "4", "4"]}
           backgroundColor="wocman.wocmanCategories"
-          h="40vh"
+          minH="40vh"
           boxShadow="0px 4px 26px rgba(0, 0, 0, 0.06)"
           align="center"
           justify="center"
