@@ -18,7 +18,7 @@ export const OfferedServices = () => {
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604143974/wocman/IMG_3095_yjs1ws.jpg",
         heading: "Interior Fittings",
-        text: "get connected to the best electrician in your hood",
+        text: "“get linked to a talented plumbing expert nearest to you”",
       },
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604147431/wocman/IMG_3484_o5licw.jpg",
