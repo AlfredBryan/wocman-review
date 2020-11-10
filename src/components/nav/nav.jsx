@@ -24,13 +24,13 @@ export const NavBar = (props) => {
       name: "About",
       to: "/about",
     },
-    {
-      name: "Product",
-      to: "",
-    },
+    // {
+    //   name: "Product",
+    //   to: "",
+    // },
     {
       name: "Services",
-      to: "",
+      to: "/services",
     },
     {
       name: "Contact us",
@@ -129,7 +129,7 @@ export const NavBar = (props) => {
                 textAlign="center"
               >
                 {navStuff.map((item, index) => (
-                  <ListItem className="mt-2 text-sm" key={index}>
+                  <ListItem className="my-8 text-sm" key={index}>
                     <Link
                       as={ReactLink}
                       onClick={() => {

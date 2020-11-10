@@ -34,7 +34,7 @@ export const Advisory = () => {
           justify="center"
           p={[8, 8, 16, 0, 0]}
         >
-          <Box w={["90%", "90%", "90%", "60%", "60%"]} mx="auto">
+          <Box w={["90%", "90%", "90%", "60%", "60%"]} mx="auto" my={2}>
             <Text
               fontFamily="Poppins"
               as="small"

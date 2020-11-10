@@ -84,7 +84,7 @@ export const Faq = () => {
                   </AccordionHeader>
                   <AccordionPanel
                     pb={4}
-                    px={24}
+                    px={[8, 8, 8, 16, 24]}
                     py={8}
                     fontSize="0.8rem"
                     fontFamily="Poppins"

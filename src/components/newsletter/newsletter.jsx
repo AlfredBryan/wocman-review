@@ -39,11 +39,11 @@ export const NewsLetter = () => {
         <Input
           flex="2"
           placeholder="Email Address"
-          minHeight="5rem"
+          minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
           px={8}
           fontFamily="Poppins"
           fontWeight="bold"
-          fontSize="1.4rem"
+          fontSize={["1rem", "1rem", "1rem", "1.4rem", "1.4rem"]}
           backgroundColor="wocman.wocmanCategories"
           color="wocman.typography1"
           _focus={{ bg: "white" }}
@@ -51,7 +51,7 @@ export const NewsLetter = () => {
         />
         <PseudoBox
           as="button"
-          fontSize="1.4rem"
+          fontSize={["1rem", "1rem", "1rem", "1.4rem", "1.4rem"]}
           flex="1"
           fontFamily="Poppins"
           fontWeight="bold"
@@ -59,7 +59,7 @@ export const NewsLetter = () => {
           w={["70%", "70%", "", "", ""]}
           boxShadow="0px 7.37288px 22.1186px rgba(116, 104, 255, 0.2)"
           borderRadius="7.37288px"
-          minHeight="5rem"
+          minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
           ml={[0, 0, 6, 6, 6]}
           mt={[6, 6, 0, 0, 0]}
           backgroundColor="wocman.typography1"

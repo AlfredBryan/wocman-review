@@ -12,13 +12,13 @@ export const WocmanCategories = () => {
       subHeading: "barber, makeup artist, pedicurist, cleaners, hair stylist.",
     },
     {
-      image: technicians,
+      image: professionals,
       heading: "Technicians",
       subHeading:
         "mason, carpenter, ironbender, painter, screeders, aluminum fabricators, steel fabricators, solar installers, electricians, plumbers, polystyrene technicians, tilers and generator mechanics.",
     },
     {
-      image: professionals,
+      image: technicians,
       heading: "Professionals",
       subHeading: "engineers, geologist, architects, surveyors.",
     },
