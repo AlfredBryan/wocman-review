@@ -15,7 +15,7 @@ export const Advisory = () => {
         </Text>
       </Box>
       <Flex backgroundColor="transparent" zIndex="1" flexDirection={["column", "column", "column", "row", "row"]}>
-        <Flex flex="1" h="40vh" align="center">
+        <Flex flex={["", "", "", "1", "1"]} h="40vh" align="center">
           <Image
             src={mission}
             alt="advisory"
@@ -26,7 +26,7 @@ export const Advisory = () => {
           />
         </Flex>
         <Flex
-          flex="4"
+          flex={["", "", "", "4", "4"]}
           backgroundColor="wocman.wocmanCategories"
           h="40vh"
           boxShadow="0px 4px 26px rgba(0, 0, 0, 0.06)"
@@ -34,7 +34,7 @@ export const Advisory = () => {
           justify="center"
           p={[8, 8, 16, 0, 0]}
         >
-          <Box w={["90%", "90%", "90%", "60%", "60%"]} mx="auto" my={2}>
+          <Flex w={["90%", "90%", "90%", "60%", "60%"]} mx="auto" my={2}>
             <Text
               fontFamily="Poppins"
               as="small"
@@ -50,7 +50,7 @@ export const Advisory = () => {
               bodies of water on Earth as she can to leverage technology to help
               solve real-life problems.
             </Text>
-          </Box>
+          </Flex>
         </Flex>
       </Flex>
     </Box>
