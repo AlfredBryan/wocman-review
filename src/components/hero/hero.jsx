@@ -45,9 +45,7 @@ export const Hero = () => {
           lineHeight="2rem"
           fontSize="1rem"
         >
-          Get your domestic, repairs, and construction works done with zero
-          hassle. By searching and connecting to the nearest tradesmen,
-          technicians, and professionals on wocman.
+          We connect customers to the nearest tradesmen, technicians, and professionals with zero hassle.
         </Text>
       </Flex>
       <Flex mt="3rem" w={["120%", "100%", "100%", "100%"]} fontFamily="Poppins">

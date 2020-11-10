@@ -1,5 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/core";
-import mission from "../../assets/images/mission.jpg";
+// import mission from "../../assets/images/mission.jpg";
 import vision from "../../assets/images/vision.jpg";
 import story from "../../assets/images/story.jpg";
 
@@ -9,7 +9,7 @@ export const AboutSubsection = () => {
       title: "Our Mission",
       body:
         "Wocman Technology is a people organization helping to bridge social gaps by connecting Africa’s informal workforce to improved economic opportunities.",
-      image: mission,
+      image: "https://res.cloudinary.com/wocman-technology/image/upload/v1605003340/wocman/IMG_20200609_144919_w08pbb.jpg",
     },
     {
       title: "Our Vision",
@@ -78,7 +78,7 @@ const SectionItem = ({ title, body, image, index }) => {
       </Flex>
       <Flex
         w={["90%", "90%", "90%", "40%", "40%"]}
-        minH={["250px", "250px", "250px", "400px", "400px"]}
+        h="380px"
         mb={[4, 4, 4, 0, 0]}
         backgroundImage={`url(${image})`}
         backgroundSize="cover"

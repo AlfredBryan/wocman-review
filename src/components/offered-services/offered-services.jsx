@@ -13,32 +13,32 @@ export const OfferedServices = () => {
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604144197/wocman/IMG_20200701_141851_umrzny.jpg",
         heading: "Electrical Fittings",
-        text: "As a holiday destination, Lisbon offers a rich and varied history",
+        text: "get connected to the best electrician in your hood",
       },
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604143974/wocman/IMG_3095_yjs1ws.jpg",
         heading: "Interior Fittings",
-        text: "One of the most beautiful cities and center of Italian Renaissance.",
+        text: "get connected to the best electrician in your hood",
       },
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604147431/wocman/IMG_3484_o5licw.jpg",
         heading: "Kitchen Fittings",
-        text: "Modern skyscrapers, high-tech subways and pop culture meet ",
+        text: "we have skilled technicians that can help fix your kitchen",
       },
       {
         image: paintingService,
-        heading: "Painitng Service",
-        text: "Aboramatic landscape with amazing experiences in the city",
+        heading: "Painting Service",
+        text: "we connect you to talented painters in your locality",
       },
       {
         image: gardeningService,
         heading: "Gardening Service",
-        text: "One of the principal civilizations of the ancient Middle East",
+        text: "get your flowers and grasses trimmed just the way you like it",
       },
       {
         image: cleaningService,
         heading: "Cleaning Service",
-        text: "A global center for art, fashion, gastronomy and culture",
+        text: "We have the perfect cleaner for you",
       },
   
     ];
