@@ -21,8 +21,12 @@ export const Hero = () => {
       textAlign="center"
       pt={16}
     >
-      <Text fontFamily="Poppins" fontSize={["2rem", "3rem", "4rem", "4rem"]} fontWeight="bold">
-        Get Vocational skills from{" "}
+      <Text
+        fontFamily="Poppins"
+        fontSize={["2rem", "3rem", "4rem", "4rem"]}
+        fontWeight="bold"
+      >
+        Get your domestic, repairs, and construction works done on{" "}
         <Text
           as="span"
           color="wocman.color1"

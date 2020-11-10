@@ -11,11 +11,11 @@ export const OfferedService = (props) => {
       bgSize="cover"
       my={4}
       py={8}
-      h={["50vh", "50vh", "50vh", "50vh", "40vh"]}
-      width={["100%", "100%", "48%", "48%", "30%"]}
+      minHeight="400px"
+      width={["100%", "100%", "70%", "48%", "30%"]}
     >
       <Flex h={["35%", "50%", "50%", "50%", "50%"]}></Flex>
-      <Flex flexDir="column" px={8} color="white">
+      <Flex flexDir="column" px={[4, 4, 4, 4, 6]} color="white" py={4}>
         <Flex align="center" maxWidth="40%" mb={2}>
           <Text
             as="span"

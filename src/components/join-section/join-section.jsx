@@ -23,12 +23,12 @@ export const JoinSection = () => {
         width={["100%", "100%", "80%", "80%", "48%"]}
         h="60vh"
       >
-        <Flex h={["40%", "40%", "50%", "50%", "60%"]}></Flex>
-        <Flex flexDir="column" px={20} color="white">
+        <Flex h={["40%", "60%", "60%", "60%", "60%"]}></Flex>
+        <Flex flexDir="column" px={[8, 8, 8, 16, 20]} color="white">
           <Flex align="center">
             <Icon name="chat" mr={4} />
             <Text as="span" fontFamily="Cera Pro" letterSpacing="2px">
-              Get work done by artisans
+            Get your work done by Wocman
             </Text>
           </Flex>
           <Flex maxWidth="65%">
@@ -53,8 +53,8 @@ export const JoinSection = () => {
         h="60vh"
         width={["100%", "100%", "80%", "80%", "48%"]}
       >
-        <Flex h={["40%", "40%", "60%"]}></Flex>
-        <Flex flexDir="column" px={20} color="white">
+        <Flex h={["50%", "60%", "60%"]}></Flex>
+        <Flex flexDir="column" px={[8, 8, 8, 16, 20]} color="white">
           <Flex align="center">
             <Icon name="chat" mr={4} />
             <Text as="span" fontFamily="Cera Pro" letterSpacing="2px">

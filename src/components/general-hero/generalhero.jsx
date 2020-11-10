@@ -28,7 +28,7 @@ import {
             lineHeight="2rem"
             fontSize="1rem"
           >
-            T{ subHeading }
+            { subHeading }
           </Text>
         </Flex>
       </Flex>
