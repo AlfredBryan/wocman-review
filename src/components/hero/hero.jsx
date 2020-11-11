@@ -23,7 +23,7 @@ export const Hero = () => {
     >
       <Text
         fontFamily="Poppins"
-        fontSize={["2rem", "3rem", "4rem", "4rem"]}
+        fontSize={["1rem", "1.5rem", "2.5rem", "3.5rem", "3.5rem"]}
         fontWeight="bold"
       >
         Get your domestic, repairs, and construction works done on{" "}

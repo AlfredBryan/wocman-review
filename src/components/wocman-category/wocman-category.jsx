@@ -25,7 +25,7 @@ export const WocmanCategory = (props) => {
       >
         {props.heading}
       </Text>
-      <Text fontSize="0.8rem" justifySelf="flex-start" fontFamily="Poppins-Light" mt={4} color="black" lineHeight="225%">
+      <Text fontSize="0.8rem" justifySelf="flex-start" fontFamily="Poppins-Light" mt={4} color="black" lineHeight="225%" textTransform="capitalize">
         {props.subHeading}
       </Text>
       <Text

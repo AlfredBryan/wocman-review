@@ -13,27 +13,27 @@ export const OfferedServices = () => {
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604144197/wocman/IMG_20200701_141851_umrzny.jpg",
         heading: "Electrical Fittings",
-        text: "get connected to the best electrician in your hood",
+        text: "Get connected to the best electrician in your hood",
       },
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604143974/wocman/IMG_3095_yjs1ws.jpg",
-        heading: "Interior Fittings",
-        text: "“get linked to a talented plumbing expert nearest to you”",
+        heading: "Sanitary Fittings",
+        text: "Get linked to a talented plumbing expert nearest to you",
       },
       {
         image: "https://res.cloudinary.com/wocman-technology/image/upload/v1604147431/wocman/IMG_3484_o5licw.jpg",
         heading: "Kitchen Fittings",
-        text: "we have skilled technicians that can help fix your kitchen",
+        text: "We have skilled technicians that can help fix your kitchen",
       },
       {
         image: paintingService,
         heading: "Painting Service",
-        text: "we connect you to talented painters in your locality",
+        text: "We connect you to talented painters in your locality",
       },
       {
         image: gardeningService,
         heading: "Gardening Service",
-        text: "get your flowers and grasses trimmed just the way you like it",
+        text: "Get your flowers and grasses trimmed just the way you like it",
       },
       {
         image: cleaningService,
