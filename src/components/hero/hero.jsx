@@ -82,7 +82,7 @@ export const Hero = () => {
             }
           />
           <Input
-            placeholder="Oshodi, Lagos"
+            placeholder="Ikeja, Lagos"
             color="wocman.typography1"
             focusBorderColor="none"
             borderRadius="none"
