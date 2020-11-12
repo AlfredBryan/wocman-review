@@ -23,7 +23,7 @@ export const Hero = () => {
     >
       <Text
         fontFamily="Poppins"
-        fontSize={["1rem", "1.5rem", "2.5rem", "3.5rem", "3.5rem"]}
+        fontSize={["1rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
         fontWeight="bold"
       >
         Get your domestic, repairs, and construction works done on{" "}
@@ -31,7 +31,7 @@ export const Hero = () => {
           as="span"
           color="wocman.color1"
           fontFamily="Poppins"
-          fontSize={["2rem", "3rem", "4rem", "4rem"]}
+          fontSize={["1rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
           fontWeight="bold"
         >
           Wocman
@@ -48,7 +48,7 @@ export const Hero = () => {
           We connect customers to the nearest tradesmen, technicians, and professionals with zero hassle.
         </Text>
       </Flex>
-      <Flex mt="3rem" w={["120%", "100%", "100%", "100%"]} fontFamily="Poppins">
+      <Flex mt="4rem" w={["120%", "100%", "100%", "100%"]} fontFamily="Poppins">
         <InputGroup flex="5">
           <InputLeftElement
             children={
