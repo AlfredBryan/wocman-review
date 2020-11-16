@@ -2,6 +2,12 @@
   display: none;
 }
 
+.css-10wzqv3 {
+  object-fit: cover;
+  width: 3rem;
+  height: 12rem;
+}
+
 
 .link.active {
   text-decoration: underline;

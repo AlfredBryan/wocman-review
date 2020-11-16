@@ -46,7 +46,10 @@ export const NavBar = (props) => {
           alt="wocman logo"
           src={logo}
           fallbackSrc="https://via.placeholder.com/150"
-          size="3rem"
+          // size="12rem"
+          minH="200px"
+          h="200px"
+          w={12}
         />
       </Flex>
       <Flex flex="4" justifyContent="center" align="center" className="nav">
