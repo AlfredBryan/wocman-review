@@ -23,7 +23,7 @@ export const Hero = () => {
     >
       <Text
         fontFamily="Poppins"
-        fontSize={["1rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
+        fontSize={["1.5rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
         fontWeight="bold"
       >
         Get your domestic, repairs, and construction works done on{" "}
@@ -31,7 +31,7 @@ export const Hero = () => {
           as="span"
           color="wocman.color1"
           fontFamily="Poppins"
-          fontSize={["1rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
+          fontSize={["1.5rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
           fontWeight="bold"
         >
           Wocman
@@ -43,7 +43,7 @@ export const Hero = () => {
           fontFamily="Poppins"
           fontWeight="bold"
           lineHeight="2rem"
-          fontSize="1rem"
+          fontSize="0.9rem"
         >
           We connect customers to the nearest tradesmen, technicians, and professionals with zero hassle.
         </Text>
