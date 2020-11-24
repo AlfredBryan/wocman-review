@@ -47,6 +47,7 @@ const customTheme = {
       typography1: "#552D1E",
       typography2: "#778899",
       typography3: "#363636",
+      typography4: "#4D4D4D",
       wocmanCategories: "#E8E2E7",
       team: "#E5E5E5",
       newsLetter: "#778899",

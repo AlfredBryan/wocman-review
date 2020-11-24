@@ -40,7 +40,17 @@ export const NavBar = (props) => {
 
   return (
     <Flex justify="space-evenly" bg="transparent" color="white" h="10vh">
-      <Flex flex="1" bg="transparent" justify="center" align="center" d="flex">
+      <Flex
+        flex="1"
+        bg="transparent"
+        h="50%"
+        justify={props.isAuth ? "flex-start" : "center"}
+        align="center"
+        cursor="pointer"
+        d="flex"
+        pl={props.isAuth ? ["1.5rem", "1.5rem", "2rem", "3rem", "3rem"] : ""}
+        onClick={() => props.history.push("/")}
+      >
         <Image
           objectFit="cover"
           alt="wocman logo"
@@ -52,7 +62,13 @@ export const NavBar = (props) => {
           w={12}
         />
       </Flex>
-      <Flex flex="4" justifyContent="center" align="center" className="nav">
+      <Flex
+        flex="4"
+        justifyContent="center"
+        align="center"
+        className="nav"
+        display={props.isAuth ? "none" : ""}
+      >
         <List
           styleType="none"
           display="flex"
@@ -79,7 +95,13 @@ export const NavBar = (props) => {
           })}
         </List>
       </Flex>
-      <Flex flex="2" align="center" justify="center" className="nav">
+      <Flex
+        flex="2"
+        align="center"
+        justify="center"
+        className="nav"
+        display={props.isAuth ? "none" : ""}
+      >
         <Button
           className="mr-4"
           variant="outline"
@@ -120,7 +142,7 @@ export const NavBar = (props) => {
               size="3rem"
             />
           </Flex>
-          <Burger open={open} setOpen={setOpen} />
+          {!props.isAuth && <Burger open={open} setOpen={setOpen} />}
           <Menu open={open} setOpen={setOpen} className="w-full">
             <div className="flex flex-col justify-center">
               <List

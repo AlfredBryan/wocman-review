@@ -70,6 +70,14 @@
     url("assets/fonts/Cera\ Pro/Cera_Pro_Black_Italic.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "OverPass";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Overpass"),
+    url("assets/fonts/Overpass/Overpass-Regular.ttf") format("truetype");
+}
+
 .slick-list {
   width: 40vw;
   height: 100%;
