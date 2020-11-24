@@ -1,33 +1,32 @@
-import {  Flex, Input, PseudoBox, Text, Textarea } from "@chakra-ui/core";
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
-import { useState } from "react";
+import { Flex, Input, PseudoBox, Text, Textarea } from "@chakra-ui/core";
+// import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 
-const Message = (props) => {
-  const [showingInfoWindow, setShowingInfoWindow] = useState(false);
-  const [activeMarker, setActiveMarker] = useState({});
-  const [selectedPlace, setSelectedPlace] = useState({});
+export const SendMessage = () => {
+  // const [showingInfoWindow, setShowingInfoWindow] = useState(false);
+  // const [activeMarker, setActiveMarker] = useState({});
+  // const [selectedPlace, setSelectedPlace] = useState({});
 
-  const mapStyles = {
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    borderRadius: "13.5px",
-    filter: "drop-shadow(0px 4px 26px rgba(0, 0, 0, 0.06))",
-    border: "3px solid #E8E2E7",
-  };
+  // const mapStyles = {
+  //   position: "relative",
+  //   width: "100%",
+  //   height: "100%",
+  //   borderRadius: "13.5px",
+  //   filter: "drop-shadow(0px 4px 26px rgba(0, 0, 0, 0.06))",
+  //   border: "3px solid #E8E2E7",
+  // };
 
-  const onMarkerClick = (props, marker, e) => {
-    setSelectedPlace(props);
-    setActiveMarker(marker);
-    setShowingInfoWindow(true);
-  };
+  // const onMarkerClick = (props, marker, e) => {
+  //   setSelectedPlace(props);
+  //   setActiveMarker(marker);
+  //   setShowingInfoWindow(true);
+  // };
 
-  const onClose = (props) => {
-    if (showingInfoWindow) {
-      setShowingInfoWindow(false);
-      setActiveMarker(null);
-    }
-  };
+  // const onClose = (props) => {
+  //   if (showingInfoWindow) {
+  //     setShowingInfoWindow(false);
+  //     setActiveMarker(null);
+  //   }
+  // };
 
   return (
     <Flex
@@ -148,7 +147,17 @@ const Message = (props) => {
         mt={[8, 8, 8, 0, 0]}
         w={["100%", "100%", "100%", "48%", "48%"]}
       >
-        <Map
+        <iframe
+          width="600"
+          height="100%"
+          className="contact-map"
+          frameborder="0"
+          style={ { border:0 }}
+          src="https://www.google.com/maps/embed/v1/place?q=17%20Akinsanya%20street%20Ojodu%20Berger%2C%20Lagos%20state&key=AIzaSyBef_mdYffQ4JM-NgowTbVLHKjhSdLnBK4"
+          allowfullscreen
+          title="Location"
+        ></iframe>
+        {/* <Map
           google={props.google}
           zoom={14}
           className="contact-map"
@@ -172,12 +181,12 @@ const Message = (props) => {
               <h4>{selectedPlace.name}</h4>
             </div>
           </InfoWindow>
-        </Map>
+        </Map> */}
       </Flex>
     </Flex>
   );
 };
 
-export const SendMessage = GoogleApiWrapper({
-  apiKey: "AIzaSyBef_mdYffQ4JM-NgowTbVLHKjhSdLnBK4",
-})(Message);
+// export const SendMessage = GoogleApiWrapper({
+//   apiKey: "AIzaSyBef_mdYffQ4JM-NgowTbVLHKjhSdLnBK4",
+// })(Message);

@@ -6,6 +6,7 @@ import history from "./history";
 import { About } from "./containers/about/about";
 import { Services } from "./containers/services/services";
 import { Contact } from "./containers/contact/contact";
+import { Login } from "./containers/login/login";
 function App() {
   return (
     <ThemeProvider theme={customTheme}>
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/services" component={Services} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/login" component={Login} />
           </Switch>
         </Router>
       </Box>
