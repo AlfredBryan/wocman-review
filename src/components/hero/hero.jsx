@@ -6,9 +6,24 @@ import {
   InputLeftElement,
   PseudoBox,
   Text,
+  useToast,
 } from "@chakra-ui/core";
+import { useState } from "react";
+import { useHistory } from "react-router";
+import { ShowMessage } from "../../utils/alert";
 
 export const Hero = () => {
+  const [query, setQuery] = useState("");
+  const history = useHistory();
+  const toast = useToast();
+
+  const submitQuery = () => {
+    if (!query) {
+      return ShowMessage("Error", "Please provide a location", "error", toast);
+    }
+    return history.push(`/search?query=${encodeURI(query)}`);
+  };
+
   return (
     <Flex
       align="center"
@@ -45,11 +60,12 @@ export const Hero = () => {
           lineHeight="2rem"
           fontSize="0.9rem"
         >
-          We connect customers to the nearest tradesmen, technicians, and professionals with zero hassle.
+          We connect customers to the nearest tradesmen, technicians, and
+          professionals with zero hassle.
         </Text>
       </Flex>
       <Flex mt="4rem" w={["120%", "100%", "100%", "100%"]} fontFamily="Poppins">
-        <InputGroup flex="5">
+        {/* <InputGroup flex="5" display={["none", "none", "flex", "flex"]}>
           <InputLeftElement
             children={
               <Icon
@@ -69,8 +85,8 @@ export const Hero = () => {
             fontSize="1rem"
             h="5rem"
           />
-        </InputGroup>
-        <InputGroup flex="2.5" display={["none", "none", "flex", "flex"]}>
+        </InputGroup> */}
+        <InputGroup flex="7.5">
           <InputLeftElement
             children={
               <Icon
@@ -88,6 +104,7 @@ export const Hero = () => {
             borderRadius="none"
             fontSize="1rem"
             h="5rem"
+            onChange={(e) => setQuery(e.target.value)}
           />
         </InputGroup>
         <PseudoBox
@@ -96,6 +113,7 @@ export const Hero = () => {
           fontSize="1rem"
           h="5.03rem"
           backgroundColor="wocman.color1"
+          onClick={submitQuery}
           borderRadius="2px"
           _hover={{ bg: "wocman.color1", opacity: "0.7" }}
           _active={{ transform: "scale(0.98)" }}

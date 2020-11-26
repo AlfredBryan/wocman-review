@@ -4,6 +4,13 @@ import './styles/tailwind.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { setAuthToken, axios } from './utils/axios';
+
+if (localStorage["wocman_token"]) {
+	setAuthToken(localStorage["wocman_token"]);
+}
+axios.defaults.headers.common["Accept"] = "application/json";
+axios.defaults.headers.common["Content-Type"] = "application/json";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -48,7 +48,7 @@ export const NavBar = (props) => {
         align="center"
         cursor="pointer"
         d="flex"
-        pl={props.isAuth ? ["1.5rem", "1.5rem", "2rem", "3rem", "3rem"] : ""}
+        pl={props.isAuth || props.search ? ["1.5rem", "1.5rem", "2rem", "3rem", "3rem"] : ""}
         onClick={() => props.history.push("/")}
       >
         <Image

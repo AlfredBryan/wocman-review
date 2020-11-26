@@ -1,4 +1,7 @@
 import { Box } from "@chakra-ui/core";
+import Fade from "react-reveal/Fade";
+import Slide from "react-reveal/Slide";
+import Zoom from "react-reveal/Zoom";
 import { Header } from "../../components/header/header";
 import { Hero } from "../../components/hero/hero";
 import landing from "../../assets/images/home.jpg";
@@ -10,20 +13,33 @@ import { Faq } from "../../components/faq/faq";
 import { NewsLetter } from "../../components/newsletter/newsletter";
 import { Footer } from "../../components/footer/footer";
 
-
 export const Home = () => {
   return (
     <Box>
       <Header bgImage={landing} vh="100vh">
-          <Hero/>
+        <Zoom opposite>
+          <Hero />
+        </Zoom>
       </Header>
-      <FeaturedServices/>
-      <WocmanCategories/>
-      <JoinSection/>
-      <OfferedServices/>
-      <Faq/>
-      <NewsLetter/>
-      <Footer/>
+      <Fade right>
+        <FeaturedServices />
+      </Fade>
+      <Zoom opposite>
+        <WocmanCategories />
+      </Zoom>
+      <Zoom opposite>
+        <JoinSection />
+      </Zoom>
+      <Zoom opposite>
+        <OfferedServices />
+      </Zoom>
+      <Slide left>
+        <Faq />
+      </Slide>
+      <Slide right>
+        <NewsLetter />
+      </Slide>
+      <Footer />
     </Box>
   );
 };

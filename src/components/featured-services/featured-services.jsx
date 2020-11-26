@@ -5,6 +5,7 @@ import plumbing from "../../assets/images/plumbing.svg";
 import house from "../../assets/images/house.svg";
 import carpenter from "../../assets/images/carpenter.svg";
 
+
 export const FeaturedServices = () => {
   const services = [
     {

@@ -1,4 +1,5 @@
 import { Flex, Text } from "@chakra-ui/core";
+import Zoom from "react-reveal/Zoom";
 
 export const GeneralHero = ({ heading, subHeading, vh }) => {
   return (
@@ -14,6 +15,7 @@ export const GeneralHero = ({ heading, subHeading, vh }) => {
       h={vh}
       pt={16}
     >
+      <Zoom opposite>
       <Text
         fontFamily="Poppins"
         fontSize={["2rem", "3rem", "4rem", "4rem"]}
@@ -21,7 +23,9 @@ export const GeneralHero = ({ heading, subHeading, vh }) => {
       >
         {heading}
       </Text>
+      </Zoom>
       <Flex w={["90%", "90%", "90%", "60%"]} mt="2rem" justify="center">
+      <Zoom opposite>
         <Text
           as="small"
           fontFamily="Poppins"
@@ -31,6 +35,7 @@ export const GeneralHero = ({ heading, subHeading, vh }) => {
         >
           {subHeading}
         </Text>
+      </Zoom>
       </Flex>
     </Flex>
   );
