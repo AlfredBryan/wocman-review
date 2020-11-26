@@ -58,7 +58,7 @@ export const Search = (props) => {
       flex="1"
       flexDir="column"
     >
-      {search && false ? <MapState query={search} /> : <SearchState />}
+      {search && true ? <MapState query={search} /> : <SearchState />}
       <Flex
         minHeight="200px"
         backgroundColor="#C4C4C4"

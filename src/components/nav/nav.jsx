@@ -132,7 +132,7 @@ export const NavBar = (props) => {
             bg="transparent"
             justify="center"
             align="center"
-            d="flex"
+            onClick={() => props.history.push("/")}
           >
             <Image
               objectFit="cover"
