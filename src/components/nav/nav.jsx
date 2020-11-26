@@ -55,7 +55,7 @@ export const NavBar = (props) => {
           objectFit="cover"
           alt="wocman logo"
           src={logo}
-          fallbackSrc="https://via.placeholder.com/150"
+          // fallbackSrc="https://via.placeholder.com/150"
           // size="12rem"
           minH="200px"
           h="200px"
@@ -138,7 +138,7 @@ export const NavBar = (props) => {
               objectFit="cover"
               alt="wocman logo"
               src={logo}
-              fallbackSrc="https://via.placeholder.com/150"
+              // fallbackSrc="https://via.placeholder.com/150"
               size="3rem"
             />
           </Flex>
