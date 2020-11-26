@@ -182,11 +182,11 @@ const MapState = (props) => {
       px={[2, 2, 2, 8, 8]}
       justify="center"
       minHeight={["50vh"]}
+      h="50vh"
       mt={[0, 0, 0, 8, 8]}
       mb={[4, 4, 4, 0, 0]}
       w={["100%", "100%", "100%", "100%", "100%"]}
     >
-      <Zoom opposite>
         <iframe
           width="80%"
           height="100%"
@@ -197,7 +197,6 @@ const MapState = (props) => {
           allowfullscreen
           title="Location"
         ></iframe>
-      </Zoom>
     </Flex>
   );
 };
