@@ -78,6 +78,10 @@
     url("assets/fonts/Overpass/Overpass-Regular.ttf") format("truetype");
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .slick-list {
   width: 40vw;
   height: 100%;

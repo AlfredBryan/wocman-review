@@ -1,0 +1,4 @@
+// search wocmen constants;
+export const SEARCH_WOCMEN_PENDING = "SEARCH_WOCMEN_PENDING";
+export const SEARCH_WOCMEN_SUCCESS = "SEARCH_WOCMEN_SUCCESS";
+export const SEARCH_WOCMEN_FAIL = "SEARCH_WOCMEN_FAIL";

@@ -1,0 +1,60 @@
+.pulse {
+  -webkit-animation: heartbeat 0.7s ease-in-out;
+  -moz-animation: heartbeat 0.7s ease-in-out;
+  -o-animation: heartbeat 0.7s ease-in-out;
+  animation: heartbeat 0.7s infinite;
+}
+
+@keyframes heartbeat {
+  /* 0% {
+    transform: scale(0.75);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(0.75);
+  } */
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.75);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; 
+    width: 0px;
+  }
+  
+  @keyframes ellipsis {
+    to {
+      width: 20px;    
+    }
+  }
+  
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 20px;    
+    }
+  }
