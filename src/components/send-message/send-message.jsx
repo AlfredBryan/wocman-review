@@ -70,7 +70,7 @@ export const SendMessage = () => {
   const submit = () => {
 
     const validateFields = Object.values(form).filter((value) => !value);
-    console.log(form);
+
     if (validateFields.length) {
       return ShowMessage(
         "Warning",
@@ -79,7 +79,9 @@ export const SendMessage = () => {
         toast
       );
     }
+
     dispatch(contact(form));
+    
   };
 
   return (
