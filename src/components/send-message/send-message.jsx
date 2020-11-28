@@ -1,32 +1,86 @@
-import { Flex, Input, PseudoBox, Text, Textarea } from "@chakra-ui/core";
-// import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import {
+  Flex,
+  Input,
+  PseudoBox,
+  Text,
+  Textarea,
+  useToast,
+} from "@chakra-ui/core";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearContactToast, contact } from "../../state/actions";
+import { ShowMessage } from "../../utils/alert";
 
 export const SendMessage = () => {
-  // const [showingInfoWindow, setShowingInfoWindow] = useState(false);
-  // const [activeMarker, setActiveMarker] = useState({});
-  // const [selectedPlace, setSelectedPlace] = useState({});
+  const dispatch = useDispatch();
+  const toast = useToast();
 
-  // const mapStyles = {
-  //   position: "relative",
-  //   width: "100%",
-  //   height: "100%",
-  //   borderRadius: "13.5px",
-  //   filter: "drop-shadow(0px 4px 26px rgba(0, 0, 0, 0.06))",
-  //   border: "3px solid #E8E2E7",
-  // };
+  const [form, setForm] = useState({
+    email: "",
+    name: "",
+    phone: "",
+    inquiry: "",
+    message: "",
+  });
 
-  // const onMarkerClick = (props, marker, e) => {
-  //   setSelectedPlace(props);
-  //   setActiveMarker(marker);
-  //   setShowingInfoWindow(true);
-  // };
+  const { result, error, isLoading, message } = useSelector(
+    ({ contact: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
 
-  // const onClose = (props) => {
-  //   if (showingInfoWindow) {
-  //     setShowingInfoWindow(false);
-  //     setActiveMarker(null);
-  //   }
-  // };
+  useEffect(() => {
+    if (error) {
+      ShowMessage("Error", message, "error", toast);
+      dispatch(clearContactToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
+
+  useEffect(() => {
+    if (result) {
+      setForm({
+        email: "",
+        name: "",
+        phone: "",
+        inquiry: "",
+        message: "",
+      });
+      ShowMessage(
+        "Success",
+        "Awesome, we've received your inquiry",
+        "success",
+        toast,
+        5000
+      );
+      dispatch(clearContactToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result]);
+
+  const onChange = (e) => {
+    e.persist();
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const submit = () => {
+
+    const validateFields = Object.values(form).filter((value) => !value);
+    console.log(form);
+    if (validateFields.length) {
+      return ShowMessage(
+        "Warning",
+        "All fields are required",
+        "warning",
+        toast
+      );
+    }
+    dispatch(contact(form));
+  };
 
   return (
     <Flex
@@ -60,6 +114,9 @@ export const SendMessage = () => {
           placeholder="Name*"
           minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
           px={8}
+          name="name"
+          value={form.name}
+          onChange={onChange}
           fontFamily="Gilroy-Medium"
           fontSize="0.8rem"
           color="wocman.typography1"
@@ -73,6 +130,9 @@ export const SendMessage = () => {
             placeholder="Email*"
             minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
             px={8}
+            name="email"
+            value={form.email}
+            onChange={onChange}
             width="48%"
             fontFamily="Gilroy-Medium"
             fontSize="0.8rem"
@@ -86,6 +146,9 @@ export const SendMessage = () => {
             placeholder="Phone*"
             minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
             px={8}
+            name="phone"
+            value={form.phone}
+            onChange={onChange}
             width="48%"
             fontFamily="Gilroy-Medium"
             fontSize="0.8rem"
@@ -100,6 +163,9 @@ export const SendMessage = () => {
           placeholder="Inquiry Type*"
           minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
           px={8}
+          name="inquiry"
+          value={form.inquiry}
+          onChange={onChange}
           fontFamily="Gilroy-Medium"
           fontSize="0.8rem"
           color="wocman.typography1"
@@ -114,6 +180,9 @@ export const SendMessage = () => {
           px={8}
           py={4}
           my={6}
+          name="message"
+          value={form.message}
+          onChange={onChange}
           fontFamily="Gilroy-Medium"
           fontSize="0.8rem"
           color="wocman.typography1"
@@ -130,13 +199,16 @@ export const SendMessage = () => {
           lineHeight="20px"
           color="white"
           borderRadius="10px"
+          disabled={isLoading}
+          opacity={isLoading ? 0.5 : ""}
           minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
           backgroundColor="wocman.typography1"
           _hover={{ opacity: "0.7" }}
           _active={{ transform: "scale(0.98)" }}
           _focus={{ outline: "none" }}
+          onClick={submit}
         >
-          SEND MESSAGE
+          {isLoading ? "SENDING..." : "SEND MESSAGE"}
         </PseudoBox>
       </Flex>
       <Flex
@@ -152,41 +224,12 @@ export const SendMessage = () => {
           height="100%"
           className="contact-map"
           frameborder="0"
-          style={ { border:0 }}
+          style={{ border: 0 }}
           src="https://www.google.com/maps/embed/v1/place?q=17%20Akinsanya%20street%20Ojodu%20Berger%2C%20Lagos%20state&key=AIzaSyBef_mdYffQ4JM-NgowTbVLHKjhSdLnBK4"
           allowfullscreen
           title="Location"
         ></iframe>
-        {/* <Map
-          google={props.google}
-          zoom={14}
-          className="contact-map"
-          disableDefaultUI={true}
-          style={mapStyles}
-          initialCenter={{
-            lat: 6.6415809,
-            lng: 3.3637405,
-          }}
-        >
-          <Marker
-            onClick={onMarkerClick}
-            name={"17 Akinsanya street Ojodu Berger, Lagos state"}
-          />
-          <InfoWindow
-            marker={activeMarker}
-            visible={showingInfoWindow}
-            onClose={onClose}
-          >
-            <div>
-              <h4>{selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
-        </Map> */}
       </Flex>
     </Flex>
   );
 };
-
-// export const SendMessage = GoogleApiWrapper({
-//   apiKey: "AIzaSyBef_mdYffQ4JM-NgowTbVLHKjhSdLnBK4",
-// })(Message);
