@@ -1,10 +1,10 @@
-export const ShowMessage = (title = "", description, status, fn) => {
+export const ShowMessage = (title = "", description, status, fn, duration = 2000) => {
   return fn({
     title,
     position: "bottom-right",
     description,
     status,
-    duration: 2000,
+    duration,
     isClosable: true,
   });
 };

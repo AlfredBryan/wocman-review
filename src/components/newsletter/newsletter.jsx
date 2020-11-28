@@ -1,8 +1,64 @@
-import { Box, Flex, Input, PseudoBox, Text } from "@chakra-ui/core";
+import { Box, Flex, Input, PseudoBox, Text, useToast } from "@chakra-ui/core";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { newsLetter, clearNewsToast } from "../../state/actions";
+import { ShowMessage } from "../../utils/alert";
 
 export const NewsLetter = () => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+
+  const [email, setEmail] = useState("");
+
+  const { result, error, isLoading, message } = useSelector(
+    ({ newsLetter: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+
+  useEffect(() => {
+    if (error) {
+      ShowMessage("Error", message, "error", toast);
+      dispatch(clearNewsToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
+
+  useEffect(() => {
+    if (result) {
+      setEmail("");
+      ShowMessage(
+        "Success",
+        "Great ! You've been signed up to receive our newsletters",
+        "success",
+        toast,
+        5000
+      );
+      dispatch(clearNewsToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result]);
+
+  const submit = () => {
+    if (!email) {
+      return ShowMessage(
+        "Warning",
+        "Please provide an email address",
+        "warning",
+        toast
+      );
+    }
+    dispatch(newsLetter({ email }));
+  };
+
   return (
-    <Flex minHeight="40vh" flexDir={["column", "column", "column", "column", "row"]}>
+    <Flex
+      minHeight="40vh"
+      flexDir={["column", "column", "column", "column", "row"]}
+    >
       <Flex
         flex="2"
         flexDirection="column"
@@ -11,7 +67,11 @@ export const NewsLetter = () => {
         justify="center"
         py={16}
       >
-        <Box w={["90%", "80%", "60%", "60%", "60%"]} mx="auto" textAlign={["center", "center", "", "", ""]}>
+        <Box
+          w={["90%", "80%", "60%", "60%", "60%"]}
+          mx="auto"
+          textAlign={["center", "center", "", "", ""]}
+        >
           <Text
             fontSize="2rem"
             color="wocman.typography1"
@@ -42,12 +102,14 @@ export const NewsLetter = () => {
           minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
           px={8}
           fontFamily="Poppins"
+          value={email}
           fontWeight="bold"
           fontSize={["1rem", "1rem", "1rem", "1.4rem", "1.4rem"]}
           backgroundColor="wocman.wocmanCategories"
           color="wocman.typography1"
           _focus={{ bg: "white" }}
           borderRadius="7.37288px"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <PseudoBox
           as="button"
@@ -63,11 +125,14 @@ export const NewsLetter = () => {
           ml={[0, 0, 6, 6, 6]}
           mt={[6, 6, 0, 0, 0]}
           backgroundColor="wocman.typography1"
-          _hover={{  opacity: "0.7" }}
+          disabled={isLoading}
+          opacity={isLoading ? 0.5 : ""}
+          _hover={{ opacity: "0.7" }}
           _active={{ transform: "scale(0.98)" }}
           _focus={{ outline: "none" }}
+          onClick={submit}
         >
-          Save Me
+          {isLoading ? "Saving..." : "Save Me"}
         </PseudoBox>
       </Flex>
     </Flex>

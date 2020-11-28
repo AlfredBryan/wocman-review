@@ -1,7 +1,7 @@
 import * as axiosOriginal from "axios";
 
 export const axios = axiosOriginal.create({
-  baseURL: `https://wocman-node-api-8080.herokuapp.com/`,
+  baseURL: `https://wocman-node-api-8080.herokuapp.com/api/v1`,
 });
 
 export const setAuthToken = (token) => {
