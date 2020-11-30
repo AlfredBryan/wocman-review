@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Icon, Text } from "@chakra-ui/core";
+import { Box, Flex, Icon, Text } from "@chakra-ui/core";
 import Slider from "react-slick";
 import paintingService from "../../assets/images/painting-service.jpg";
 import gardeningService from "../../assets/images/gardening-service.jpg";
@@ -18,7 +18,7 @@ export const OnDemand = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false
+          arrows: false,
         },
       },
       {
@@ -26,7 +26,7 @@ export const OnDemand = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false
+          arrows: false,
         },
       },
       {
@@ -34,7 +34,7 @@ export const OnDemand = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false
+          arrows: false,
         },
       },
       {
@@ -136,8 +136,9 @@ const OfferedService = (props) => {
       h="380px"
       width="94%"
     >
-      <Flex h={["35%", "50%", "50%", "50%", "50%"]}></Flex>
-      <Flex flexDir="column" px={[4, 4, 4, 4, 6]} color="white">
+      <Flex h="50%"></Flex>
+      <Flex h="50%" flexDir="column" px={[4, 4, 4, 4, 6]} color="white"  py={4}
+        justify="center">
         <Flex align="center" maxWidth="40%" mb={2}>
           <Text
             as="span"
@@ -150,7 +151,7 @@ const OfferedService = (props) => {
         </Flex>
         <Flex justify="space-between">
           <Text fontFamily="Gilroy-Regular">{props.text}</Text>
-          <Button
+          {/* <Button
             variant="outline"
             borderColor="white"
             ml={4}
@@ -163,7 +164,7 @@ const OfferedService = (props) => {
             _focus={{ outline: "none" }}
           >
             Explore
-          </Button>
+          </Button> */}
         </Flex>
       </Flex>
     </Box>

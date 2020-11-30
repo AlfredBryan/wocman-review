@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/core";
+import { Box, Flex, Text } from "@chakra-ui/core";
 
 export const OfferedService = (props) => {
   return (
@@ -10,12 +10,19 @@ export const OfferedService = (props) => {
       bg="transparent"
       bgSize="cover"
       my={4}
-      py={8}
+      // py={8}
       minHeight="400px"
       width={["100%", "100%", "70%", "48%", "30%"]}
     >
-      <Flex h={["35%", "50%", "50%", "50%", "50%"]}></Flex>
-      <Flex flexDir="column" px={[4, 4, 4, 4, 6]} color="white" py={4}>
+      <Flex h="50%"></Flex>
+      <Flex
+        h="50%"
+        flexDir="column"
+        px={[4, 4, 4, 4, 6]}
+        color="white"
+        py={4}
+        justify="center"
+      >
         <Flex align="center" maxWidth="40%" mb={2}>
           <Text
             as="span"
@@ -28,7 +35,7 @@ export const OfferedService = (props) => {
         </Flex>
         <Flex justify="space-between">
           <Text fontFamily="Gilroy-Regular">{props.text}</Text>
-          <Button
+          {/* <Button
             variant="outline"
             borderColor="white"
             ml={4}
@@ -41,7 +48,7 @@ export const OfferedService = (props) => {
             _focus={{ outline: "none" }}
           >
             Explore
-          </Button>
+          </Button> */}
         </Flex>
       </Flex>
     </Box>

@@ -28,7 +28,7 @@ export const WocmanCategory = (props) => {
       <Text fontSize="0.8rem" justifySelf="flex-start" fontFamily="Poppins-Light" mt={4} color="black" lineHeight="225%" textTransform="capitalize">
         {props.subHeading}
       </Text>
-      <Text
+      {/* <Text
         fontSize="0.9rem"
         justifySelf="flex-end"
         fontFamily="Poppins"
@@ -37,7 +37,7 @@ export const WocmanCategory = (props) => {
         color="wocman.typography1"
       >
         View More
-      </Text>
+      </Text> */}
       </Flex>
     </Flex>
   );
