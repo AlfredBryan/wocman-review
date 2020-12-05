@@ -7,11 +7,14 @@ import { About } from "./containers/about/about";
 import { Services } from "./containers/services/services";
 import { Contact } from "./containers/contact/contact";
 import { Login } from "./containers/login/login";
+import { Register } from "./containers/register/register";
 import { SearchPage } from "./containers/search/search";
 import { Provider } from "react-redux";
 import { configureStore } from "./state/store";
 import { TransitionGroup, Transition } from "react-transition-group";
 import { exit, play } from "./utils/animations";
+import { VerifyEmail } from "./containers/verify-email/verify-email";
+import { AccountSetUp } from "./containers/account-setup/account-setup";
 
 const store = configureStore();
 
@@ -41,7 +44,10 @@ function App() {
                         <Route exact path="/services" component={Services} />
                         <Route exact path="/contact" component={Contact} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/verify-email" component={VerifyEmail} />
                         <Route exact path="/search" component={SearchPage} />
+                        <Route exact path="/account-setup" component={AccountSetUp} />
                       </Switch>
                     </Transition>
                   </TransitionGroup>

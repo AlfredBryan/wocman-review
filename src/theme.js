@@ -52,7 +52,8 @@ const customTheme = {
       team: "#E5E5E5",
       newsLetter: "#778899",
       quotes: "#D8E3FE",
-      contact: "#552D1E"
+      contact: "#552D1E",
+      specialInput: "#371008",
     },
   },
   icons: {

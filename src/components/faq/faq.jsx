@@ -34,7 +34,11 @@ export const Faq = () => {
   ];
 
   return (
-    <Box py={16} px={[3, 12, 12, 20, 20]} backgroundColor="wocman.featuredService">
+    <Box
+      py={16}
+      px={[3, 12, 12, 20, 20]}
+      backgroundColor="wocman.featuredService"
+    >
       <Flex pb={4} textAlign="center" justify="center">
         <Text fontFamily="Poppins" as="small" color="wocman.typography2">
           CUSTOMER HELP
@@ -50,7 +54,12 @@ export const Faq = () => {
           Frequently Asked Questions
         </Text>
       </Flex>
-      <Box w={["100%", "100%", "100%", "100%", "60%"]} flex="1" mx="auto" flexDirection="column">
+      <Box
+        w={["100%", "100%", "100%", "100%", "60%"]}
+        flex="1"
+        mx="auto"
+        flexDirection="column"
+      >
         <Accordion defaultIndex={[0]} allowMultiple>
           {faqs.map((item, index) => (
             <AccordionItem

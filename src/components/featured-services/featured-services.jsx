@@ -5,7 +5,6 @@ import plumbing from "../../assets/images/plumbing.svg";
 import house from "../../assets/images/house.svg";
 import carpenter from "../../assets/images/carpenter.svg";
 
-
 export const FeaturedServices = () => {
   const services = [
     {
@@ -21,7 +20,8 @@ export const FeaturedServices = () => {
     {
       image: house,
       heading: "Architecture",
-      subHeading: "Top professionals skilled in drafting bespoke architectural designs",
+      subHeading:
+        "Top professionals skilled in drafting bespoke architectural designs",
     },
     {
       image: carpenter,
@@ -39,7 +39,7 @@ export const FeaturedServices = () => {
       px={[4, 8, 12, 16, 16]}
       py={16}
     >
-      <Flex w="20%"  ml={6}>
+      <Flex w="20%" ml={6}>
         <Text
           fontFamily="Poppins"
           fontSize={["1.3rem", "1.5rem", "1.5rem", "2rem"]}
@@ -50,15 +50,14 @@ export const FeaturedServices = () => {
         </Text>
       </Flex>
       <Flex justify="space-evenly" my={8} flexWrap="wrap">
-        {services
-          .map((service, index) => (
-            <FeaturedService
-              key={index}
-              image={service.image}
-              heading={service.heading}
-              subHeading={service.subHeading}
-            />
-          ))}
+        {services.map((service, index) => (
+          <FeaturedService
+            key={index}
+            image={service.image}
+            heading={service.heading}
+            subHeading={service.subHeading}
+          />
+        ))}
       </Flex>
     </Flex>
   );

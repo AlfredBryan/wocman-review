@@ -1,0 +1,73 @@
+.account-tab.active:after {
+  content: "";
+  display: flex;
+  max-width: 30%;
+  border-bottom: 4px solid #f96662;
+  animation: width 0.2s linear forwards;
+}
+
+@keyframes width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+.account-tab.active > *:first-child {
+  opacity: 1;
+}
+
+.special-input:before {
+  content: "";
+  display: block;
+  height: 100%;
+  border: 4px solid #f96662;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: initial;
+    appearance: initial;
+    background: white;
+    width: 20px;
+    height: 20px;
+	border: none;
+	border-radius: 2px;
+	position: relative;
+	outline: none;
+}
+
+input[type="checkbox"]:checked {
+	background: #fff;
+	border: none;
+	outline: none
+}
+input[type="checkbox"]:checked:after {
+    /* Heres your symbol replacement - this is a tick in Unicode. */
+    content: "\2713";
+    color: #552D1E;
+    /* The following positions my tick in the center, 
+     * but you could just overlay the entire box
+     * with a full after element with a background if you want to */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	outline: "none";
+	border: "none"
+    /*
+     * If you want to fully change the check appearance, use the following:
+     * content: " ";
+     * width: 100%;
+     * height: 100%;
+     * background: blue;
+     * top: 0;
+     * left: 0;
+     */
+}
