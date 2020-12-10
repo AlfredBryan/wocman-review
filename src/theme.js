@@ -54,6 +54,9 @@ const customTheme = {
       quotes: "#D8E3FE",
       contact: "#552D1E",
       specialInput: "#371008",
+      category: "#381009",
+      category_heading: "#1f0503",
+      heading_text: "#979797",
     },
   },
   icons: {
