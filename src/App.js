@@ -1,4 +1,4 @@
-import { ThemeProvider, CSSReset, Box } from "@chakra-ui/core";
+import { ThemeProvider, CSSReset, Box, Flex, Text } from "@chakra-ui/core";
 import { Home } from "./containers/home/home";
 import customTheme from "./theme";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -45,9 +45,26 @@ function App() {
                         <Route exact path="/contact" component={Contact} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Register} />
-                        <Route exact path="/verify-email" component={VerifyEmail} />
+                        <Route
+                          exact
+                          path="/verify-email"
+                          component={VerifyEmail}
+                        />
                         <Route exact path="/search" component={SearchPage} />
-                        <Route exact path="/account-setup" component={AccountSetUp} />
+                        <Route
+                          exact
+                          path="/account-setup"
+                          component={AccountSetUp}
+                        />
+                        <Route
+                          render={() => (
+                            <Flex justify="center" align="center" h="100vh" backgroundColor="wocman.contact">
+                              <Text fontFamily="Poppins" fontWeight="bold" color="white">
+                                Oops, this page does not exist
+                              </Text>
+                            </Flex>
+                          )}
+                        />
                       </Switch>
                     </Transition>
                   </TransitionGroup>

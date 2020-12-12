@@ -1,5 +1,5 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
-import mission from "../../assets/images/mission.jpg";
+// import mission from "../../assets/images/mission.jpg";
 
 export const Advisory = () => {
   return (
@@ -21,7 +21,7 @@ export const Advisory = () => {
       >
         <Flex flex={["", "", "", "1", "1"]} h="40vh" align="center">
           <Image
-            src={mission}
+            src="https://res.cloudinary.com/wocman-technology/image/upload/v1607270526/wocman/IMG_4154_iskgzt.jpg"
             alt="advisory"
             h={["100%", "100%", "100%", "80%", "80%"]}
             minWidth={["100%", "100%", "100%", "130%", "130%"]}

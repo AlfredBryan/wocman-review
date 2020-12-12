@@ -9,7 +9,8 @@ import behance from "../../assets/icons/behance.svg";
 export const Team = () => {
   const members = [
     {
-      image: mission,
+      image:
+        "https://res.cloudinary.com/wocman-technology/image/upload/v1607270513/wocman/TJKW7061_vdouj8.jpg",
       name: "Olalekan Ilesanmi",
       designation: "Co-founder & Ceo",
       icons: [
@@ -18,7 +19,8 @@ export const Team = () => {
       ],
     },
     {
-      image: mission,
+      image:
+        "https://res.cloudinary.com/wocman-technology/image/upload/v1607270488/wocman/CLKR4622_j1skvq.jpg",
       name: "Adamu Bwala",
       designation: "Co-founder",
       icons: [
