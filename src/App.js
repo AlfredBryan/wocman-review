@@ -1,7 +1,7 @@
-import { ThemeProvider, CSSReset, Box, Flex, Text } from "@chakra-ui/core";
+import { ThemeProvider, CSSReset, Box, Text, Flex } from "@chakra-ui/core";
 import { Home } from "./containers/home/home";
 import customTheme from "./theme";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import history from "./history";
 import { About } from "./containers/about/about";
 import { Services } from "./containers/services/services";
@@ -11,66 +11,61 @@ import { Register } from "./containers/register/register";
 import { SearchPage } from "./containers/search/search";
 import { Provider } from "react-redux";
 import { configureStore } from "./state/store";
-import { TransitionGroup, Transition } from "react-transition-group";
-import { exit, play } from "./utils/animations";
+import { CSSTransition } from "react-transition-group";
 import { VerifyEmail } from "./containers/verify-email/verify-email";
 import { AccountSetUp } from "./containers/account-setup/account-setup";
+import { Wocman } from "./containers/wocman";
 
 const store = configureStore();
 
 function App() {
+  const routes = [
+    { path: "/", name: "Home", Component: Home },
+    { path: "/about", name: "About", Component: About },
+    { path: "/services", name: "Contact", Component: Services },
+    { path: "/contact", name: "Contact", Component: Contact },
+    { path: "/login", name: "Contact", Component: Login },
+    { path: "/register", name: "Contact", Component: Register },
+    { path: "/verify-email", name: "Contact", Component: VerifyEmail },
+    { path: "/search", name: "Contact", Component: SearchPage },
+    { path: "/account-setup", name: "Contact", Component: AccountSetUp },
+    { path: "/wocman", name: "Contact", Component: Wocman },
+  ];
   return (
     <Provider store={store}>
       <ThemeProvider theme={customTheme}>
         <CSSReset />
         <Box className="App">
           <BrowserRouter history={history}>
-            <Route
-              render={({ location }) => {
-                const { pathname, key } = location;
-                return (
-                  <TransitionGroup component={null}>
-                    <Transition
+            <Switch>
+              {routes.map(({ path, Component }) => (
+                <Route key={path} exact={path !== "/wocman"} path={path}>
+                  {({ match }) => (
+                    <CSSTransition
+                      in={match != null}
+                      timeout={{ enter: 300, exit: 150 }}
                       unmountOnExit
-                      key={key}
-                      appear={true}
-                      onEnter={(node, appears) => play(pathname, node, appears)}
-                      onExit={(node, appears) => exit(node, appears)}
-                      timeout={{ enter: 750, exit: 150 }}
                     >
-                      <Switch location={location}>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/about" component={About} />
-                        <Route exact path="/services" component={Services} />
-                        <Route exact path="/contact" component={Contact} />
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/register" component={Register} />
-                        <Route
-                          exact
-                          path="/verify-email"
-                          component={VerifyEmail}
-                        />
-                        <Route exact path="/search" component={SearchPage} />
-                        <Route
-                          exact
-                          path="/account-setup"
-                          component={AccountSetUp}
-                        />
-                        <Route
-                          render={() => (
-                            <Flex justify="center" align="center" h="100vh" backgroundColor="wocman.contact">
-                              <Text fontFamily="Poppins" fontWeight="bold" color="white">
-                                Oops, this page does not exist
-                              </Text>
-                            </Flex>
-                          )}
-                        />
-                      </Switch>
-                    </Transition>
-                  </TransitionGroup>
-                );
-              }}
-            />
+                      <Component />
+                    </CSSTransition>
+                  )}
+                </Route>
+              ))}
+              <Route
+                render={() => (
+                  <Flex
+                    justify="center"
+                    align="center"
+                    h="100vh"
+                    backgroundColor="wocman.contact"
+                  >
+                    <Text fontFamily="Poppins" fontWeight="bold" color="white">
+                      Oops, this page does not exist
+                    </Text>
+                  </Flex>
+                )}
+              />
+            </Switch>
           </BrowserRouter>
         </Box>
       </ThemeProvider>

@@ -31,6 +31,18 @@ const customIcons = {
     ),
     viewBox: "0 0 17 18",
   },
+  burger: {
+    path: (
+      <path
+        d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"
+        fill="currentColor"
+        //   xmlns="http://www.w3.org/2000/svg"
+        width="50px"
+        height="50px"
+      />
+    ),
+    viewBox: "0 0 50 50",
+  },
 };
 
 const customTheme = {
@@ -57,6 +69,8 @@ const customTheme = {
       category: "#381009",
       category_heading: "#1f0503",
       heading_text: "#979797",
+      sideNav: "#F9F9F9",
+      dashboard: "#F4F4F4",
     },
   },
   icons: {

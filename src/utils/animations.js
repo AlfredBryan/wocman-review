@@ -43,12 +43,14 @@ export const play = (pathname, node, appears) => {
   let timeline;
 
   if (pathname === "/") timeline = getHomeTimeline(node, delay);
+  else if (pathname.startsWith("/admin")) return;
   else timeline = getDefaultTimeline(node, delay);
 
   window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()));
 };
 
-export const exit = (node) => {
+export const exit = (node, appears, pathname) => {
+  if (pathname.startsWith("/admin")) return;
   const timeline = new Timeline({ paused: true });
 
   timeline.to(node, 0.15, { autoAlpha: 0, ease: Power1.easeOut });
