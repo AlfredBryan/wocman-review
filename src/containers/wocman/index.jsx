@@ -38,7 +38,7 @@ export const Wocman = () => {
         close={closeSideNav}
         node={node}
       />
-      <Flex flex={1} flexDir="column" position="relative">
+      <Flex flex={1} flexDir="column" position="relative" overflowY="scroll">
         <AdminHeader toggle={toggleSideNav} />
         <Flex flex={1}>
           <Switch>
@@ -50,7 +50,7 @@ export const Wocman = () => {
                     timeout={{ enter: 300, exit: 150 }}
                     unmountOnExit
                   >
-                      <Component />
+                    <Component />
                   </CSSTransition>
                 )}
               </Route>

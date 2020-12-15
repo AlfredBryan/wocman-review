@@ -71,6 +71,8 @@ const customTheme = {
       heading_text: "#979797",
       sideNav: "#F9F9F9",
       dashboard: "#F4F4F4",
+      green: "#4AAF05",
+      red: "#F96662",
     },
   },
   icons: {
