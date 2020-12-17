@@ -40,7 +40,7 @@ export const Wocman = () => {
       />
       <Flex flex={1} flexDir="column" position="relative" overflowY="scroll">
         <AdminHeader toggle={toggleSideNav} />
-        <Flex flex={1}>
+        <Flex flex={1} h="auto">
           <Switch>
             {routes.map(({ path, Component }) => (
               <Route key={path} exact path={"/wocman" + path}>
