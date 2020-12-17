@@ -2,12 +2,11 @@ import { Box, Flex, Image, List, Link, ListItem, Text } from "@chakra-ui/core";
 import facebook from "../../assets/icons/facebook.svg";
 import twitter from "../../assets/icons/twitter.svg";
 import instagram from "../../assets/icons/instagram.svg";
-import medium from "../../assets/icons/facebook.svg";
+import medium from "../../assets/icons/medium.svg";
 import { Link as ReactLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
 export const FooterComponent = (props) => {
-
   const navStuff = [
     {
       name: "Home",
@@ -31,12 +30,18 @@ export const FooterComponent = (props) => {
     },
   ];
 
-
   return (
     <Flex bg="wocman.typography1" flexDir="column" py={8}>
       <Flex flexDir={["column", "column", "row", "row", "row"]}>
         <Box flex="1"></Box>
-        <Box flex="2" d="flex" justifyContent="space-around" flexDir={["column", "column", "row", "row", "row"]} px={[6, 15, 0, 0, 0]} align="center">
+        <Box
+          flex="2"
+          d="flex"
+          justifyContent="space-around"
+          flexDir={["column", "column", "row", "row", "row"]}
+          px={[6, 15, 0, 0, 0]}
+          align="center"
+        >
           <List
             styleType="none"
             fontFamily="Poppins"
@@ -59,22 +64,24 @@ export const FooterComponent = (props) => {
           >
             <ListItem className="mb-4 text-sm">PAGES</ListItem>
             {navStuff.map((item, index) => {
-            return (
-              <ListItem className="mt-2 text-sm" key={index}>
-                <Link
-                  as={ReactLink}
-                  to={item.to}
-                  _focus={{ outline: "none" }}
-                  className={`link ${
-                    props.location.pathname === item.to ? "active" : ""
-                  }`}
-                  textDecor={props.location.pathname === item.to ? "active" : ""}
-                >
-                  {item.name}
-                </Link>
-              </ListItem>
-            );
-          })}
+              return (
+                <ListItem className="mt-2 text-sm" key={index}>
+                  <Link
+                    as={ReactLink}
+                    to={item.to}
+                    _focus={{ outline: "none" }}
+                    className={`link ${
+                      props.location.pathname === item.to ? "active" : ""
+                    }`}
+                    textDecor={
+                      props.location.pathname === item.to ? "active" : ""
+                    }
+                  >
+                    {item.name}
+                  </Link>
+                </ListItem>
+              );
+            })}
             {/* <ListItem className="mb-4 text-sm">Services</ListItem>
             <ListItem className="mb-4 text-sm">Products</ListItem> */}
           </List>
@@ -91,10 +98,34 @@ export const FooterComponent = (props) => {
           </List>
         </Box>
         <Box flex="1.3" d="flex" justifyContent="center">
-          <Image src={facebook} alt="facebook" mr={2}/>
-          <Image src={twitter} alt="twitter" mr={2}/>
-          <Image src={instagram} alt="instagram" mr={2}/>
-          <Image src={medium} alt="medium" mr={2}/>
+          <Link
+            href="https://web.facebook.com/wocmantech"
+            isExternal
+            _focus={{ outline: "none" }}
+          >
+            <Image src={facebook} alt="facebook" mr={2} />
+          </Link>
+          <Link
+            href="https://twitter.com/WocmanT"
+            isExternal
+            _focus={{ outline: "none" }}
+          >
+            <Image src={twitter} alt="twitter" mr={2} />
+          </Link>
+          <Link
+            href="https://www.instagram.com/wocmantechnology/"
+            isExternal
+            _focus={{ outline: "none" }}
+          >
+            <Image src={instagram} alt="instagram" mr={2} />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/company/wocmantechnology/"
+            isExternal
+            _focus={{ outline: "none" }}
+          >
+            <Image src={medium} alt="medium" mr={2} />
+          </Link>
         </Box>
       </Flex>
       <Flex justify="center" pt={5}>
