@@ -33,7 +33,11 @@ export const Dashboard = () => {
       flex={1}
       flexDir={{ base: "column", xl: "row" }}
     >
-      <Flex flex={1.8} flexDirection="column" p={{ base: 4, md: 8 }}>
+      <Flex
+        flex={{ base: 1, xl: 1.8 }}
+        flexDirection="column"
+        p={{ base: 4, md: 8 }}
+      >
         <Wallet />
         <Flex
           justify={{ base: "center", md: "space-between" }}
@@ -48,14 +52,14 @@ export const Dashboard = () => {
         </Flex>
         <Notifications />
       </Flex>
-      <Flex w="100%" px={{ base: 4, md: 8, xl: 0 }} flex={1.2}>
+      <Flex w="100%" px={{ base: 4, md: 8, xl: 0 }} flex={{ base: 1, xl: 1.2 }}>
         <Flex
           flex={1}
           backgroundColor="wocman.sideNav"
           flexDir="column"
           px={{ base: 4, md: 8 }}
           py={{ base: 8, md: 16 }}
-          overflowY="scroll"
+          overflowY={{ base: "none", xl: "scroll" }}
           position="static"
           h="100vh"
         >
