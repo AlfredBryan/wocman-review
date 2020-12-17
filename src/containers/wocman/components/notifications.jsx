@@ -24,8 +24,8 @@ export const Notifications = () => {
               Now
             </Text>
           </Flex>
-          <Flex w="100%">
-            <Flex flex={1}>
+          <Flex w="100%" flexDir={{ base: "column", md: "row" }}>
+            <Flex flex={1} mb={{ base: 4, md: 0 }}>
               <Text as="small" fontFamily="Poppins" fontWeight="300">
                 Dear kazeem, we wish to inform you of a job offfer that best
                 fits your profile, below are more ...

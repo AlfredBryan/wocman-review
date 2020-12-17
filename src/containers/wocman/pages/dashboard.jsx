@@ -26,58 +26,72 @@ export const Dashboard = () => {
   ];
 
   return (
-    <Flex justify="center" w="100%" minH="100vh" flex={1}>
+    <Flex
+      justify="center"
+      w="100%"
+      minH="100vh"
+      flex={1}
+      flexDir={{ base: "column", xl: "row" }}
+    >
       <Flex flex={1.8} flexDirection="column" p={{ base: 4, md: 8 }}>
         <Wallet />
-        <Flex justify="space-between" w="100%" my={10}>
+        <Flex
+          justify={{ base: "center", md: "space-between" }}
+          align="center"
+          w="100%"
+          my={10}
+          flexDir={{ base: "column", md: "row" }}
+        >
           <Card text="Work Done" number="18" sub="Jobs done" />
           <Card text="Rating" number="5" sub="stars" />
           <Card text="Completion %" number="70%" sub="completion" noMargin />
         </Flex>
         <Notifications />
       </Flex>
-      <Flex
-        flex={1}
-        backgroundColor="wocman.sideNav"
-        flexDir="column"
-        px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 16 }}
-        overflowY="scroll"
-        position="static"
-        h="100vh"
-      >
-        <Flex flexDir="column">
-          <Text
-            fontFamily="Poppins"
-            fontWeight="500"
-            fontSize="1.8rem"
-            lineHeight="20px"
-            mb={{ base: 4, md: 8 }}
-          >
-            Today's Schedule
-          </Text>
-          <Text
-            fontFamily="Poppins"
-            fontWeight="normal"
-            fontSize="1.2rem"
-            lineHeight="20px"
-          >
+      <Flex w="100%" px={{ base: 4, md: 8, xl: 0 }} flex={1.2}>
+        <Flex
+          flex={1}
+          backgroundColor="wocman.sideNav"
+          flexDir="column"
+          px={{ base: 4, md: 8 }}
+          py={{ base: 8, md: 16 }}
+          overflowY="scroll"
+          position="static"
+          h="100vh"
+        >
+          <Flex flexDir="column">
             <Text
-              as="span"
               fontFamily="Poppins"
-              fontWeight="600"
-              fontSize="1.2rem"
+              fontWeight="500"
+              fontSize={{ base: "1.2rem", md: "1.4rem", xl: "1.8rem" }}
+              lineHeight="20px"
+              mb={{ base: 4, md: 8 }}
+            >
+              Today's Schedule
+            </Text>
+            <Text
+              fontFamily="Poppins"
+              fontWeight="normal"
+              fontSize={{ base: "0.8rem", md: "1rem", xl: "1.2rem" }}
               lineHeight="20px"
             >
-              Tuesday
-            </Text>{" "}
-            25 Dec
-          </Text>
-        </Flex>
-        <Flex w="100%" mt={8} flexDir="column">
-          {activities.map((item, index) => (
-            <CalendarSection key={index} item={item} index={index} />
-          ))}
+              <Text
+                as="span"
+                fontFamily="Poppins"
+                fontWeight="600"
+                fontSize={{ base: "0.8rem", md: "1rem", xl: "1.2rem" }}
+                lineHeight="20px"
+              >
+                Tuesday
+              </Text>{" "}
+              25 Dec
+            </Text>
+          </Flex>
+          <Flex w="100%" mt={8} flexDir="column">
+            {activities.map((item, index) => (
+              <CalendarSection key={index} item={item} index={index} />
+            ))}
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
@@ -106,7 +120,7 @@ const ActivityCard = ({ from, to, title, desc, index }) => {
           mb={{ base: 2, md: 4 }}
           fontFamily="Poppins"
           lineHeight="20px"
-          fontSize="1.2rem"
+          fontSize={{ base: "0.8rem", md: "1rem", xl: "1.2rem" }}
           color={index === 0 ? "black" : "wocman.newsLetter"}
         >
           {from} - {to}
@@ -114,7 +128,7 @@ const ActivityCard = ({ from, to, title, desc, index }) => {
       </Flex>
       <Text
         fontFamily="Poppins"
-        fontSize="1.7rem"
+        fontSize={{ base: "1.1rem", md: "1.3rem", xl: "1.7rem" }}
         fontWeight="bold"
         color={index === 0 ? "black" : "wocman.newsLetter"}
       >
@@ -215,7 +229,7 @@ const Markings = ({ index, time, idx }) => (
       mb={{ base: 4, md: 8 }}
       fontFamily="Poppins"
       lineHeight="20px"
-      fontSize="1.2rem"
+      fontSize={{ base: "0.8rem", md: "1rem", xl: "1.2rem" }}
     >
       {time}
     </Text>
