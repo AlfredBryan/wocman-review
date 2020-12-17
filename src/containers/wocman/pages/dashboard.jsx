@@ -37,6 +37,7 @@ export const Dashboard = () => {
         flex={{ base: 1, xl: 1.8 }}
         flexDirection="column"
         p={{ base: 4, md: 8 }}
+        h="auto"
       >
         <Wallet />
         <Flex
@@ -61,7 +62,7 @@ export const Dashboard = () => {
           py={{ base: 8, md: 16 }}
           overflowY={{ base: "none", xl: "scroll" }}
           position="static"
-          h="100vh"
+          h={{ base: "auto", xl: "100vh" }}
         >
           <Flex flexDir="column">
             <Text
