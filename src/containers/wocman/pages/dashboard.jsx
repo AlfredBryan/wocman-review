@@ -29,7 +29,7 @@ export const Dashboard = () => {
     <Flex
       justify="center"
       w="100%"
-      h="auto"
+      h="fit-content"
       flex={1}
       flexDir={{ base: "column", xl: "row" }}
     >
