@@ -25,7 +25,7 @@ export const Dashboard = () => {
     },
   ];
 
-	return (
+  return (
     <Box>
       <Flex
         justify="center"
@@ -210,7 +210,7 @@ const CalendarSection = ({ item, index }) => {
       </Flex>
       <Flex
         flex={2.3}
-        px={4}
+        px={2}
         // h={+containerHeight * 71 + "px"}
         // maxH={+containerHeight * 71 + "px"}
       >
