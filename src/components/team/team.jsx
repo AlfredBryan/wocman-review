@@ -29,14 +29,27 @@ export const Team = () => {
       ],
     },
     {
-      image: mission,
+      image:
+        "https://pbs.twimg.com/profile_images/1325235044261240833/MdewYScj_400x400.jpg",
       name: "Abasifreke Ekwere",
       designation: "Full Stack Developer",
       icons: [
-        { icon: twitter, name: "twitter", href: "" },
-        { icon: instagram, name: "instagram", href: "" },
-        { icon: github, name: "github", href: "" },
-        { icon: linkedin, name: "linkedin", href: "" },
+        {
+          icon: twitter,
+          name: "twitter",
+          href: "https://twitter.com/kingabesh_",
+        },
+        {
+          icon: instagram,
+          name: "instagram",
+          href: "https://www.instagram.com/king_abesh/",
+        },
+        { icon: github, name: "github", href: "https://github.com/kingabesh" },
+        {
+          icon: linkedin,
+          name: "linkedin",
+          href: "https://www.linkedin.com/in/abasifreke-ekwere",
+        },
       ],
     },
     {
@@ -64,7 +77,11 @@ export const Team = () => {
   ];
 
   return (
-    <Box backgroundColor="wocman.featuredService" px={[8, 8, 8, 40, 40]} py={[12, 12, 12, 24, 24]}>
+    <Box
+      backgroundColor="wocman.featuredService"
+      px={[8, 8, 8, 40, 40]}
+      py={[12, 12, 12, 24, 24]}
+    >
       <Box textAlign="center">
         <Text
           fontFamily="Poppins"
@@ -82,10 +99,14 @@ export const Team = () => {
           color="wocman.typography1"
           mb={16}
         >
-          We’re a team of traditional geeks seeking to build Africa's foremost workmen pool for collective prosperity. 
+          We’re a team of traditional geeks seeking to build Africa's foremost
+          workmen pool for collective prosperity.
         </Text>
       </Box>
-      <Flex flexWrap="wrap" justify={["center", "center", "center", "flex-start", "flex-start"]}>
+      <Flex
+        flexWrap="wrap"
+        justify={["center", "center", "center", "flex-start", "flex-start"]}
+      >
         {members.map((item, i) => (
           <Member
             key={i}
@@ -102,7 +123,12 @@ export const Team = () => {
 
 const Member = ({ icons, name, image, designation }) => {
   return (
-    <Flex flexDirection="column" w={["90%", "90%", "48%", "33%", "33%"]} align="center" mb={16}>
+    <Flex
+      flexDirection="column"
+      w={["90%", "90%", "48%", "33%", "33%"]}
+      align="center"
+      mb={16}
+    >
       <Image
         src={image}
         alt=""
@@ -137,7 +163,7 @@ const Member = ({ icons, name, image, designation }) => {
       </Text>
       <Flex>
         {icons.map((item, index) => (
-          <Link isExternal href="https://google.com">
+          <Link isExternal href={item.href} _focus={{ outline: "none" }}>
             <Image key={index} src={item.icon} alt={item.name} mr={4} />
           </Link>
         ))}
