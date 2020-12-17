@@ -8,7 +8,6 @@ export const Wallet = () => {
       backgroundColor="white"
       px={{ base: 6, md: 16 }}
       py={{ base: 4, md: 8 }}
-      h="auto"
     >
       <Flex flex={1} flexDirection="column" justify="space-evenly">
         <Text

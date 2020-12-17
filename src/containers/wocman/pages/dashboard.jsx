@@ -29,7 +29,7 @@ export const Dashboard = () => {
     <Flex
       justify="center"
       w="100%"
-      h="fit-content"
+      h="auto"
       flex={1}
       flexDir={{ base: "column", xl: "row" }}
     >
@@ -37,7 +37,6 @@ export const Dashboard = () => {
         flex={{ base: 1, xl: 1.8 }}
         flexDirection="column"
         p={{ base: 4, md: 8 }}
-        h="fit-content"
       >
         <Wallet />
         <Flex
@@ -45,7 +44,6 @@ export const Dashboard = () => {
           align="center"
           w="100%"
           my={10}
-          h="fit-content"
           flexDir={{ base: "column", md: "row" }}
         >
           <Card text="Work Done" number="18" sub="Jobs done" />
@@ -54,12 +52,7 @@ export const Dashboard = () => {
         </Flex>
         <Notifications />
       </Flex>
-      <Flex
-        w="100%"
-        px={{ base: 4, md: 8, xl: 0 }}
-        flex={{ base: 1, xl: 1.2 }}
-        h="fit-content"
-      >
+      <Flex w="100%" px={{ base: 4, md: 8, xl: 0 }} flex={{ base: 1, xl: 1.2 }}>
         <Flex
           flex={1}
           backgroundColor="wocman.sideNav"
