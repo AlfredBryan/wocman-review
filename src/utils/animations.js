@@ -57,6 +57,8 @@ export const exit = (node, appears, pathname) => {
   timeline.play();
 };
 
+/* Roses are red, violets are blue. Utility functions are cool, so I made this*/
+
 export function animateValue(fn, start, end, duration) {
   let startTimestamp = null;
   const step = (timestamp) => {

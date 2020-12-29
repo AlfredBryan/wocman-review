@@ -6,10 +6,11 @@ import Menu from "../menu/menu";
 import "./nav.css";
 import { useOnClickOutside } from "../../utils/hooks";
 import { Link as ReactLink } from "react-router-dom";
-import { withRouter } from "react-router";
+import { useHistory, withRouter } from "react-router";
 
 export const NavBar = (props) => {
   const [open, setOpen] = useState(false);
+  const history = useHistory();
 
   const node = useRef();
 
@@ -48,7 +49,11 @@ export const NavBar = (props) => {
         align="center"
         cursor="pointer"
         d="flex"
-        pl={props.isAuth || props.search ? ["1.5rem", "1.5rem", "2rem", "3rem", "3rem"] : ""}
+        pl={
+          props.isAuth || props.search
+            ? ["1.5rem", "1.5rem", "2rem", "3rem", "3rem"]
+            : ""
+        }
         onClick={() => props.history.push("/")}
       >
         <Image
@@ -111,6 +116,7 @@ export const NavBar = (props) => {
           _hover={{ bg: "transparent", opacity: "0.7" }}
           _active={{ transform: "scale(0.98)" }}
           _focus={{ borderColor: "wocman.navBtn", outline: "none" }}
+          onClick={() => history.push("/register?wocman=0")}
         >
           HIRE WOCMAN
         </Button>
@@ -121,6 +127,7 @@ export const NavBar = (props) => {
           _hover={{ bg: "wocman.navOutlineBtn", opacity: "0.7" }}
           _active={{ transform: "scale(0.98)" }}
           _focus={{ borderColor: "wocman.navOutlineBtn", outline: "none" }}
+          onClick={() => history.push("/register?wocman=1")}
         >
           REGISTER AS A WOCMAN
         </Button>
@@ -181,6 +188,7 @@ export const NavBar = (props) => {
                 _hover={{ bg: "transparent", opacity: "0.7" }}
                 _active={{ transform: "scale(0.98)" }}
                 _focus={{ borderColor: "wocman.navBtn", outline: "none" }}
+                onClick={() => history.push("/register?wocman=0")}
               >
                 HIRE WOCMAN
               </Button>
@@ -196,6 +204,7 @@ export const NavBar = (props) => {
                   borderColor: "wocman.navOutlineBtn",
                   outline: "none",
                 }}
+                onClick={() => history.push("/register?wocman=1")}
               >
                 REGISTER AS A WOCMAN
               </Button>

@@ -18,7 +18,7 @@ export const CustomerQuotes = () => {
     <Flex
       px={[4, 4, 4, 24, 24]}
       pb={[8, 8, 8, 0, 0]}
-      minH={["80vh", "80vh", "50vh", "50vh", "45vh"]}
+    //   minH={["80vh", "80vh", "50vh", "50vh", "45vh"]}
       border="1px"
       flexWrap="wrap"
       borderStyle="solid"
@@ -75,7 +75,7 @@ export const CustomerQuotes = () => {
         w={["100%", "100%", "50%", "50%", "50%"]}
         py={[0, 0, 16, 16, 16]}
       >
-        <Slider {...settings} className="h-full">
+        <Slider {...settings} className="h-full customer-quotes">
           <PseudoBox
             boxShadow="0px 5px 50px #F3F5FA"
             border="1px"
@@ -87,8 +87,7 @@ export const CustomerQuotes = () => {
             minHeight="100%"
             _hover={{ transform: "scale(0.97)" }}
             cursor="pointer"
-            px={16}
-            py={16}
+            p={{ base: 8, sm: 12, xl: 16 }}
           >
             <Text
               as="small"
@@ -111,7 +110,10 @@ export const CustomerQuotes = () => {
               borderRadius="50%"
               position="absolute"
               bottom="-40px"
-              left={["39%", "39%", "39%", "44%", "44%"]}
+              //   left={["39%", "39%", "39%", "44%", "44%"]}
+              left="0"
+              right="0"
+              margin="0 auto"
               zIndex="20"
             />
           </PseudoBox>
@@ -126,8 +128,7 @@ export const CustomerQuotes = () => {
             minHeight="100%"
             _hover={{ transform: "scale(0.97)" }}
             cursor="pointer"
-            px={16}
-            py={16}
+            p={{ base: 8, sm: 10, xl: 16 }}
           >
             <Text
               as="small"
@@ -151,7 +152,10 @@ export const CustomerQuotes = () => {
               borderRadius="50%"
               position="absolute"
               bottom="-40px"
-              left={["39%", "39%", "39%", "44%", "44%"]}
+              left="0"
+              right="0"
+              margin="0 auto"
+              //   left={["39%", "39%", "39%", "44%", "44%"]}
               zIndex="20"
             />
           </PseudoBox>

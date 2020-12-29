@@ -82,7 +82,9 @@ html {
   scroll-behavior: smooth;
 }
 
-.slick-list {
+/* Everything below is a hack to override styles from opinionated libraries/packages viz-a-viz react-slick. Tread with caution. I, personally, get lost sometimes */
+
+.customer-quotes .slick-list {
   width: 40vw;
   height: 100%;
   margin-bottom: 1rem;
@@ -99,8 +101,17 @@ html {
   margin-bottom: 1rem;
 }
 
-.slick-dots {
+.customer-quotes {
+  height: 300px;
+}
+
+.customer-quotes .slick-dots {
   bottom: -40px !important;
+}
+
+.override {
+  display: flex !important;
+  width: 92% !important;
 }
 
 .slick-prev:hover,
@@ -113,8 +124,8 @@ html {
 }
 
 .no-scrollbar::-webkit-scrollbar {
-	display: none;
-  }
+  display: none;
+}
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
@@ -123,9 +134,9 @@ html {
 }
 
 @media screen and (max-width: 767px) {
-  .slick-list {
+  .customer-quotes .slick-list {
     width: 90vw;
-    height: 49vh;
+    height: 40vh;
     margin-bottom: 0;
     margin: 0 auto;
   }
@@ -135,13 +146,13 @@ html {
     height: 100%;
   }
 
-  .slick-dots {
+  .customer-quotes .slick-dots {
     bottom: -4px !important;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .slick-list {
+  .customer-quotes .slick-list {
     width: 90vw;
     height: 60vh;
     margin-bottom: 0;

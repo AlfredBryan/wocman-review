@@ -1,10 +1,10 @@
 import { Box, Flex, Image, Link, Text } from "@chakra-ui/core";
-import mission from "../../assets/images/mission.jpg";
+// import mission from "../../assets/images/mission.jpg";
 import twitter from "../../assets/icons/twitter-filled.svg";
-import instagram from "../../assets/icons/instagram-filled.svg";
-import github from "../../assets/icons/github.svg";
+// import instagram from "../../assets/icons/instagram-filled.svg";
+// import github from "../../assets/icons/github.svg";
 import linkedin from "../../assets/icons/linkedin.svg";
-import behance from "../../assets/icons/behance.svg";
+// import behance from "../../assets/icons/behance.svg";
 
 export const Team = () => {
   const members = [
@@ -14,8 +14,13 @@ export const Team = () => {
       name: "Olalekan Ilesanmi",
       designation: "Co-founder & Ceo",
       icons: [
-        { icon: twitter, name: "twitter", href: "" },
-        { icon: linkedin, name: "linkedin", href: "" },
+        { icon: twitter, name: "twitter", href: "https://twitter.com/lekuwe" },
+        {
+          icon: linkedin,
+          name: "linkedin",
+          href:
+            "https://www.linkedin.com/in/olalekan-ilesanmi-mnse-mnice-95766756/",
+        },
       ],
     },
     {
@@ -39,12 +44,12 @@ export const Team = () => {
           name: "twitter",
           href: "https://twitter.com/kingabesh_",
         },
-        {
-          icon: instagram,
-          name: "instagram",
-          href: "https://www.instagram.com/king_abesh/",
-        },
-        { icon: github, name: "github", href: "https://github.com/kingabesh" },
+        // {
+        //   icon: instagram,
+        //   name: "instagram",
+        //   href: "https://www.instagram.com/king_abesh/",
+        // },
+        // { icon: github, name: "github", href: "https://github.com/kingabesh" },
         {
           icon: linkedin,
           name: "linkedin",
@@ -53,25 +58,43 @@ export const Team = () => {
       ],
     },
     {
-      image: mission,
+      image:
+        "https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg",
       name: "Lasisi Sodiq",
       designation: "Designer",
       icons: [
-        { icon: twitter, name: "twitter", href: "" },
-        { icon: linkedin, name: "linkedin", href: "" },
-        { icon: behance, name: "behance", href: "" },
-        { icon: instagram, name: "instagram", href: "" },
+        {
+          icon: twitter,
+          name: "twitter",
+          href: "https://twitter.com/LvzyEngine",
+        },
+        {
+          icon: linkedin,
+          name: "linkedin",
+          href: "https://www.linkedin.com/in/lasisi-sodiq/",
+        },
+        // { icon: behance, name: "behance", href: "" },
+        // { icon: instagram, name: "instagram", href: "" },
       ],
     },
     {
-      image: mission,
+      image:
+        "https://res.cloudinary.com/wocman-technology/image/upload/v1608893690/wocman/tWKny5sH_400x400_zat3bu.jpg",
       name: "Justice George",
       designation: "Backend Developer",
       icons: [
-        { icon: twitter, name: "twitter", href: "" },
-        { icon: instagram, name: "instagram", href: "" },
-        { icon: github, name: "github", href: "" },
-        { icon: linkedin, name: "linkedin", href: "" },
+        {
+          icon: twitter,
+          name: "twitter",
+          href: "https://mobile.twitter.com/JusticeGeo",
+        },
+        // { icon: instagram, name: "instagram", href: "" },
+        // { icon: github, name: "github", href: "" },
+        {
+          icon: linkedin,
+          name: "linkedin",
+          href: "https://www.linkedin.com/in/justice-george-33a50b184/",
+        },
       ],
     },
   ];
