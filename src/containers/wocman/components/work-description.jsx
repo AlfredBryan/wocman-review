@@ -82,8 +82,8 @@ export const WorkDescription = () => {
             ended up bringing my house down.
           </Text>
           <Flex my={{ base: 4, md: 6 }} align="center">
-            <Image src={briefcase} alt="briefcase" />
-            <Text color="wocman.typography2" fontFamily="Poppins" ml={[4, 6]}>
+            <Image src={briefcase} alt="briefcase" size="1.2rem"/>
+            <Text color="wocman.typography2" fontFamily="Poppins" ml={[4]} fontSize="0.8rem">
               No 16, Adesanya street. Lagos Nigeria
             </Text>
           </Flex>

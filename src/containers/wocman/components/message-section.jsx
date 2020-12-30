@@ -4,7 +4,7 @@ import { MiniProfile } from "./mini-profile";
 
 export const MessageSection = () => {
   return (
-    <Flex mt={[4, 8]} w="100%">
+    <Flex mt={[4, 8]} w="100%" flexDir={{ base: "column", lg: "row"}}>
       <MiniProfile />
       <Flex flex="2">
         <Messaging />

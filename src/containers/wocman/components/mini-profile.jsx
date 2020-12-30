@@ -5,7 +5,13 @@ import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 
 export const MiniProfile = () => {
   return (
-    <Box backgroundColor="#FCFDFD" flex="1.3" mr={{ base: 0, lg: 8 }}>
+    <Box
+      backgroundColor="#FCFDFD"
+      flex="1.3"
+      mr={{ base: 0, lg: 8 }}
+      h="fit-content"
+      mb={{ base: 8, lg: 0 }}
+    >
       <Box
         bgImage={`url(${AuthBgImage})`}
         bgPos="center"
@@ -49,10 +55,10 @@ export const MiniProfile = () => {
         <Text as="small" fontFamily="Poppins" mb={2}>
           Client
         </Text>
-        <Flex justify="center" align="center" my={2}>
+        <Flex justify="center" align="center" my={2} px={2}>
           <Box
             as={AiOutlinePhone}
-            size="32px"
+            size="1.2rem"
             color="wocman.typography2"
             mr={4}
             transform="scaleX(-1)"
@@ -61,14 +67,15 @@ export const MiniProfile = () => {
             fontFamily="Poppins"
             color="wocman.typography2"
             fontWeight="300"
+            fontSize="1rem"
           >
             090 889 234 9878
           </Text>
         </Flex>
-        <Flex justify="center" align="center" mt={2}>
+        <Flex justify="center" align="center" mt={2} px={2}>
           <Box
             as={AiOutlineMail}
-            size="32px"
+            size="1.2rem"
             color="wocman.typography2"
             mr={4}
           />
@@ -76,6 +83,7 @@ export const MiniProfile = () => {
             fontFamily="Poppins"
             color="wocman.typography2"
             fontWeight="300"
+            fontSize="1rem"
           >
             tayoolajide1@gmail.com
           </Text>
