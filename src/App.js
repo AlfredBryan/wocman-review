@@ -15,6 +15,7 @@ import { CSSTransition } from "react-transition-group";
 import { VerifyEmail } from "./containers/verify-email/verify-email";
 import { AccountSetUp } from "./containers/account-setup/account-setup";
 import { Wocman } from "./containers/wocman";
+import { PrivacyPolicy } from "./containers/privacy-policy/privacy-policy";
 
 const store = configureStore();
 
@@ -24,6 +25,7 @@ function App() {
     { path: "/about", name: "About", Component: About },
     { path: "/services", name: "Contact", Component: Services },
     { path: "/contact", name: "Contact", Component: Contact },
+    { path: "/privacy-policy", name: "Privacy Policy", Component: PrivacyPolicy },
     { path: "/login", name: "Contact", Component: Login },
     { path: "/register", name: "Contact", Component: Register },
     { path: "/verify-email", name: "Contact", Component: VerifyEmail },

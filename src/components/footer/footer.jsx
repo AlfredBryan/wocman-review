@@ -2,7 +2,7 @@ import { Box, Flex, Image, List, Link, ListItem, Text } from "@chakra-ui/core";
 import facebook from "../../assets/icons/facebook.svg";
 import twitter from "../../assets/icons/twitter.svg";
 import instagram from "../../assets/icons/instagram.svg";
-import medium from "../../assets/icons/medium.svg";
+import linkedin from "../../assets/icons/linkedin.svg";
 import { Link as ReactLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
@@ -51,8 +51,22 @@ export const FooterComponent = (props) => {
             mb={[10, 8, 0, 0, 0]}
           >
             <ListItem className="mb-4 text-sm">POLICY</ListItem>
-            <ListItem className="mb-4 text-sm">Terms & Conditions</ListItem>
-            <ListItem className="mb-4 text-sm">Privacy Policy</ListItem>
+            {/* <ListItem className="mb-4 text-sm">Terms & Conditions</ListItem> */}
+            <ListItem className="mb-4 text-sm">
+              <Link
+                as={ReactLink}
+                to={"/privacy-policy"}
+                _focus={{ outline: "none" }}
+                className={`link ${
+                  props.location.pathname === "/privacy-policy" ? "active" : ""
+                }`}
+                textDecor={
+                  props.location.pathname === "/privacy-policy" ? "underline" : ""
+                }
+              >
+                Privacy Policy
+              </Link>
+            </ListItem>
           </List>
           <List
             styleType="none"
@@ -74,7 +88,7 @@ export const FooterComponent = (props) => {
                       props.location.pathname === item.to ? "active" : ""
                     }`}
                     textDecor={
-                      props.location.pathname === item.to ? "active" : ""
+                      props.location.pathname === item.to ? "underline" : ""
                     }
                   >
                     {item.name}
@@ -124,7 +138,7 @@ export const FooterComponent = (props) => {
             isExternal
             _focus={{ outline: "none" }}
           >
-            <Image src={medium} alt="medium" mr={2} />
+            <Image src={linkedin} alt="medium" mr={2} />
           </Link>
         </Box>
       </Flex>

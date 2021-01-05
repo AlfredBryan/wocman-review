@@ -10,7 +10,8 @@
 
 
 .link.active {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  opacity: 1;
 }
 
 @media (max-width: 76.4375em) {

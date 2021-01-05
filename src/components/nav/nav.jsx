@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Button, Flex, Image, Link, List, ListItem } from "@chakra-ui/core";
 import logo from "../../assets/icons/logo.svg";
+import coloredlogo from "../../assets/icons/logo-colored.svg";
 import Burger from "../burger/burger";
 import Menu from "../menu/menu";
 import "./nav.css";
@@ -25,10 +26,6 @@ export const NavBar = (props) => {
       name: "About",
       to: "/about",
     },
-    // {
-    //   name: "Product",
-    //   to: "",
-    // },
     {
       name: "Services",
       to: "/services",
@@ -36,6 +33,10 @@ export const NavBar = (props) => {
     {
       name: "Contact us",
       to: "/contact",
+    },
+    {
+      name: "Privacy Policy",
+      to: "/privacy-policy",
     },
   ];
 
@@ -59,7 +60,7 @@ export const NavBar = (props) => {
         <Image
           objectFit="cover"
           alt="wocman logo"
-          src={logo}
+          src={props.isPrivacy ? coloredlogo : logo}
           // fallbackSrc="https://via.placeholder.com/150"
           // size="12rem"
           minH="200px"
@@ -81,6 +82,7 @@ export const NavBar = (props) => {
           w="80%"
           fontFamily="Gilroy-SemiBold"
           align="center"
+          color={props.isPrivacy ? "wocman.typography1" : "white"}
         >
           {navStuff.map((item, index) => {
             return (
@@ -88,6 +90,10 @@ export const NavBar = (props) => {
                 <Link
                   as={ReactLink}
                   to={item.to}
+                  opacity="0.4"
+                  _hover={{
+                    textDecor: "none",
+                  }}
                   _focus={{ outline: "none" }}
                   className={`link ${
                     props.location.pathname === item.to ? "active" : ""
@@ -111,6 +117,7 @@ export const NavBar = (props) => {
           className="mr-4"
           variant="outline"
           borderColor="wocman.navBtn"
+          color={props.isPrivacy ? "wocman.typography1" : "white"}
           fontSize="0.7rem"
           borderRadius="2px"
           _hover={{ bg: "transparent", opacity: "0.7" }}
@@ -124,6 +131,7 @@ export const NavBar = (props) => {
           fontSize="0.7rem"
           backgroundColor="wocman.navOutlineBtn"
           borderRadius="2px"
+          color={props.isPrivacy ? "wocman.typography1" : "white"}
           _hover={{ bg: "wocman.navOutlineBtn", opacity: "0.7" }}
           _active={{ transform: "scale(0.98)" }}
           _focus={{ borderColor: "wocman.navOutlineBtn", outline: "none" }}
@@ -144,12 +152,12 @@ export const NavBar = (props) => {
             <Image
               objectFit="cover"
               alt="wocman logo"
-              src={logo}
+              src={props.isPrivacy ? coloredlogo : logo}
               // fallbackSrc="https://via.placeholder.com/150"
               size="3rem"
             />
           </Flex>
-          {!props.isAuth && <Burger open={open} setOpen={setOpen} />}
+          {!props.isAuth && <Burger open={open} setOpen={setOpen} isPrivacy />}
           <Menu open={open} setOpen={setOpen} className="w-full">
             <div className="flex flex-col justify-center">
               <List
