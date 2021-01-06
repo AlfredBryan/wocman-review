@@ -157,7 +157,7 @@ export const NavBar = (props) => {
               size="3rem"
             />
           </Flex>
-          {!props.isAuth && <Burger open={open} setOpen={setOpen} isPrivacy />}
+          {!props.isAuth && <Burger open={open} setOpen={setOpen} isPrivacy={props.isPrivacy} />}
           <Menu open={open} setOpen={setOpen} className="w-full">
             <div className="flex flex-col justify-center">
               <List
