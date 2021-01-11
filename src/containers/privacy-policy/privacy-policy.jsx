@@ -94,7 +94,7 @@ export const PrivacyPolicy = () => {
                   </Text>
                   <Text fontFamily="Poppins" mt={4} ml={2}>
                     ii. Where the customer failed to follow the professional
-                    advice of out work-partner as regard to the use of the
+                    advice of our work-partner as regard to the use of the
                     repaired item
                   </Text>
                   <Text fontFamily="Poppins" mt={4} ml={2}>

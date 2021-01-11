@@ -3,7 +3,7 @@ import { Box, Flex, Image, Link, Text } from "@chakra-ui/core";
 import twitter from "../../assets/icons/twitter-filled.svg";
 // import instagram from "../../assets/icons/instagram-filled.svg";
 // import github from "../../assets/icons/github.svg";
-import linkedin from "../../assets/icons/linkedin.svg";
+import linkedin from "../../assets/icons/team-linkedin.svg";
 // import behance from "../../assets/icons/behance.svg";
 
 export const Team = () => {
