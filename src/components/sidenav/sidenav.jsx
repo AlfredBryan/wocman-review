@@ -122,7 +122,7 @@ export const SideNav = (props) => {
             <ListItem
               key={index}
               color={
-                location.pathname === "/wocman" + item.to ? "white" : "#778899"
+                 location.pathname.startsWith("/wocman" + item.to) ? "white" : "#778899"
               }
               px={{ base: 8, md: 16 }}
               py={{ base: 4, md: 8 }}
@@ -130,17 +130,17 @@ export const SideNav = (props) => {
               d="flex"
               alignItems="center"
               _hover={{
-                opacity: location.pathname === "/wocman" + item.to ? "" : "0.7",
+                opacity:  location.pathname.startsWith("/wocman" + item.to) ? "" : "0.7",
               }}
               backgroundColor={
-                location.pathname === "/wocman" + item.to
+                location.pathname.startsWith("/wocman" + item.to)
                   ? "wocman.contact"
                   : "inherit"
               }
             >
               <Image
                 src={
-                  location.pathname === "/wocman" + item.to
+                   location.pathname.startsWith("/wocman" + item.to)
                     ? item.icon_active
                     : item.icon
                 }

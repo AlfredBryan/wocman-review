@@ -10,7 +10,7 @@ export const AdminHeader = ({ toggle }) => {
       backgroundColor="#F8F7F7"
       align="center"
       py={{ base: 4, md: 6 }}
-      position="relative"
+      position="sticky"
     >
       <Flex
         align={{ base: "center", lg: "baseline" }}

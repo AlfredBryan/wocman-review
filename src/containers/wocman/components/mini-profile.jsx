@@ -27,7 +27,7 @@ export const MiniProfile = () => {
         width="100%"
       >
         <Box
-          bgImage={`url(${"https://pbs.twimg.com/profile_images/1325235044261240833/MdewYScj_400x400.jpg"})`}
+          bgImage={`url(${"https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"})`}
           bgPos="center"
           bgRepeat="no-repeat"
           bg="transparent"

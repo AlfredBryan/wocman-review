@@ -14,32 +14,112 @@ import {
   AiOutlinePlus,
   AiOutlineDelete,
   AiOutlinePaperClip,
+  AiOutlineArrowLeft,
 } from "react-icons/ai";
+import { forwardRef, useEffect, useRef } from "react";
+import { useLocation } from "react-router";
 
-export const Messaging = () => {
+export const Messaging = (props) => {
+  const ref = useRef(null);
+  const boxRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    ref.current && boxRef.current.scrollTo(0, ref.current.offsetTop);
+  }, []);
+
+  useEffect(() => {
+    ref.current && boxRef.current.scrollTo(0, ref.current.offsetTop);
+  }, [location]);
+
   return (
-    <Box backgroundColor="#FCFDFD" w="100%">
-      <ChatHeader
-        sender="https://pbs.twimg.com/profile_images/1325235044261240833/MdewYScj_400x400.jpg"
-        receiver="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
-        senderName="Tayo Olajide"
-      />
-      <ChatSection
-        ownerImage="https://pbs.twimg.com/profile_images/1325235044261240833/MdewYScj_400x400.jpg"
-        ownerName="Tayo Olajide"
-        timeSent="9 May 2016, 1:35 p.m."
-        message="Having used discount toner cartridges for twenty years, there have been a lot of changes in the toner cartridge market. The market today is approximately a twenty billion dollar business. The savings today are significant."
-        index={0}
-      />
-      <ChatSection
-        ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
-        ownerName="Me"
-        timeSent="9 May 2016, 1:35 p.m."
-        message="V7 Digital Photo Printing."
-        index={1}
-      />
+    <Flex
+      backgroundColor="#FCFDFD"
+      w="100%"
+      h={props.isMessageScreen ? "100vh" : "50vh"}
+      flexDir="column"
+      position="static"
+    >
+      {props.isMessageScreen && (
+        <Flex
+          py={4}
+          align="center"
+          d={{ base: "flex", lg: "none" }}
+          w="100%"
+          zIndex="1"
+          backgroundColor="white"
+        >
+          <PseudoBox
+            as={AiOutlineArrowLeft}
+            size="20px"
+            color="wocman.color1"
+            mx={2}
+            onClick={props.toggle}
+            cursor="pointer"
+            _hover={{ color: "wocman.typography1" }}
+          />
+          <Text fontFamily="Poppins" fontWeight="bold">
+            Chats
+          </Text>
+        </Flex>
+      )}
+      <Box
+        overflowY="scroll"
+        position="relative"
+        ref={boxRef}
+        mt={{ base: 12, lg: 0 }}
+      >
+        <ChatHeader
+          sender="https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
+          receiver="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
+          senderName="Tayo Olajide"
+        />
+        <ChatSection
+          ownerImage="https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
+          ownerName="Tayo Olajide"
+          timeSent="9 May 2016, 1:35 p.m."
+          message="Having used discount toner cartridges for twenty years, there have been a lot of changes in the toner cartridge market. The market today is approximately a twenty billion dollar business. The savings today are significant."
+          index={0}
+        />
+        <ChatSection
+          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
+          ownerName="Me"
+          timeSent="9 May 2016, 1:35 p.m."
+          message="V7 Digital Photo Printing."
+          index={11}
+        />
+        <ChatSection
+          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
+          ownerName="Me"
+          timeSent="9 May 2016, 1:35 p.m."
+          message="V7 Digital Photo Printing."
+          index={11}
+        />
+        <ChatSection
+          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
+          ownerName="Me"
+          timeSent="9 May 2016, 1:35 p.m."
+          message="V7 Digital Photo Printing."
+          index={11}
+        />
+        <ChatSection
+          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
+          ownerName="Me"
+          timeSent="9 May 2016, 1:35 p.m."
+          message="V7 Digital Photo Printing."
+          index={11}
+        />
+        <ChatSection
+          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
+          ownerName="Me"
+          timeSent="9 May 2016, 1:35 p.m."
+          message="V7 Digital Photo Printing."
+          index={1}
+          ref={ref}
+        />
+      </Box>
       <MessageInput />
-    </Box>
+    </Flex>
   );
 };
 
@@ -121,46 +201,48 @@ const ChatHeader = (props) => (
   </Flex>
 );
 
-const ChatSection = (props) => (
-  <Flex px={{ base: 4, xl: 8 }} pr={{ base: 4, xl: 16 }} pt={4}>
-    <Flex pr={4}>
-      <Box
-        bgImage={`url(${props.ownerImage})`}
-        bgPos="center"
-        bgRepeat="no-repeat"
-        bg="transparent"
-        bgSize="cover"
-        border="2px solid #552D1E"
-        //   mr={8}
-        //   ml={8}
-        h={{ base: "40px", xl: "60px" }}
-        zIndex="2"
-        width={{ base: "40px", xl: "60px" }}
-        borderRadius="50%"
-      ></Box>
-    </Flex>
-    <Flex flex="1">
-      <Flex flexDir="column" justify="center" py={2} w="100%">
-        <Text fontFamily="Poppins">{props.ownerName}</Text>
-        <Text
-          as="small"
-          fontFamily="Poppins"
-          color="wocman.typography2"
-          fontSize="0.7rem"
-        >
-          {props.timeSent}
-        </Text>
-        <Text as="small" fontFamily="Poppins" mt="6" lineHeight="16px">
-          {props.message}
-        </Text>
-        {props.index !== 1 && <Divider mt={[8, 12]} borderColor="#778899" />}
+const ChatSection = forwardRef((props, ref) => {
+  return (
+    <Flex px={{ base: 4, xl: 8 }} pr={{ base: 4, xl: 16 }} pt={4} ref={ref}>
+      <Flex pr={4}>
+        <Box
+          bgImage={`url(${props.ownerImage})`}
+          bgPos="center"
+          bgRepeat="no-repeat"
+          bg="transparent"
+          bgSize="cover"
+          border="2px solid #552D1E"
+          //   mr={8}
+          //   ml={8}
+          h={{ base: "40px", xl: "60px" }}
+          zIndex="2"
+          width={{ base: "40px", xl: "60px" }}
+          borderRadius="50%"
+        ></Box>
+      </Flex>
+      <Flex flex="1">
+        <Flex flexDir="column" justify="center" py={2} w="100%">
+          <Text fontFamily="Poppins">{props.ownerName}</Text>
+          <Text
+            as="small"
+            fontFamily="Poppins"
+            color="wocman.typography2"
+            fontSize="0.7rem"
+          >
+            {props.timeSent}
+          </Text>
+          <Text as="small" fontFamily="Poppins" mt="6" lineHeight="16px">
+            {props.message}
+          </Text>
+          {props.index !== 1 && <Divider mt={[8, 12]} borderColor="#778899" />}
+        </Flex>
+      </Flex>
+      <Flex>
+        <Image src={read} size="12px" />
       </Flex>
     </Flex>
-    <Flex>
-      <Image src={read} size="12px" />
-    </Flex>
-  </Flex>
-);
+  );
+});
 
 const MessageInput = (props) => (
   <Flex
@@ -169,6 +251,9 @@ const MessageInput = (props) => (
     backgroundColor="wocman.wocmanCategories"
     mt={8}
     px={[4, 8]}
+    position="sticky"
+    zIndex="1"
+    bottom="0"
   >
     <Flex align="center" pr={[4, 8]}>
       <Image src={send} size="20px" />
