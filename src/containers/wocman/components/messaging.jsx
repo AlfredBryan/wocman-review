@@ -17,12 +17,13 @@ import {
   AiOutlineArrowLeft,
 } from "react-icons/ai";
 import { forwardRef, useEffect, useRef } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useHistory } from "react-router";
 
 export const Messaging = (props) => {
   const ref = useRef(null);
   const boxRef = useRef(null);
   const location = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     ref.current && boxRef.current.scrollTo(0, ref.current.offsetTop);
@@ -54,7 +55,10 @@ export const Messaging = (props) => {
             size="20px"
             color="wocman.color1"
             mx={2}
-            onClick={props.toggle}
+            onClick={() => {
+              props.toggle();
+              history.push("/wocman/messaging");
+            }}
             cursor="pointer"
             _hover={{ color: "wocman.typography1" }}
           />
@@ -251,7 +255,7 @@ const MessageInput = (props) => (
     backgroundColor="wocman.wocmanCategories"
     mt={8}
     px={[4, 8]}
-    position="sticky"
+    // position="sticky"
     zIndex="1"
     bottom="0"
   >
