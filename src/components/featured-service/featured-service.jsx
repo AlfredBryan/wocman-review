@@ -20,7 +20,7 @@ export const FeaturedService = (props) => {
         justify="center"
         align="center"
       >
-        <Image src={props.image} />
+        <Image src={props.image} loading="lazy"/>
       </Flex>
       <Text
         fontSize="1.2rem"

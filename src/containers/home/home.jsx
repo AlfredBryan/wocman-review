@@ -13,10 +13,13 @@ import { Faq } from "../../components/faq/faq";
 import { NewsLetter } from "../../components/newsletter/newsletter";
 import { Footer } from "../../components/footer/footer";
 
+const PLACE_HOLDER =
+  "https://res.cloudinary.com/kingabesh/image/upload/c_scale,dpr_auto,e_blur:539,q_80,w_640/v1611076128/wocman/home_uaktzy.jpg";
+
 export const Home = () => {
   return (
     <Box>
-      <Header bgImage={landing} vh="100vh">
+      <Header bgImage={landing} vh="100vh" placeholder={PLACE_HOLDER}>
         <Zoom opposite>
           <Hero />
         </Zoom>

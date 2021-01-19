@@ -13,29 +13,33 @@ import { Advisory } from "../../components/advisory/advisory";
 import { Team } from "../../components/team/team";
 import { CustomerQuotes } from "../../components/customer-quotes/customer-quotes";
 
+
+const PLACE_HOLDER =
+  "https://res.cloudinary.com/kingabesh/image/upload/c_scale,dpr_auto,e_blur:539,q_80,w_640/v1611076128/wocman/about_c9xnhu.jpg";
+  
 export const About = () => {
   return (
     <Box>
-      <Header bgImage={landing} vh="50vh">
+      <Header bgImage={landing} vh="50vh" placeholder={PLACE_HOLDER}>
         <GeneralHero
           heading="About Us"
           subHeading="There is something about us people find fascinating, hope you will help us know more."
         />
       </Header>
       <Fade left>
-      <AboutSubsection />
+        <AboutSubsection />
       </Fade>
       <Fade right>
-      <Advisory />
+        <Advisory />
       </Fade>
       <Bounce down>
-      <Team />
+        <Team />
       </Bounce>
-      <LightSpeed left> 
-      <CustomerQuotes/>
+      <LightSpeed left>
+        <CustomerQuotes />
       </LightSpeed>
       <Slide right>
-      <NewsLetter />
+        <NewsLetter />
       </Slide>
       <Footer />
     </Box>

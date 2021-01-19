@@ -14,7 +14,7 @@ export const WocmanCategory = (props) => {
       flexDirection="column"
       overflow="hidden"
     >
-      <Image src={props.image} alt={props.title} W="100%" />
+      <Image src={props.image} alt={props.title} W="100%" loading="lazy"/>
       <Flex
         px={8}
         py={6}

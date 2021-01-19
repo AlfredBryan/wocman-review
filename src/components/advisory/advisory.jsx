@@ -23,6 +23,7 @@ export const Advisory = () => {
           <Image
             src="https://res.cloudinary.com/wocman-technology/image/upload/v1607270526/wocman/IMG_4154_iskgzt.jpg"
             alt="advisory"
+            loading="lazy"
             h={["100%", "100%", "100%", "80%", "80%"]}
             minWidth={["100%", "100%", "100%", "130%", "130%"]}
             mb={[16, 16, 16, 0, 0]}
