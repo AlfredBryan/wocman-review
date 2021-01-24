@@ -2,6 +2,8 @@ import { Box, Flex, Text } from "@chakra-ui/core";
 // import mission from "../../assets/images/mission.jpg";
 import vision from "../../assets/images/vision.jpg";
 import story from "../../assets/images/story.jpg";
+import Fade from "react-reveal/Fade";
+
 
 export const AboutSubsection = () => {
   const content = [
@@ -53,28 +55,38 @@ const SectionItem = ({ title, body, image, index }) => {
       <Flex
         flexDirection="column"
         w={["90%", "90%", "90%", "45%", "45%"]}
-        order={["1", "1", "1", `${index !== 1 ? "0" : "1"}`, `${index !== 1 ? "0" : "1"}`]}
+        order={[
+          "1",
+          "1",
+          "1",
+          `${index !== 1 ? "0" : "1"}`,
+          `${index !== 1 ? "0" : "1"}`,
+        ]}
         mb={[4, 4, 4, 0, 0]}
         textAlign={["center", "center", "center", "start", "start"]}
       >
-        <Text
-          fontFamily="Poppins"
-          fontWeight="500"
-          fontSize="2rem"
-          color="wocman.typography1"
-          mb={8}
-          mt={[8, 8, 8, 0, 0]}
-        >
-          {title}
-        </Text>
-        <Text
-          fontFamily="Poppins"
-          fontSize="1rem"
-          color="wocman.typography3"
-          lineHeight="225%"
-        >
-          {body}
-        </Text>
+        <Fade bottom delay={500} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontWeight="500"
+            fontSize="2rem"
+            color="wocman.typography1"
+            mb={8}
+            mt={[8, 8, 8, 0, 0]}
+          >
+            {title}
+          </Text>
+        </Fade>
+        <Fade bottom delay={1000} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontSize="1rem"
+            color="wocman.typography3"
+            lineHeight="225%"
+          >
+            {body}
+          </Text>
+        </Fade>
       </Flex>
       <Flex
         w={["90%", "90%", "90%", "40%", "40%"]}

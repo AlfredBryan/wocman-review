@@ -3,7 +3,7 @@ import purse from "../../../assets/images/purse.svg";
 import { TransactionList } from "../components/transaction";
 import { WalletChart } from "../components/wallet-chart";
 
-export const Wallet = () => {
+const Wallet = () => {
   return (
     <Box
       justify="center"
@@ -168,3 +168,5 @@ export const Wallet = () => {
     </Box>
   );
 };
+
+export default Wallet;

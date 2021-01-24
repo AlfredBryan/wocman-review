@@ -4,7 +4,7 @@ import { Notifications } from "../components/notifications";
 import { CalendarSection } from "../components/schedule";
 import { Wallet } from "../components/wallet";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const activities = [
     {
       from: "08:00",
@@ -107,4 +107,6 @@ export const Dashboard = () => {
     </Box>
   );
 };
+
+export default Dashboard;
 

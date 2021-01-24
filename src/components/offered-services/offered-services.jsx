@@ -6,6 +6,7 @@ import { OfferedService } from "../offered-service/offered-service";
 import paintingService from "../../assets/images/painting-service.jpg";
 import gardeningService from "../../assets/images/gardening-service.jpg";
 import cleaningService from "../../assets/images/cleaning-service.jpg";
+import Fade from "react-reveal/Fade";
 
 export const OfferedServices = () => {
   const services = [
@@ -45,28 +46,30 @@ export const OfferedServices = () => {
   ];
 
   return (
-	<Box bg="wocman.wocmanCategories" px={[6, 10, 10, 20, 20]} py={20}>
-	  <Flex pb={12} textAlign="center" justify="center">
-		<Text
-		  fontFamily="Gilroy-SemiBold"
-		  fontSize="2rem"
-		  fontStyle="normal"
-		  fontWeight="600"
-		  color="wocman.typography1"
-		>
-		  At Your Service
-		</Text>
-	  </Flex>
-	  <Flex justify="space-evenly" my={8} flexWrap="wrap">
-		{services.map((service, index) => (
-		  <OfferedService
-			key={index}
-			image={service.image}
-			heading={service.heading}
-			text={service.text}
-		  />
-		))}
-	  </Flex>
-	</Box>
+    <Box bg="wocman.wocmanCategories" px={[6, 10, 10, 20, 20]} py={20}>
+      <Flex pb={12} textAlign="center" justify="center">
+        <Fade bottom delay={500} duration={2000}>
+          <Text
+            fontFamily="Gilroy-SemiBold"
+            fontSize="2rem"
+            fontStyle="normal"
+            fontWeight="600"
+            color="wocman.typography1"
+          >
+            At Your Service
+          </Text>
+        </Fade>
+      </Flex>
+      <Flex justify="space-evenly" my={8} flexWrap="wrap">
+        {services.map((service, index) => (
+          <OfferedService
+            key={index}
+            image={service.image}
+            heading={service.heading}
+            text={service.text}
+          />
+        ))}
+      </Flex>
+    </Box>
   );
 };

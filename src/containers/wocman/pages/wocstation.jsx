@@ -2,7 +2,7 @@ import { Box, Flex } from "@chakra-ui/core";
 import { MessageSection } from "../components/message-section";
 import { WorkDescription } from "../components/work-description";
 
-export const WocStation = () => {
+const WocStation = () => {
   return (
     <Box w="100%">
       <Flex
@@ -20,3 +20,5 @@ export const WocStation = () => {
     </Box>
   );
 };
+
+export default WocStation;

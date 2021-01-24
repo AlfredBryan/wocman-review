@@ -3,7 +3,7 @@ import { Header } from "../../components/header/header";
 import { Search } from "../../components/search/search";
 import landing from "../../assets/images/home.jpg";
 
-export const SearchPage = (props) => {
+const SearchPage = (props) => {
   return (
     <Box>
       <Header bgImage={landing} vh="100vh" search>
@@ -12,3 +12,5 @@ export const SearchPage = (props) => {
     </Box>
   );
 };
+
+export default SearchPage;

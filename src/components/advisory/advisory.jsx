@@ -1,4 +1,5 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
+import Fade from "react-reveal/Fade";
 // import mission from "../../assets/images/mission.jpg";
 
 export const Advisory = () => {
@@ -20,15 +21,15 @@ export const Advisory = () => {
         flexDirection={["column", "column", "column", "row", "row"]}
       >
         <Flex flex={["", "", "", "1", "1"]} h="40vh" align="center">
-          <Image
-            src="https://res.cloudinary.com/wocman-technology/image/upload/v1607270526/wocman/IMG_4154_iskgzt.jpg"
-            alt="advisory"
-            loading="lazy"
-            h={["100%", "100%", "100%", "80%", "80%"]}
-            minWidth={["100%", "100%", "100%", "130%", "130%"]}
-            mb={[16, 16, 16, 0, 0]}
-            zIndex="2"
-          />
+            <Image
+              src="https://res.cloudinary.com/wocman-technology/image/upload/v1607270526/wocman/IMG_4154_iskgzt.jpg"
+              alt="advisory"
+              loading="lazy"
+              h={["100%", "100%", "100%", "80%", "80%"]}
+              minWidth={["100%", "100%", "100%", "130%", "130%"]}
+              mb={[16, 16, 16, 0, 0]}
+              zIndex="2"
+            />
         </Flex>
         <Flex
           flex={["", "", "", "4", "4"]}
@@ -40,21 +41,23 @@ export const Advisory = () => {
           p={[8, 8, 16, 0, 0]}
         >
           <Flex w={["90%", "90%", "90%", "60%", "60%"]} mx="auto" my={2}>
-            <Text
-              fontFamily="Poppins"
-              as="small"
-              lineHeight="225%"
-              fontWeight="500"
-              fontSize="1rem"
-              color="wocman.typography3"
-            >
-              Karen Jensen is an American entrepreneur, a dedicated mentor,
-              blogger, technology consultant, an expert in smartER cities, and
-              cybersecurity. She is currently the president of Saaby Consulting
-              Company. One of her primary lifetime goals is to swim in as many
-              bodies of water on Earth as she can to leverage technology to help
-              solve real-life problems.
-            </Text>
+            <Fade opposite delay={1000} duration={2000}>
+              <Text
+                fontFamily="Poppins"
+                as="small"
+                lineHeight="225%"
+                fontWeight="500"
+                fontSize="1rem"
+                color="wocman.typography3"
+              >
+                Karen Jensen is an American entrepreneur, a dedicated mentor,
+                blogger, technology consultant, an expert in smartER cities, and
+                cybersecurity. She is currently the president of Saaby
+                Consulting Company. One of her primary lifetime goals is to swim
+                in as many bodies of water on Earth as she can to leverage
+                technology to help solve real-life problems.
+              </Text>
+            </Fade>
           </Flex>
         </Flex>
       </Flex>

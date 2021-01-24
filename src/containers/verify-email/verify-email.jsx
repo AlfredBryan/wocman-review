@@ -2,7 +2,7 @@ import { Button, Flex, Image, Text } from "@chakra-ui/core";
 import logo from "../../assets/icons/logo-colored.svg";
 import verifyemail from "../../assets/images/verify-email.svg";
 
-export const VerifyEmail = (props) => {
+const VerifyEmail = (props) => {
   return (
     <Flex flexDir="column" align="center" h="100vh">
       <Flex
@@ -113,3 +113,5 @@ export const VerifyEmail = (props) => {
     </Flex>
   );
 };
+
+export default VerifyEmail;

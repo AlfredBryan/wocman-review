@@ -6,7 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import { ContactNav } from "../components/contact-nav";
 import { Messaging } from "../components/messaging";
 
-export const MessagePage = (props) => {
+const MessagePage = (props) => {
   const [openSideNav, setSideNav] = useState(true);
   const node = useRef();
 
@@ -90,3 +90,5 @@ const DefaultMessage = () => (
     </Text>
   </Flex>
 );
+
+export default MessagePage;

@@ -1,6 +1,7 @@
 import { Box, Flex, Icon, Text } from "@chakra-ui/core";
 import Slider from "react-slick";
 import { services } from "../../utils/constants";
+import Fade from "react-reveal/Fade";
 
 export const OnDemand = () => {
   const settings = {
@@ -56,16 +57,18 @@ export const OnDemand = () => {
       py={20}
     >
       <Flex pb={12} textAlign="center" justify="center">
-        <Text
-          fontFamily="Poppins"
-          fontSize="2rem"
-          fontStyle="normal"
-          fontWeight="500"
-          lineHeight="140.62%"
-          color="wocman.typography1"
-        >
-          Work on Demand
-        </Text>
+        <Fade opposite delay={1000} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontSize="2rem"
+            fontStyle="normal"
+            fontWeight="500"
+            lineHeight="140.62%"
+            color="wocman.typography1"
+          >
+            Work on Demand
+          </Text>
+        </Fade>
       </Flex>
       <Slider {...settings} className="h-full w-full">
         {services.map((service, index) => (
@@ -100,20 +103,30 @@ const OfferedService = (props) => {
       width="94%"
     >
       <Flex h="50%"></Flex>
-      <Flex h="50%" flexDir="column" px={[4, 4, 4, 4, 6]} color="white"  py={4}
-        justify="center">
+      <Flex
+        h="50%"
+        flexDir="column"
+        px={[4, 4, 4, 4, 6]}
+        color="white"
+        py={4}
+        justify="center"
+      >
         <Flex align="center" maxWidth="40%" mb={2}>
-          <Text
-            as="span"
-            fontSize="2em"
-            fontFamily="Gilroy-Extrabold"
-            lineHeight="42px"
-          >
-            {props.heading}
-          </Text>
+          <Fade top delay={500} duration={2000}>
+            <Text
+              as="span"
+              fontSize="2em"
+              fontFamily="Gilroy-Extrabold"
+              lineHeight="42px"
+            >
+              {props.heading}
+            </Text>
+          </Fade>
         </Flex>
         <Flex justify="space-between">
-          <Text fontFamily="Gilroy-Regular">{props.text}</Text>
+          <Fade top delay={700} duration={2000}>
+            <Text fontFamily="Gilroy-Regular">{props.text}</Text>
+          </Fade>
           {/* <Button
             variant="outline"
             borderColor="white"

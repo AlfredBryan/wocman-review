@@ -3,7 +3,7 @@ import Zoom from "react-reveal/Zoom";
 import { Footer } from "../../components/footer/footer";
 import { Nav } from "../../components/nav/nav";
 
-export const PrivacyPolicy = () => {
+const PrivacyPolicy = () => {
   return (
     <Box>
       <Box pt={8} px={8} mb={{ base: 6, md: 12 }}>
@@ -325,3 +325,5 @@ const TextBody = (props) => (
     {props.children}
   </>
 );
+
+export default PrivacyPolicy;

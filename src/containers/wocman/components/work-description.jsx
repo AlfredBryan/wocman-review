@@ -50,7 +50,7 @@ export const WorkDescription = () => {
     ],
   };
 
-	return (
+  return (
     <Box w="100%">
       <Flex w="100%" flexDir="column" background="white" p={{ base: 4, md: 8 }}>
         <Flex flexDir={{ base: "column", xl: "row" }}>
@@ -208,6 +208,7 @@ export const WorkDescription = () => {
               <Box
                 bgImage={`url(${service.image})`}
                 bgPos="center"
+                key={index}
                 bgRepeat="no-repeat"
                 className="override"
                 borderRadius="10px"

@@ -11,6 +11,8 @@ import {
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { ShowMessage } from "../../utils/alert";
+import Bounce from "react-reveal/Bounce";
+import Fade from "react-reveal/Fade";
 
 export const Hero = () => {
   const [query, setQuery] = useState("");
@@ -36,33 +38,38 @@ export const Hero = () => {
       textAlign="center"
       pt={16}
     >
-      <Text
-        fontFamily="Poppins"
-        fontSize={["1.5rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
-        fontWeight="bold"
-      >
-        Get your domestic, repairs, and construction works done on{" "}
+      <Bounce opposite delay={500} duration={1000}>
         <Text
-          as="span"
-          color="wocman.color1"
           fontFamily="Poppins"
           fontSize={["1.5rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
           fontWeight="bold"
         >
-          Wocman
+          Get your domestic, repairs, and construction works done on{" "}
+          <Text
+            as="span"
+            color="wocman.color1"
+            fontFamily="Poppins"
+            fontSize={["1.5rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
+            fontWeight="bold"
+          >
+            Wocman
+          </Text>
         </Text>
-      </Text>
+      </Bounce>
+
       <Flex w={["90%", "90%", "90%", "50%"]} mt="2rem">
-        <Text
-          as="small"
-          fontFamily="Poppins"
-          fontWeight="bold"
-          lineHeight="2rem"
-          fontSize="0.9rem"
-        >
-          We connect customers to the nearest tradesmen, technicians, and
-          professionals with zero hassle.
-        </Text>
+        <Fade opposite delay={1000} duration={1000}>
+          <Text
+            as="small"
+            fontFamily="Poppins"
+            fontWeight="bold"
+            lineHeight="2rem"
+            fontSize="0.9rem"
+          >
+            We connect customers to the nearest tradesmen, technicians, and
+            professionals with zero hassle.
+          </Text>
+        </Fade>
       </Flex>
       <Flex mt="4rem" w={["120%", "100%", "100%", "100%"]} fontFamily="Poppins">
         {/* <InputGroup flex="5" display={["none", "none", "flex", "flex"]}>
@@ -86,6 +93,7 @@ export const Hero = () => {
             h="5rem"
           />
         </InputGroup> */}
+
         <InputGroup flex="7.5">
           <InputLeftElement
             children={

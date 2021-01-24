@@ -3,6 +3,7 @@ import register from "../../assets/images/register.jpg";
 import join from "../../assets/images/join.jpg";
 import "./join-section.css";
 import { useHistory } from "react-router";
+import Fade from "react-reveal/Fade";
 
 export const JoinSection = () => {
   const history = useHistory();
@@ -30,22 +31,26 @@ export const JoinSection = () => {
       >
         <Flex h={["40%", "60%", "60%", "60%", "60%"]}></Flex>
         <Flex flexDir="column" px={[8, 8, 8, 16, 20]} color="white">
-          <Flex align="center">
-            <Icon name="chat" mr={4} />
-            <Text as="span" fontFamily="Cera Pro" letterSpacing="2px">
-              Get your work done by Wocman
-            </Text>
-          </Flex>
-          <Flex maxWidth="65%">
-            <Text
-              fontSize={["2rem", "2rem", "2.25rem", "2.25rem", "2.5rem"]}
-              fontFamily="Cera Pro"
-              fontStyle="italic"
-              fontWeight="900"
-            >
-              Register as a customer.
-            </Text>
-          </Flex>
+          <Fade opposite delay={500} duration={2000}>
+            <Flex align="center">
+              <Icon name="chat" mr={4} />
+              <Text as="span" fontFamily="Cera Pro" letterSpacing="2px">
+                Get your work done by Wocman
+              </Text>
+            </Flex>
+          </Fade>
+          <Fade opposite delay={700} duration={2000}>
+            <Flex maxWidth="65%">
+              <Text
+                fontSize={["2rem", "2rem", "2.25rem", "2.25rem", "2.5rem"]}
+                fontFamily="Cera Pro"
+                fontStyle="italic"
+                fontWeight="900"
+              >
+                Register as a customer.
+              </Text>
+            </Flex>
+          </Fade>
         </Flex>
       </Box>
       <Box
@@ -62,22 +67,26 @@ export const JoinSection = () => {
       >
         <Flex h={["50%", "60%", "60%"]}></Flex>
         <Flex flexDir="column" px={[8, 8, 8, 16, 20]} color="white">
-          <Flex align="center">
-            <Icon name="chat" mr={4} />
-            <Text as="span" fontFamily="Cera Pro" letterSpacing="2px">
-              Get jobs that best suit your skill.
-            </Text>
-          </Flex>
-          <Flex maxWidth="40%">
-            <Text
-              fontSize={["2rem", "2rem", "2.25rem", "2.25rem", "2.5rem"]}
-              fontFamily="Cera Pro"
-              fontStyle="italic"
-              fontWeight="900"
-            >
-              Join as a Wocman.
-            </Text>
-          </Flex>
+          <Fade opposite delay={500} duration={2000}>
+            <Flex align="center">
+              <Icon name="chat" mr={4} />
+              <Text as="span" fontFamily="Cera Pro" letterSpacing="2px">
+                Get jobs that best suit your skill.
+              </Text>
+            </Flex>
+          </Fade>
+          <Fade opposite delay={700} duration={2000}>
+            <Flex maxWidth="40%">
+              <Text
+                fontSize={["2rem", "2rem", "2.25rem", "2.25rem", "2.5rem"]}
+                fontFamily="Cera Pro"
+                fontStyle="italic"
+                fontWeight="900"
+              >
+                Join as a Wocman.
+              </Text>
+            </Flex>
+          </Fade>
         </Flex>
       </Box>
     </Flex>

@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/core";
 
-export const Profile = () => {
+const Profile = () => {
   return (
     <Flex
       justify={{ base: "center", lg: "flex-start" }}
@@ -284,3 +284,5 @@ const CustomInput = (props) => {
     </PseudoBox>
   );
 };
+
+export default Profile;

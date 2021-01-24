@@ -6,7 +6,7 @@ import { CustomInput } from "../../../components/custom-input/custom-input";
 import { CustomButton } from "../../../components/custom-button/custom-button";
 import AccountAlertIcon from "../../../assets/icons/account-alert.svg";
 
-export const AddBank = () => {
+const AddBank = () => {
   const history = useHistory();
   return (
     <Box
@@ -91,3 +91,5 @@ export const AddBank = () => {
     </Box>
   );
 };
+
+export default AddBank;

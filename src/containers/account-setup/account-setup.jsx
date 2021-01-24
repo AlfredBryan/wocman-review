@@ -22,7 +22,7 @@ import "./account-setup.css";
 import { CustomInput } from "../../components/custom-input/custom-input";
 import { CustomButton } from "../../components/custom-button/custom-button";
 
-export const AccountSetUp = () => {
+const AccountSetUp = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabsChange = (index) => {
@@ -553,3 +553,6 @@ const LevelCard = (props) => (
     </Flex>
   </Flex>
 );
+
+
+export default AccountSetUp;

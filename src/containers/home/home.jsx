@@ -1,7 +1,4 @@
 import { Box } from "@chakra-ui/core";
-import Fade from "react-reveal/Fade";
-import Slide from "react-reveal/Slide";
-import Zoom from "react-reveal/Zoom";
 import { Header } from "../../components/header/header";
 import { Hero } from "../../components/hero/hero";
 import landing from "../../assets/images/home.jpg";
@@ -20,29 +17,23 @@ export const Home = () => {
   return (
     <Box>
       <Header bgImage={landing} vh="100vh" placeholder={PLACE_HOLDER}>
-        <Zoom opposite>
-          <Hero />
-        </Zoom>
+        <Hero />
       </Header>
-      <Fade right>
-        <FeaturedServices />
-      </Fade>
-      <Zoom opposite>
-        <WocmanCategories />
-      </Zoom>
-      <Zoom opposite>
-        <JoinSection />
-      </Zoom>
-      <Zoom opposite>
-        <OfferedServices />
-      </Zoom>
-      <Slide left>
-        <Faq />
-      </Slide>
-      <Slide right>
-        <NewsLetter />
-      </Slide>
+      <FeaturedServices />
+
+      <WocmanCategories />
+
+      <JoinSection />
+
+      <OfferedServices />
+
+      <Faq />
+
+      <NewsLetter />
+
       <Footer />
     </Box>
   );
 };
+
+export default Home;

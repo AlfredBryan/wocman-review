@@ -6,7 +6,7 @@ import AuthBgImage from "../../assets/images/auth.jpg";
 import google from "../../assets/icons/google.svg";
 import { Link as ReactLink } from "react-router-dom";
 
-export const Register = () => {
+const Register = () => {
   return (
     <Flex
       minH={"100vh"}
@@ -19,7 +19,7 @@ export const Register = () => {
       backgroundColor="rgba(0, 0, 0, 0.05)"
     >
       <Nav isAuth />
-      <Zoom opposite>
+      <Zoom top duration={1000}>
         <Flex flex={1} justify="center" align="center">
           <Flex
             align="center"
@@ -244,3 +244,5 @@ export const Register = () => {
     </Flex>
   );
 };
+
+export default Register;

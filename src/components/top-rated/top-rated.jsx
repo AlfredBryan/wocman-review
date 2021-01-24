@@ -5,6 +5,7 @@ import safe from "../../assets/icons/safe.svg";
 import maintenance from "../../assets/icons/maintenance.svg";
 import plumbing from "../../assets/icons/plumbing.svg";
 import brainPower from "../../assets/icons/brain-power.svg";
+import Fade from "react-reveal/Fade";
 
 export const TopRated = () => {
   const sections = [
@@ -53,16 +54,18 @@ export const TopRated = () => {
       py={[8, 8, 8, 12, 20]}
     >
       <Flex pb={[4, 4, 4, 12, 12]} textAlign="center" justify="center">
-        <Text
-          fontFamily="Poppins"
-          fontSize="2rem"
-          fontStyle="normal"
-          fontWeight="500"
-          lineHeight="140.62%"
-          color="wocman.typography1"
-        >
-          Top Rated Jobs
-        </Text>
+        <Fade opposite delay={1000} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontSize="2rem"
+            fontStyle="normal"
+            fontWeight="500"
+            lineHeight="140.62%"
+            color="wocman.typography1"
+          >
+            Top Rated Jobs
+          </Text>
+        </Fade>
       </Flex>
       <Flex justify="space-around" my={8} flexWrap="wrap">
         {sections.map((item, index) => (
@@ -86,19 +89,25 @@ const SubSection = ({ icon, heading, body }) => {
       mb={[4, 4, 8, 16, 16]}
       w={["100%", "100%", "48%", "31%", "31%"]}
     >
-      <Image src={icon} alt={heading} w="100px" h="100px" />
-      <Text
-        fontFamily="Gilroy-Semibold"
-        color="wocman.typography1"
-        fontSize="1.5rem"
-        mt={8}
-        mb={10}
-      >
-        {heading}
-      </Text>
-      <Text fontFamily="Gilroy-Semibold" color="wocman.newsLetter">
-        {body}
-      </Text>
+      <Fade bottom delay={1000} duration={2000}>
+        <Image src={icon} alt={heading} w="100px" h="100px" />
+      </Fade>
+      <Fade bottom delay={1000} duration={2000}>
+        <Text
+          fontFamily="Gilroy-Semibold"
+          color="wocman.typography1"
+          fontSize="1.5rem"
+          mt={8}
+          mb={10}
+        >
+          {heading}
+        </Text>
+      </Fade>
+      <Fade bottom delay={1000} duration={2000}>
+        <Text fontFamily="Gilroy-Semibold" color="wocman.newsLetter">
+          {body}
+        </Text>
+      </Fade>
     </Flex>
   );
 };

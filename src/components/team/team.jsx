@@ -4,6 +4,7 @@ import twitter from "../../assets/icons/twitter-filled.svg";
 // import instagram from "../../assets/icons/instagram-filled.svg";
 // import github from "../../assets/icons/github.svg";
 import linkedin from "../../assets/icons/team-linkedin.svg";
+import Fade from "react-reveal/Fade";
 // import behance from "../../assets/icons/behance.svg";
 
 export const Team = () => {
@@ -106,25 +107,29 @@ export const Team = () => {
       py={[12, 12, 12, 24, 24]}
     >
       <Box textAlign="center">
-        <Text
-          fontFamily="Poppins"
-          fontWeight="500"
-          fontSize="2rem"
-          color="wocman.typography1"
-          mb={8}
-        >
-          The Team
-        </Text>
-        <Text
-          fontFamily="Poppins"
-          fontWeight="500"
-          fontSize="1rem"
-          color="wocman.typography1"
-          mb={16}
-        >
-          We’re a team of traditional geeks seeking to build Africa's foremost
-          workmen pool for collective prosperity.
-        </Text>
+        <Fade opposite delay={500} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontWeight="500"
+            fontSize="2rem"
+            color="wocman.typography1"
+            mb={8}
+          >
+            The Team
+          </Text>
+        </Fade>
+        <Fade opposite delay={1000} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontWeight="500"
+            fontSize="1rem"
+            color="wocman.typography1"
+            mb={16}
+          >
+            We’re a team of traditional geeks seeking to build Africa's foremost
+            workmen pool for collective prosperity.
+          </Text>
+        </Fade>
       </Box>
       <Flex
         flexWrap="wrap"
@@ -152,43 +157,52 @@ const Member = ({ icons, name, image, designation }) => {
       align="center"
       mb={16}
     >
-      <Image
-        src={image}
-        alt=""
-        w="200px"
-        h="200px"
-        borderRadius="50%"
-        objectFit="cover"
-        mb={6}
-      />
-      <Text
-        fontFamily="Poppins"
-        fontWeight="600"
-        fontSize="1.2rem"
-        color="wocman.typography1"
-        mb={2}
-        lineHeight="163.35%"
-      >
-        {name}
-      </Text>
-      <Text
-        fontFamily="Poppins"
-        fontWeight="600"
-        fontSize="0.7rem"
-        color="wocman.typography3"
-        letterSpacing="6px"
-        textTransform="uppercase"
-        mb={4}
-        lineHeight="163.35%"
-        opacity="0.5"
-      >
-        {designation}
-      </Text>
+      <Fade opposite delay={1000} duration={2000}>
+        <Image
+          src={image}
+          alt=""
+          w="200px"
+          h="200px"
+          borderRadius="50%"
+          objectFit="cover"
+          mb={6}
+        />
+      </Fade>
+
+      <Fade bottom delay={1000} duration={2000}>
+        <Text
+          fontFamily="Poppins"
+          fontWeight="600"
+          fontSize="1.2rem"
+          color="wocman.typography1"
+          mb={2}
+          lineHeight="163.35%"
+        >
+          {name}
+        </Text>
+      </Fade>
+      <Fade bottom delay={1000} duration={2000}>
+        <Text
+          fontFamily="Poppins"
+          fontWeight="600"
+          fontSize="0.7rem"
+          color="wocman.typography3"
+          letterSpacing="6px"
+          textTransform="uppercase"
+          mb={4}
+          lineHeight="163.35%"
+          opacity="0.5"
+        >
+          {designation}
+        </Text>
+      </Fade>
       <Flex>
         {icons.map((item, index) => (
-          <Link isExternal href={item.href} _focus={{ outline: "none" }}>
-            <Image key={index} src={item.icon} alt={item.name} mr={4} />
-          </Link>
+          <Fade right delay={1000} duration={(index + 1) * 100}>
+            <Link isExternal href={item.href} _focus={{ outline: "none" }}>
+              <Image key={index} src={item.icon} alt={item.name} mr={4} />
+            </Link>
+          </Fade>
         ))}
       </Flex>
     </Flex>

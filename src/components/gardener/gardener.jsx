@@ -1,5 +1,6 @@
 import { Button, Flex, Text } from "@chakra-ui/core";
 import gardener from "../../assets/images/gardener.jpg";
+import Fade from "react-reveal/Fade";
 
 export const Gardener = () => {
   return (
@@ -15,23 +16,36 @@ export const Gardener = () => {
       <Flex
         flexDir="column"
         align={["center", "center", "center", "flex-start", "flex-start"]}
-        justify={["space-evenly", "space-evenly", "space-evenly", "space-evenly", "space-evenly"]}
+        justify={[
+          "space-evenly",
+          "space-evenly",
+          "space-evenly",
+          "space-evenly",
+          "space-evenly",
+        ]}
         textAlign={["center", "center", "center", "start", "start"]}
         flex="1"
         px={[8, 8, 8, 16, 24]}
         py={4}
       >
-        <Text
-          fontFamily="Gilroy-Bold"
-          color="white"
-          lineHeight="144%"
-          fontSize={["1.5rem", "1.5rem", "1.5rem", "2rem", "2.28rem"]}
+        <Fade opposite delay={1000} duration={2000}>
+          <Text
+            fontFamily="Gilroy-Bold"
+            color="white"
+            lineHeight="144%"
+            fontSize={["1.5rem", "1.5rem", "1.5rem", "2rem", "2.28rem"]}
+            w="100%"
+          >
+            “Find Experienced Gardeners from your location and save up on Extra
+            charges with Wocman ”
+          </Text>
+        </Fade>
+        <Flex
+          align="center"
+          justify="center"
           w="100%"
+          flexDir={["column", "column", "row", "row", "row"]}
         >
-          “Find Experienced Gardeners from your location and save up on Extra
-          charges with Wocman ”
-        </Text>
-        <Flex align="center" justify="center" w="100%" flexDir={["column", "column", "row", "row", "row"]}>
           <Button
             mr={[0, 0, 8]}
             mb={[8, 8, 0]}

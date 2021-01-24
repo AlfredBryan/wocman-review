@@ -2,6 +2,7 @@ import { Box, Flex, Image, Text } from "@chakra-ui/core";
 import smart from "../../assets/icons/smart.svg";
 import trusted from "../../assets/icons/trusted.svg";
 import safe from "../../assets/icons/safe.svg";
+import Fade from "react-reveal/Fade";
 
 export const WhyUs = () => {
   const cards = [
@@ -32,16 +33,18 @@ export const WhyUs = () => {
       py={20}
     >
       <Flex pb={12} textAlign="center" justify="center">
-        <Text
-          fontFamily="Poppins"
-          fontSize="2rem"
-          fontStyle="normal"
-          fontWeight="500"
-          lineHeight="140.62%"
-          color="wocman.typography1"
-        >
-          Why Choose us
-        </Text>
+        <Fade opposite delay={500} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontSize="2rem"
+            fontStyle="normal"
+            fontWeight="500"
+            lineHeight="140.62%"
+            color="wocman.typography1"
+          >
+            Why Choose us
+          </Text>
+        </Fade>
       </Flex>
       <Flex justify="space-around" my={8} flexWrap="wrap">
         {cards.map((item, index) => (
@@ -74,19 +77,25 @@ const SubSection = ({ icon, heading, body }) => {
       borderColor="#000000"
       textAlign="center"
     >
-      <Image src={icon} alt={heading} w="100px" h="100px" />
-      <Text
-        fontFamily="Gilroy-Semibold"
-        color="wocman.typography1"
-        fontSize="1.5rem"
-        mt={8}
-        mb={10}
-      >
-        {heading}
-      </Text>
-      <Text fontFamily="Gilroy-Semibold" color="wocman.newsLetter">
-        {body}
-      </Text>
+      <Fade bottom delay={1000} duration={2000}>
+        <Image src={icon} alt={heading} w="100px" h="100px" />
+      </Fade>
+      <Fade bottom delay={1000} duration={2000}>
+        <Text
+          fontFamily="Gilroy-Semibold"
+          color="wocman.typography1"
+          fontSize="1.5rem"
+          mt={8}
+          mb={10}
+        >
+          {heading}
+        </Text>
+      </Fade>
+      <Fade bottom delay={1000} duration={2000}>
+        <Text fontFamily="Gilroy-Semibold" color="wocman.newsLetter">
+          {body}
+        </Text>
+      </Fade>
     </Flex>
   );
 };

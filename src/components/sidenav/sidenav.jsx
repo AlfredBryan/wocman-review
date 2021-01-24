@@ -100,7 +100,7 @@ export const SideNav = (props) => {
           cursor="pointer"
           border="none"
           // fallbackSrc="https://via.placeholder.com/30"
-          onClick={() => history.push("/wocman/dashboard")}
+          onClick={() => history.push("/")}
           d={!loaded ? "none" : "block"}
           onLoad={() => setLoaded(true)}
           h={{ base: "40px", md: "60px", lg: "70px" }}

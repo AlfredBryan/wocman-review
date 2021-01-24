@@ -123,7 +123,8 @@ export const NavBar = (props) => {
           _hover={{ bg: "transparent", opacity: "0.7" }}
           _active={{ transform: "scale(0.98)" }}
           _focus={{ borderColor: "wocman.navBtn", outline: "none" }}
-          onClick={() => history.push("/register?wocman=0")}
+          // onClick={() => history.push("/register?wocman=0")}
+          onClick={() => history.push("/wocman")}
         >
           HIRE WOCMAN
         </Button>
@@ -157,7 +158,9 @@ export const NavBar = (props) => {
               size="3rem"
             />
           </Flex>
-          {!props.isAuth && <Burger open={open} setOpen={setOpen} isPrivacy={props.isPrivacy} />}
+          {!props.isAuth && (
+            <Burger open={open} setOpen={setOpen} isPrivacy={props.isPrivacy} />
+          )}
           <Menu open={open} setOpen={setOpen} className="w-full">
             <div className="flex flex-col justify-center">
               <List
@@ -176,6 +179,11 @@ export const NavBar = (props) => {
                         setOpen(false);
                       }}
                       to={item.to}
+                      className={`link ${
+                        props.location.pathname === item.to
+                          ? "mobile-active"
+                          : ""
+                      }`}
                       _focus={{ outline: "none" }}
                     >
                       {item.name}
@@ -196,7 +204,8 @@ export const NavBar = (props) => {
                 _hover={{ bg: "transparent", opacity: "0.7" }}
                 _active={{ transform: "scale(0.98)" }}
                 _focus={{ borderColor: "wocman.navBtn", outline: "none" }}
-                onClick={() => history.push("/register?wocman=0")}
+                // onClick={() => history.push("/register?wocman=0")}
+                onClick={() => history.push("/wocman")}
               >
                 HIRE WOCMAN
               </Button>

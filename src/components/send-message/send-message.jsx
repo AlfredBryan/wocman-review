@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearContactToast, contact } from "../../state/actions";
 import { ShowMessage } from "../../utils/alert";
+import Fade from "react-reveal/Fade";
 
 export const SendMessage = () => {
   const dispatch = useDispatch();
@@ -93,25 +94,29 @@ export const SendMessage = () => {
       flexWrap="wrap"
     >
       <Flex flexDir="column" w={["100%", "100%", "100%", "48%", "48%"]}>
-        <Text
-          fontFamily="Poppins"
-          fontWeight="500"
-          color="rgba(0, 0, 0, 0.6)"
-          fontSize="1.7rem"
-          lineHeight="89px"
-        >
-          Send us a message
-        </Text>
-        <Text
-          as="small"
-          mb={6}
-          fontFamily="Gilroy-Medium"
-          color="rgba(0, 0, 0, 0.4)"
-          lineHeight="36px"
-        >
-          Comments, questions? Drop us a note, and we’ll get back with you
-          shortly!
-        </Text>
+        <Fade opposite delay={500} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontWeight="500"
+            color="rgba(0, 0, 0, 0.6)"
+            fontSize="1.7rem"
+            lineHeight="89px"
+          >
+            Send us a message
+          </Text>
+        </Fade>
+        <Fade opposite delay={500} duration={2000}>
+          <Text
+            as="small"
+            mb={6}
+            fontFamily="Gilroy-Medium"
+            color="rgba(0, 0, 0, 0.4)"
+            lineHeight="36px"
+          >
+            Comments, questions? Drop us a note, and we’ll get back with you
+            shortly!
+          </Text>
+        </Fade>
         <Input
           placeholder="Name*"
           minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
@@ -221,16 +226,18 @@ export const SendMessage = () => {
         mt={[8, 8, 8, 0, 0]}
         w={["100%", "100%", "100%", "48%", "48%"]}
       >
-        <iframe
-          width="600"
-          height="100%"
-          className="contact-map"
-          frameborder="0"
-          style={{ border: 0 }}
-          src="https://www.google.com/maps/embed/v1/place?q=17%20Akinsanya%20street%20Ojodu%20Berger%2C%20Lagos%20state&key=AIzaSyBef_mdYffQ4JM-NgowTbVLHKjhSdLnBK4"
-          allowfullscreen
-          title="Location"
-        ></iframe>
+        <Fade opposite delay={500} duration={2000}>
+          <iframe
+            width="600"
+            height="100%"
+            className="contact-map"
+            frameborder="0"
+            style={{ border: 0 }}
+            src="https://www.google.com/maps/embed/v1/place?q=17%20Akinsanya%20street%20Ojodu%20Berger%2C%20Lagos%20state&key=AIzaSyBef_mdYffQ4JM-NgowTbVLHKjhSdLnBK4"
+            allowfullscreen
+            title="Location"
+          ></iframe>
+        </Fade>
       </Flex>
     </Flex>
   );

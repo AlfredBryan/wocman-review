@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newsLetter, clearNewsToast } from "../../state/actions";
 import { ShowMessage } from "../../utils/alert";
+import Fade from "react-reveal/Fade";
 
 export const NewsLetter = () => {
   const dispatch = useDispatch();
@@ -72,19 +73,24 @@ export const NewsLetter = () => {
           mx="auto"
           textAlign={["center", "center", "", "", ""]}
         >
-          <Text
-            fontSize="2rem"
-            color="wocman.typography1"
-            fontFamily="Poppins"
-            fontWeight="bold"
-            lineHeight="54px"
-            mb={8}
-          >
-            Sign up for newsletter
-          </Text>
-          <Text fontFamily="Poppins">
-            Be a part of our Community and receive our weekly digest and offers.
-          </Text>
+          <Fade top delay={500} duration={2000}>
+            <Text
+              fontSize="2rem"
+              color="wocman.typography1"
+              fontFamily="Poppins"
+              fontWeight="bold"
+              lineHeight="54px"
+              mb={8}
+            >
+              Sign up for newsletter
+            </Text>
+          </Fade>
+          <Fade top delay={500} duration={2000}>
+            <Text fontFamily="Poppins">
+              Be a part of our Community and receive our weekly digest and
+              offers.
+            </Text>
+          </Fade>
         </Box>
       </Flex>
       <Flex

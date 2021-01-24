@@ -4,6 +4,7 @@ import makeup from "../../assets/images/makeup.svg";
 import plumbing from "../../assets/images/plumbing.svg";
 import house from "../../assets/images/house.svg";
 import carpenter from "../../assets/images/carpenter.svg";
+import Fade from "react-reveal/Fade";
 
 export const FeaturedServices = () => {
   const services = [
@@ -40,14 +41,16 @@ export const FeaturedServices = () => {
       py={16}
     >
       <Flex w="20%" ml={6}>
-        <Text
-          fontFamily="Poppins"
-          fontSize={["1.3rem", "1.5rem", "1.5rem", "2rem"]}
-          fontStyle="normal"
-          fontWeight="600"
-        >
-          Our Featured Service
-        </Text>
+        <Fade bottom duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontSize={["1.3rem", "1.5rem", "1.5rem", "2rem"]}
+            fontStyle="normal"
+            fontWeight="600"
+          >
+            Our Featured Service
+          </Text>
+        </Fade>
       </Flex>
       <Flex justify="space-evenly" my={8} flexWrap="wrap">
         {services.map((service, index) => (

@@ -8,6 +8,8 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/core";
+import Fade from "react-reveal/Fade";
+import Zoom from "react-reveal/Zoom";
 
 export const Faq = () => {
   const faqs = [
@@ -40,19 +42,23 @@ export const Faq = () => {
       backgroundColor="wocman.featuredService"
     >
       <Flex pb={4} textAlign="center" justify="center">
-        <Text fontFamily="Poppins" as="small" color="wocman.typography2">
-          CUSTOMER HELP
-        </Text>
+        <Fade top delay={500} duration={2000}>
+          <Text fontFamily="Poppins" as="small" color="wocman.typography2">
+            CUSTOMER HELP
+          </Text>
+        </Fade>
       </Flex>
       <Flex pb={12} textAlign="center" justify="center">
-        <Text
-          fontFamily="Poppins"
-          fontSize="2rem"
-          fontWeight="600"
-          color="wocman.typography1"
-        >
-          Frequently Asked Questions
-        </Text>
+        <Fade top delay={500} duration={2000}>
+          <Text
+            fontFamily="Poppins"
+            fontSize="2rem"
+            fontWeight="600"
+            color="wocman.typography1"
+          >
+            Frequently Asked Questions
+          </Text>
+        </Fade>
       </Flex>
       <Box
         w={["100%", "100%", "100%", "100%", "60%"]}
@@ -61,50 +67,56 @@ export const Faq = () => {
         flexDirection="column"
       >
         <Accordion defaultIndex={[0]} allowMultiple>
-          {faqs.map((item, index) => (
-            <AccordionItem
-              key={index}
-              borderTop={index === 0 ? "none" : ""}
-              w="100%"
-            >
-              {({ isExpanded }) => (
-                <>
-                  <AccordionHeader _focus={{ outline: "none" }} py={6}>
-                    <AccordionIcon
-                      h="40px"
-                      w="50px"
-                      color={
-                        isExpanded ? "wocman.typography1" : "wocman.typography2"
-                      }
-                    />
-                    <Box
-                      flex="1"
-                      textAlign="left"
-                      fontWeight="bold"
-                      fontSize="0.9rem"
+          <Zoom bottom delay={500} duration={2000}>
+            {faqs.map((item, index) => (
+              <AccordionItem
+                key={index}
+                borderTop={index === 0 ? "none" : ""}
+                w="100%"
+              >
+                {({ isExpanded }) => (
+                  <>
+                    <AccordionHeader _focus={{ outline: "none" }} py={6}>
+                      <AccordionIcon
+                        h="40px"
+                        w="50px"
+                        color={
+                          isExpanded
+                            ? "wocman.typography1"
+                            : "wocman.typography2"
+                        }
+                      />
+                      <Box
+                        flex="1"
+                        textAlign="left"
+                        fontWeight="bold"
+                        fontSize="0.9rem"
+                        fontFamily="Poppins"
+                        ml={4}
+                        color={
+                          isExpanded
+                            ? "wocman.typography1"
+                            : "wocman.typography2"
+                        }
+                      >
+                        {item.question}
+                      </Box>
+                    </AccordionHeader>
+                    <AccordionPanel
+                      pb={4}
+                      px={[8, 8, 8, 16, 24]}
+                      py={8}
+                      fontSize="0.8rem"
                       fontFamily="Poppins"
-                      ml={4}
-                      color={
-                        isExpanded ? "wocman.typography1" : "wocman.typography2"
-                      }
+                      color="wocman.typography2"
                     >
-                      {item.question}
-                    </Box>
-                  </AccordionHeader>
-                  <AccordionPanel
-                    pb={4}
-                    px={[8, 8, 8, 16, 24]}
-                    py={8}
-                    fontSize="0.8rem"
-                    fontFamily="Poppins"
-                    color="wocman.typography2"
-                  >
-                    {item.answer}
-                  </AccordionPanel>
-                </>
-              )}
-            </AccordionItem>
-          ))}
+                      {item.answer}
+                    </AccordionPanel>
+                  </>
+                )}
+              </AccordionItem>
+            ))}
+          </Zoom>
         </Accordion>
       </Box>
     </Box>
