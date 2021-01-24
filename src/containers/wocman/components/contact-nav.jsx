@@ -52,7 +52,7 @@ export const ContactNav = (props) => {
     <Box
       ref={props.node}
       d={{ base: props.open ? "flex" : "none", lg: "flex" }}
-      w={{ base: "100%", sm: "70%", md: "35%" }}
+      w={{ base: "100%", lg: "35%" }}
       h="100vh"
       minH={minHeight}
       flexDirection="column"

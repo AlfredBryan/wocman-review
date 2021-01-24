@@ -83,7 +83,7 @@ export const MessagePage = (props) => {
 };
 
 const DefaultMessage = () => (
-  <Flex h="100%" w="100%" align="center" flexDir="column" textAlign="center" px={4}>
+  <Flex h="100%" w="100%" align="center" flexDir="column" textAlign="center" px={4} backgroundColor="white">
     <Text fontFamily="Poppins" mt={48}>You currently have no messages selected</Text>
     <Text as="small" fontFamily="Poppins" mt={4}>
 			Please choose from existing messages or start a new one

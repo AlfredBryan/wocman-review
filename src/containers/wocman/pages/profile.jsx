@@ -11,19 +11,24 @@ import {
 export const Profile = () => {
   return (
     <Flex
-      justify="center"
+      justify={{ base: "center", lg: "flex-start" }}
       align="center"
       w="100%"
       h="fit-content"
       flex={1}
-      pl={{ base: 0, md: 8, }}
+      pl={{ base: 0, md: 8 }}
       flexDir={{ base: "column", lg: "row" }}
     >
-      <Box flex="1" mr={{ base: 0, lg: 8 }} h="100%" py={{ base: 4, md: 8 }}>
+      <Box flex="1" mr={{ base: 0, lg: 8 }} h="100%" py={{ base: 8, lg: 0 }}>
         <MiniProfile />
         <UploadCertificate />
       </Box>
-      <Box flex="2" h={{ base: "auto", lg: "100%" }} background="#F9F9F9" w="100%">
+      <Box
+        flex="2"
+        h={{ base: "auto", lg: "100%" }}
+        background="#F9F9F9"
+        w="100%"
+      >
         <ProfileForm />
       </Box>
     </Flex>

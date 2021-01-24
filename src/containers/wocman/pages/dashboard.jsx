@@ -68,7 +68,7 @@ export const Dashboard = () => {
             position="static"
             h={{ base: "auto", xl: "100vh" }}
           >
-            <Flex flexDir="column">
+            <Flex flexDir="column" h="fit-content" mb={{ base: 4, md: 8 }}>
               <Text
                 fontFamily="Poppins"
                 fontWeight="500"

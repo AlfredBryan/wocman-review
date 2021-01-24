@@ -73,6 +73,9 @@ const customTheme = {
       dashboard: "#F4F4F4",
       green: "#4AAF05",
       red: "#F96662",
+      checkedGreen: {
+        500: "#16AB6B",
+      },
     },
   },
   icons: {

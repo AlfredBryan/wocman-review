@@ -7,7 +7,7 @@ import {
   YAxis,
   ResponsiveContainer,
   Tooltip,
-  CartesianGrid,
+//   CartesianGrid,
 } from "recharts/umd/Recharts";
 import calendar from "../../../assets/icons/chart-calendar.svg";
 import { formatAsMoney } from "../../../utils/format";
@@ -20,7 +20,7 @@ export const WalletChart = () => {
       backgroundColor="white"
       px={{ base: 4, md: 8 }}
       py={{ base: 2, md: 4 }}
-      mb={{ base: 8, xl: 0 }}
+      mb={{ base: 8, xl: 8 }}
     >
       <Flex justify="flex-end" align="center">
         <Flex
@@ -86,12 +86,10 @@ const Chart = () => {
     { date: "2021-01-11", value: 57689 },
   ];
 
-  // Creating an array of the days in the format I need later;
-  const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
   return (
-    <Box my={{ base: 6, md: 12 }}>
-      <ResponsiveContainer width={"100%"} height={250}>
+    <Box my={{ base: 4, md: 8 }}>
+      <ResponsiveContainer width={"100%"} height={350}>
         <AreaChart
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
@@ -104,10 +102,12 @@ const Chart = () => {
           </defs>
           <XAxis
             dataKey="date"
-            tickFormatter={(date) => days[new Date(date).getDay()]}
+            height={70}
+            interval={0}
+            tick={<CustomizedAxisTick />}
           />
           <YAxis tickFormatter={(label) => normalizeMoney(label)} />
-          <CartesianGrid strokeDasharray="3 3" />
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
           <Tooltip />
           <Area
             type="monotone"
@@ -119,5 +119,27 @@ const Chart = () => {
         </AreaChart>
       </ResponsiveContainer>
     </Box>
+  );
+};
+
+const CustomizedAxisTick = (props) => {
+
+	const { x, y, payload } = props;
+	
+	const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text
+        x={0}
+        y={0}
+        dy={16}
+        textAnchor="end"
+        fill="#666"
+        transform="rotate(-45)"
+      >
+        {days[new Date(payload.value).getDay()]}
+      </text>
+    </g>
   );
 };

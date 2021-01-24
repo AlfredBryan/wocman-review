@@ -28,7 +28,7 @@
   z-index: 3;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"].special-checkbox{
     -webkit-appearance: initial;
     appearance: initial;
     background: white;
@@ -40,12 +40,12 @@ input[type="checkbox"]{
 	outline: none;
 }
 
-input[type="checkbox"]:checked {
+input[type="checkbox"].special-checkbox:checked {
 	background: #fff;
 	border: none;
 	outline: none
 }
-input[type="checkbox"]:checked:after {
+input[type="checkbox"].special-checkbox:checked:after {
     /* Heres your symbol replacement - this is a tick in Unicode. */
     content: "\2713";
     color: #552D1E;

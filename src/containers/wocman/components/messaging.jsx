@@ -250,6 +250,7 @@ const ChatSection = forwardRef((props, ref) => {
 
 const MessageInput = (props) => (
   <Flex
+    minH="100px"
     h="100px"
     w="100%"
     backgroundColor="wocman.wocmanCategories"

@@ -19,6 +19,8 @@ import addWhite from "../../assets/icons/plus-square-white.svg";
 import technicians from "../../assets/images/technicians.jpg";
 import checkmark from "../../assets/icons/check-circle.svg";
 import "./account-setup.css";
+import { CustomInput } from "../../components/custom-input/custom-input";
+import { CustomButton } from "../../components/custom-button/custom-button";
 
 export const AccountSetUp = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -154,24 +156,6 @@ export const AccountSetUp = () => {
   );
 };
 
-const CustomInput = ({ placeholder }) => (
-  <Flex w={{ base: "100%", md: "70%", xl: "46%" }} mb={{ base: 8, md: 12 }}>
-    <span className="special-input"></span>
-    <PseudoBox
-      as="input"
-      backgroundColor="wocman.specialInput"
-      placeholder={placeholder}
-      px={{ base: 8, md: 24 }}
-      borderRadius="0 8px 8px 0"
-      _placeholder={{ fontWeight: 100 }}
-      fontFamily="Poppins"
-      h={{ base: "5rem", md: "7rem" }}
-      color="white"
-      flex={1}
-      _focus={{ outline: "none" }}
-    />
-  </Flex>
-);
 
 const PersonalInformation = () => (
   <Flex flexDirection="column">
@@ -221,19 +205,6 @@ const PersonalInformation = () => (
       <CustomButton>Proceed</CustomButton>
     </Flex>
   </Flex>
-);
-
-const CustomButton = ({ children }) => (
-  <Button
-    _focus={{ outline: "none" }}
-    h="70px"
-    w={{ base: "90%", md: "45%", xl: "25%" }}
-    borderRadius="10px"
-  >
-    <Text fontFamily="Poppins" textTransform="capitalize" lineHeight="138.6%">
-      {children}
-    </Text>
-  </Button>
 );
 
 const ProfilePicture = () => (
