@@ -1,14 +1,15 @@
 import { Box, Divider, Link, List, ListItem, Text } from "@chakra-ui/core";
 import { useLocation } from "react-router";
 import { NavLink as ReactLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
+import { Fragment } from "react";
 
 const PREPEND_LINK = "/wocman/messaging";
 
 const MOCK_AVATAR =
   "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246";
 
-export const ContactNav = (props) => {
+const RegularContactNav = (props) => {
   const [minHeight, setMinHeight] = useState(window.innerHeight);
   const location = useLocation();
 
@@ -85,9 +86,8 @@ export const ContactNav = (props) => {
       >
         {dashboardLinks.map((item, index) => {
           return (
-            <>
+            <Fragment key={index}>
               <ListItem
-                key={index}
                 color={
                   location.pathname !== PREPEND_LINK + item.to
                     ? "#778899"
@@ -137,7 +137,7 @@ export const ContactNav = (props) => {
                 </Link>
               </ListItem>
               <Divider borderColor="#778899" w="100%" d="block" my={0} />
-            </>
+            </Fragment>
           );
         })}
       </List>
@@ -163,3 +163,7 @@ const Avatar = (props) => (
 );
 
 // https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246
+
+const ContactNav = memo(RegularContactNav);
+
+export { ContactNav };

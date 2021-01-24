@@ -84,7 +84,7 @@ export const SideNav = (props) => {
       flexDirection="column"
       backgroundColor="wocman.sideNav"
       py={{ base: 6, md: 12 }}
-      zIndex="4"
+      zIndex="10"
       overflowY="auto"
       position={{ base: "fixed", lg: "static" }}
       //   transform={{ base: "translateX(-2000px)", lg: "translateX(0)" }}

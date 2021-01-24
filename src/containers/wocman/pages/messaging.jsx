@@ -1,14 +1,15 @@
 import { Flex, Text } from "@chakra-ui/core";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useOnClickOutside } from "../../../utils/hooks";
-import { Redirect, Route, Switch } from "react-router";
+import { Redirect, Route, Switch, useLocation } from "react-router";
 import { CSSTransition } from "react-transition-group";
 import { ContactNav } from "../components/contact-nav";
 import { Messaging } from "../components/messaging";
 
 const MessagePage = (props) => {
-  const [openSideNav, setSideNav] = useState(true);
+  const [openSideNav, setSideNav] = useState(false);
   const node = useRef();
+  const location = useLocation();
 
   const routes = [
     {
@@ -22,6 +23,12 @@ const MessagePage = (props) => {
       Component: Messaging,
     },
   ];
+
+  useEffect(() => {
+    if (location.pathname === "/wocman/messaging") {
+      setSideNav(true);
+    }
+  }, [location]);
 
   useOnClickOutside(node, () => setSideNav(false));
 
@@ -83,10 +90,20 @@ const MessagePage = (props) => {
 };
 
 const DefaultMessage = () => (
-  <Flex h="100%" w="100%" align="center" flexDir="column" textAlign="center" px={4} backgroundColor="white">
-    <Text fontFamily="Poppins" mt={48}>You currently have no messages selected</Text>
+  <Flex
+    h="100%"
+    w="100%"
+    align="center"
+    flexDir="column"
+    textAlign="center"
+    px={4}
+    backgroundColor="white"
+  >
+    <Text fontFamily="Poppins" mt={48}>
+      You currently have no messages selected
+    </Text>
     <Text as="small" fontFamily="Poppins" mt={4}>
-			Please choose from existing messages or start a new one
+      Please choose from existing messages or start a new one
     </Text>
   </Flex>
 );
