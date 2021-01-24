@@ -1,4 +1,4 @@
-import { Flex, PseudoBox, Select, Text } from "@chakra-ui/core";
+import { Flex, PseudoBox, Select } from "@chakra-ui/core";
 
 export const CustomInput = ({ placeholder, isSelect }) => (
   <Flex w={{ base: "100%", md: "70%", xl: "46%" }} mb={{ base: 8, md: 12 }}>
