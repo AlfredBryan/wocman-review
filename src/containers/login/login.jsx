@@ -1,13 +1,86 @@
-import { Button, Flex, Image, Input, Link, Text } from "@chakra-ui/core";
+import {
+  Button,
+  Flex,
+  Image,
+  Input,
+  Link,
+  Text,
+  useToast,
+} from "@chakra-ui/core";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import Fade from "react-reveal/Fade";
 import Zoom from "react-reveal/Zoom";
 import { Nav } from "../../components/nav/nav";
 import "./login.css";
 import AuthBgImage from "../../assets/images/auth.jpg";
 import google from "../../assets/icons/google.svg";
-import { Link as ReactLink } from "react-router-dom";
+import { Link as ReactLink, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { clearLoginToast, login } from "../../state/actions";
+import { ShowMessage } from "../../utils/alert";
+import FormError from "../../components/form-error/form-error";
 
+const EMAIL = "email";
+const PASSWORD = "password";
 const Login = () => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const history = useHistory();
+
+  const { result, error, isLoading, message } = useSelector(
+    ({ login: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+
+  useEffect(() => {
+    if (error) {
+      ShowMessage("Error", message, "error", toast);
+      dispatch(clearLoginToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
+
+  useEffect(() => {
+    if (result) {
+      ShowMessage(
+        "Success",
+        "Login successful. Redirecting to dashboard...",
+        "success",
+        toast,
+        5000
+      );
+      setTimeout(() => history.push(`/wocman`), 2000);
+      dispatch(clearLoginToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result]);
+
+  const formik = useFormik({
+    initialValues: {
+      [EMAIL]: "",
+      [PASSWORD]: "",
+    },
+    validationSchema: Yup.object({
+      [EMAIL]: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      [PASSWORD]: Yup.string().required("Password is required"),
+    }),
+    onSubmit: (values) => {
+      const body = {
+        email: values.email,
+        password: values.password,
+      };
+      dispatch(login(body));
+    },
+  });
+
   return (
     <Flex
       minH={"100vh"}
@@ -174,7 +247,16 @@ const Login = () => {
                   opacity="0.5"
                   borderColor="#1C1C1C"
                   borderStyle="solid"
+                  id={EMAIL}
+                  name={EMAIL}
+                  type={EMAIL}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values[EMAIL]}
                 />
+              </Flex>
+              <Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
+                <FormError formik={formik} inputName={EMAIL} />
               </Flex>
               <Flex textAlign="start" w="100%" px={[4, 4, 8, 12, 12]} mb={4}>
                 <Fade opposite delay={500} duration={2000}>
@@ -201,7 +283,16 @@ const Login = () => {
                   opacity="0.5"
                   borderColor="#1C1C1C"
                   borderStyle="solid"
+                  id={PASSWORD}
+                  name={PASSWORD}
+                  type={PASSWORD}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values[PASSWORD]}
                 />
+              </Flex>
+              <Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
+                <FormError formik={formik} inputName={PASSWORD} />
               </Flex>
               <Flex mt={12} w="100%" justify="center" align="center">
                 <Button
@@ -213,6 +304,8 @@ const Login = () => {
                   _hover={{ opacity: "0.7" }}
                   _active={{ transform: "scale(0.98)" }}
                   _focus={{ outline: "none" }}
+                  disabled={isLoading}
+                  onClick={formik.handleSubmit}
                 >
                   <Fade opposite delay={500} duration={2000}>
                     <Text
@@ -224,7 +317,7 @@ const Login = () => {
                       textAlign="center"
                       margin="0 auto"
                     >
-                      Sign in
+                      {isLoading ? "Signing in..." : "Sign in"}
                     </Text>
                   </Fade>
                 </Button>

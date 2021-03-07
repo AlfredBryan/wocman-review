@@ -1,8 +1,23 @@
 import { Button, Flex, Image, Text } from "@chakra-ui/core";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
 import logo from "../../assets/icons/logo-colored.svg";
 import verifyemail from "../../assets/images/verify-email.svg";
+import { useQuery } from "../../utils/hooks";
 
 const VerifyEmail = (props) => {
+  const history = useHistory();
+  const query = useQuery();
+
+  const queryParam = query.get("email");
+
+  useEffect(() => {
+    if (!queryParam) {
+      history.goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Flex flexDir="column" align="center" h="100vh">
       <Flex
@@ -79,7 +94,7 @@ const VerifyEmail = (props) => {
               fontFamily="Gilroy-Medium"
               fontSize={{ base: "0.8rem", md: "1rem" }}
             >
-              blah@gmail.com
+              {queryParam}
             </Text>{" "}
             Please check your email and click on the link provided to verify
             your address.

@@ -1,12 +1,110 @@
-import { Button, Flex, Image, Input, Link, Text } from "@chakra-ui/core";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import {
+  Button,
+  Flex,
+  Image,
+  Input,
+  Link,
+  Text,
+  useToast,
+} from "@chakra-ui/core";
 import Zoom from "react-reveal/Zoom";
 import { Nav } from "../../components/nav/nav";
 import "./register.css";
 import AuthBgImage from "../../assets/images/auth.jpg";
 import google from "../../assets/icons/google.svg";
-import { Link as ReactLink } from "react-router-dom";
+import { Link as ReactLink, useHistory } from "react-router-dom";
+import FormError from "../../components/form-error/form-error";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearRegisterToast,
+  register,
+} from "../../state/actions/registerAction";
+import { useEffect } from "react";
+import { ShowMessage } from "../../utils/alert";
+import { useQuery } from "../../utils/hooks";
+
+const EMAIL = "email";
+const PASSWORD = "password";
+const CONFIRM_PASSWORD = "confirmPassword";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const history = useHistory();
+  const query = useQuery();
+
+  const queryParam = query.get("wocman");
+
+  const { result, error, isLoading, message } = useSelector(
+    ({ register: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+
+  useEffect(() => {
+    if (!queryParam) {
+      history.goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      ShowMessage("Error", message, "error", toast);
+      dispatch(clearRegisterToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
+
+  useEffect(() => {
+    if (result) {
+      ShowMessage(
+        "Success",
+        "Registration successful. Redirecting to email verification page...",
+        "success",
+        toast,
+        5000
+      );
+      setTimeout(
+        () => history.push(`/verify-email?email=${formik.values[EMAIL]}`),
+        3000
+      );
+      dispatch(clearRegisterToast());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result]);
+
+  const formik = useFormik({
+    initialValues: {
+      [EMAIL]: "",
+      [PASSWORD]: "",
+      [CONFIRM_PASSWORD]: "",
+    },
+    validationSchema: Yup.object({
+      [EMAIL]: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      [PASSWORD]: Yup.string().required("Password is required"),
+      [CONFIRM_PASSWORD]: Yup.string()
+        .test("passwords-match", "Passwords must match", function (value) {
+          return this.parent.password === value;
+        })
+        .required("Confirm password is required"),
+    }),
+    onSubmit: (values) => {
+      const body = {
+        email: values.email,
+        password: values.password,
+        repeat_password: values.confirmPassword,
+      };
+      dispatch(register(body, !!queryParam));
+    },
+  });
   return (
     <Flex
       minH={"100vh"}
@@ -128,7 +226,16 @@ const Register = () => {
                   opacity="0.5"
                   borderColor="#1C1C1C"
                   borderStyle="solid"
+                  id={EMAIL}
+                  name={EMAIL}
+                  type={EMAIL}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values[EMAIL]}
                 />
+              </Flex>
+              <Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
+                <FormError formik={formik} inputName={EMAIL} />
               </Flex>
               <Flex textAlign="start" w="100%" px={[4, 4, 8, 12, 12]} mb={4}>
                 <Text
@@ -146,7 +253,6 @@ const Register = () => {
                   minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
                   px={6}
                   width="100%"
-                  type="password"
                   fontFamily="Gilroy-Medium"
                   fontSize="0.8rem"
                   _focus={{ bg: "white" }}
@@ -154,7 +260,16 @@ const Register = () => {
                   opacity="0.5"
                   borderColor="#1C1C1C"
                   borderStyle="solid"
+                  id={PASSWORD}
+                  name={PASSWORD}
+                  type={PASSWORD}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values[PASSWORD]}
                 />
+              </Flex>
+              <Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
+                <FormError formik={formik} inputName={PASSWORD} />
               </Flex>
               <Flex textAlign="start" w="100%" px={[4, 4, 8, 12, 12]} mb={4}>
                 <Text
@@ -166,12 +281,11 @@ const Register = () => {
                   Confirm Password
                 </Text>
               </Flex>
-              <Flex w="100%" px={[4, 4, 8, 12, 12]}>
+              <Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
                 <Input
                   placeholder="Password"
                   minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
                   px={6}
-                  type="password"
                   width="100%"
                   fontFamily="Gilroy-Medium"
                   fontSize="0.8rem"
@@ -180,18 +294,29 @@ const Register = () => {
                   opacity="0.5"
                   borderColor="#1C1C1C"
                   borderStyle="solid"
+                  id={CONFIRM_PASSWORD}
+                  name={CONFIRM_PASSWORD}
+                  type={PASSWORD}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values[CONFIRM_PASSWORD]}
                 />
               </Flex>
-              <Flex mt={12} w="100%" justify="center" align="center">
+              <Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
+                <FormError formik={formik} inputName={CONFIRM_PASSWORD} />
+              </Flex>
+              <Flex mt={6} w="100%" justify="center" align="center">
                 <Button
                   backgroundColor="wocman.contact"
                   color="white"
+                  disabled={isLoading}
                   h="50px"
                   w={["70%", "65%", "50%", "40%", "40%"]}
                   borderRadius="4.56667px"
                   _hover={{ opacity: "0.7" }}
                   _active={{ transform: "scale(0.98)" }}
                   _focus={{ outline: "none" }}
+                  onClick={formik.handleSubmit}
                 >
                   <Text
                     fontFamily="OverPass"
@@ -202,7 +327,7 @@ const Register = () => {
                     textAlign="center"
                     margin="0 auto"
                   >
-                    Sign Up
+                    {isLoading ? "Signing up..." : "Sign Up"}
                   </Text>
                 </Button>
               </Flex>

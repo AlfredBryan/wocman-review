@@ -5,13 +5,14 @@ import Zoom from "react-reveal/Zoom";
 import "./search.css";
 import search from "../../assets/images/search.svg";
 import chevronRight from "../../assets/icons/chevron-right.svg";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import {
   searchWocmen,
   clearSearchToast,
 } from "../../state/actions/searchAction";
 import { ShowMessage } from "../../utils/alert";
 import { animateValue } from "../../utils/animations";
+import { useQuery } from "../../utils/hooks";
 
 export const Search = (props) => {
   const dispatch = useDispatch();
@@ -54,10 +55,6 @@ export const Search = (props) => {
       }, 2500);
     }
   }, [result]);
-
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
 
   useEffect(() => {
     const searchQuery = query.get("query");

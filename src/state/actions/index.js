@@ -5,4 +5,10 @@ export * from "./searchAction";
 export * from "./newsLetterAction";
 
 // contact us
-export * from "./contactAction"
+export * from "./contactAction";
+
+// sign up
+export * from "./registerAction";
+
+// sign in
+export * from "./loginAction";

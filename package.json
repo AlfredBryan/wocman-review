@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
     "emotion-theming": "^10.0.27",
+    "formik": "^2.2.6",
     "google-maps-react": "^2.0.6",
     "gsap": "^3.5.1",
     "moment": "^2.29.1",
@@ -31,7 +32,8 @@
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
@@ -14,3 +15,7 @@ export const useOnClickOutside = (ref, handler) => {
     };
   }, [ref, handler]);
 };
+
+export const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  }

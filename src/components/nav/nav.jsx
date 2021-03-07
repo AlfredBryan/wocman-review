@@ -204,8 +204,8 @@ export const NavBar = (props) => {
                 _hover={{ bg: "transparent", opacity: "0.7" }}
                 _active={{ transform: "scale(0.98)" }}
                 _focus={{ borderColor: "wocman.navBtn", outline: "none" }}
-                // onClick={() => history.push("/register?wocman=0")}
-                onClick={() => history.push("/wocman")}
+                onClick={() => history.push("/register?wocman=0")}
+                // onClick={() => history.push("/wocman")}
               >
                 HIRE WOCMAN
               </Button>
