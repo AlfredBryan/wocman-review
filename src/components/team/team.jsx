@@ -13,7 +13,7 @@ export const Team = () => {
       image:
         "https://res.cloudinary.com/wocman-technology/image/upload/v1607270513/wocman/TJKW7061_vdouj8.jpg",
       name: "Olalekan Ilesanmi",
-      designation: "Co-founder & Ceo",
+      designation: "Founder/CEO",
       icons: [
         { icon: twitter, name: "twitter", href: "https://twitter.com/lekuwe" },
         {
@@ -28,7 +28,7 @@ export const Team = () => {
       image:
         "https://res.cloudinary.com/wocman-technology/image/upload/v1607270488/wocman/CLKR4622_j1skvq.jpg",
       name: "Adamu Bwala",
-      designation: "Co-founder",
+      designation: "Partner",
       icons: [
         { icon: twitter, name: "twitter", href: "" },
         { icon: linkedin, name: "linkedin", href: "" },
