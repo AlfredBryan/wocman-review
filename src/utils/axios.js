@@ -1,7 +1,8 @@
 import * as axiosOriginal from "axios";
+import { BASE_URL } from "./constants";
 
 export const axios = axiosOriginal.create({
-  baseURL: `https://wocman-node-api-8080.herokuapp.com/api/v1`,
+  baseURL: BASE_URL,
 });
 
 export const setAuthToken = (token) => {

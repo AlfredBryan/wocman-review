@@ -21,6 +21,8 @@ import { useEffect } from "react";
 import { clearLoginToast, login } from "../../state/actions";
 import { ShowMessage } from "../../utils/alert";
 import FormError from "../../components/form-error/form-error";
+import { BASE_URL } from "../../utils/constants";
+import { useQuery } from "../../utils/hooks";
 
 const EMAIL = "email";
 const PASSWORD = "password";
@@ -28,6 +30,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const toast = useToast();
   const history = useHistory();
+  const query = useQuery();
+
+  const queryParam = query.get("wocman");
 
   const { result, error, isLoading, message } = useSelector(
     ({ login: { result, error, isLoading, message } = {} }) => ({
@@ -180,6 +185,12 @@ const Login = () => {
                   _hover={{ opacity: "0.7" }}
                   _active={{ transform: "scale(0.98)" }}
                   _focus={{ outline: "none" }}
+                  onClick={() =>
+                    window.open(
+                      BASE_URL + "/google-auth/wocman-signin",
+                      "_blank"
+                    )
+                  }
                 >
                   <Flex
                     borderRightStyle="solid"
@@ -343,7 +354,7 @@ const Login = () => {
                     as={ReactLink}
                     textTransform="uppercase"
                     fontFamily="OverPass"
-                    to="/register"
+                    to={`/register?wocman=${queryParam}`}
                     fontSize={["0.8rem", "0.8rem", "0.9rem", "1rem", "1rem"]}
                     color="wocman.typography4"
                     lineHeight="20px"

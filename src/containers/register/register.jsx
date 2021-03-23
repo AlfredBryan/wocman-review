@@ -24,6 +24,7 @@ import {
 import { useEffect } from "react";
 import { ShowMessage } from "../../utils/alert";
 import { useQuery } from "../../utils/hooks";
+import { BASE_URL } from "../../utils/constants";
 
 const EMAIL = "email";
 const PASSWORD = "password";
@@ -163,6 +164,12 @@ const Register = () => {
                   _hover={{ opacity: "0.7" }}
                   _active={{ transform: "scale(0.98)" }}
                   _focus={{ outline: "none" }}
+                  onClick={() =>
+                    window.open(
+                      BASE_URL + "/google-auth/wocman-signin",
+                      "_blank"
+                    )
+                  }
                 >
                   <Flex
                     borderRightStyle="solid"
@@ -349,7 +356,7 @@ const Register = () => {
                   as={ReactLink}
                   textTransform="uppercase"
                   fontFamily="OverPass"
-                  to="/login"
+                  to={`/login?wocman=${queryParam}`}
                   fontSize={["0.8rem", "0.8rem", "0.9rem", "1rem", "1rem"]}
                   color="wocman.typography4"
                   lineHeight="20px"
