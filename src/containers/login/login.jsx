@@ -333,7 +333,7 @@ const Login = () => {
                   </Fade>
                 </Button>
               </Flex>
-              <Flex mt={8} justify="center" align="center">
+              <Flex mt={8} mb={0} justify="center" align="center">
                 <Fade opposite delay={500} duration={2000}>
                   <Text
                     textTransform="uppercase"
@@ -365,6 +365,41 @@ const Login = () => {
                     cursor="pointer"
                   >
                     Sign up
+                  </Link>
+                </Fade>
+							</Flex>
+							<Flex my={4} justify="center" align="center">
+                <Fade opposite delay={500} duration={2000}>
+                  <Text
+                    textTransform="uppercase"
+                    as="span"
+                    display="inline-block"
+                    mr={4}
+                    fontFamily="OverPass"
+                    fontWeight="bold"
+                    fontSize={["0.8rem", "0.8rem", "0.9rem", "1rem", "1rem"]}
+                    lineHeight="20px"
+                    letterSpacing="1.08333px"
+                  >
+                    Forgot your password?
+                  </Text>
+                </Fade>
+                <Fade opposite delay={500} duration={2000}>
+                  <Link
+                    as={ReactLink}
+                    textTransform="uppercase"
+                    fontFamily="OverPass"
+                    to="/forgot-password"
+                    fontSize={["0.8rem", "0.8rem", "0.9rem", "1rem", "1rem"]}
+                    color="wocman.typography4"
+                    lineHeight="20px"
+                    letterSpacing="1.08333px"
+                    fontWeight="bold"
+                    _hover={{ opacity: "0.7" }}
+                    _focus={{ outline: "none" }}
+                    cursor="pointer"
+                  >
+                    Reset here
                   </Link>
                 </Fade>
               </Flex>

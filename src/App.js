@@ -53,6 +53,16 @@ function App() {
       Component: lazy(() => import("./containers/login/login")),
     },
     {
+      path: "/forgot-password",
+      name: "Forgot Password",
+      Component: lazy(() => import("./containers/forgot-password")),
+    },
+    {
+      path: "/reset-password",
+      name: "Reset Password",
+      Component: lazy(() => import("./containers/reset-password")),
+    },
+    {
       path: "/register",
       name: "Contact",
       Component: lazy(() => import("./containers/register/register")),
