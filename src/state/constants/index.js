@@ -28,3 +28,4 @@ export const LOGIN_PENDING = "LOGIN_PENDING";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const CLEAR_LOGIN_TOAST = "CLEAR_LOGIN_TOAST ";
+export const LOGOUT = "LOGOUT";

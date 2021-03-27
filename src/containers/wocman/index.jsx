@@ -4,6 +4,7 @@ import { AdminHeader } from "../../components/admin-header/admin-header";
 import { SideNav } from "../../components/sidenav/sidenav";
 import { useOnClickOutside } from "../../utils/hooks";
 import { Redirect, Route, Switch } from "react-router";
+import PrivateRoute from '../../utils/PrivateRoute';
 import { CSSTransition } from "react-transition-group";
 import loader from "../../assets/images/wocman.gif";
 
@@ -70,17 +71,17 @@ const Wocman = () => {
             >
               <Switch>
                 {routes.map(({ path, Component }) => (
-                  <Route key={path} path={"/wocman" + path}>
-                    {({ match }) => (
-                      <CSSTransition
-                        in={match != null}
-                        timeout={{ enter: 300, exit: 150 }}
-                        unmountOnExit
-                      >
-                        <Component />
-                      </CSSTransition>
-                    )}
-                  </Route>
+                  <PrivateRoute key={path} component={Component} exact path={"/wocman" + path} />
+                  //   {/* {({ match }) => (
+                  //     <CSSTransition
+                  //       in={match != null}
+                  //       timeout={{ enter: 300, exit: 150 }}
+                  //       unmountOnExit
+                  //     >
+                  //       <Component />
+                  //     </CSSTransition>
+                  //   )}
+                  // </PrivateRoute> */}
                 ))}
                 <Redirect from="/wocman" to="/wocman/dashboard" />
                 <Route

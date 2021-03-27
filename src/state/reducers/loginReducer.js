@@ -2,14 +2,16 @@ import {
   CLEAR_LOGIN_TOAST,
   LOGIN_FAIL,
   LOGIN_PENDING,
-  LOGIN_SUCCESS,
+	LOGIN_SUCCESS,
+	LOGOUT
 } from "../constants";
 
 const initialState = {
   isLoading: false,
   result: null,
   error: false,
-  message: null,
+	message: null,
+	isAuthenticated: !!localStorage["wocman_token"]
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -26,7 +28,8 @@ export const loginReducer = (state = initialState, action) => {
         result: payload,
         isLoading: false,
         error: false,
-        message: payload && payload.message,
+				message: payload && payload.message,
+				isAuthenticated: true,
       };
     case LOGIN_FAIL:
       return {
@@ -34,14 +37,19 @@ export const loginReducer = (state = initialState, action) => {
         result: null,
         isLoading: false,
         error: true,
-        message: payload && payload.message,
+				message: payload && payload.message,
+				isAuthenticated: false,
       };
 
     case CLEAR_LOGIN_TOAST:
       return {
         ...initialState,
-      };
-
+			};
+		case LOGOUT:
+			return {
+				...state,
+				isAuthenticated: false,
+			}
     default:
       return state;
   }
