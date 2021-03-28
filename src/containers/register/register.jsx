@@ -74,7 +74,6 @@ const Register = () => {
 
 	const responseErrorGoogle = (error) => {
 		console.log(error);
-		ShowMessage("Error", "Something went wrong", "error", toast, 5000);
 	};
 
 	useEffect(() => {
