@@ -210,7 +210,7 @@ const ForgotPassword = () => {
 									as={ReactLink}
 									textTransform="uppercase"
 									fontFamily="OverPass"
-									to="/register"
+									to="/register?wocman=1"
 									fontSize={["0.8rem", "0.8rem", "0.9rem", "1rem", "1rem"]}
 									color="wocman.typography4"
 									lineHeight="20px"

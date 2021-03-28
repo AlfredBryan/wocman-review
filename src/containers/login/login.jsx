@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
 	Button,
 	Flex,
@@ -22,7 +23,7 @@ import { useEffect } from "react";
 import { clearLoginToast, login } from "../../state/actions";
 import { ShowMessage } from "../../utils/alert";
 import FormError from "../../components/form-error/form-error";
-import { BASE_URL } from "../../utils/constants";
+import { clientId } from "../../utils/googleClient";
 import { useQuery } from "../../utils/hooks";
 
 const EMAIL = "email";
@@ -44,9 +45,26 @@ const Login = () => {
 		})
 	);
 
-	const responseGoogle = (response) => {
-		console.log(response);
+	const getBackendGoogleAuthData = (tokenId) => {
+		dispatch(login({ tokenId }, true));
 	};
+
+	const responseSuccessGoogle = (response) => {
+		console.log(response);
+		getBackendGoogleAuthData(response?.tokenId);
+	};
+
+	const responseErrorGoogle = (error) => {
+		console.log(error);
+		ShowMessage("Error", "Something went wrong", "error", toast, 5000);
+	};
+
+	useEffect(() => {
+		if (!queryParam) {
+			history.push(history?.location?.pathname + "?wocman=1");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	useEffect(() => {
 		if (error) {
@@ -190,12 +208,7 @@ const Login = () => {
 									_hover={{ opacity: "0.7" }}
 									_active={{ transform: "scale(0.98)" }}
 									_focus={{ outline: "none" }}
-									// onClick={() =>
-									// 	window.open(
-									// 		BASE_URL + "/google-auth/wocman-signin",
-									// 		"_blank"
-									// 	)
-									// }
+									isLoading={isLoading}
 								>
 									<Flex
 										borderRightStyle="solid"
@@ -213,7 +226,7 @@ const Login = () => {
 									</Flex>
 									<Flex flex="5" px="8" textAlign="center">
 										<GoogleLogin
-											clientId="103742943666705911328"
+											clientId={clientId}
 											render={(renderProps) => (
 												<Text
 													fontFamily="OverPass"
@@ -230,8 +243,8 @@ const Login = () => {
 												</Text>
 											)}
 											buttonText="Login"
-											onSuccess={responseGoogle}
-											onFailure={responseGoogle}
+											onSuccess={responseSuccessGoogle}
+											onFailure={responseErrorGoogle}
 											cookiePolicy={"single_host_origin"}
 										/>
 									</Flex>

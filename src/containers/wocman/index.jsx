@@ -5,7 +5,7 @@ import { SideNav } from "../../components/sidenav/sidenav";
 import { useOnClickOutside } from "../../utils/hooks";
 import { Redirect, Route, Switch } from "react-router";
 import PrivateRoute from '../../utils/PrivateRoute';
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 import loader from "../../assets/images/wocman.gif";
 
 const Wocman = () => {
@@ -71,7 +71,7 @@ const Wocman = () => {
             >
               <Switch>
                 {routes.map(({ path, Component }) => (
-                  <PrivateRoute key={path} component={Component} exact path={"/wocman" + path} />
+                  <PrivateRoute key={path} component={Component} path={"/wocman" + path} />
                   //   {/* {({ match }) => (
                   //     <CSSTransition
                   //       in={match != null}

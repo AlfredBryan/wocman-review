@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button, Flex, Input, Link, Text, useToast } from "@chakra-ui/core";
+import { Button, Flex, Input, Text, useToast } from "@chakra-ui/core";
 import Zoom from "react-reveal/Zoom";
 import { Nav } from "../../components/nav/nav";
 import "./reset-password.css";

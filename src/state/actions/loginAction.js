@@ -33,10 +33,11 @@ export const clearLoginToast = () => {
 	};
 };
 
-export const login = (body) => async (dispatch) => {
+export const login = (body, googleAuth = false) => async (dispatch) => {
 	dispatch(loginPending());
 	try {
-		const { data } = await axios.post("/auth/wocman-signin", body);
+		let url = googleAuth ? "/google-auth/wocman-signin" : "/auth/wocman-signin";
+		const { data } = await axios.post(url, body);
 
 		if (data?.status === true) {
 			localStorage.setItem("wocman_token", data?.data?.accessToken);
