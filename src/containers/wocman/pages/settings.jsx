@@ -11,13 +11,17 @@ import {
 import { SettingsNotifications } from "../components/settings-notifications";
 import { SettingsLogin } from "../components/settings-login";
 import { SettingsBank } from "../components/settings-bank";
+// import {}
 
 const Settings = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabsChange = (index) => {
     setTabIndex(index);
-  };
+	};
+
+
+	
   return (
     <Flex
       justify="center"

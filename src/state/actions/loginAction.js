@@ -6,6 +6,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGOUT,
 } from "../constants";
+import { setAuthToken } from "../../utils/axios";
 
 export const loginPending = () => {
 	return {
@@ -38,6 +39,7 @@ export const login = (body, googleAuth = false) => async (dispatch) => {
 	try {
 		let url = googleAuth ? "/google-auth/wocman-signin" : "/auth/wocman-signin";
 		const { data } = await axios.post(url, body);
+		// console.log(data)
 
 		if (data?.status === true) {
 			localStorage.setItem("wocman_token", data?.data?.accessToken);
@@ -53,9 +55,19 @@ export const login = (body, googleAuth = false) => async (dispatch) => {
 	}
 };
 
-export const logout = () => {
-	localStorage.clear();
-	return {
-		type: LOGOUT,
-	};
+export const logout = () => async (dispatch) => {
+	if (localStorage["wocman_token"]) {
+		setAuthToken(localStorage["wocman_token"]);
+	}
+	try {
+		const res = await axios.post("/wocman-logout");
+		console.log(res);
+	} catch (err) {
+		console.log(err);
+	} finally {
+		localStorage.clear();
+		dispatch({
+			type: LOGOUT,
+		});
+	}
 };

@@ -63,6 +63,11 @@ function App() {
       Component: lazy(() => import("./containers/reset-password")),
     },
     {
+      path: "/verify-otp",
+      name: "Verify OTP",
+      Component: lazy(() => import("./containers/verify-otp")),
+    },
+    {
       path: "/register",
       name: "Contact",
       Component: lazy(() => import("./containers/register/register")),

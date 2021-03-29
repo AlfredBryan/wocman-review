@@ -4,93 +4,83 @@ import * as Yup from "yup";
 import { Button, Flex, Input, Text, useToast } from "@chakra-ui/core";
 import Zoom from "react-reveal/Zoom";
 import { Nav } from "../../components/nav/nav";
-import "./reset-password.css";
+import "./verify-otp.css";
 import AuthBgImage from "../../assets/images/auth.jpg";
 import { useHistory, useLocation } from "react-router-dom";
 import FormError from "../../components/form-error/form-error";
-import { axios } from "../../utils/axios";
-import { ShowMessage } from "../../utils/alert";
-import { BASE_URL } from "../../utils/constants";
+// import { axios } from "../../utils/axios";
+// import { ShowMessage } from "../../utils/alert";
+// import { BASE_URL } from "../../utils/constants";
 
-const PASSWORD = "password";
-const OTP = "otpToken";
+const OTP = "otp";
 
-const ResetPassword = () => {
+const VerifyOTP = () => {
 	const toast = useToast();
 	const history = useHistory();
 	const location = useLocation();
 
 	const [isLoading, setIsLoading] = React.useState(false);
-	const [email, setEmail] = React.useState("");
 
-	const resetPassword = async (body, resetForm) => {
-		setIsLoading(true);
-		try {
-			const res = await axios.post(`${BASE_URL}/wocman-password-reset`, body);
-			const {
-				data: { status, message },
-			} = res;
-			if (status && message) {
-				ShowMessage(
-					"Success",
-					"Password reset successfully. You can now login!",
-					"success",
-					toast,
-					5000
-				);
-			}
-			setTimeout(() => history.push(`/login`, { email: body.email }), 4000);
-			resetForm();
-		} catch (error) {
-			const { response } = error;
-			if (!response) {
-				ShowMessage(
-					"Error",
-					"Check your internet connection",
-					"error",
-					toast,
-					5000
-				);
-			} else {
-				ShowMessage(
-					"Error",
-					response?.data?.message ?? "Something went wrong",
-					"error",
-					toast,
-					5000
-				);
-			}
-		} finally {
-			setIsLoading(false);
-		}
+	// const resetPassword = async (body, resetForm) => {
+	// 	setIsLoading(true);
+	// 	try {
+	// 		const res = await axios.post(`${BASE_URL}/wocman-password-reset`, body);
+	// 		const {
+	// 			data: { status, message },
+	// 		} = res;
+	// 		if (status && message) {
+	// 			ShowMessage(
+	// 				"Success",
+	// 				"Password reset successfully. You can now login!",
+	// 				"success",
+	// 				toast,
+	// 				5000
+	// 			);
+	// 		}
+	// 		setTimeout(() => history.push(`/login`, { email: body.email }), 4000);
+	// 		resetForm();
+	// 	} catch (error) {
+	// 		const { response } = error;
+	// 		if (!response) {
+	// 			ShowMessage(
+	// 				"Error",
+	// 				"Check your internet connection",
+	// 				"error",
+	// 				toast,
+	// 				5000
+	// 			);
+	// 		} else {
+	// 			ShowMessage(
+	// 				"Error",
+	// 				response?.data?.message ?? "Something went wrong",
+	// 				"error",
+	// 				toast,
+	// 				5000
+	// 			);
+	// 		}
+	// 	} finally {
+	// 		setIsLoading(false);
+	// 	}
+	// };
+
+	const resetPassword = (body) => {
+		console.log(body);
 	};
 
 	const formik = useFormik({
 		initialValues: {
-			[PASSWORD]: "",
 			[OTP]: "",
 		},
 		validationSchema: Yup.object({
-			[PASSWORD]: Yup.string().required("Email is required"),
-			[OTP]: Yup.string().required("Reset code is required"),
+			[OTP]: Yup.string().required("OTP is required"),
 		}),
 		onSubmit: (values, { resetForm }) => {
 			const body = {
-				email,
-				password: values.password,
-				otpToken: values.otpToken,
+				otp: values.otp,
 			};
 			resetPassword(body, resetForm);
 		},
 	});
-
-	React.useEffect(() => {
-		if (!location?.state?.email) {
-			history.goBack();
-		} else {
-			setEmail(location?.state?.email);
-		}
-	}, [history, location?.state?.email]);
 
 	return (
 		<Flex
@@ -130,7 +120,7 @@ const ResetPassword = () => {
 								letterSpacing="-0.55px"
 								textAlign="center"
 							>
-								Reset your Password
+								Verify your OTP
 							</Text>
 
 							<Text
@@ -140,8 +130,8 @@ const ResetPassword = () => {
 								mx={4}
 								mb={6}
 							>
-								Reset your password to a unique set of characters to avoid
-								account loss.
+								An OTP was sent to your email because a new device/IP address
+								was detected. Kindly verify.
 							</Text>
 							<Flex
 								mt={8}
@@ -156,12 +146,12 @@ const ResetPassword = () => {
 									fontSize="0.9rem"
 									lineHeight="28px"
 								>
-									Unique Reset Code
+									OTP
 								</Text>
 							</Flex>
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
 								<Input
-									placeholder="Unique reset code"
+									placeholder="OTP"
 									minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
 									px={6}
 									width="100%"
@@ -183,48 +173,6 @@ const ResetPassword = () => {
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
 								<FormError formik={formik} inputName={OTP} />
 							</Flex>
-
-							<Flex
-								mt={0}
-								textAlign="start"
-								w="100%"
-								px={[4, 4, 8, 12, 12]}
-								mb={4}
-							>
-								<Text
-									as="small"
-									fontFamily="Gilroy-Medium"
-									fontSize="0.9rem"
-									lineHeight="28px"
-								>
-									New Password
-								</Text>
-							</Flex>
-							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
-								<Input
-									placeholder="Email"
-									minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
-									px={6}
-									width="100%"
-									fontFamily="Gilroy-Medium"
-									fontSize="0.8rem"
-									_focus={{ bg: "white" }}
-									borderRadius="6px"
-									opacity="0.5"
-									borderColor="#1C1C1C"
-									borderStyle="solid"
-									id={PASSWORD}
-									name={PASSWORD}
-									type={PASSWORD}
-									onChange={formik.handleChange}
-									onBlur={formik.handleBlur}
-									value={formik.values[PASSWORD]}
-								/>
-							</Flex>
-							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
-								<FormError formik={formik} inputName={PASSWORD} />
-							</Flex>
-
 							<Flex mt={8} w="100%" justify="center" align="center">
 								<Button
 									backgroundColor="wocman.contact"
@@ -260,4 +208,4 @@ const ResetPassword = () => {
 	);
 };
 
-export default ResetPassword;
+export default VerifyOTP;
