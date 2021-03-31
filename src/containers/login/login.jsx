@@ -75,15 +75,27 @@ const Login = () => {
 
 	useEffect(() => {
 		if (result) {
-			ShowMessage(
-				"Success",
-				"Login successful. Redirecting to dashboard...",
-				"success",
-				toast,
-				5000
-			);
-			setTimeout(() => history.push(`/wocman`), 2000);
-			dispatch(clearLoginToast());
+			if (result.isdevice || result.isotp) {
+				ShowMessage(
+					"Success",
+					"Please verify the OTP sent to your email...",
+					"success",
+					toast,
+					5000
+				);
+				setTimeout(() => history.push(`/verify-otp`), 2000);
+				dispatch(clearLoginToast());
+			} else {
+				ShowMessage(
+					"Success",
+					"Login successful. Redirecting to dashboard...",
+					"success",
+					toast,
+					5000
+				);
+				setTimeout(() => history.push(`/wocman`), 2000);
+				dispatch(clearLoginToast());
+			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [result]);

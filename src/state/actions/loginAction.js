@@ -42,8 +42,10 @@ export const login = (body, googleAuth = false) => async (dispatch) => {
 		// console.log(data)
 
 		if (data?.status === true) {
-			localStorage.setItem("wocman_token", data?.data?.accessToken);
-			localStorage.setItem("wocman_user", JSON.stringify(data?.data));
+			if (!data?.isotp || !data?.isdevice || !data?.isOtp) {
+				localStorage.setItem("wocman_token", data?.data?.accessToken);
+				localStorage.setItem("wocman_user", JSON.stringify(data?.data));
+			}
 			dispatch(loginSuccess(data));
 		} else {
 			localStorage.clear();

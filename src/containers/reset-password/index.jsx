@@ -43,15 +43,7 @@ const ResetPassword = () => {
 			resetForm();
 		} catch (error) {
 			const { response } = error;
-			if (!response) {
-				ShowMessage(
-					"Error",
-					"Check your internet connection",
-					"error",
-					toast,
-					5000
-				);
-			} else {
+			if (response) {
 				ShowMessage(
 					"Error",
 					response?.data?.message ?? "Something went wrong",

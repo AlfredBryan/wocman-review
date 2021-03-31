@@ -1,4 +1,4 @@
-export const ShowMessage = (title = "", description, status, fn, duration = 2000) => {
+export const ShowMessage = (title = "", description, status, fn, duration = 3500) => {
   return fn({
     title,
     position: "bottom-right",
