@@ -75,6 +75,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (result) {
+			console.log(result);
 			if (result.isdevice || result.isotp) {
 				ShowMessage(
 					"Success",
@@ -83,7 +84,14 @@ const Login = () => {
 					toast,
 					5000
 				);
-				setTimeout(() => history.push(`/verify-otp`), 2000);
+				setTimeout(
+					() =>
+						history.push(`/verify-otp`, {
+							isOtp: !!result.isotp,
+							isDevice: !!result.isdevice,
+						}),
+					2000
+				);
 				dispatch(clearLoginToast());
 			} else {
 				ShowMessage(
