@@ -9,7 +9,9 @@ export const SettingsBank = () => {
 		settings: { unboard },
 	} = React.useContext(SettingsContext);
 
+	// eslint-disable-next-line
 	const [walletDetails, setWalletDetails] = React.useState(null);
+	// eslint-disable-next-line
 	const [walletSetup, setWalletSetup] = React.useState(true);
 	const [loading, setLoading] = React.useState(false);
 
