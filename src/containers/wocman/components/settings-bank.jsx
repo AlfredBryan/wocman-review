@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, Button, Divider, Flex, Text, Image } from "@chakra-ui/core";
-import { axios } from "../../../utils/axios";
+import { axios, setAuthToken } from "../../../utils/axios";
 import loader from "../../../assets/images/wocman.gif";
 import { SettingsContext } from "../pages/settings";
 
@@ -17,6 +17,7 @@ export const SettingsBank = () => {
 
 	React.useEffect(() => {
 		const getWalletDetails = async () => {
+			setAuthToken(localStorage["wocman_token"]);
 			setLoading(true);
 			try {
 				const { data } = await axios.post("/wocman/settings/get/wallet");
