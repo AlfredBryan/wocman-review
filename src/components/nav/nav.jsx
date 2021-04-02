@@ -90,7 +90,7 @@ export const NavBar = (props) => {
 					color={props.isPrivacy ? "wocman.typography1" : "white"}
 				>
 					{navStuff
-						.filter((e) => !!e.notDisplay == false)
+						.filter((e) => !!e.notDisplay === false)
 						.map((item, index) => {
 							return (
 								<ListItem className="mt-2 text-sm" key={index}>

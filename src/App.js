@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-	Box,
-	Text,
-	Flex,
-	Image,
-	useToast,
-} from "@chakra-ui/core";
+import { Box, Text, Flex, Image, useToast } from "@chakra-ui/core";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import history from "./history";
@@ -36,10 +30,11 @@ function App() {
 					);
 				}
 
-				if (error.response.status === 403) {
+				if (error.response.status === 403 || error.response.status === 401) {
 					setTimeout(() => {
-						history.push("/login");
+						history.replace("/login");
 						localStorage.clear();
+						window.location.reload();
 					}, 0);
 				}
 

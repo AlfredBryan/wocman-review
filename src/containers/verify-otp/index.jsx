@@ -32,7 +32,9 @@ const VerifyOTP = () => {
 				`${BASE_URL}${
 					isOtp
 						? "/auth/wocman-signin-activate-otp"
-						: "/wocman-device-ip-confirm"
+						: isDevice
+						? "/wocman-device-ip-confirm"
+						: "/auth/wocman-signin-activate-otp"
 				}`,
 				body
 			);
