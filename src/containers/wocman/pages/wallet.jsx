@@ -51,7 +51,6 @@ const Wallet = () => {
             height="10px"
             w="100%"
             mt={4}
-            //   border="2px dotted wocman.newsLetter"
             borderTopStyle="dotted"
             borderTopColor="wocman.newsLetter"
             borderTopWidth="2px"
