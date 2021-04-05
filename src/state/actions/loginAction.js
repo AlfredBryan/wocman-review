@@ -40,6 +40,7 @@ export const login = (body, googleAuth = false) => async (dispatch) => {
 		let url = googleAuth ? "/google-auth/wocman-signin" : "/auth/wocman-signin";
 		const { data } = await axios.post(url, body);
 
+		console.log(data, "login data");
 		if (data?.status === true) {
 			if (!data?.isotp && !data?.isdevice && !data?.isOtp) {
 				localStorage.setItem("wocman_token", data?.data?.accessToken);

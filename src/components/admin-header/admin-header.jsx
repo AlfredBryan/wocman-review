@@ -6,7 +6,8 @@ import {
 	Menu,
 	MenuButton,
 	MenuList,
-	MenuItem
+	MenuItem,
+	Button,
 } from "@chakra-ui/core";
 import bell from "../../assets/icons/bell.svg";
 import mission from "../../assets/images/mission.jpg";
@@ -14,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../state/actions/loginAction";
 
-export const AdminHeader = ({ toggle }) => {
+export const AdminHeader = ({ toggle, profile }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -22,6 +23,8 @@ export const AdminHeader = ({ toggle }) => {
 		dispatch(logout());
 		history.replace("/login");
 	};
+
+	const { firstname, lastname, isProfileUpdated } = profile || {};
 	return (
 		<Flex
 			px={{ base: 4, md: 8 }}
@@ -43,7 +46,7 @@ export const AdminHeader = ({ toggle }) => {
 					fontWeight="600"
 					mr={8}
 				>
-					Hello Kazeem.
+					Hello {firstname || lastname || "User"}.
 				</Text>
 				<Text
 					as="small"
@@ -66,7 +69,27 @@ export const AdminHeader = ({ toggle }) => {
 			</Flex>
 
 			<Flex align="center">
-				<Image src={bell} alt="notifications" mr={8} />
+				{isProfileUpdated === false && (
+					<Button
+						leftIcon="warning-2"
+						mr={[4, 4, 8]}
+						ml={[2, 0]}
+						mb={0}
+						fontSize="0.7rem"
+						backgroundColor="#552D1E"
+						color="white"
+						borderRadius="4px"
+						h={12}
+						flex={3}
+						_hover={{ opacity: "0.7" }}
+						_active={{ transform: "scale(0.98)" }}
+						_focus={{ outline: "none" }}
+						onClick={() => history.push("/wocman/profile")}
+					>
+						Complete your profile
+					</Button>
+				)}
+				<Image cursor="pointer" src={bell} alt="notifications" mr={8} />
 				<Menu>
 					<MenuButton>
 						<Image
