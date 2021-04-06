@@ -40,7 +40,6 @@ export const login = (body, googleAuth = false) => async (dispatch) => {
 		let url = googleAuth ? "/google-auth/wocman-signin" : "/auth/wocman-signin";
 		const { data } = await axios.post(url, body);
 
-		console.log(data, "login data");
 		if (data?.status === true) {
 			if (!data?.isotp && !data?.isdevice && !data?.isOtp) {
 				localStorage.setItem("wocman_token", data?.data?.accessToken);
@@ -62,10 +61,8 @@ export const logout = () => async (dispatch) => {
 		setAuthToken(localStorage["wocman_token"]);
 	}
 	try {
-		const res = await axios.post("/wocman-logout");
-		console.log(res);
+		await axios.post("/wocman-logout");
 	} catch (err) {
-		console.log(err);
 	} finally {
 		localStorage.clear();
 		dispatch({

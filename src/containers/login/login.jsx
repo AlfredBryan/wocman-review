@@ -50,7 +50,6 @@ const Login = () => {
 	};
 
 	const responseSuccessGoogle = (response) => {
-		console.log(response);
 		getBackendGoogleAuthData(response?.tokenId);
 	};
 
@@ -75,7 +74,6 @@ const Login = () => {
 
 	useEffect(() => {
 		if (result) {
-			console.log(result);
 			if (result.isdevice || result.isotp) {
 				ShowMessage(
 					"Success",

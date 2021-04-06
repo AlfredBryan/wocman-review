@@ -90,24 +90,24 @@ export const FooterComponent = (props) => {
             </Fade>
             {navStuff.map((item, index) => {
               return (
-                <Fade opposite delay={500} duration={2000}>
-                  <ListItem className="mt-2 text-sm" key={index}>
-                    <Link
-                      as={ReactLink}
-                      to={item.to}
-                      _focus={{ outline: "none" }}
-                      className={`link ${
-                        props.location.pathname === item.to ? "active" : ""
-                      }`}
-                      textDecor={
-                        props.location.pathname === item.to ? "underline" : ""
-                      }
-                    >
-                      {item.name}
-                    </Link>
-                  </ListItem>
-                </Fade>
-              );
+								<Fade opposite delay={500} key={index} duration={2000}>
+									<ListItem className="mt-2 text-sm">
+										<Link
+											as={ReactLink}
+											to={item.to}
+											_focus={{ outline: "none" }}
+											className={`link ${
+												props.location.pathname === item.to ? "active" : ""
+											}`}
+											textDecor={
+												props.location.pathname === item.to ? "underline" : ""
+											}
+										>
+											{item.name}
+										</Link>
+									</ListItem>
+								</Fade>
+							);
             })}
             {/* <ListItem className="mb-4 text-sm">Services</ListItem>
             <ListItem className="mb-4 text-sm">Products</ListItem> */}

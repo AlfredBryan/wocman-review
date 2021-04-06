@@ -81,7 +81,6 @@ const Wocman = () => {
 				}
 			} finally {
 				setProfileLoading(false);
-				console.log("user fetched.");
 			}
 		};
 		getUserProfile();

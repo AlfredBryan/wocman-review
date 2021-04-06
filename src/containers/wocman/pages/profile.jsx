@@ -231,7 +231,6 @@ const ProfileForm = (props) => {
 				});
 			}
 		} catch (error) {
-			console.log(error);
 			let errorMessage = error?.response?.data?.message;
 			let fallbackErrorMessage =
 				error?.response?.data?.message?.details?.[0]?.message;

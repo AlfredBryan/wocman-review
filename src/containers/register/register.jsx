@@ -68,7 +68,6 @@ const Register = () => {
 	};
 
 	const responseSuccessGoogle = (response) => {
-		console.log(response);
 		getBackendGoogleAuthData(response?.tokenId);
 	};
 
