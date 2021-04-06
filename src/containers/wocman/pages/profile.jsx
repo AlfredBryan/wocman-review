@@ -14,7 +14,7 @@ import { ShowMessage } from "../../../utils/alert";
 import { ProfileContext } from "../index";
 
 const Profile = () => {
-	const { profile } = React.useContext(ProfileContext);
+	const { profile, setProfile } = React.useContext(ProfileContext);
 
 	return (
 		<Flex
@@ -28,7 +28,7 @@ const Profile = () => {
 		>
 			<>
 				<Box flex="1" mr={{ base: 0, lg: 8 }} h="100%" py={{ base: 8, lg: 0 }}>
-					<MiniProfile />
+					<MiniProfile profile={profile} />
 					<UploadCertificate rate={profile?.rate ?? 5} />
 				</Box>
 				<Box
@@ -37,14 +37,16 @@ const Profile = () => {
 					background="#F9F9F9"
 					w="100%"
 				>
-					<ProfileForm profile={profile} />
+					<ProfileForm profile={profile} setProfile={setProfile} />
 				</Box>
 			</>
 		</Flex>
 	);
 };
 
-const MiniProfile = () => {
+const MiniProfile = (props) => {
+	const { profile } = props;
+	// const profilePicture = profile?.profile_picture?.[0]?.current?.[0]?.[0];
 	return (
 		<Box
 			backgroundColor="white"
@@ -73,11 +75,30 @@ const MiniProfile = () => {
 				mt={4}
 				fontSize={{ base: "1.1rem", md: "1.5rem" }}
 			>
-				Kazeem Esu
+				{profile?.isProfileUpdated === false ? (
+					<Button
+						leftIcon="warning-2"
+						mb={0}
+						fontSize="0.7rem"
+						backgroundColor="#552D1E"
+						color="white"
+						borderRadius="4px"
+						h={12}
+						flex={3}
+						_hover={{ opacity: "0.7" }}
+						_active={{ transform: "scale(0.98)" }}
+						_focus={{ outline: "none" }}
+					>
+						Complete your profile
+					</Button>
+				) : (
+					`${profile?.firstname ?? ""} ${profile?.lastname ?? ""}`
+				)}
 			</Text>
 			<Text as="small" fontFamily="Poppins" my={2}>
 				Plumber
 			</Text>
+			{/* change the above to show Wocman's profession later */}
 
 			<Button
 				backgroundColor="#E8E2E7"
@@ -170,7 +191,7 @@ const UploadCertificate = ({ rate }) => {
 };
 
 const ProfileForm = (props) => {
-	const { profile } = props;
+	const { profile, setProfile } = props;
 
 	const toast = useToast();
 
@@ -182,7 +203,6 @@ const ProfileForm = (props) => {
 		phone: profile?.phone,
 		address: profile?.address,
 		country: profile?.country,
-		province: profile?.province,
 		state: profile?.state,
 	});
 	const [submitLoading, setSubmitLoading] = React.useState(false);
@@ -198,10 +218,18 @@ const ProfileForm = (props) => {
 			const { data } = await axios.post("/wocman/profile/complete", {
 				...values,
 			});
-			ShowMessage("Success", "Profile updated successfully", "success", toast);
-			console.log(data);
-			// if successful, update profile context.
-			console.log(data);
+			if (data?.status) {
+				ShowMessage(
+					"Success",
+					"Profile updated successfully",
+					"success",
+					toast
+				);
+				setProfile({
+					...profile,
+					...values,
+				});
+			}
 		} catch (error) {
 			console.log(error);
 			let errorMessage = error?.response?.data?.message;
@@ -310,7 +338,7 @@ const ProfileForm = (props) => {
 			/>
 			<Flex
 				flexDirection={{ base: "column", lg: "row" }}
-				mb={{ base: 2, md: 4 }}
+				mb={{ base: 4, md: 8 }}
 			>
 				<CustomInput
 					name="country"
@@ -330,13 +358,6 @@ const ProfileForm = (props) => {
 					flex="1.2"
 				/>
 			</Flex>
-			<CustomInput
-				name="province"
-				type="text"
-				label="Province"
-				value={values?.province}
-				onChange={onChange}
-			/>
 			<Flex justify={{ base: "center", md: "flex-end" }} w="100%">
 				<Button
 					_focus={{ outline: "none" }}

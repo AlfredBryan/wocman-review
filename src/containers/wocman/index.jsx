@@ -58,13 +58,14 @@ const Wocman = () => {
 	const closeSideNav = () => setSideNav(false);
 
 	React.useEffect(() => {
+		let isMounted = true;
 		const getUserProfile = async () => {
 			setAuthToken(localStorage["wocman_token"]);
 			setProfileLoading(true);
 			try {
 				const { data } = await axios.post("/wocman/profile");
 				if (data?.status) {
-					setProfile(data?.data);
+					if (isMounted) setProfile(data?.data);
 				} else {
 					ShowMessage(
 						"Error",
@@ -84,6 +85,10 @@ const Wocman = () => {
 			}
 		};
 		getUserProfile();
+		// cleanup hack to avoid React's "Can't perform a React state update on an unmounted component" warning
+		return () => {
+			isMounted = false;
+		};
 	}, [toast]);
 
 	return (
