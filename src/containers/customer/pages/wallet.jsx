@@ -158,7 +158,7 @@ const Wallet = () => {
       </Flex>
       <Flex flexDirection={{ base: "column", xl: "row" }}>
         <Box flex="1.8" minH="100%" h="100%" alignSelf="stretch">
-          {/* <WalletChart /> */}
+          <WalletChart />
         </Box>
         <Box flex="1.2" ml={{ base: 0, xl: 8 }}>
           <TransactionList />

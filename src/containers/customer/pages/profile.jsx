@@ -27,12 +27,7 @@ const Profile = () => {
 			flexDir={{ base: "column", lg: "row" }}
 		>
 			<>
-				<Box
-					flex="1"
-					mr={{ base: 0, lg: 8 }}
-					h="100%"
-					py={{ base: 8, lg: 0 }}
-				>
+				<Box flex="1" mr={{ base: 0, lg: 8 }} h="100%" py={{ base: 8, lg: 0 }}>
 					<MiniProfile profile={profile} />
 					<UploadCertificate rate={profile?.rate ?? 5} />
 				</Box>
@@ -49,44 +44,8 @@ const Profile = () => {
 	);
 };
 
-const MiniProfile = ({ profile }) => {
-	const toast = useToast();
-
-	const [profileImage, setProfileImage] = React.useState();
-
-	let fileTypes = ["image/jpeg", "image/jpg", "image/png"];
-
-	const handleImageChange = async (e) => {
-		const file = e.target.files[0];
-		if (fileTypes.includes(file?.type)) {
-			var form = new FormData();
-			form.append("avatar", file, file.name);
-
-			console.log("form:", form);
-			try {
-				const { data } = await axios.post(
-					"/wocman/profile/picture",
-					form
-				);
-
-				console.log("response:", data.data.imageUrl);
-				if (data.status) {
-					ShowMessage(
-						"Success",
-						"Profile picture changed successfully",
-						"success",
-						toast
-					);
-					setProfileImage(data.data.imageUrl);
-				}
-			} catch (err) {
-				console.error(err);
-			}
-		} else {
-			setProfileImage("");
-		}
-		console.log(file);
-	};
+const MiniProfile = (props) => {
+	const { profile } = props;
 	// const profilePicture = profile?.profile_picture?.[0]?.current?.[0]?.[0];
 	return (
 		<Box
@@ -99,11 +58,7 @@ const MiniProfile = ({ profile }) => {
 			mb={{ base: 4, md: 8 }}
 		>
 			<Box
-				bgImage={`url(${
-					profileImage
-						? profileImage
-						: "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
-				})`}
+				bgImage={`url(${"https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"})`}
 				bgPos="center"
 				bgRepeat="no-repeat"
 				bg="transparent"
@@ -137,7 +92,7 @@ const MiniProfile = ({ profile }) => {
 						Complete your profile
 					</Button>
 				) : (
-					`${profile?.firstname ?? ""} ${profile?.lastname ?? ""} `
+					`${profile?.firstname ?? ""} ${profile?.lastname ?? ""}`
 				)}
 			</Text>
 			<Text as="small" fontFamily="Poppins" my={2}>
@@ -158,63 +113,15 @@ const MiniProfile = ({ profile }) => {
 				_active={{ transform: "scale(0.98)" }}
 				_focus={{ outline: "none" }}
 			>
-				<Text
-					as="label"
-					htmlFor="pic-upload"
-					fontFamily="Poppins"
-					color=" #552D1E"
-				>
+				<Text as="small" fontFamily="Poppins" color=" #552D1E">
 					Change photo
 				</Text>
-				<Input
-					type="file"
-					accept=".jpg, .jpeg, .png"
-					id="pic-upload"
-					display="none"
-					onChange={(e) => handleImageChange(e)}
-				/>
 			</Button>
 		</Box>
 	);
 };
 
 const UploadCertificate = ({ rate }) => {
-	const toast = useToast();
-
-	const [certficate, setCertificate] = React.useState(null);
-
-	let fileTypes = ["image/jpeg", "image/jpg", "image/png"];
-
-	const handleCertficateChange = async (e) => {
-		const file = e.target.files[0];
-
-		if (fileTypes.includes(file?.type)) {
-			var form = new FormData();
-			form.append("avatar", file, file.name);
-			form.append("name", file.name);
-			form.append("issued_date", file.lastModifiedDate);
-
-			console.log("form:", form);
-
-			const { data } = await axios.post(
-				"/wocman/profile/add/certificate",
-				form
-			);
-			console.log(data);
-			if (data.status) {
-				ShowMessage(
-					"Success",
-					"Certificate added successfully",
-					"success",
-					toast
-				);
-			}
-			setCertificate(data);
-		} else {
-			setCertificate("");
-		}
-		console.log(form);
-	};
 	return (
 		<Box
 			backgroundColor="white"
@@ -260,16 +167,10 @@ const UploadCertificate = ({ rate }) => {
 						</Text>
 					</Flex>
 				</PseudoBox>
-				<Input
-					type="file"
-					accept=".jpg, .jpeg, .png"
-					id="file-upload"
-					display="none"
-					onChange={(e) => handleCertficateChange(e)}
-				/>
+				<Input type="file" id="file-upload" display="none" />
 			</Flex>
 			<Text as="small" fontFamily="Poppins" color="#778899">
-				{certficate?.name}
+				KazeemEsu Certifcate.pdf
 			</Text>
 			<Divider my={[2, 4]} borderColor="#778899" />
 			<Text fontFamily="Poppins" w="80%">

@@ -56,12 +56,14 @@ const Register = () => {
 		error: loginError,
 		isLoading: loginIsLoading,
 		message: loginMessage,
-	} = useSelector(({ login: { result, error, isLoading, message } = {} }) => ({
-		result,
-		error,
-		isLoading,
-		message,
-	}));
+	} = useSelector(
+		({ login: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
 
 	const getBackendGoogleAuthData = (tokenId) => {
 		dispatch(login({ tokenId }, true));
@@ -84,7 +86,12 @@ const Register = () => {
 
 	useEffect(() => {
 		if (error || loginError) {
-			ShowMessage("Error", error ? message : loginMessage, "error", toast);
+			ShowMessage(
+				"Error",
+				error ? message : loginMessage,
+				"error",
+				toast
+			);
 			dispatch(clearRegisterToast());
 			dispatch(clearLoginToast());
 		}
@@ -105,7 +112,9 @@ const Register = () => {
 			setTimeout(
 				() =>
 					history.push(
-						loginResult ? `/wocman` : `/verify-email?email=${formik.values[EMAIL]}`
+						loginResult
+							? `/wocman`
+							: `/verify-email?email=${formik.values[EMAIL]}`
 					),
 				3000
 			);
@@ -127,9 +136,13 @@ const Register = () => {
 				.required("Email is required"),
 			[PASSWORD]: Yup.string().required("Password is required"),
 			[CONFIRM_PASSWORD]: Yup.string()
-				.test("passwords-match", "Passwords must match", function (value) {
-					return this.parent.password === value;
-				})
+				.test(
+					"passwords-match",
+					"Passwords must match",
+					function (value) {
+						return this.parent.password === value;
+					}
+				)
 				.required("Confirm password is required"),
 		}),
 		onSubmit: (values) => {
@@ -180,7 +193,11 @@ const Register = () => {
 							>
 								Sign Up
 							</Text>
-							<Text fontFamily="Gilroy-Medium" fontSize="1rem" mb={6}>
+							<Text
+								fontFamily="Gilroy-Medium"
+								fontSize="1rem"
+								mb={6}
+							>
 								Kindly sign into your workstation
 							</Text>
 							<Flex
@@ -211,7 +228,11 @@ const Register = () => {
 										pr={2}
 										flex="0.5"
 									>
-										<Fade opposite delay={500} duration={2000}>
+										<Fade
+											opposite
+											delay={500}
+											duration={2000}
+										>
 											<Image src={google} alt="google" />
 										</Fade>
 									</Flex>
@@ -227,8 +248,12 @@ const Register = () => {
 													letterSpacing="-0.380556px"
 													textAlign="center"
 													margin="0 auto"
-													onClick={renderProps.onClick}
-													disabled={renderProps.disabled}
+													onClick={
+														renderProps.onClick
+													}
+													disabled={
+														renderProps.disabled
+													}
 												>
 													Sign up via Gmail
 												</Text>
@@ -253,7 +278,12 @@ const Register = () => {
 									</Text>
 								</div>
 							</Flex>
-							<Flex textAlign="start" w="100%" px={[4, 4, 8, 12, 12]} mb={4}>
+							<Flex
+								textAlign="start"
+								w="100%"
+								px={[4, 4, 8, 12, 12]}
+								mb={4}
+							>
 								<Text
 									as="small"
 									fontFamily="Gilroy-Medium"
@@ -266,7 +296,13 @@ const Register = () => {
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
 								<Input
 									placeholder="Email"
-									minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
+									minHeight={[
+										"1.5rem",
+										"1.5rem",
+										"1.5rem",
+										"2.5rem",
+										"3rem",
+									]}
 									px={6}
 									width="100%"
 									fontFamily="Gilroy-Medium"
@@ -287,7 +323,12 @@ const Register = () => {
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
 								<FormError formik={formik} inputName={EMAIL} />
 							</Flex>
-							<Flex textAlign="start" w="100%" px={[4, 4, 8, 12, 12]} mb={4}>
+							<Flex
+								textAlign="start"
+								w="100%"
+								px={[4, 4, 8, 12, 12]}
+								mb={4}
+							>
 								<Text
 									as="small"
 									fontFamily="Gilroy-Medium"
@@ -300,7 +341,13 @@ const Register = () => {
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
 								<Input
 									placeholder="Email"
-									minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
+									minHeight={[
+										"1.5rem",
+										"1.5rem",
+										"1.5rem",
+										"2.5rem",
+										"3rem",
+									]}
 									px={6}
 									width="100%"
 									fontFamily="Gilroy-Medium"
@@ -319,9 +366,17 @@ const Register = () => {
 								/>
 							</Flex>
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
-								<FormError formik={formik} inputName={PASSWORD} />
+								<FormError
+									formik={formik}
+									inputName={PASSWORD}
+								/>
 							</Flex>
-							<Flex textAlign="start" w="100%" px={[4, 4, 8, 12, 12]} mb={4}>
+							<Flex
+								textAlign="start"
+								w="100%"
+								px={[4, 4, 8, 12, 12]}
+								mb={4}
+							>
 								<Text
 									as="small"
 									fontFamily="Gilroy-Medium"
@@ -334,7 +389,13 @@ const Register = () => {
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
 								<Input
 									placeholder="Password"
-									minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
+									minHeight={[
+										"1.5rem",
+										"1.5rem",
+										"1.5rem",
+										"2.5rem",
+										"3rem",
+									]}
 									px={6}
 									width="100%"
 									fontFamily="Gilroy-Medium"
@@ -353,9 +414,17 @@ const Register = () => {
 								/>
 							</Flex>
 							<Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
-								<FormError formik={formik} inputName={CONFIRM_PASSWORD} />
+								<FormError
+									formik={formik}
+									inputName={CONFIRM_PASSWORD}
+								/>
 							</Flex>
-							<Flex mt={6} w="100%" justify="center" align="center">
+							<Flex
+								mt={6}
+								w="100%"
+								justify="center"
+								align="center"
+							>
 								<Button
 									backgroundColor="wocman.contact"
 									color="white"
@@ -377,7 +446,9 @@ const Register = () => {
 										textAlign="center"
 										margin="0 auto"
 									>
-										{isLoading ? "Signing up..." : "Sign Up"}
+										{isLoading
+											? "Signing up..."
+											: "Sign Up"}
 									</Text>
 								</Button>
 							</Flex>
@@ -389,7 +460,13 @@ const Register = () => {
 									mr={4}
 									fontFamily="OverPass"
 									fontWeight="bold"
-									fontSize={["0.8rem", "0.8rem", "0.9rem", "1rem", "1rem"]}
+									fontSize={[
+										"0.8rem",
+										"0.8rem",
+										"0.9rem",
+										"1rem",
+										"1rem",
+									]}
 									lineHeight="20px"
 									letterSpacing="1.08333px"
 								>
@@ -400,7 +477,13 @@ const Register = () => {
 									textTransform="uppercase"
 									fontFamily="OverPass"
 									to={`/login?wocman=${queryParam}`}
-									fontSize={["0.8rem", "0.8rem", "0.9rem", "1rem", "1rem"]}
+									fontSize={[
+										"0.8rem",
+										"0.8rem",
+										"0.9rem",
+										"1rem",
+										"1rem",
+									]}
 									color="wocman.typography4"
 									lineHeight="20px"
 									letterSpacing="1.08333px"

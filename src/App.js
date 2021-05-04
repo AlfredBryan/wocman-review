@@ -125,6 +125,12 @@ function App() {
 			name: "Add Bank",
 			Component: lazy(() => import("./containers/wocman/pages/add-bank")),
 		},
+		// {
+		// 	path: "/customer",
+		// 	name: "Contact",
+		// 	Component: lazy(() => import("./containers/customer")),
+		// },
+		
 	];
 	return (
 		<Provider store={store}>
