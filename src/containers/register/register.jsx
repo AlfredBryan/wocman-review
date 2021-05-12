@@ -114,7 +114,7 @@ const Register = () => {
 					history.push(
 						loginResult
 							? `/wocman`
-							: `/verify-email?email=${formik.values[EMAIL]}`
+							: `/enter-otp?email=${formik.values[EMAIL]}`
 					),
 				3000
 			);
@@ -150,6 +150,7 @@ const Register = () => {
 				email: values.email,
 				password: values.password,
 				repeat_password: values.confirmPassword,
+				verifylink: "https://wocman.netlify.app/enter-otp",
 			};
 			dispatch(register(body, !!queryParam));
 		},

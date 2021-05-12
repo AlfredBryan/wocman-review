@@ -50,6 +50,8 @@ const Profile = () => {
 };
 
 const MiniProfile = ({ profile }) => {
+	const dummyPic =
+		"https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246";
 	const toast = useToast();
 
 	const [profileImage, setProfileImage] = React.useState();
@@ -87,7 +89,7 @@ const MiniProfile = ({ profile }) => {
 		}
 		console.log(file);
 	};
-	// const profilePicture = profile?.profile_picture?.[0]?.current?.[0]?.[0];
+	const profilePicture = profile?.profile_picture?.[0]?.current?.[0]?.[0];
 	return (
 		<Box
 			backgroundColor="white"
@@ -99,11 +101,7 @@ const MiniProfile = ({ profile }) => {
 			mb={{ base: 4, md: 8 }}
 		>
 			<Box
-				bgImage={`url(${
-					profileImage
-						? profileImage
-						: "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
-				})`}
+				bgImage={`url(${profilePicture ? profilePicture : dummyPic})`}
 				bgPos="center"
 				bgRepeat="no-repeat"
 				bg="transparent"
@@ -181,7 +179,7 @@ const MiniProfile = ({ profile }) => {
 const UploadCertificate = ({ rate }) => {
 	const toast = useToast();
 
-	const [certficate, setCertificate] = React.useState(null);
+	const [certificate, setCertificate] = React.useState(null);
 
 	let fileTypes = ["image/jpeg", "image/jpg", "image/png"];
 
@@ -269,7 +267,7 @@ const UploadCertificate = ({ rate }) => {
 				/>
 			</Flex>
 			<Text as="small" fontFamily="Poppins" color="#778899">
-				{certficate?.name}
+				{certificate?.name}
 			</Text>
 			<Divider my={[2, 4]} borderColor="#778899" />
 			<Text fontFamily="Poppins" w="80%">
@@ -377,7 +375,7 @@ const ProfileForm = (props) => {
 				label="First Name"
 				name="firstname"
 				type="text"
-				value={values.firstname}
+				value={values?.firstname}
 				onChange={onChange}
 			/>
 			<CustomInput
@@ -391,7 +389,7 @@ const ProfileForm = (props) => {
 				label="Username"
 				name="username"
 				type="text"
-				value={values.username}
+				value={values?.username}
 				onChange={onChange}
 			/>
 			<Flex
