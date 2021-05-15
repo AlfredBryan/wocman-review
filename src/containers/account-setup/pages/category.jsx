@@ -27,6 +27,7 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
 			"/profile/add/skill",
 			Object.create(...selected)
 		);
+		console.log(res);
 	};
 
 	const handleSelect = (e) => {

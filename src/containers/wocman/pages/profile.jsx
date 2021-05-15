@@ -4,7 +4,7 @@ import {
 	Button,
 	Divider,
 	Flex,
-	Image,
+	// Image,
 	Input,
 	PseudoBox,
 	Text,
@@ -66,6 +66,7 @@ const MiniProfile = ({ profile }) => {
 			form.append("avatar", file, file.name);
 
 			console.log("form:", form);
+			console.log(profileImage);
 			try {
 				const { data } = await axios.post(
 					"/wocman/profile/picture",
@@ -113,14 +114,6 @@ const MiniProfile = ({ profile }) => {
 				borderRadius="50%"
 				margin="0 auto"
 			></Box>
-			<Image
-				src={profilePicture ? profilePicture : dummyPic}
-				border="1.43126px solid #552D1E"
-				h="70px"
-				width="70px"
-				borderRadius="50%"
-				margin="0 auto"
-			/>
 			<Text
 				fontFamily="Poppins"
 				fontWeight="bold"

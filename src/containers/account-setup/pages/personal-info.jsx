@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Flex, Text, Stack, Box, useToast } from "@chakra-ui/core";
 import { CustomInput } from "../../../components/custom-input/custom-input";
 import { CustomButton } from "../../../components/custom-button/custom-button";

@@ -12,7 +12,7 @@ import { useHistory } from "react-router";
 import logo from "../../assets/icons/logo-colored.svg";
 import verifyotp from "../../assets/images/verify-email.svg";
 import { useQuery } from "../../utils/hooks";
-import { axios, setAuthToken } from "../../utils/axios";
+import { axios, } from "../../utils/axios";
 import { ShowMessage } from "../../utils/alert";
 
 const Otp = (props) => {
