@@ -51,7 +51,10 @@ const Otp = (props) => {
 					toast
 				);
 				setLoading(false);
-				setTimeout(() => history.push("/account-setup"), 2000);
+				setTimeout(
+					() => history.push(`/account-setup?user=${queryParam}`),
+					2000
+				);
 			} else {
 			}
 		} catch (err) {

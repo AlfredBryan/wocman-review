@@ -6,27 +6,62 @@ import {
 	Text,
 	Box,
 	Stack,
-	Menu,
-	MenuButton,
-	MenuList,
-	MenuItem,
-	MenuItemOption,
-	MenuGroup,
-	MenuOptionGroup,
-	MenuIcon,
-	MenuCommand,
-	MenuDivider,
+	useToast,
 } from "@chakra-ui/core";
 import technicians from "../../../assets/images/technicians.jpg";
+import tradesmen from "../../../assets/images/tradesmen.jpg";
+import professionals from "../../../assets/images/professionals.jpg";
 import { CustomButton } from "../../../components/custom-button/custom-button";
 import checkmark from "../../../assets/icons/check-circle.svg";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { ShowMessage } from "../../../utils/alert";
+import { axios } from "../../../utils/axios";
 
-const WorkCategory = ({ step, prevStep, nextStep }) => {
-	// const handleSubmit = () => {
-	// 	const [selected, setSelected] = useState("");
-	// };
+const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
+	const toast = useToast();
+	const [selected, setSelected] = useState([]);
+
+	const handleSubmit = () => {
+		if (selected.length < 1) return;
+		const res = axios.post(
+			"/profile/add/skill",
+			Object.create(...selected)
+		);
+	};
+
+	const handleSelect = (e) => {
+		if (selected.includes(e.target.textContent)) return;
+		if (selected.length === 3) {
+			ShowMessage(
+				"Not allowed",
+				"You cannot select more than three skills",
+				"warning",
+				toast
+			);
+		} else {
+			// selected.push(e.target.textContent);
+			setSelected([...selected, e.target.textContent]);
+		}
+		console.log(selected);
+	};
+
+	const categories = [
+		{
+			title: "Technicians",
+			img: technicians,
+			content: ["Barber", "Hair Stylist", "Makeup Artist", "Cleaner"],
+		},
+		{
+			title: "Tradesmen",
+			img: tradesmen,
+			content: ["Barber", "Hair Stylist", "Makeup Artist", "Cleaner"],
+		},
+		{
+			title: "Professionals",
+			img: professionals,
+			content: ["Barber", "Hair Stylist", "Makeup Artist", "Cleaner"],
+		},
+	];
 	return (
 		<Flex
 			minH="100vh"
@@ -38,7 +73,12 @@ const WorkCategory = ({ step, prevStep, nextStep }) => {
 			py={8}
 		>
 			<Flex w="85%" h="100%" flex="1" direction="column">
-				<Stack w="100%">
+				<Stack
+					w="100%"
+					fontSize="20px"
+					cursor="pointer"
+					d={{ base: "none", md: "flex" }}
+				>
 					<Flex
 						justify="space-between"
 						h="10vh"
@@ -58,6 +98,7 @@ const WorkCategory = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(0)}
 						>
 							<Text
 								as="small"
@@ -80,6 +121,7 @@ const WorkCategory = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(1)}
 						>
 							<Text
 								as="small"
@@ -102,6 +144,7 @@ const WorkCategory = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(2)}
 						>
 							<Text
 								as="small"
@@ -124,6 +167,7 @@ const WorkCategory = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(3)}
 						>
 							<Text
 								as="small"
@@ -148,10 +192,10 @@ const WorkCategory = ({ step, prevStep, nextStep }) => {
 						fontWeight="600"
 						color="white"
 						w={{ base: "100%", md: "50%", xl: "40%" }}
-						fontSize={{ base: "1.5rem", xl: "3rem" }}
+						fontSize={{ base: "1.2rem", xl: "2.5rem" }}
 						textAlign={{ base: "center", md: "start" }}
 					>
-						Welcome Kazeem, Select a Category
+						Welcome {firstname ? firstname : ""}, Select a Category
 					</Text>
 					<Flex
 						align="center"
@@ -166,57 +210,55 @@ const WorkCategory = ({ step, prevStep, nextStep }) => {
 						>
 							Select a job description that best fits your skill.
 						</Text>
-						<Button
-							_focus={{ outline: "none" }}
-							h="70px"
-							w={{ base: "70%", md: "45%", xl: "25%" }}
-							borderRadius="10px"
-							d={{ base: "none", md: "flex" }}
-						>
-							<Text
-								fontFamily="Poppins"
-								textTransform="capitalize"
-								lineHeight="138.6%"
-							>
-								proceed
-							</Text>
-						</Button>
 					</Flex>
 					<Flex
 						py={{ base: 4, md: 8 }}
 						flexWrap="wrap"
 						justify={{ base: "center", md: "space-between" }}
 					>
-						{Array(3)
-							.fill("")
-							.map((_, index) => (
-								<Category
-									key={index}
-									image={technicians}
-									index={index}
-									heading="Technicians"
-									content={[
-										"Barber",
-										"Hair Stylist",
-										"Makeup Artist",
-										"Cleaner",
-									]}
-								/>
-							))}
+						{categories.map((category, index) => (
+							<Category
+								key={index}
+								image={category.img}
+								index={index}
+								heading={category.title}
+								content={category.content}
+								handleSelect={handleSelect}
+								selected={selected}
+							/>
+						))}
 					</Flex>
 					<Flex
-						justify="center"
 						mt={4}
 						w="100%"
 						d={{ base: "flex", md: "" }}
+						justify="space-between"
+						align="center"
+						direction={{ base: "column", md: "row-reverse" }}
 					>
-						<CustomButton onClick={() => prevStep()}>
-							Back
-						</CustomButton>
-						<CustomButton onClick={() => nextStep()}>
+						<CustomButton
+							mt={{ base: 8, md: 0 }}
+							mb={{ base: 4, md: 0 }}
+							onClick={handleSubmit}
+						>
 							Proceed
 						</CustomButton>
-						{/* onClick={handleSubmit} */}
+						<Button
+							h="70px"
+							w={{ base: "90%", md: "45%", xl: "25%" }}
+							borderRadius="10px"
+							onClick={() => prevStep()}
+							bg="wocman.contact"
+							color="white"
+							_focus={{ outline: "none" }}
+							_hover={{
+								outline: "none",
+								bg: "wocman.contact",
+								border: "1px",
+							}}
+						>
+							Back
+						</Button>
 					</Flex>
 				</Flex>
 			</Flex>
@@ -271,9 +313,13 @@ const Category = (props) => {
 					backgroundColor="wocman.category"
 				>
 					{props.content.map((item, index) => (
-						<Fragment key={index}>
+						<div key={index}>
 							<Divider borderColor="wocman.contact" />
-							<Flex justify="space-between" py={2}>
+							<Flex
+								justify="space-between"
+								py={2}
+								_hover={{ cursor: "pointer" }}
+							>
 								<Text
 									fontFamily="Poppins"
 									lineHeight="138.6%"
@@ -283,11 +329,16 @@ const Category = (props) => {
 											: "wocman.heading_text"
 									}`}
 									ml={{ base: 4, md: 8 }}
+									onClick={(e) => props.handleSelect(e)}
 								>
 									{item}
 								</Text>
 								<Image
-									src={checkmark}
+									src={
+										props.selected.includes(item)
+											? checkmark
+											: ""
+									}
 									alt="check mark"
 									mr={{ base: 2, md: 4 }}
 									d={`${
@@ -297,7 +348,7 @@ const Category = (props) => {
 									}`}
 								/>
 							</Flex>
-						</Fragment>
+						</div>
 					))}
 				</Flex>
 			</Flex>
@@ -305,3 +356,19 @@ const Category = (props) => {
 	);
 };
 export default WorkCategory;
+
+// <Button
+// 	_focus={{ outline: "none" }}
+// 	h="70px"
+// 	w={{ base: "70%", md: "45%", xl: "25%" }}
+// 	borderRadius="10px"
+// 	d={{ base: "none", md: "flex" }}
+// >
+// 	<Text
+// 		fontFamily="Poppins"
+// 		textTransform="capitalize"
+// 		lineHeight="138.6%"
+// 	>
+// 		proceed
+// 	</Text>
+// </Button>;

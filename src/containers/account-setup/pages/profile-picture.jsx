@@ -6,6 +6,7 @@ import {
 	PseudoBox,
 	Text,
 	Box,
+	Button,
 	Stack,
 	useToast,
 } from "@chakra-ui/core";
@@ -15,7 +16,7 @@ import add from "../../../assets/icons/plus-square.svg";
 import { axios } from "../../../utils/axios";
 import { ShowMessage } from "../../../utils/alert";
 
-const ProfilePicture = ({ step, prevStep, nextStep }) => {
+const ProfilePicture = ({ step, setStep, prevStep, nextStep }) => {
 	const toast = useToast();
 
 	const [profileImage, setProfileImage] = React.useState(null);
@@ -29,6 +30,7 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 			form.append("avatar", file, file.name);
 
 			console.log("form:", form);
+
 			try {
 				const { data } = await axios.post(
 					"/wocman/profile/picture",
@@ -64,7 +66,12 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 			py={8}
 		>
 			<Flex w="85%" h="100%" flex="1" direction="column">
-				<Stack w="100%">
+				<Stack
+					w="100%"
+					fontSize="20px"
+					cursor="pointer"
+					d={{ base: "none", md: "flex" }}
+				>
 					<Flex
 						justify="space-between"
 						h="10vh"
@@ -84,6 +91,7 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(0)}
 						>
 							<Text
 								as="small"
@@ -106,6 +114,7 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(1)}
 						>
 							<Text
 								as="small"
@@ -128,6 +137,7 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(2)}
 						>
 							<Text
 								as="small"
@@ -150,6 +160,7 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(3)}
 						>
 							<Text
 								as="small"
@@ -224,7 +235,7 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 									color="wocman.contact"
 									lineHeight="20px"
 								>
-									Upload Profile Picture
+									Set Profile Picture
 								</Text>
 							</Flex>
 						</PseudoBox>
@@ -236,16 +247,35 @@ const ProfilePicture = ({ step, prevStep, nextStep }) => {
 						/>
 					</Flex>
 					<Flex
-						justify={{ base: "center", md: "flex-end" }}
+						justify={{ base: "center", md: "space-between" }}
+						alignItems="center"
 						mt={{ base: 4, md: 16 }}
 						w="100%"
+						direction={{ base: "column", md: "row-reverse" }}
 					>
-						<CustomButton onClick={() => prevStep()}>
-							Back
-						</CustomButton>
-						<CustomButton onClick={() => nextStep()}>
+						<CustomButton
+							mt={{ base: 8, md: 0 }}
+							mb={{ base: 4, md: 0 }}
+							onClick={() => nextStep()}
+						>
 							Proceed
 						</CustomButton>
+						<Button
+							_focus={{ outline: "none" }}
+							h="70px"
+							w={{ base: "90%", md: "45%", xl: "25%" }}
+							borderRadius="10px"
+							onClick={() => prevStep()}
+							bg="wocman.contact"
+							color="white"
+							_hover={{
+								outline: "none",
+								bg: "wocman.contact",
+								border: "1px",
+							}}
+						>
+							Back
+						</Button>
 					</Flex>
 				</Flex>
 			</Flex>

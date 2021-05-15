@@ -5,42 +5,52 @@ import { CustomButton } from "../../../components/custom-button/custom-button";
 import { axios, setAuthToken } from "../../../utils/axios";
 import { ShowMessage } from "../../../utils/alert";
 
-const PersonalInformation = ({ nextStep, step }) => {
+const PersonalInformation = ({
+	nextStep,
+	step,
+	setStep,
+	handleChange,
+	firstname,
+	lastname,
+	address,
+	phone,
+	user,
+}) => {
 	const toast = useToast();
 	const inputRef = useRef(null);
 
-	const [values, setValues] = useState({
-		firstname: "",
-		lastname: "",
-		phone: "",
-		address: "",
-	});
-
-	const handleChange = (e) => {
-		setValues({ ...values, [e.target.name]: e.target.value });
+	const details = {
+		firstname,
+		lastname,
+		address,
+		phone,
 	};
 
 	const handleSubmit = async () => {
-		// if (!inputRef.target.checked) return;
-		// setAuthToken(localStorage["wocman_token"]);
-		// try {
-		// 	// const { data } = await axios.post("/wocman/profile/update", {
-		// 	// ...values,
-		// 	// });
-		// } catch (error) {
-		// 	let errorMessage = error?.response?.data?.message;
-		// 	let fallbackErrorMessage =
-		// 		error?.response?.data?.message?.details?.[0]?.message;
-		// 	errorMessage =
-		// 		typeof errorMessage === "string"
-		// 			? errorMessage
-		// 			: typeof fallbackErrorMessage === "string"
-		// 			? fallbackErrorMessage
-		// 			: "An error occurred.";
-		// 	if (errorMessage) {
-		// 		ShowMessage("Error", errorMessage, "error", toast);
-		// 	}
-		// }
+		// if (!inputRef.currentTarget.checked) return;
+		setAuthToken(localStorage["wocman_token"]);
+		try {
+			const { data } = await axios.post("/wocman/profile/update", {
+				...details,
+			});
+			if (data?.status === 200 || 201) {
+				ShowMessage("Success", "personal info set", "success", toast);
+			}
+			nextStep();
+		} catch (error) {
+			let errorMessage = error?.response?.data?.message;
+			let fallbackErrorMessage =
+				error?.response?.data?.message?.details?.[0]?.message;
+			errorMessage =
+				typeof errorMessage === "string"
+					? errorMessage
+					: typeof fallbackErrorMessage === "string"
+					? fallbackErrorMessage
+					: "An error occurred.";
+			if (errorMessage) {
+				ShowMessage("Error", errorMessage, "error", toast);
+			}
+		}
 	};
 	return (
 		<Flex
@@ -53,7 +63,12 @@ const PersonalInformation = ({ nextStep, step }) => {
 			py={8}
 		>
 			<Flex w="85%" h="100%" flex="1" direction="column">
-				<Stack w="100%">
+				<Stack
+					w="100%"
+					fontSize="20px"
+					cursor="pointer"
+					d={{ base: "none", md: "flex" }}
+				>
 					<Flex
 						justify="space-between"
 						h="10vh"
@@ -73,6 +88,7 @@ const PersonalInformation = ({ nextStep, step }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(0)}
 						>
 							<Text
 								as="small"
@@ -95,6 +111,7 @@ const PersonalInformation = ({ nextStep, step }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(1)}
 						>
 							<Text
 								as="small"
@@ -117,6 +134,7 @@ const PersonalInformation = ({ nextStep, step }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(2)}
 						>
 							<Text
 								as="small"
@@ -139,6 +157,7 @@ const PersonalInformation = ({ nextStep, step }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(3)}
 						>
 							<Text
 								as="small"
@@ -167,7 +186,7 @@ const PersonalInformation = ({ nextStep, step }) => {
 						color="white"
 						my={{ base: 4, lg: 8 }}
 					>
-						for Blag@gmail.com
+						for {user ? user : "Wocman"}
 					</Text>
 					<Flex
 						flex="1"
@@ -177,25 +196,25 @@ const PersonalInformation = ({ nextStep, step }) => {
 					>
 						<CustomInput
 							placeholder="Firstname"
-							value={values?.firstname}
+							value={firstname}
 							name="firstname"
 							onChange={handleChange}
 						/>
 						<CustomInput
 							placeholder="Lastname"
-							value={values?.lastname}
+							value={lastname}
 							name="lastname"
 							onChange={handleChange}
 						/>
 						<CustomInput
 							placeholder="Billing Address"
-							value={values?.address}
+							value={address}
 							name="address"
 							onChange={handleChange}
 						/>
 						<CustomInput
 							placeholder="Phone Number"
-							value={values?.phone}
+							value={phone}
 							name="phone"
 							onChange={handleChange}
 						/>
@@ -226,7 +245,7 @@ const PersonalInformation = ({ nextStep, step }) => {
 						mt={{ base: 4, md: 16 }}
 						w="100%"
 					>
-						<CustomButton onClick={() => nextStep()}>
+						<CustomButton onClick={handleSubmit}>
 							Proceed
 						</CustomButton>
 					</Flex>

@@ -6,6 +6,7 @@ import {
 	PseudoBox,
 	Text,
 	Box,
+	Button,
 	Stack,
 	useToast,
 } from "@chakra-ui/core";
@@ -16,7 +17,7 @@ import { axios, setAuthToken } from "../../../utils/axios";
 import { ShowMessage } from "../../../utils/alert";
 import { useHistory } from "react-router";
 
-const SkillLevel = ({ step, prevStep }) => {
+const SkillLevel = ({ step, setStep, prevStep }) => {
 	const toast = useToast();
 	const history = useHistory();
 
@@ -52,17 +53,19 @@ const SkillLevel = ({ step, prevStep }) => {
 			}
 			setCertificate(data);
 		} else {
-			// ShowMessage(
-			// 	"Error",
-			// 	"An error occurred. try again",
-			// 	"error",
-			// 	toast
-			// );
+			ShowMessage(
+				"Error",
+				"An error occurred. try again",
+				"error",
+				toast
+			);
 			setCertificate("");
 		}
 		console.log(form);
 	};
 	const handleSubmit = () => {
+		setAuthToken(localStorage["wocman_token"]);
+
 		setTimeout(history.push("/wocman/dashboard"), 2000);
 	};
 	return (
@@ -76,7 +79,12 @@ const SkillLevel = ({ step, prevStep }) => {
 			py={8}
 		>
 			<Flex w="85%" h="100%" flex="1" direction="column">
-				<Stack w="100%">
+				<Stack
+					w="100%"
+					fontSize="20px"
+					cursor="pointer"
+					d={{ base: "none", md: "flex" }}
+				>
 					<Flex
 						justify="space-between"
 						h="10vh"
@@ -96,6 +104,7 @@ const SkillLevel = ({ step, prevStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(0)}
 						>
 							<Text
 								as="small"
@@ -118,6 +127,7 @@ const SkillLevel = ({ step, prevStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(1)}
 						>
 							<Text
 								as="small"
@@ -140,6 +150,7 @@ const SkillLevel = ({ step, prevStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(2)}
 						>
 							<Text
 								as="small"
@@ -162,6 +173,7 @@ const SkillLevel = ({ step, prevStep }) => {
 							_focus={{
 								outline: "none",
 							}}
+							onClick={() => setStep(3)}
 						>
 							<Text
 								as="small"
@@ -265,12 +277,36 @@ const SkillLevel = ({ step, prevStep }) => {
 							display="none"
 						/>
 						<Text>{certificate?.name}</Text>
-						<CustomButton onClick={() => prevStep()}>
-							Back
-						</CustomButton>
-						<CustomButton onClick={handleSubmit}>
-							Finish
-						</CustomButton>
+						<Flex
+							d={{ base: "flex", md: "" }}
+							w="100%"
+							justifyContent="space-between"
+							direction={{ base: "column", md: "row-reverse" }}
+						>
+							<CustomButton
+								onClick={handleSubmit}
+								mt={{ base: 8, md: 0 }}
+								mb={{ base: 4, md: 0 }}
+							>
+								Finish
+							</CustomButton>
+							<Button
+								h="70px"
+								w={{ base: "90%", md: "45%", xl: "25%" }}
+								borderRadius="10px"
+								onClick={() => prevStep()}
+								bg="wocman.contact"
+								color="white"
+								_hover={{
+									outline: "none",
+									bg: "wocman.contact",
+									border: "1px",
+								}}
+								_focus={{ outline: "none" }}
+							>
+								Back
+							</Button>
+						</Flex>
 					</Flex>
 				</Flex>
 			</Flex>
@@ -368,3 +404,66 @@ const LevelCard = (props) => (
 // 	<option></option>
 // 	<option></option>
 // </Select>;
+
+// class ImageUpload extends React.Component {
+// 	constructor(props) {
+// 		super(props);
+// 		this.state = { file: "", imagePreviewUrl: "" };
+// 	}
+
+// 	_handleSubmit(e) {
+// 		e.preventDefault();
+// 		// TODO: do something with -> this.state.file
+// 		console.log("handle uploading-", this.state.file);
+// 	}
+
+// 	_handleImageChange(e) {
+// 		e.preventDefault();
+
+// 		let reader = new FileReader();
+// 		let file = e.target.files[0];
+
+// 		reader.onloadend = () => {
+// 			this.setState({
+// 				file: file,
+// 				imagePreviewUrl: reader.result,
+// 			});
+// 		};
+
+// 		reader.readAsDataURL(file);
+// 	}
+
+// 	render() {
+// 		let { imagePreviewUrl } = this.state;
+// 		let $imagePreview = null;
+// 		if (imagePreviewUrl) {
+// 			$imagePreview = <img src={imagePreviewUrl} />;
+// 		} else {
+// 			$imagePreview = (
+// 				<div className="previewText">
+// 					Please select an Image for Preview
+// 				</div>
+// 			);
+// 		}
+
+// 		return (
+// 			<div className="previewComponent">
+// 				<form onSubmit={(e) => this._handleSubmit(e)}>
+// 					<input
+// 						className="fileInput"
+// 						type="file"
+// 						onChange={(e) => this._handleImageChange(e)}
+// 					/>
+// 					<button
+// 						className="submitButton"
+// 						type="submit"
+// 						onClick={(e) => this._handleSubmit(e)}
+// 					>
+// 						Upload Image
+// 					</button>
+// 				</form>
+// 				<div className="imgPreview">{$imagePreview}</div>
+// 			</div>
+// 		);
+// 	}
+// }

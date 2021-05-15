@@ -4,6 +4,7 @@ import {
 	Button,
 	Divider,
 	Flex,
+	Image,
 	Input,
 	PseudoBox,
 	Text,
@@ -112,6 +113,14 @@ const MiniProfile = ({ profile }) => {
 				borderRadius="50%"
 				margin="0 auto"
 			></Box>
+			<Image
+				src={profilePicture ? profilePicture : dummyPic}
+				border="1.43126px solid #552D1E"
+				h="70px"
+				width="70px"
+				borderRadius="50%"
+				margin="0 auto"
+			/>
 			<Text
 				fontFamily="Poppins"
 				fontWeight="bold"
