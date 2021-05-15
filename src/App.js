@@ -21,7 +21,7 @@ function App() {
 		axios.interceptors.response.use(
 			(res) => Promise.resolve(res),
 			(error) => {
-				if (!error.response) {
+				if (!error?.response) {
 					ShowMessage(
 						"Error",
 						"Please check your internet connection",
@@ -30,14 +30,14 @@ function App() {
 					);
 				}
 
-				if (error.response.status === 403) {
+				if (error?.response.status === 403) {
 					setTimeout(() => {
 						history.replace("/login");
 						localStorage.clear();
 						window.location.reload();
 					}, 0);
 				}
-				if (error.response.status === 401) {
+				if (error?.response.status === 401) {
 					localStorage.clear();
 				}
 
@@ -101,9 +101,9 @@ function App() {
 			Component: lazy(() => import("./containers/register/register")),
 		},
 		{
-			path: "/verify-email",
+			path: "/enter-otp",
 			name: "Contact",
-			Component: lazy(() => import("./containers/verify-email/verify-email")),
+			Component: lazy(() => import("./containers/enter-otp/otp")),
 		},
 		{
 			path: "/search",
@@ -113,7 +113,9 @@ function App() {
 		{
 			path: "/account-setup",
 			name: "Contact",
-			Component: lazy(() => import("./containers/account-setup/account-setup")),
+			Component: lazy(() =>
+				import("./containers/account-setup/account-setup")
+			),
 		},
 		{
 			path: "/wocman",
@@ -130,14 +132,18 @@ function App() {
 		// 	name: "Contact",
 		// 	Component: lazy(() => import("./containers/customer")),
 		// },
-		
 	];
 	return (
 		<Provider store={store}>
 			<Box className="App">
 				<Suspense
 					fallback={
-						<Flex w="100vw" h="100vh" align="center" justify="center">
+						<Flex
+							w="100vw"
+							h="100vh"
+							align="center"
+							justify="center"
+						>
 							<Image src={loader} />
 						</Flex>
 					}
@@ -145,7 +151,11 @@ function App() {
 					<BrowserRouter history={history}>
 						<Switch>
 							{routes.map(({ path, Component }) => (
-								<Route key={path} exact={path !== "/wocman"} path={path}>
+								<Route
+									key={path}
+									exact={path !== "/wocman"}
+									path={path}
+								>
 									{({ match }) => (
 										<CSSTransition
 											in={match != null}
@@ -165,7 +175,11 @@ function App() {
 										h="100vh"
 										backgroundColor="wocman.contact"
 									>
-										<Text fontFamily="Poppins" fontWeight="bold" color="white">
+										<Text
+											fontFamily="Poppins"
+											fontWeight="bold"
+											color="white"
+										>
 											Oops, this page does not exist
 										</Text>
 									</Flex>
