@@ -127,11 +127,11 @@ function App() {
 			name: "Add Bank",
 			Component: lazy(() => import("./containers/wocman/pages/add-bank")),
 		},
-		// {
-		// 	path: "/customer",
-		// 	name: "Contact",
-		// 	Component: lazy(() => import("./containers/customer")),
-		// },
+		{
+			path: "/customer",
+			name: "Contact",
+			Component: lazy(() => import("./containers/customer")),
+		},
 	];
 	return (
 		<Provider store={store}>
@@ -153,7 +153,7 @@ function App() {
 							{routes.map(({ path, Component }) => (
 								<Route
 									key={path}
-									exact={path !== "/wocman"}
+									exact={path !== "/customer"}
 									path={path}
 								>
 									{({ match }) => (
