@@ -52,7 +52,7 @@ const MiniProfile = (props) => {
 			backgroundColor="white"
 			textAlign="center"
 			borderRadius="10px"
-			py={{ base: 4, md: 8 }}
+			py="5rem"
 			px={{ base: 2, md: 4 }}
 			w="100%"
 			mb={{ base: 4, md: 8 }}
@@ -92,11 +92,11 @@ const MiniProfile = (props) => {
 						Complete your profile
 					</Button>
 				) : (
-					`${profile?.firstname ?? ""} ${profile?.lastname ?? ""}`
+					`${profile?.firstname ?? "Tayo Olajide"} ${profile?.lastname ?? ""}`
 				)}
 			</Text>
 			<Text as="small" fontFamily="Poppins" my={2}>
-				Plumber
+				Client
 			</Text>
 			{/* change the above to show Wocman's profession later */}
 
@@ -114,7 +114,7 @@ const MiniProfile = (props) => {
 				_focus={{ outline: "none" }}
 			>
 				<Text as="small" fontFamily="Poppins" color=" #552D1E">
-					Change photo
+					Edit Profile 
 				</Text>
 			</Button>
 		</Box>
@@ -126,66 +126,25 @@ const UploadCertificate = ({ rate }) => {
 		<Box
 			backgroundColor="white"
 			borderRadius="10px"
-			py={{ base: 4, md: 8 }}
+			py="14rem"
 			px={{ base: 4, md: 8 }}
 			w="100%"
 		>
-			<Text fontFamily="Poppins" fontWeight="bold">
-				Certificate of experience
-			</Text>
-			<Text fontFamily="Poppins" as="small" color="#778899">
-				Certificates make it easy to attract more clients
-			</Text>
-			<Flex
-				w="100%"
-				h="150px"
-				flex={1}
-				my={{ base: 2, md: 4 }}
-				backgroundColor="white"
-				justify="center"
-				align="center"
-				flexDir="column"
-			>
-				<PseudoBox as="label" htmlFor="file-upload" w="100%" h="100%">
-					<Flex
-						justify="center"
-						align="center"
-						h="100%"
-						px={{ base: 4, md: 8 }}
-						py={{ base: 4, md: 8 }}
-						backgroundColor="rgba(85, 45, 30, 0.1)"
-						border="1.31304px dotted #552D1E"
-						cursor="pointer"
-					>
-						<Text
-							fontFamily="Poppins"
-							color="wocman.contact"
-							lineHeight="20px"
-							as="small"
-						>
-							Upload Certificate
-						</Text>
-					</Flex>
-				</PseudoBox>
-				<Input type="file" id="file-upload" display="none" />
-			</Flex>
-			<Text as="small" fontFamily="Poppins" color="#778899">
-				KazeemEsu Certifcate.pdf
-			</Text>
-			<Divider my={[2, 4]} borderColor="#778899" />
-			<Text fontFamily="Poppins" w="80%">
-				Your rating based on customer satisfaction.
-			</Text>
-			<Text
-				fontFamily="Poppins"
-				w="80%"
-				mt={{ base: 2, md: 4 }}
-				fontWeight="bold"
-				fontSize={{ base: "1.4rem", md: "2rem" }}
-				color="wocman.typography1"
-			>
-				{rate} star(s)
-			</Text>
+			<Box>
+				<Text fontFamily="Poppins" w="80%">
+				Your rating based on Work assigned to Wocman
+				</Text>
+				<Text
+					fontFamily="Poppins"
+					w="80%"
+					mt={{ base: 2, md: 4 }}
+					fontWeight="bold"
+					fontSize={{ base: "1.4rem", md: "2rem" }}
+					color="wocman.typography1"
+				>
+					{rate} star(s)
+				</Text>
+			</Box>
 		</Box>
 	);
 };

@@ -1,9 +1,12 @@
-import { Box, Button, Flex, Text, Image, PseudoBox, Input } from "@chakra-ui/core";
+import { Box, Button, Flex, Text, Image, Badge } from "@chakra-ui/core";
+import { StarIcon } from "@chakra-ui/icons"
+
 import { Card } from "../components/card";
 import { Notifications } from "../components/notifications";
 import { CalendarSection } from "../components/schedule";
 import { Wallet } from "../components/wallet";
-import electrician from "../../../assets/images/electrical-fittings.jpg";
+import electrician from "../../../assets/images/electrical.png";
+import customer from "../../../assets/images/customer.png";
 import Fade from "react-reveal/Fade";
 
 const Job = () => {
@@ -58,20 +61,21 @@ const Job = () => {
           <Text
             fontFamily="Gilroy-Bold"
             color="white"
-            lineHeight="144%"
             fontSize={["1.5rem", "1.5rem", "1.5rem", "2rem", "2.28rem"]}
+            w="100vh"
+          >
+            Submit <br/>
+            Work Request
+          </Text>
+          <Text
+            fontFamily="Gilroy-Bold"
+            color="white"
             w="100%"
           >
-            “Find Experienced Gardeners from your location and save up on Extra
-            charges with Wocman ”
+            Submit a work request to enable <br/>
+            us provide you with the best services.
           </Text>
         </Fade>
-        {/* <Flex
-          align=""
-          justify="center"
-          w="100%"
-          flexDir={["column", "column", "row", "row", "row"]}
-        > */}
           <Button
             mr={[0, 0, 8]}
             mb={[8, 8, 0]}
@@ -82,7 +86,7 @@ const Job = () => {
             backgroundColor="#552D1E"
             borderRadius="4px"
             h={12}
-            w={["100%", "100%", "47%"]}
+            w={["15rem"]}
             _hover={{ opacity: "0.7" }}
             _active={{ transform: "scale(0.98)" }}
             _focus={{ outline: "none" }}
@@ -94,30 +98,40 @@ const Job = () => {
       <Flex flex={[0, 0, 0, 1, 1]}></Flex>
     </Flex>
     <Box w="100%" mt="5" backgroundColor="#F9F9F9" p="5">
-      <div>Featured Wocmen</div>
+      <Text pb="6px">Featured Wocmen</Text>
     <Flex
-						w={{ base: "90%", md: "60%", xl: "40%" }}
-						h={{ base: "90%", md: "60%", xl: "40%" }}
-						flex={1}
-						backgroundColor="#FCFDFD"
-						justify="center"
-						align="center"
-						flexDir="column"
-					>
-						<Image
-							src=""
-							alt="face mask"
-							my={{ base: 8, md: 16 }}
-						/>
-            <Text>
-              Chibuzor Ozoho
-						</Text>
-            <Text>
-             Carpnter
-						</Text>
-            <Input backgroundColor="#E8E2E7" value="View Details" w="40" />
-					
-					</Flex>
+    w="30vh"
+    h="30vh"
+    backgroundColor="#FCFDFD"
+    >
+      <Flex
+        flex={1}
+        justify="center"
+        align="center"
+        flexDir="column"
+      >
+          <Image
+            src={customer}
+            alt="face mask"
+            my="3"
+          />
+          <Text>
+            Chibuzor Ozoho
+          </Text>
+          <Text color="#778899" mt="3">
+            Carpnter
+          </Text>
+          <Button backgroundColor="#E8E2E7" color="#552D1E" fontSize="0.6rem" w="40" mt="3">
+            View Details
+          </Button>
+      </Flex>
+      <Box mt="8" pr="3">
+        <Badge variant="none" color="#778899" backgroundColor="#F6F1F1">
+        5.0 <StarIcon color="#FFC850" />
+        </Badge>
+      </Box>
+
+      </Flex>
     </Box>
     </Box>
   );
