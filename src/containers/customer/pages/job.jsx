@@ -128,8 +128,7 @@ const Job = () => {
       <Box mt="8" pr="3">
         <Badge variant="none" color="#778899" backgroundColor="#F6F1F1">
         5.0 <StarIcon color="#FFC850" />
-    </Badge>
-
+        </Badge>
       </Box>
 
       </Flex>
