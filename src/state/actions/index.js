@@ -21,3 +21,6 @@ export * from "./ratingsAction";
 
 // dashboard-completed
 export * from "./completedAction";
+
+// dashboard-wallet-details
+export * from "./walletAction";

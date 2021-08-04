@@ -41,13 +41,12 @@ const Dashboard = () => {
 		})
 	);
 
+
   useEffect(() => {
     dispatch(workdone());
     dispatch(ratings());
     dispatch(completed());
 	},[]);
-  
-  console.log(ratingsResults, '<><>,.,.,.,.<><><><><');
 
   const activities = [
     {
@@ -91,9 +90,9 @@ const Dashboard = () => {
             my={10}
             flexDir={{ base: "column", md: "row" }}
           >
-            <Card text="Work Done" number={result?.workDone || 0} sub="Jobs done" />
-            <Card text="Rating" number={ratingsResults?.rate || 0} sub="stars" />
-            <Card text="Completion %" number={completedResults?.Completion || 0} sub="completion" noMargin />
+            <Card text="Work Done" number={result?.workDone } sub="Jobs done" />
+            <Card text="Rating" number={ratingsResults?.rate } sub="stars" />
+            <Card text="Completion %" number={completedResults?.Completion } sub="completion" noMargin />
           </Flex>
           <Notifications />
         </Flex>

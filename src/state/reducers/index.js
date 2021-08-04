@@ -7,6 +7,7 @@ import { searchReducer } from "./searchReducer";
 import { workdoneReducer } from "./workdoneReducer";
 import { ratingsReducer } from "./ratingsReducer";
 import { completedReducer } from "./completedReducer";
+import { walletReducer } from "./walletReducer";
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   login: loginReducer,
   workdone: workdoneReducer,
   ratings: ratingsReducer,
-  completed: completedReducer
+  completed: completedReducer,
+  wallet: walletReducer
 });
 
 export default rootReducer;

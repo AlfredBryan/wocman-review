@@ -1,7 +1,26 @@
 import { Flex, Image, Text } from "@chakra-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
+import { wallet } from "../../../state/actions";
 import purse from "../../../assets/images/purse.svg";
 
 export const Wallet = () => {
+  const dispatch = useDispatch();
+
+	const { result, error, isLoading, message } = useSelector(
+		({ wallet: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
+	console.log(result, ',.,.,,><><><><><');
+
+	useEffect(() => {
+		dispatch(wallet());
+		},[]);
   return (
     <Flex
       w="100%"
