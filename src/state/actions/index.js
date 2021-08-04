@@ -15,3 +15,9 @@ export * from "./loginAction";
 
 // workdone
 export * from "./workdoneAction";
+
+// ratings
+export * from "./ratingsAction";
+
+// dashboard-completed
+export * from "./completedAction";

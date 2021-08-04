@@ -26,7 +26,7 @@ export const workdoneFail = (payload) => {
   };
 };
 
-export const clearworkdoneToast = () => {
+export const clearWorkdoneToast = () => {
   return {
     type: CLEAR_WORKDONE_TOAST,
   };

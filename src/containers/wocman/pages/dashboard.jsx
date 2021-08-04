@@ -4,7 +4,7 @@ import { Notifications } from "../components/notifications";
 import { CalendarSection } from "../components/schedule";
 import { Wallet } from "../components/wallet";
 import { useDispatch, useSelector } from "react-redux";
-import { workdone } from "../../../state/actions";
+import { workdone, ratings, completed } from "../../../state/actions";
 import { useEffect } from "react";
 
 const Dashboard = () => {
@@ -18,12 +18,36 @@ const Dashboard = () => {
 			message,
 		})
 	);
+  const { result: ratingsResults, 
+    error: ratingsError, 
+    isLoading: ratingsIsLoading, 
+    message: ratingsMessage } = useSelector(
+		({ ratings: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
+  const { result: completedResults, 
+    error: completedError, 
+    isLoading: completedIsLoading, 
+    message: completedMessage } = useSelector(
+		({ completed: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
 
   useEffect(() => {
     dispatch(workdone());
+    dispatch(ratings());
+    dispatch(completed());
 	},[]);
   
-  console.log(result?.workDone, '<><>,.,.,.,.<><><><><');
+  console.log(ratingsResults, '<><>,.,.,.,.<><><><><');
 
   const activities = [
     {
@@ -67,9 +91,9 @@ const Dashboard = () => {
             my={10}
             flexDir={{ base: "column", md: "row" }}
           >
-            <Card text="Work Done" number={result?.workDone} sub="Jobs done" />
-            <Card text="Rating" number="5" sub="stars" />
-            <Card text="Completion %" number="70%" sub="completion" noMargin />
+            <Card text="Work Done" number={result?.workDone || 0} sub="Jobs done" />
+            <Card text="Rating" number={ratingsResults?.rate || 0} sub="stars" />
+            <Card text="Completion %" number={completedResults?.Completion || 0} sub="completion" noMargin />
           </Flex>
           <Notifications />
         </Flex>
