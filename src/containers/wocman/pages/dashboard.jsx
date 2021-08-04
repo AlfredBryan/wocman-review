@@ -3,8 +3,28 @@ import { Card } from "../components/card";
 import { Notifications } from "../components/notifications";
 import { CalendarSection } from "../components/schedule";
 import { Wallet } from "../components/wallet";
+import { useDispatch, useSelector } from "react-redux";
+import { workdone } from "../../../state/actions";
+import { useEffect } from "react";
 
 const Dashboard = () => {
+	const dispatch = useDispatch();
+
+  const { result, error, isLoading, message } = useSelector(
+		({ workdone: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
+
+  useEffect(() => {
+    dispatch(workdone());
+	},[]);
+  
+  console.log(result?.workDone, '<><>,.,.,.,.<><><><><');
+
   const activities = [
     {
       from: "08:00",
@@ -47,7 +67,7 @@ const Dashboard = () => {
             my={10}
             flexDir={{ base: "column", md: "row" }}
           >
-            <Card text="Work Done" number="18" sub="Jobs done" />
+            <Card text="Work Done" number={result?.workDone} sub="Jobs done" />
             <Card text="Rating" number="5" sub="stars" />
             <Card text="Completion %" number="70%" sub="completion" noMargin />
           </Flex>

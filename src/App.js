@@ -153,7 +153,7 @@ function App() {
 							{routes.map(({ path, Component }) => (
 								<Route
 									key={path}
-									exact={path !== "/customer"}
+									exact={path !== "/wocman"}
 									path={path}
 								>
 									{({ match }) => (

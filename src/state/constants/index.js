@@ -29,3 +29,9 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const CLEAR_LOGIN_TOAST = "CLEAR_LOGIN_TOAST ";
 export const LOGOUT = "LOGOUT";
+
+// wocman dashboard workdone
+export const WORKDONE_PENDING = "WORKDONE_PENDING";
+export const WORKDONE_SUCCESS = "WORKDONE_SUCCESS";
+export const WORKDONE_FAIL = "WORKDONE_FAIL";
+export const CLEAR_WORKDONE_TOAST = "CLEAR_WORKDONE_TOAST";
