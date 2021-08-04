@@ -24,3 +24,15 @@ export * from "./completedAction";
 
 // dashboard-wallet-details
 export * from "./walletAction";
+
+// dashboard-notice
+export * from "./noticeAction";
+
+// dashboard-schedule
+export * from "./scheduleAction";
+
+// dashboard-project-type
+export * from "./projectTypeAction";
+
+// dashboard-project-customer
+export * from "./projectCustomerAction";

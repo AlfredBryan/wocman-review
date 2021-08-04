@@ -8,6 +8,10 @@ import { workdoneReducer } from "./workdoneReducer";
 import { ratingsReducer } from "./ratingsReducer";
 import { completedReducer } from "./completedReducer";
 import { walletReducer } from "./walletReducer";
+import { noticeReducer } from "./noticeReducer";
+import { scheduleReducer } from "./scheduleReducer";
+import { projectTypeReducer } from "./projectTypeReducer";
+import { projectCustomerReducer } from "./projectCustomerReducer";
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -18,7 +22,11 @@ const rootReducer = combineReducers({
   workdone: workdoneReducer,
   ratings: ratingsReducer,
   completed: completedReducer,
-  wallet: walletReducer
+  wallet: walletReducer,
+  notice: noticeReducer,
+  schedule: scheduleReducer,
+  projectType: projectTypeReducer,
+  projectCustomer: projectCustomerReducer,
 });
 
 export default rootReducer;
