@@ -1,8 +1,8 @@
 import {
-  CLEAR_CONTACT_TOAST,
-  CONTACT_FAIL,
-  CONTACT_PENDING,
-  CONTACT_SUCCESS,
+  STOP_PROJECT_PENDING,
+  STOP_PROJECT_SUCCESS,
+  STOP_PROJECT_FAIL,
+  CLEAR_STOP_PROJECT_TOAST,
 } from "../constants";
 
 const initialState = {
@@ -12,10 +12,10 @@ const initialState = {
   message: null,
 };
 
-export const contactReducer = (state = initialState, action) => {
+export const stopProjectReducer = (state = initialState, action) => {
   const { payload, type } = action;
   switch (type) {
-    case CONTACT_PENDING:
+    case STOP_PROJECT_PENDING:
       return {
         ...state,
         isLoading: true,
@@ -23,7 +23,7 @@ export const contactReducer = (state = initialState, action) => {
         error: false,
         message: null,
       };
-    case CONTACT_SUCCESS:
+    case STOP_PROJECT_SUCCESS:
       return {
         ...state,
         result: payload,
@@ -31,7 +31,7 @@ export const contactReducer = (state = initialState, action) => {
         error: false,
         message: null,
       };
-    case CONTACT_FAIL:
+    case STOP_PROJECT_FAIL:
       return {
         ...state,
         result: null,
@@ -40,7 +40,7 @@ export const contactReducer = (state = initialState, action) => {
         message: payload && payload.message,
       };
 
-    case CLEAR_CONTACT_TOAST:
+    case CLEAR_STOP_PROJECT_TOAST:
       return {
         ...initialState,
       };
