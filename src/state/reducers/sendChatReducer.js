@@ -1,8 +1,8 @@
 import {
-  CLEAR_CONTACT_TOAST,
-  CONTACT_FAIL,
-  CONTACT_PENDING,
-  CONTACT_SUCCESS,
+  CLEAR_SEND_CHAT_TOAST,
+  SEND_CHAT_PENDING,
+  SEND_CHAT_SUCCESS,
+  SEND_CHAT_FAIL,
 } from "../constants";
 
 const initialState = {
@@ -12,10 +12,10 @@ const initialState = {
   message: null,
 };
 
-export const contactReducer = (state = initialState, action) => {
+export const sendChatReducer = (state = initialState, action) => {
   const { payload, type } = action;
   switch (type) {
-    case CONTACT_PENDING:
+    case SEND_CHAT_PENDING:
       return {
         ...state,
         isLoading: true,
@@ -23,7 +23,7 @@ export const contactReducer = (state = initialState, action) => {
         error: false,
         message: null,
       };
-    case CONTACT_SUCCESS:
+    case SEND_CHAT_SUCCESS:
       return {
         ...state,
         result: payload,
@@ -31,7 +31,7 @@ export const contactReducer = (state = initialState, action) => {
         error: false,
         message: null,
       };
-    case CONTACT_FAIL:
+    case SEND_CHAT_FAIL:
       return {
         ...state,
         result: null,
@@ -40,7 +40,7 @@ export const contactReducer = (state = initialState, action) => {
         message: payload && payload.message,
       };
 
-    case CLEAR_CONTACT_TOAST:
+    case CLEAR_SEND_CHAT_TOAST:
       return {
         ...initialState,
       };
