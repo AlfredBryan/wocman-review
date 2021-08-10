@@ -20,6 +20,7 @@ import { rejectProjectReducer } from "./rejectProjectReducer";
 import { startProjectReducer } from "./startProjectReducer";
 import { stopProjectReducer } from "./stopProjectReducer";
 import { completeProjectReducer } from "./completeProjectReducer";
+import { historyReducer } from "./historyReducer";
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   startProject: startProjectReducer,
   stopProject: stopProjectReducer,
   completeProject: completeProjectReducer,
+  history: historyReducer
 });
 
 export default rootReducer;

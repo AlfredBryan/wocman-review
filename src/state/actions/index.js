@@ -60,3 +60,6 @@ export * from "./stopProjectAction";
 
 // wocman wocstation complete-project
 export * from "./completeProjectAction";
+
+// wocman wocstation history
+export * from "./historyAction";
