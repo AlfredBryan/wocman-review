@@ -1,11 +1,12 @@
-import { Box, Flex, Text } from "@chakra-ui/core";
+import { Box, Flex, Image, Text } from "@chakra-ui/core";
 import { Card } from "../components/card";
 import { Notifications } from "../components/notifications";
 import { CalendarSection } from "../components/schedule";
 import { Wallet } from "../components/wallet";
 import { useDispatch, useSelector } from "react-redux";
-import { workdone, ratings, completed } from "../../../state/actions";
+import { workdone, ratings, completed, schedule } from "../../../state/actions";
 import { useEffect } from "react";
+import noShedule from "../../../assets/images/noSchedule.svg";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
@@ -41,11 +42,23 @@ const Dashboard = () => {
 		})
 	);
 
+  const { result: scheduleResults, 
+    error: scheduleError, 
+    isLoading: scheduleIsLoading, 
+    message: scheduleMessage } = useSelector(
+		({ schedule: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
 
   useEffect(() => {
     dispatch(workdone());
     dispatch(ratings());
     dispatch(completed());
+    dispatch(schedule());
 	},[]);
 
   const activities = [
@@ -90,9 +103,21 @@ const Dashboard = () => {
             my={10}
             flexDir={{ base: "column", md: "row" }}
           >
-            <Card text="Work Done" number={result?.workDone } sub="Jobs done" />
+            {result?.workDone <= 0 ? (
+              <Card text="Work Done" />
+              ):(
+              <Card text="Work Done" number={result?.workDone } sub="Jobs done" />
+            )}
+            {ratingsResults?.rate <= 0 ? (
+              <Card text="Rating" />
+              ):(
             <Card text="Rating" number={ratingsResults?.rate } sub="stars" />
+            )}
+            {completedResults?.Completion <= 0 || completedResults?.Completion == undefined ? (
+              <Card text="Completion %" />
+              ):(
             <Card text="Completion %" number={completedResults?.Completion } sub="completion" noMargin />
+            )}
           </Flex>
           <Notifications />
         </Flex>
@@ -139,11 +164,21 @@ const Dashboard = () => {
                 25 Dec
               </Text>
             </Flex>
-            <Flex w="100%" mt={8} flexDir="column">
+            {scheduleResults?.schedule.length > 0 ? (
+              <Flex w="100%" mt={8} flexDir="column">
               {activities.map((item, index) => (
                 <CalendarSection key={index} item={item} index={index} />
               ))}
             </Flex>
+            ):(
+              <Flex w="100%" mt={8} flexDir="column">
+               <Image  src={noShedule} alt="noShedule" />
+               <Text fontSize="16px"pt="10">
+               You do not have an appointment today,<br/>
+               Check back later, or <span style={{color: '#CFA39B'}}>Turn on Notification.</span>
+               </Text>
+            </Flex>
+            )}
           </Flex>
         </Flex>
       </Flex>

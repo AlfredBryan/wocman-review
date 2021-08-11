@@ -16,7 +16,6 @@ export const Wallet = () => {
 			message,
 		})
 	);
-	console.log(result, ',.,.,,><><><><><');
 
 	useEffect(() => {
 		dispatch(wallet());
