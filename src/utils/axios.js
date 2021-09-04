@@ -3,6 +3,7 @@ import { BASE_URL } from "./constants";
 
 export const axios = axiosOriginal.create({
   baseURL: BASE_URL,
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
 });
 
 export const setAuthToken = (token) => {

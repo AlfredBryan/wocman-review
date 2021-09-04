@@ -1,9 +1,28 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
 import purse from "../../../assets/images/purse.svg";
 import { TransactionList } from "../components/transaction";
+import { getCurrentUser } from "../../../utils";
 // import { WalletChart } from "../components/wallet-chart";
+import { wallet } from "../../../state/actions";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Wallet = () => {
+  const dispatch = useDispatch();
+  const user = localStorage.getItem('wocman_user')
+  const curUser = getCurrentUser();
+  const { result, error, isLoading, message } = useSelector(
+		({ wallet: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
+
+	useEffect(() => {
+		dispatch(wallet());
+		},[]);
 	return (
 		<Box
 			justify="center"
@@ -42,7 +61,7 @@ const Wallet = () => {
 						lineHeight="34px"
 						fontSize="2.5rem"
 					>
-						N70,000.00
+						N{result?.wallet[0]?.amount}.00
 					</Text>
 					<Text
 						as="small"
@@ -86,7 +105,7 @@ const Wallet = () => {
 									fontFamily="Poppins"
 									color="wocman.newsLetter"
 								>
-									0098987098
+									{result?.wallet[0]?.walletid}
 								</Text>
 							</Flex>
 							<Flex>
@@ -104,7 +123,7 @@ const Wallet = () => {
 									fontFamily="Poppins"
 									color="wocman.newsLetter"
 								>
-									Providus/Stephen Jude
+									{result?.wallet[0]?.bankName}/{curUser?.firstname} {curUser?.lastname}
 								</Text>
 							</Flex>
 						</Box>

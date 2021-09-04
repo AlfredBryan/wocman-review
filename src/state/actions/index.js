@@ -63,3 +63,9 @@ export * from "./completeProjectAction";
 
 // wocman wocstation history
 export * from "./historyAction";
+
+// wocman wocstation message-contacts
+export * from "./messageContactsAction";
+
+// wocman wocstation customer-chat
+export * from "./customerChatsAction";

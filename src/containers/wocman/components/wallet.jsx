@@ -7,7 +7,8 @@ import purse from "../../../assets/images/purse.svg";
 
 export const Wallet = () => {
   const dispatch = useDispatch();
-
+  const user = localStorage.getItem('wocman_user')
+  const curUser = JSON.parse(user);
 	const { result, error, isLoading, message } = useSelector(
 		({ wallet: { result, error, isLoading, message } = {} }) => ({
 			result,
@@ -43,7 +44,7 @@ export const Wallet = () => {
           lineHeight="34px"
           fontSize="2.5rem"
         >
-          N70,000.00
+          N{result?.wallet[0]?.amount}
         </Text>
         <Text as="small" fontFamily="Poppins" fontWeight="300" my={2}>
           Total Balance
@@ -63,7 +64,7 @@ export const Wallet = () => {
             fontFamily="Poppins"
             color="wocman.newsLetter"
           >
-            0098987098
+            {result?.wallet[0]?.walletid}
           </Text>
         </Flex>
         <Flex>
@@ -81,7 +82,7 @@ export const Wallet = () => {
             fontFamily="Poppins"
             color="wocman.newsLetter"
           >
-            Providus/Stephen Jude
+            {result?.wallet[0]?.bankName} {curUser?.firstname}
           </Text>
         </Flex>
       </Flex>

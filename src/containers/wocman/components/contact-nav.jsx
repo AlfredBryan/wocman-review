@@ -1,8 +1,10 @@
-import { Box, Divider, Link, List, ListItem, Text } from "@chakra-ui/core";
+import { Box, Divider, Flex, Link, List, ListItem, Text } from "@chakra-ui/core";
 import { useLocation } from "react-router";
 import { NavLink as ReactLink } from "react-router-dom";
 import { memo, useEffect, useState } from "react";
 import { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { contacts } from "../../../state/actions";
 
 const PREPEND_LINK = "/wocman/messaging";
 
@@ -12,6 +14,20 @@ const MOCK_AVATAR =
 const RegularContactNav = (props) => {
   const [minHeight, setMinHeight] = useState(window.innerHeight);
   const location = useLocation();
+
+  const dispatch = useDispatch();
+  
+  const { result, error, isLoading, message } = useSelector(
+		({ contacts: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
+	useEffect(() => {
+		dispatch(contacts());
+		},[]);
 
   useEffect(() => {
     function handleResize() {
@@ -28,26 +44,15 @@ const RegularContactNav = (props) => {
 
   // const location = useLocation();
 
-  const dashboardLinks = [
-    {
-      name: "Tayo Olajide",
-      to: "/contact/1",
-      image: MOCK_AVATAR,
-      latestMessage: "When will you come in",
-    },
-    {
-      name: "Musa Hassan",
-      to: "/contact/2",
-      image: MOCK_AVATAR,
-      latestMessage: "When will you come in",
-    },
-    {
-      name: "Joshua Maina",
-      to: "/contact/3",
-      image: MOCK_AVATAR,
-      latestMessage: "When will you come in",
-    },
-  ];
+  const dashboardLinks = result?.customers?.map((customer)=>{
+    return{
+      name: customer.customerName,
+      to: `/contact/${customer.customerId}`,
+      image: customer.image || MOCK_AVATAR,
+      latestMessage: customer.project,
+    }
+  })
+  
 
   return (
     <Box
@@ -84,62 +89,70 @@ const RegularContactNav = (props) => {
         align="center"
         pt={8}
       >
-        {dashboardLinks.map((item, index) => {
-          return (
-            <Fragment key={index}>
-              <ListItem
-                color={
-                  location.pathname !== PREPEND_LINK + item.to
-                    ? "#778899"
-                    : "#000000"
-                }
-                backgroundColor={
-                  location.pathname !== PREPEND_LINK + item.to
-                    ? "transparent"
-                    : "#FFFFFF"
-                }
-                px={{ base: 4, md: 8 }}
-                py={{ base: 2, md: 4 }}
-                w="100%"
-                d="flex"
-                alignItems="center"
-                _hover={{
-                  opacity:
-                    location.pathname === PREPEND_LINK + item.to ? "" : "0.7",
-                }}
-                opacity={
-                  location.pathname === PREPEND_LINK + item.to ? "" : "0.7"
-                }
-              >
-                <Avatar image={item.image} />
-                <Link
-                  as={ReactLink}
-                  to={PREPEND_LINK + item.to}
-                  lineHeight="27px"
-                  onClick={props.close}
-                  ml={{ base: 2, md: 4 }}
-                  _focus={{ outline: "none" }}
-                  _hover={{ textDecor: "none " }}
-                  // className={`link ${
-                  //   props.location.pathname === item.to ? "active" : ""
-                  // }`}
+        { result?.customers?.length == 0 ? (
+          <Flex justify="center">
+
+            <Text p="2">You have no Contact</Text>
+          </Flex>
+        ):(
+          dashboardLinks?.map((item, index) => {
+            return (
+              <Fragment key={index}>
+                <ListItem
+                  color={
+                    location.pathname !== PREPEND_LINK + item.to
+                      ? "#778899"
+                      : "#000000"
+                  }
+                  backgroundColor={
+                    location.pathname !== PREPEND_LINK + item.to
+                      ? "transparent"
+                      : "#FFFFFF"
+                  }
+                  px={{ base: 4, md: 8 }}
+                  py={{ base: 2, md: 4 }}
+                  w="100%"
+                  d="flex"
+                  alignItems="center"
+                  _hover={{
+                    opacity:
+                      location.pathname === PREPEND_LINK + item.to ? "" : "0.7",
+                  }}
+                  opacity={
+                    location.pathname === PREPEND_LINK + item.to ? "" : "0.7"
+                  }
                 >
-                  <Text
-                    fontFamily="Poppins"
-                    fontSize={{ base: "0.7rem", md: "1rem" }}
-                    fontWeight="bold"
+                  <Avatar image={item.image} />
+                  <Link
+                    as={ReactLink}
+                    to={PREPEND_LINK + item.to}
+                    lineHeight="27px"
+                    onClick={props.close}
+                    ml={{ base: 2, md: 4 }}
+                    _focus={{ outline: "none" }}
+                    _hover={{ textDecor: "none " }}
+                    // className={`link ${
+                    //   props.location.pathname === item.to ? "active" : ""
+                    // }`}
                   >
-                    {item.name}
-                  </Text>
-                  <Text fontFamily="Poppins" as="small">
-                    {item.latestMessage}
-                  </Text>
-                </Link>
-              </ListItem>
-              <Divider borderColor="#778899" w="100%" d="block" my={0} />
-            </Fragment>
-          );
-        })}
+                    <Text
+                      fontFamily="Poppins"
+                      fontSize={{ base: "0.7rem", md: "1rem" }}
+                      fontWeight="bold"
+                    >
+                      {item.name}
+                    </Text>
+                    <Text fontFamily="Poppins" as="small">
+                      {item.latestMessage}
+                    </Text>
+                  </Link>
+                </ListItem>
+                <Divider borderColor="#778899" w="100%" d="block" my={0} />
+              </Fragment>
+            );
+          })
+        ) 
+        }
       </List>
     </Box>
   );

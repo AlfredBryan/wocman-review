@@ -17,6 +17,8 @@ export const TransactionList = () => {
 			message,
 		})
 	);
+  const name = result?.name
+
   useEffect(() => {
     dispatch(history());
 	},[]);
@@ -35,7 +37,7 @@ export const TransactionList = () => {
           ) 
           : 
           (result?.history?.map((traxn, idx)=>(
-          <List src={traxn?.transactiontype == 'receive' ? credit : debit} user="Tayo Olajide" action={traxn?.transactiontype} amount={traxn?.amount} key={idx} />
+          <List src={traxn?.transactiontype == 'receive' ? credit : debit} user={name} action={traxn?.transactiontype} amount={traxn?.amount} key={idx} />
           ))
         // <List src={credit} user="Ogun Osun" action="Received" amount="20000" />
         // <List src={debit} user="Weekly Payment" action="Sent" amount="70000" />

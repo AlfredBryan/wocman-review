@@ -18,12 +18,30 @@ import {
 } from "react-icons/ai";
 import { forwardRef, useEffect, useRef } from "react";
 import { useLocation, useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { customerChat } from "../../../state/actions";
 
 export const Messaging = (props) => {
   const ref = useRef(null);
   const boxRef = useRef(null);
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const { result, error, isLoading, message } = useSelector(
+		({ customerChat: { result, error, isLoading, message } = {} }) => ({
+			result,
+			error,
+			isLoading,
+			message,
+		})
+	);
+	useEffect(() => {
+    const chatData = {customerid: 474, chatLimit: 50, perPage: 10, page: 1, projectid: 34}
+		dispatch(customerChat(chatData));
+		},[]);
+
+    console.log(result, '[[[[[[[[[[');
 
   useEffect(() => {
     ref.current && boxRef.current.scrollTo(0, ref.current.offsetTop);
@@ -78,49 +96,23 @@ export const Messaging = (props) => {
           receiver="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
           senderName="Tayo Olajide"
         />
-        <ChatSection
-          ownerImage="https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
-          ownerName="Tayo Olajide"
-          timeSent="9 May 2016, 1:35 p.m."
-          message="Having used discount toner cartridges for twenty years, there have been a lot of changes in the toner cartridge market. The market today is approximately a twenty billion dollar business. The savings today are significant."
-          index={0}
-        />
-        <ChatSection
-          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
-          ownerName="Me"
-          timeSent="9 May 2016, 1:35 p.m."
-          message="V7 Digital Photo Printing."
-          index={11}
-        />
-        <ChatSection
-          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
-          ownerName="Me"
-          timeSent="9 May 2016, 1:35 p.m."
-          message="V7 Digital Photo Printing."
-          index={11}
-        />
-        <ChatSection
-          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
-          ownerName="Me"
-          timeSent="9 May 2016, 1:35 p.m."
-          message="V7 Digital Photo Printing."
-          index={11}
-        />
-        <ChatSection
-          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
-          ownerName="Me"
-          timeSent="9 May 2016, 1:35 p.m."
-          message="V7 Digital Photo Printing."
-          index={11}
-        />
-        <ChatSection
-          ownerImage="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
-          ownerName="Me"
-          timeSent="9 May 2016, 1:35 p.m."
-          message="V7 Digital Photo Printing."
-          index={1}
-          ref={ref}
-        />
+        {result?.chat?.length == 0 ? (
+          <Text>Empty</Text>
+        ) : (
+          result?.chat?.map((chat)=>(
+
+            <ChatSection
+            key={chat?.id}
+              ownerImage="https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
+              ownerName="Tayo Olajide"
+              timeSent={chat?.chattime}
+              message={chat?.message}
+              index={0}
+              seen={chat?.seen}
+            />
+          ))
+        )}
+        
       </Box>
       <MessageInput />
     </Flex>
@@ -241,9 +233,11 @@ const ChatSection = forwardRef((props, ref) => {
           {props.index !== 1 && <Divider mt={[8, 12]} borderColor="#778899" />}
         </Flex>
       </Flex>
+      {props.seen == 1 && (
       <Flex>
-        <Image src={read} size="12px" />
+        <Image src={props.seen && read} size="12px" />
       </Flex>
+      )}
     </Flex>
   );
 });

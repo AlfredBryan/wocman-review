@@ -21,6 +21,8 @@ import { startProjectReducer } from "./startProjectReducer";
 import { stopProjectReducer } from "./stopProjectReducer";
 import { completeProjectReducer } from "./completeProjectReducer";
 import { historyReducer } from "./historyReducer";
+import { contactsReducer } from "./messageContactsReducer";
+import { customerChatReducer } from "./customerChatReducer";
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -44,7 +46,9 @@ const rootReducer = combineReducers({
   startProject: startProjectReducer,
   stopProject: stopProjectReducer,
   completeProject: completeProjectReducer,
-  history: historyReducer
+  history: historyReducer,
+  contacts: contactsReducer,
+  customerChat: customerChatReducer
 });
 
 export default rootReducer;

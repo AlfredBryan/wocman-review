@@ -4,7 +4,7 @@ import { Notifications } from "../components/notifications";
 import { CalendarSection } from "../components/schedule";
 import { Wallet } from "../components/wallet";
 import { useDispatch, useSelector } from "react-redux";
-import { workdone, ratings, completed, schedule } from "../../../state/actions";
+import { workdone, ratings, completed, schedule, wallet } from "../../../state/actions";
 import { useEffect } from "react";
 import noShedule from "../../../assets/images/noSchedule.svg";
 
@@ -59,6 +59,7 @@ const Dashboard = () => {
     dispatch(ratings());
     dispatch(completed());
     dispatch(schedule());
+    dispatch(wallet());
 	},[]);
 
   const activities = [
