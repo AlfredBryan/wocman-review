@@ -47,7 +47,7 @@ const RegularContactNav = (props) => {
   const dashboardLinks = result?.customers?.map((customer)=>{
     return{
       name: customer.customerName,
-      to: `/contact/${customer.customerId}`,
+      to: `/contact/${customer.customerId}/${customer.projectId}`,
       image: customer.image || MOCK_AVATAR,
       latestMessage: customer.project,
     }

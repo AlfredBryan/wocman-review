@@ -32,12 +32,12 @@ export const clearSendChatToast = () => {
   };
 };
 
-export const sendChat = (body) => async (dispatch) => {
+export const sendChat = ({customerid, message}) => async (dispatch) => {
   dispatch(sendChatPending());
   try {
     const {
       data: { data, status },
-    } = await axios.post(`/wocman-project-customer-chat-save`, body);
+    } = await axios.post(`/wocman-project-customer-chat-save`, new URLSearchParams({customerid, message}));
 
     if (status === true) {
       dispatch(sendChatSuccess(data));

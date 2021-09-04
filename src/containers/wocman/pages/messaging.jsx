@@ -18,7 +18,7 @@ const MessagePage = (props) => {
       Component: DefaultMessage,
     },
     {
-      path: "/contact/:id",
+      path: "/contact/:id/:projectid",
       name: "Contact",
       Component: Messaging,
     },

@@ -19,9 +19,14 @@ import {
 import { forwardRef, useEffect, useRef } from "react";
 import { useLocation, useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { customerChat } from "../../../state/actions";
+import { customerChat, sendChat } from "../../../state/actions";
+import { useParams } from 'react-router-dom';
+import moment from 'moment';
+import { useState } from "react";
 
 export const Messaging = (props) => {
+  const { id, projectid } = useParams();
+
   const ref = useRef(null);
   const boxRef = useRef(null);
   const location = useLocation();
@@ -37,11 +42,12 @@ export const Messaging = (props) => {
 		})
 	);
 	useEffect(() => {
-    const chatData = {customerid: 474, chatLimit: 50, perPage: 10, page: 1, projectid: 34}
+    const chatData = {customerid: id, chatLimit: 50, perPage: 10, page: 1, projectid}
 		dispatch(customerChat(chatData));
 		},[]);
 
-    console.log(result, '[[[[[[[[[[');
+    const sender = result?.chat
+    console.log(sender && sender[0]?.senderid, '[[[[[[[[[[');
 
   useEffect(() => {
     ref.current && boxRef.current.scrollTo(0, ref.current.offsetTop);
@@ -97,7 +103,9 @@ export const Messaging = (props) => {
           senderName="Tayo Olajide"
         />
         {result?.chat?.length == 0 ? (
-          <Text>Empty</Text>
+          <Flex justify="center" mt="10rem">
+            <Text>You Have no New Message</Text>
+          </Flex>
         ) : (
           result?.chat?.map((chat)=>(
 
@@ -105,7 +113,7 @@ export const Messaging = (props) => {
             key={chat?.id}
               ownerImage="https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
               ownerName="Tayo Olajide"
-              timeSent={chat?.chattime}
+              timeSent={moment(chat?.chattime).format('LLL')}
               message={chat?.message}
               index={0}
               seen={chat?.seen}
@@ -114,7 +122,9 @@ export const Messaging = (props) => {
         )}
         
       </Box>
-      <MessageInput />
+      {result?.chat?.length && (
+        <MessageInput sender={sender && sender[0]?.senderid} id={id} />
+      )}
     </Flex>
   );
 };
@@ -242,7 +252,22 @@ const ChatSection = forwardRef((props, ref) => {
   );
 });
 
-const MessageInput = (props) => (
+const MessageInput = (props) => {
+  const dispatch = useDispatch();
+  const [text, setText] = useState('')
+
+  const handleSendText = async (e) => {
+    try {
+      e.preventDefault();
+      dispatch(sendChat({customerid: props.sender, message: text}))
+      const chatData = {customerid: props.id, chatLimit: 50, perPage: 10, page: 1, projectid: props.projectid}
+		dispatch(customerChat(chatData));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return(
   <Flex
     minH="100px"
     h="100px"
@@ -269,13 +294,17 @@ const MessageInput = (props) => (
         color="wocman.typography1"
         _focus={{ outline: "none", border: "none" }}
         _placeholder={{ color: "wocman.typography1" }}
+        value={text}
+        onChange={(e)=>setText(e.target.value)}
       />
     </Flex>
-    <Flex align="center">
+    <Flex align="center" onClick={handleSendText} cursor="pointer">
       <Text fontFamily="Poppins" fontSize="0.7rem" mr={[2, 4]}>
         Send
       </Text>
       <Image src={sendArrow} size="12px" />
     </Flex>
   </Flex>
-);
+
+  )
+};
