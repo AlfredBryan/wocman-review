@@ -38,7 +38,14 @@ export const customerChat = ({customerid, chatLimit, perPage, page, projectid}) 
   try {
     const {
       data: { data, status },
-    } = await axios.post('/wocman/chat/log', new URLSearchParams({customerid, chatLimit, perPage, page, projectid}));
+    } = await axios.post('/wocman/chat/log', 
+		new URLSearchParams({customerid, chatLimit, perPage, page, projectid},
+			{
+				headers: { 'content-type': 'application/x-www-form-urlencoded' },
+
+			}
+
+		));
 
     if (status === true) {
       dispatch(customerChatSuccess(data));

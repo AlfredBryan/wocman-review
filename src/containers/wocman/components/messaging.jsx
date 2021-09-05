@@ -122,8 +122,8 @@ export const Messaging = (props) => {
         )}
         
       </Box>
-      {result?.chat?.length && (
-        <MessageInput sender={sender && sender[0]?.senderid} id={id} />
+      {result?.chat?.length !==0 && (
+        <MessageInput sender={sender && sender[0]?.senderid} id={id} projectid= {projectid}/>
       )}
     </Flex>
   );
@@ -259,9 +259,9 @@ const MessageInput = (props) => {
   const handleSendText = async (e) => {
     try {
       e.preventDefault();
-      dispatch(sendChat({customerid: props.sender, message: text}))
       const chatData = {customerid: props.id, chatLimit: 50, perPage: 10, page: 1, projectid: props.projectid}
-		dispatch(customerChat(chatData));
+      dispatch(sendChat({customerid: props.sender, message: text, projectid: parseInt(props.projectid), messageType: 'media'}, chatData))
+      setText('')
     } catch (error) {
       console.log(error);
     }

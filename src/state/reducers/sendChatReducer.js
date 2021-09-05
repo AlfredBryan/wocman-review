@@ -2,7 +2,7 @@ import {
   CLEAR_SEND_CHAT_TOAST,
   SEND_CHAT_PENDING,
   SEND_CHAT_SUCCESS,
-  SEND_CHAT_FAIL,
+  SEND_CHAT_FAIL
 } from "../constants";
 
 const initialState = {

@@ -7,7 +7,11 @@ import {
 
 const initialState = {
   isLoading: false,
-  result: null,
+  result: {
+    chat: [],
+    accessToken: null,
+    customer: []
+  },
   error: false,
   message: null,
 };
@@ -19,11 +23,11 @@ export const customerChatReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        result: null,
         error: false,
         message: null,
       };
     case CUSTOMER_CHAT_SUCCESS:
+      console.log(payload, '<><><><><<<<<<<<<<<');
       return {
         ...state,
         result: payload,

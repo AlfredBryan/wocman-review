@@ -5,7 +5,7 @@ import {
   SEND_CHAT_SUCCESS,
   SEND_CHAT_FAIL,
 } from "../constants";
-
+import {customerChat} from './customerChatsAction'
 export const sendChatPending = () => {
   return {
     type: SEND_CHAT_PENDING,
@@ -32,15 +32,20 @@ export const clearSendChatToast = () => {
   };
 };
 
-export const sendChat = ({customerid, message}) => async (dispatch) => {
+export const sendChat = ({customerid, message, projectid, messageType}, chatData) => async (dispatch) => {
   dispatch(sendChatPending());
   try {
     const {
       data: { data, status },
-    } = await axios.post(`/wocman-project-customer-chat-save`, new URLSearchParams({customerid, message}));
+    } = await axios.post(`/wocman/chat/send`, new URLSearchParams({customerid, message, projectid, messageType},{
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    }));
 
     if (status === true) {
       dispatch(sendChatSuccess(data));
+      dispatch(customerChat(chatData));
+
+
     } else {
       dispatch(sendChatFail(data));
     }
