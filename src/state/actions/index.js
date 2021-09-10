@@ -69,3 +69,6 @@ export * from "./messageContactsAction";
 
 // wocman wocstation customer-chat
 export * from "./customerChatsAction";
+
+// wocman wocstation wocman-project
+export * from "./wocmanProjectActions";

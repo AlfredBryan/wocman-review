@@ -1,3 +1,7 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
+
 import { Box, Flex, Icon, Image, PseudoBox, Text } from "@chakra-ui/core";
 import Slider from "react-slick";
 import briefcase from "../../../assets/icons/briefcase.svg";
@@ -6,8 +10,23 @@ import clock from "../../../assets/icons/clock.svg";
 import whitecheck from "../../../assets/icons/check-white.svg";
 import wocstation from "../../../assets/images/wocstation.svg";
 import { services } from "../../../utils/constants";
+import {wocmanProject} from "../../../state/actions";
+import {capitalize} from "../../../utils";
 
 export const WorkDescription = () => {
+  const dispatch = useDispatch();
+
+  const { result: wocmanProjectResult, error: wocmanProjectError, isLoading: wocmanProjectIsLoading, message: wocmanProjectMessage} = useSelector(
+    ({ wocmanProject: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+  useEffect(() => {
+    dispatch(wocmanProject(34));
+  }, []);
   const settings = {
     infinite: true,
     speed: 500,
@@ -55,7 +74,6 @@ export const WorkDescription = () => {
       <Flex w="100%" flexDir="column" background="white" p={{ base: 4, md: 8 }}>
         <Flex flexDir={{ base: "column", xl: "row" }}>
           <Flex flexDirection="column" flex={1} order={{ base: 1, xl: 0 }}>
-            {" "}
             <Text
               as="small"
               fontFamily="Poppins"
@@ -70,7 +88,7 @@ export const WorkDescription = () => {
               mt={{ base: 4, md: 6 }}
               fontWeight="600"
             >
-              I would Like to fix my sink
+             {wocmanProjectResult?.project?.description}
             </Text>
             <Text
               fontFamily="Poppins"
@@ -78,9 +96,9 @@ export const WorkDescription = () => {
               mt={{ base: 4, md: 6 }}
               fontWeight="200"
               lineHeight="24px"
+              isTruncated
             >
-              My Sink developed a hose problem which, i tried fixing myself but
-              ended up bringing my house down.
+              {wocmanProjectResult?.project?.description}
             </Text>
             <Flex my={{ base: 4, md: 6 }} align="center">
               <Image src={briefcase} alt="briefcase" size="1.2rem" />
@@ -90,7 +108,7 @@ export const WorkDescription = () => {
                 ml={[4]}
                 fontSize="0.8rem"
               >
-                No 16, Adesanya street. Lagos Nigeria
+                {wocmanProjectResult?.project?.address}. {wocmanProjectResult?.project?.city} { capitalize(wocmanProjectResult?.project?.country)}
               </Text>
             </Flex>
             <Flex w="100%" flexDir={{ base: "column", sm: "row" }}>
@@ -123,7 +141,7 @@ export const WorkDescription = () => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          7 June, 2018
+                          {moment(wocmanProjectResult?.project?.datetimeset).format('LL')} 
                         </Text>
                         <Text
                           as="small"
@@ -144,7 +162,7 @@ export const WorkDescription = () => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          10:45AM
+                          {moment(wocmanProjectResult?.project?.datetimeset).format('LT')}
                         </Text>
                         <Text
                           as="small"

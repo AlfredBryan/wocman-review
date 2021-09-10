@@ -14,7 +14,7 @@ import { useEffect } from "react";
 const WocStation = () => {
   const dispatch = useDispatch();
 
-  const { result, error, isLoading, message } = useSelector(
+  const { result } = useSelector(
     ({ logChat: { result, error, isLoading, message } = {} }) => ({
       result,
       error,
@@ -24,10 +24,7 @@ const WocStation = () => {
   );
 
   const {
-    result: projectResult,
-    error: projectError,
-    isLoading: projectLoading,
-    message: projectMessage,
+    result: projectResult
   } = useSelector(
     ({ fetchProjectCustomer: { result, error, isLoading, message } = {} }) => ({
       result,
@@ -42,8 +39,8 @@ const WocStation = () => {
   };
 
   useEffect(() => {
-    dispatch(logChat());
-    dispatch(fetchProjectCustomer());
+    dispatch(logChat(1, 474));
+    dispatch(fetchProjectCustomer(34));
   }, []);
 
   return (

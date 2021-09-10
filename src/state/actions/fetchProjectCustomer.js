@@ -25,12 +25,12 @@ export const fetchProjectCustomerFail = (payload) => {
   };
 };
 
-export const fetchProjectCustomer = () => async (dispatch) => {
+export const fetchProjectCustomer = (id) => async (dispatch) => {
   dispatch(fetchProjectCustomerPending());
   try {
     const {
       data: { data, status },
-    } = await axios.post(`/wocman-project-customer`);
+    } = await axios.post(`/wocman-project-customer`, {projectid: id});
 
     if (status === true) {
       dispatch(fetchProjectCustomerSuccess(data));

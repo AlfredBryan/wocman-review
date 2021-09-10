@@ -33,7 +33,7 @@ export const Messaging = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { result, error, isLoading, message } = useSelector(
+  const { result} = useSelector(
 		({ customerChat: { result, error, isLoading, message } = {} }) => ({
 			result,
 			error,
@@ -47,7 +47,6 @@ export const Messaging = (props) => {
 		},[]);
 
     const sender = result?.chat
-    console.log(sender && sender[0]?.senderid, '[[[[[[[[[[');
 
   useEffect(() => {
     ref.current && boxRef.current.scrollTo(0, ref.current.offsetTop);

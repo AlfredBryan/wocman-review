@@ -23,6 +23,7 @@ import { completeProjectReducer } from "./completeProjectReducer";
 import { historyReducer } from "./historyReducer";
 import { contactsReducer } from "./messageContactsReducer";
 import { customerChatReducer } from "./customerChatReducer";
+import { wocmanProjectReducer } from "./wocmanProjectReducer";
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -48,7 +49,8 @@ const rootReducer = combineReducers({
   completeProject: completeProjectReducer,
   history: historyReducer,
   contacts: contactsReducer,
-  customerChat: customerChatReducer
+  customerChat: customerChatReducer,
+  wocmanProject: wocmanProjectReducer
 });
 
 export default rootReducer;

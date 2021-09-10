@@ -2,8 +2,10 @@ import { Box, Flex, Text } from "@chakra-ui/core";
 import AuthBgImage from "../../../assets/images/auth.jpg";
 // import mission from "../../../assets/images/mission.jpg";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import {capitalize} from "../../../utils";
 
-export const MiniProfile = () => {
+export const MiniProfile = ({projectResult}) => {
+
   return (
     <Box
       backgroundColor="#FCFDFD"
@@ -50,7 +52,7 @@ export const MiniProfile = () => {
       </Box>
       <Box textAlign="center" mt={12} py={8}>
         <Text fontFamily="Poppins" fontSize="1.5rem" fontWeight="500" mb={2}>
-          Tayo Olajide
+          { capitalize(projectResult?.custmer_firstname) } { capitalize(projectResult?.custmer_lastname) }
         </Text>
         <Text as="small" fontFamily="Poppins" mb={2}>
           Client
@@ -69,7 +71,7 @@ export const MiniProfile = () => {
             fontWeight="300"
             fontSize="1rem"
           >
-            090 889 234 9878
+            {projectResult?.custmer_phone}
           </Text>
         </Flex>
         <Flex justify="center" align="center" mt={2} px={2}>
@@ -85,7 +87,7 @@ export const MiniProfile = () => {
             fontWeight="300"
             fontSize="1rem"
           >
-            tayoolajide1@gmail.com
+            {projectResult?.custmer_email}
           </Text>
         </Flex>
       </Box>

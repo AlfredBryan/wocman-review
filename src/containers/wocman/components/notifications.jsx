@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export const Notifications = () => {
   const dispatch = useDispatch();
 
-  const { result, error, isLoading, message } = useSelector(
+  const { result } = useSelector(
 		({ notice: { result, error, isLoading, message } = {} }) => ({
 			result,
 			error,
