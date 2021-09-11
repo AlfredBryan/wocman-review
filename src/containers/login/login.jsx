@@ -99,7 +99,7 @@ const Login = () => {
 					toast,
 					5000
 				);
-				setTimeout(() => history.push(`/customer`), 2000);
+				setTimeout(() => history.push(`/wocman`), 2000);
 				dispatch(clearLoginToast());
 			}
 		}
