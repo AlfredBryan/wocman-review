@@ -7,11 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { workdone, ratings, completed, schedule, wallet } from "../../../state/actions";
 import { useEffect } from "react";
 import noShedule from "../../../assets/images/noSchedule.svg";
+import moment from "moment";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
 
-  const { result, error, isLoading, message } = useSelector(
+  const { result } = useSelector(
 		({ workdone: { result, error, isLoading, message } = {} }) => ({
 			result,
 			error,
@@ -19,10 +20,7 @@ const Dashboard = () => {
 			message,
 		})
 	);
-  const { result: ratingsResults, 
-    error: ratingsError, 
-    isLoading: ratingsIsLoading, 
-    message: ratingsMessage } = useSelector(
+  const { result: ratingsResults} = useSelector(
 		({ ratings: { result, error, isLoading, message } = {} }) => ({
 			result,
 			error,
@@ -30,10 +28,7 @@ const Dashboard = () => {
 			message,
 		})
 	);
-  const { result: completedResults, 
-    error: completedError, 
-    isLoading: completedIsLoading, 
-    message: completedMessage } = useSelector(
+  const { result: completedResults } = useSelector(
 		({ completed: { result, error, isLoading, message } = {} }) => ({
 			result,
 			error,
@@ -42,10 +37,7 @@ const Dashboard = () => {
 		})
 	);
 
-  const { result: scheduleResults, 
-    error: scheduleError, 
-    isLoading: scheduleIsLoading, 
-    message: scheduleMessage } = useSelector(
+  const { result: scheduleResults } = useSelector(
 		({ schedule: { result, error, isLoading, message } = {} }) => ({
 			result,
 			error,
@@ -62,26 +54,14 @@ const Dashboard = () => {
     dispatch(wallet());
 	},[]);
 
-  const activities = [
-    {
-      from: "08:00",
-      to: "09:30",
-      title: "Furniture Repairs for Bedroom",
-      description: "Fix 2 front legs of furniture in my kids room.",
-    },
-    {
-      from: "10:00",
-      to: "10:30",
-      title: "Tree House Repairs",
-      description: "Fix 2 front legs of furniture in my kids room.",
-    },
-    {
-      from: "11:00",
-      to: "12:30",
-      title: "Cupboard Repairs",
-      description: "Fix 2 front legs of furniture in my kids room.",
-    },
-  ];
+  const activities = scheduleResults?.schedule?.map((item)=>{
+    return{
+      from: moment(item.wocmanstartdatetime).format('hh:mm a'),
+      to: moment(item.wocmanstopdatetime).format('hh:mm a'),
+      title: item.description,
+      description: item.description,
+    }
+  })
 
   return (
     <Box>
@@ -162,10 +142,10 @@ const Dashboard = () => {
                 >
                   Tuesday
                 </Text>{" "}
-                25 Dec
+                {moment(new Date()).format('LL')}
               </Text>
             </Flex>
-            {scheduleResults?.schedule.length > 0 ? (
+            {scheduleResults?.schedule?.length > 0 ? (
               <Flex w="100%" mt={8} flexDir="column">
               {activities.map((item, index) => (
                 <CalendarSection key={index} item={item} index={index} />
