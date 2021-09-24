@@ -44,7 +44,7 @@ const Login = () => {
 			message,
 		})
 	);
-
+// edit
 	const getBackendGoogleAuthData = (tokenId) => {
 		dispatch(login({ tokenId }, true));
 	};
