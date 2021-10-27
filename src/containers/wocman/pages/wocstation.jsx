@@ -6,8 +6,6 @@ import {
   logChat,
   sendChat,
   fetchProjectCustomer,
-  startProject,
-  stopProject,
 } from "../../../state/actions";
 import { useEffect } from "react";
 
