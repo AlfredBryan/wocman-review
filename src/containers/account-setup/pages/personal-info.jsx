@@ -30,9 +30,7 @@ const PersonalInformation = ({
 		// if (!inputRef.currentTarget.checked) return;
 		setAuthToken(localStorage["wocman_token"]);
 		try {
-			const { data } = await axios.post("/wocman/profile/update", {
-				...details,
-			});
+			const { data } = await axios.post("/wocman/profile/update", details);
 			if (data?.status === 200 || 201) {
 				ShowMessage("Success", "personal info set", "success", toast);
 			}
