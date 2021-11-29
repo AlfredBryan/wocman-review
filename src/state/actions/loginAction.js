@@ -47,11 +47,11 @@ export const login = (body, googleAuth = false) => async (dispatch) => {
 			}
 			dispatch(loginSuccess(data));
 		} else {
-			localStorage.clear();
+			// localStorage.clear();
 			dispatch(loginFail(data));
 		}
 	} catch (err) {
-		localStorage.clear();
+		// localStorage.clear();
 		dispatch(loginFail(err.response && err.response.data));
 	}
 };
