@@ -28,16 +28,11 @@ const ProfilePicture = ({ step, setStep, prevStep, nextStep }) => {
 		if (fileTypes.includes(file?.type)) {
 			var form = new FormData();
 			form.append("avatar", file, file.name);
-
-			console.log("form:", form);
-
 			try {
 				const { data } = await axios.post(
 					"/wocman/profile/picture",
 					form
 				);
-
-				console.log("response:", data.data.imageUrl);
 				if (data.status) {
 					ShowMessage(
 						"Success",
@@ -53,7 +48,6 @@ const ProfilePicture = ({ step, setStep, prevStep, nextStep }) => {
 		} else {
 			setProfileImage("");
 		}
-		console.log(file);
 	};
 	return (
 		<Flex
