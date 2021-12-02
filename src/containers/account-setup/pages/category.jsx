@@ -85,18 +85,6 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
       title: "Technicians",
       img: technicians,
       content: [
-        "Barber",
-        "Gardener",
-        "Makeup Artist",
-        "Pedicurist",
-        "Cleaners",
-        "Hair Stylist",
-      ],
-    },
-    {
-      title: "Tradesmen",
-      img: tradesmen,
-      content: [
         "Mason",
         "Carpenter",
         "Ironbender",
@@ -110,6 +98,18 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
         "A/C Technician",
         "Tilers",
         "Generator Mechanics",
+      ],
+    },
+    {
+      title: "Tradesmen",
+      img: tradesmen,
+      content:  [
+        "Barber",
+        "Gardener",
+        "Makeup Artist",
+        "Pedicurist",
+        "Cleaners",
+        "Hair Stylist",
       ],
     },
     {
