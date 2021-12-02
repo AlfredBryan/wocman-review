@@ -29,7 +29,7 @@ const Profile = () => {
 			<>
 				<Box flex="1" mr={{ base: 0, lg: 8 }} h="100%" py={{ base: 8, lg: 0 }}>
 					<MiniProfile profile={profile} />
-					<UploadCertificate rate={profile?.rate ?? 5} />
+					<UploadCertificate rate={profile?.rate ?? 5}  />
 				</Box>
 				<Box
 					flex="2"
