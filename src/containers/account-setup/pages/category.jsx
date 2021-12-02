@@ -21,6 +21,35 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
   const toast = useToast();
   const [newCategory, setNewCategory] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [skill, setSkill] = useState(0);
+
+  const handleSubmitSkill = async () => {
+    setIsLoading(true);
+    try {
+      const { data } = await axios.post("/wocman/profile/add/skill", {
+        skillid: skill,
+        description: "I'm well skilled at this",
+      });
+      if (data?.status === 200 || 201) {
+        ShowMessage("Success", "Skill added successfully", "success", toast);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      let errorMessage = error?.response?.data?.message;
+      let fallbackErrorMessage =
+        error?.response?.data?.message?.details?.[0]?.message;
+      errorMessage =
+        typeof errorMessage === "string"
+          ? errorMessage
+          : typeof fallbackErrorMessage === "string"
+          ? fallbackErrorMessage
+          : "An error occurred.";
+      if (errorMessage) {
+        ShowMessage("Error", errorMessage, "error", toast);
+      }
+    }
+  };
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -32,6 +61,7 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
         ShowMessage("Success", "Category added successfully", "success", toast);
       }
       setIsLoading(false);
+      setTimeout(handleSubmitSkill(), 5000);
       nextStep();
     } catch (error) {
       setIsLoading(false);
@@ -54,19 +84,41 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
     {
       title: "Technicians",
       img: technicians,
-      content: ["Barber", "Hair Stylist", "Makeup Artist", "Cleaner"],
+      content: [
+        "Barber",
+        "Gardener",
+        "Makeup Artist",
+        "Pedicurist",
+        "Cleaners",
+        "Hair Stylist",
+      ],
     },
     {
       title: "Tradesmen",
       img: tradesmen,
-      content: ["Barber", "Hair Stylist", "Makeup Artist", "Cleaner"],
+      content: [
+        "Mason",
+        "Carpenter",
+        "Ironbender",
+        "Painter & Screeders",
+        "Aluminum Fabricators",
+        "Steel Fabricators",
+        "Solar Installers",
+        "Electricians",
+        "Plumbers",
+        "Polystyrene Technicians",
+        "A/C Technician",
+        "Tilers",
+        "Generator Mechanics",
+      ],
     },
     {
       title: "Professionals",
       img: professionals,
-      content: ["Barber", "Hair Stylist", "Makeup Artist", "Cleaner"],
+      content: ["Engineers", "Geologist", "Architects", "Surveyors"],
     },
   ];
+
   return (
     <Flex
       minH="100vh"
@@ -222,6 +274,8 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
                 content={category.content}
                 category={newCategory}
                 onClick={() => setNewCategory(index + 1)}
+                setSkill={setSkill}
+                skill={skill}
               />
             ))}
           </Flex>
@@ -238,7 +292,7 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
               mb={{ base: 4, md: 0 }}
               onClick={handleSubmit}
               isLoading={isLoading}
-              isDisabled={newCategory === 0}
+              isDisabled={newCategory === 0 || skill === 0}
             >
               Proceed
             </CustomButton>
@@ -299,7 +353,11 @@ const Category = (props) => {
             fontFamily="Poppins"
             fontWeight="600"
             py={2}
-            color={`${props.index === 0 ? "white" : "wocman.heading_text"}`}
+            color={`${
+              props.index + 1 === props.category
+                ? "white"
+                : "wocman.heading_text"
+            }`}
           >
             {props.heading}
           </Text>
@@ -316,6 +374,8 @@ const Category = (props) => {
           pb={{ base: 4, md: 8 }}
           pt={{ base: 2, md: 4 }}
           backgroundColor="wocman.category"
+          h="20rem"
+          overflowY="scroll"
         >
           {props.content.map((item, index) => (
             <div key={index}>
@@ -323,21 +383,33 @@ const Category = (props) => {
               <Flex
                 justify="space-between"
                 py={2}
-                _hover={{ cursor: "pointer" }}
+                cursor="pointer"
+                onClick={() => props.setSkill(index + 1)}
               >
                 <Text
                   fontFamily="Poppins"
                   lineHeight="138.6%"
                   color={`${
-                    props.index === 0 && index === 0
+                    props.index + 1 === props.category &&
+                    index + 1 === props.skill
                       ? "white"
                       : "wocman.heading_text"
                   }`}
                   ml={{ base: 4, md: 8 }}
-                  onClick={(e) => props.handleSelect(e)}
                 >
                   {item}
                 </Text>
+                <Image
+                  src={checkmark}
+                  alt="check mark"
+                  mr={{ base: 2, md: 4 }}
+                  d={`${
+                    props.index + 1 === props.category &&
+                    index + 1 === props.skill
+                      ? "flex"
+                      : "none"
+                  }`}
+                />
               </Flex>
             </div>
           ))}
