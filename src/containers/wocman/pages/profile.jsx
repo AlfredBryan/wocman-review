@@ -17,7 +17,6 @@ import { ProfileContext } from "../index";
 const Profile = () => {
   const { profile, setProfile } = React.useContext(ProfileContext);
 
-  console.log("here>>>>", profile?.certificates[0]?.unverified[0]?.[2]);
   const certificate = profile?.certificates[0]?.unverified[0]?.[2];
   return (
     <Flex

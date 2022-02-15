@@ -47,10 +47,8 @@ const Otp = (props) => {
         localStorage.setItem("wocman_token", res?.data?.data?.accessToken);
         ShowMessage("Success", "Registration completed", "success", toast);
         setLoading(false);
-        setTimeout(
-          () => history.push(`/account-setup?user=${queryParam}`),
-          2000
-        );
+        setTimeout(() => history.push(`/login`), 2000);
+        // /account-setup?user=${queryParam}
       } else {
       }
     } catch (err) {
