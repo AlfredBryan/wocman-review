@@ -38,20 +38,20 @@ const JobModal = ({ isOpen, setIsOpen }) => {
   }, [avatars]);
 
   React.useEffect(() => {
-    const getJobCategories = async () => {
+    let isMounted = true;
+    const getUserProfile = async () => {
       try {
         const { data } = await axios.get("/customer/job/projects");
-        console.log("here>>>>", data);
-        // if (data?.status) {
-        //   if (isMounted) setJobCategory(data?.data);
-        // } else {
-        //   ShowMessage(
-        //     "Error",
-        //     "An error occurred while fetching user",
-        //     "error",
-        //     toast
-        //   );
-        // }
+        if (data?.status) {
+          if (isMounted) setJobCategory(data?.data);
+        } else {
+          ShowMessage(
+            "Error",
+            "An error occurred while fetching user",
+            "error",
+            toast
+          );
+        }
       } catch (error) {
         const errorMessage = error?.response?.data?.message;
         if (errorMessage) {
@@ -59,8 +59,11 @@ const JobModal = ({ isOpen, setIsOpen }) => {
         }
       }
     };
-    getJobCategories();
+    getUserProfile();
     // cleanup hack to avoid React's "Can't perform a React state update on an unmounted component" warning
+    return () => {
+      isMounted = false;
+    };
   }, [toast]);
 
   const handleAddAvatar = (e) => {

@@ -31,28 +31,28 @@ export const SettingsLogin = () => {
   const activateTwoFactor = async () => {
     setSettings({ ...settings, twofactor: !settings.twofactor });
     try {
-      await axios.post("/customer/settings/activate/2fa");
+      await axios.patch("/customer/settings/activate/2fa");
     } catch (error) {}
   };
 
   const cancelTwoFactor = async () => {
     setSettings({ ...settings, twofactor: !settings.twofactor });
     try {
-      await axios.post("/customer/settings/cancel/2fa");
+      await axios.patch("/customer/settings/cancel/2fa");
     } catch (error) {}
   };
 
   const activateDeviceSettings = async () => {
     setSettings({ ...settings, deviceSettings: !settings.deviceSettings });
     try {
-      await axios.post("/customer/settings/activate/ipa");
+      await axios.patch("/customer/settings/activate/ipa");
     } catch (error) {}
   };
 
   const cancelDeviceSettings = async () => {
     setSettings({ ...settings, deviceSettings: !settings.deviceSettings });
     try {
-      await axios.post("/customer/settings/cancel/ipa");
+      await axios.patch("/customer/settings/cancel/ipa");
     } catch (error) {}
   };
 

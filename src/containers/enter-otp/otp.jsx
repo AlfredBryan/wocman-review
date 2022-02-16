@@ -49,7 +49,6 @@ const Otp = (props) => {
         setLoading(false);
         setTimeout(() => history.push(`/login`), 2000);
         // /account-setup?user=${queryParam}
-      } else {
       }
     } catch (err) {
       console.error(err.response?.data);

@@ -36,12 +36,7 @@ const MessagePage = (props) => {
   const closeSideNav = () => setSideNav(false);
 
   return (
-    <Flex
-      backgroundColor="wocman.dashboard"
-      h="100%"
-      position="relative"
-      flex={1}
-    >
+    <Flex backgroundColor="wocman.dashboard" h="100%" zIndex="50" flex={1}>
       <ContactNav
         open={openSideNav}
         toggle={toggleSideNav}
@@ -96,6 +91,7 @@ const DefaultMessage = () => (
     align="center"
     flexDir="column"
     textAlign="center"
+    zIndex="50"
     px={4}
     backgroundColor="white"
   >

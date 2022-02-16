@@ -30,7 +30,6 @@ const PersonalInformation = ({
   };
 
   const handleSubmit = async () => {
-    // if (!inputRef.currentTarget.checked) return;
     setAuthToken(localStorage["wocman_token"]);
     setIsLoading(true);
     try {
@@ -39,7 +38,6 @@ const PersonalInformation = ({
         ShowMessage("Success", "personal info set", "success", toast);
       }
       setIsLoading(false);
-      console.log("here>>>>", data);
       nextStep();
     } catch (error) {
       setIsLoading(false);

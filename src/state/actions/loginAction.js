@@ -46,15 +46,13 @@ export const login =
       if (data?.status === true) {
         if (!data?.isotp && !data?.isdevice && !data?.isOtp) {
           localStorage.setItem("wocman_token", data?.data?.accessToken);
-          localStorage.setItem("wocman_user", JSON.stringify(data?.data));
+          localStorage.setItem("user", JSON.stringify(data?.data));
         }
         dispatch(loginSuccess(data));
       } else {
-        // localStorage.clear();
         dispatch(loginFail(data));
       }
     } catch (err) {
-      // localStorage.clear();
       dispatch(loginFail(err.response && err.response.data));
     }
   };

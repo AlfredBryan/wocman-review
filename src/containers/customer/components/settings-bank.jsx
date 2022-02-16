@@ -20,7 +20,7 @@ export const SettingsBank = () => {
 			setAuthToken(localStorage["wocman_token"]);
 			setLoading(true);
 			try {
-				const { data } = await axios.post("/wocman/settings/get/wallet");
+				const { data } = await axios.post("/customer/settings/get/wallet");
 				const wallet = data?.data?.walletDettails;
 				if (typeof wallet === "string") {
 					setWalletSetup(false);

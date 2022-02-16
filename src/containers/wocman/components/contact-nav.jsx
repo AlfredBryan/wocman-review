@@ -1,8 +1,15 @@
-import { Box, Divider, Flex, Link, List, ListItem, Text } from "@chakra-ui/core";
+import {
+  Box,
+  Divider,
+  Flex,
+  Link,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/core";
 import { useLocation } from "react-router";
 import { NavLink as ReactLink } from "react-router-dom";
-import { memo, useEffect, useState } from "react";
-import { Fragment } from "react";
+import { memo, useEffect, useState, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { contacts } from "../../../state/actions";
 
@@ -16,18 +23,18 @@ const RegularContactNav = (props) => {
   const location = useLocation();
 
   const dispatch = useDispatch();
-  
-  const { result, error, isLoading, message } = useSelector(
-		({ contacts: { result, error, isLoading, message } = {} }) => ({
-			result,
-			error,
-			isLoading,
-			message,
-		})
-	);
-	useEffect(() => {
-		dispatch(contacts());
-		},[]);
+
+  const { result } = useSelector(
+    ({ contacts: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+  useEffect(() => {
+    dispatch(contacts());
+  }, [dispatch]);
 
   useEffect(() => {
     function handleResize() {
@@ -42,17 +49,14 @@ const RegularContactNav = (props) => {
     };
   });
 
-  // const location = useLocation();
-
-  const dashboardLinks = result?.customers?.map((customer)=>{
-    return{
+  const dashboardLinks = result?.customers?.map((customer) => {
+    return {
       name: customer.customerName,
       to: `/contact/${customer.customerId}/${customer.projectId}`,
       image: customer.image || MOCK_AVATAR,
       latestMessage: customer.project,
-    }
-  })
-  
+    };
+  });
 
   return (
     <Box
@@ -89,12 +93,11 @@ const RegularContactNav = (props) => {
         align="center"
         pt={8}
       >
-        { result?.customers?.length == 0 ? (
+        {result?.customers?.length === 0 ? (
           <Flex justify="center">
-
             <Text p="2">You have no Contact</Text>
           </Flex>
-        ):(
+        ) : (
           dashboardLinks?.map((item, index) => {
             return (
               <Fragment key={index}>
@@ -151,8 +154,7 @@ const RegularContactNav = (props) => {
               </Fragment>
             );
           })
-        ) 
-        }
+        )}
       </List>
     </Box>
   );

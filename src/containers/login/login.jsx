@@ -101,7 +101,7 @@ const Login = () => {
           toast,
           5000
         );
-        nextLocation(result?.data?.role);
+        nextLocation(result);
 
         dispatch(clearLoginToast());
       }

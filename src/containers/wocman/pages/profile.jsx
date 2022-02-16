@@ -403,7 +403,6 @@ const ProfileForm = (props) => {
           name="email"
           label="Email"
           value={values?.email}
-          onChange={onChange}
           disabled={true}
           type="email"
           flex="1.8"

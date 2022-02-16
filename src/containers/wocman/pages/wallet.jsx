@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Wallet = () => {
   const dispatch = useDispatch();
-  const user = localStorage.getItem('wocman_user')
+  const user = localStorage.getItem('user')
   const curUser = getCurrentUser();
   const { result } = useSelector(
 		({ wallet: { result, error, isLoading, message } = {} }) => ({

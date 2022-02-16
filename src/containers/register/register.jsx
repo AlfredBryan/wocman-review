@@ -137,17 +137,14 @@ const Register = () => {
         .required("Confirm password is required"),
     }),
     onSubmit: (values) => {
-      console.log("====================================");
-      console.log(values);
-      console.log("====================================");
-      //   const body = {
-      //     email: values.email,
-      //     role: values.role,
-      //     password: values.password,
-      //     repeat_password: values.confirmPassword,
-      //     verifylink: "http://wocman-site.herokuapp.com/enter-otp",
-      //   };
-      //   dispatch(register(body, !!queryParam));
+        const body = {
+          email: values.email,
+          role: values.role,
+          password: values.password,
+          repeat_password: values.confirmPassword,
+          verifylink: "http://wocman-site.herokuapp.com/enter-otp",
+        };
+        dispatch(register(body, !!queryParam));
     },
   });
 
