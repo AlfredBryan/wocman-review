@@ -152,7 +152,7 @@ export const CustomerSideNav = (props) => {
               />
               <Link
                 as={ReactLink}
-                to={"/wocman" + item.to}
+                to={"/customer" + item.to}
                 lineHeight="27px"
                 onClick={props.close}
                 ml={{ base: 4, md: 8 }}

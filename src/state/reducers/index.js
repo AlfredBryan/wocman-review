@@ -24,6 +24,9 @@ import { historyReducer } from "./historyReducer";
 import { contactsReducer } from "./messageContactsReducer";
 import { customerChatReducer } from "./customerChatReducer";
 import { wocmanProjectReducer } from "./wocmanProjectReducer";
+import { wocmanChatReducer } from "./wocmanChatReducer";
+import { jobContactsReducer } from "./jobContactsReducer";
+import { customerSendChatReducer } from "./customerSendChatReducer";
 
 const rootReducer = combineReducers({
   search: searchReducer,
@@ -50,7 +53,10 @@ const rootReducer = combineReducers({
   history: historyReducer,
   contacts: contactsReducer,
   customerChat: customerChatReducer,
-  wocmanProject: wocmanProjectReducer
+  wocmanProject: wocmanProjectReducer,
+  wocmanChat: wocmanChatReducer,
+  jobContacts: jobContactsReducer,
+  customerSendChat: customerSendChatReducer,
 });
 
 export default rootReducer;

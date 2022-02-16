@@ -17,35 +17,35 @@ const store = configureStore();
 function App() {
   const toast = useToast();
 
-  // React.useEffect(() => {
-  //   axios.interceptors.response.use(
-  //     (res) => Promise.resolve(res),
-  //     (error) => {
-  //       if (!error?.response) {
-  //         ShowMessage(
-  //           "Error",
-  //           "Please check your internet connection",
-  //           "error",
-  //           toast
-  //         );
-  //       }
+  React.useEffect(() => {
+    axios.interceptors.response.use(
+      (res) => Promise.resolve(res),
+      (error) => {
+        if (!error?.response) {
+          ShowMessage(
+            "Error",
+            "Please check your internet connection",
+            "error",
+            toast
+          );
+        }
 
-  //       if (error?.response.status === 403) {
-  //         setTimeout(() => {
-  //           history.replace("/login");
-  //           localStorage.clear();
-  //           window.location.reload();
-  //         }, 0);
-  //       }
-  //       if (error?.response.status === 401) {
-  //         localStorage.clear();
-  //       }
+        if (error?.response.status === 403) {
+          setTimeout(() => {
+            history.replace("/login");
+            localStorage.clear();
+            window.location.reload();
+          }, 0);
+        }
+        if (error?.response.status === 401) {
+          localStorage.clear();
+        }
 
-  //       return Promise.reject(error);
-  //     }
-  //   );
-  //   // eslint-disable-next-line
-  // }, []);
+        return Promise.reject(error);
+      }
+    );
+    // eslint-disable-next-line
+  }, []);
 
   const routes = [
     {
@@ -144,7 +144,11 @@ function App() {
           <BrowserRouter history={history}>
             <Switch>
               {routes.map(({ path, Component }) => (
-                <Route key={path} exact={path !== "/wocman"} path={path}>
+                <Route
+                  key={path}
+                  exact={path !== "/wocman" && path !== "/customer"}
+                  path={path}
+                >
                   {({ match }) => (
                     <CSSTransition
                       in={match != null}

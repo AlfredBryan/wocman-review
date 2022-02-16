@@ -17,7 +17,6 @@ import { ProfileContext } from "../index";
 const Profile = () => {
   const { profile, setProfile } = React.useContext(ProfileContext);
 
-  console.log("here>>>>", profile?.certificates[0]?.unverified[0]?.[2]);
   const certificate = profile?.certificates[0]?.unverified[0]?.[2];
   return (
     <Flex
@@ -404,7 +403,6 @@ const ProfileForm = (props) => {
           name="email"
           label="Email"
           value={values?.email}
-          onChange={onChange}
           disabled={true}
           type="email"
           flex="1.8"

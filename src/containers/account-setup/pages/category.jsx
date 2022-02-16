@@ -8,9 +8,9 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/core";
-import technicians from "../../../assets/images/technicians.jpg";
+import professionals from "../../../assets/images/technicians.jpg";
 import tradesmen from "../../../assets/images/tradesmen.jpg";
-import professionals from "../../../assets/images/professionals.jpg";
+import technicians from "../../../assets/images/professionals.jpg";
 import { CustomButton } from "../../../components/custom-button/custom-button";
 import checkmark from "../../../assets/icons/check-circle.svg";
 import { useState } from "react";
@@ -103,7 +103,7 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
     {
       title: "Tradesmen",
       img: tradesmen,
-      content:  [
+      content: [
         "Barber",
         "Gardener",
         "Makeup Artist",

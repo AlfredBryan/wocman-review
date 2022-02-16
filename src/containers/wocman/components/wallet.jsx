@@ -7,7 +7,7 @@ import purse from "../../../assets/images/purse.svg";
 
 export const Wallet = () => {
   const dispatch = useDispatch();
-  const user = localStorage.getItem('wocman_user')
+  const user = localStorage.getItem('user')
   const curUser = JSON.parse(user);
 	const { result, error, isLoading, message } = useSelector(
 		({ wallet: { result, error, isLoading, message } = {} }) => ({

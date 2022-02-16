@@ -16,13 +16,12 @@ import {
   AiOutlinePaperClip,
   AiOutlineArrowLeft,
 } from "react-icons/ai";
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { useLocation, useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { customerChat, sendChat } from "../../../state/actions";
-import { useParams } from 'react-router-dom';
-import moment from 'moment';
-import { useState } from "react";
+import { useParams } from "react-router-dom";
+import moment from "moment";
 
 export const Messaging = (props) => {
   const { id, projectid } = useParams();
@@ -33,20 +32,26 @@ export const Messaging = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { result} = useSelector(
-		({ customerChat: { result, error, isLoading, message } = {} }) => ({
-			result,
-			error,
-			isLoading,
-			message,
-		})
-	);
-	useEffect(() => {
-    const chatData = {customerid: id, chatLimit: 50, perPage: 10, page: 1, projectid}
-		dispatch(customerChat(chatData));
-		},[]);
+  const { result } = useSelector(
+    ({ customerChat: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+  useEffect(() => {
+    const chatData = {
+      customerid: id,
+      chatLimit: 50,
+      perPage: 10,
+      page: 1,
+      projectid,
+    };
+    dispatch(customerChat(chatData));
+  }, [dispatch, id, projectid]);
 
-    const sender = result?.chat
+  const sender = result?.chat;
 
   useEffect(() => {
     ref.current && boxRef.current.scrollTo(0, ref.current.offsetTop);
@@ -101,28 +106,30 @@ export const Messaging = (props) => {
           receiver="https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg"
           senderName="Tayo Olajide"
         />
-        {result?.chat?.length == 0 ? (
+        {result?.chat?.length === 0 ? (
           <Flex justify="center" mt="10rem">
             <Text>You Have no New Message</Text>
           </Flex>
         ) : (
-          result?.chat?.map((chat)=>(
-
+          result?.chat?.map((chat) => (
             <ChatSection
-            key={chat?.id}
+              key={chat?.id}
               ownerImage="https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"
               ownerName="Tayo Olajide"
-              timeSent={moment(chat?.chattime).format('LLL')}
+              timeSent={moment(chat?.chattime).format("LLL")}
               message={chat?.message}
               index={0}
               seen={chat?.seen}
             />
           ))
         )}
-        
       </Box>
-      {result?.chat?.length !==0 && (
-        <MessageInput sender={sender && sender[0]?.senderid} id={id} projectid= {projectid}/>
+      {result?.chat?.length !== 0 && (
+        <MessageInput
+          sender={sender && sender[0]?.senderid}
+          id={id}
+          projectid={projectid}
+        />
       )}
     </Flex>
   );
@@ -243,9 +250,9 @@ const ChatSection = forwardRef((props, ref) => {
         </Flex>
       </Flex>
       {props.seen == 1 && (
-      <Flex>
-        <Image src={props.seen && read} size="12px" />
-      </Flex>
+        <Flex>
+          <Image src={props.seen && read} size="12px" />
+        </Flex>
       )}
     </Flex>
   );
@@ -253,57 +260,72 @@ const ChatSection = forwardRef((props, ref) => {
 
 const MessageInput = (props) => {
   const dispatch = useDispatch();
-  const [text, setText] = useState('')
+  const [text, setText] = useState("");
 
   const handleSendText = async (e) => {
     try {
       e.preventDefault();
-      const chatData = {customerid: props.id, chatLimit: 50, perPage: 10, page: 1, projectid: props.projectid}
-      dispatch(sendChat({customerid: props.sender, message: text, projectid: parseInt(props.projectid), messageType: 'media'}, chatData))
-      setText('')
+      const chatData = {
+        customerid: props.id,
+        chatLimit: 50,
+        perPage: 10,
+        page: 1,
+        projectid: props.projectid,
+      };
+      dispatch(
+        sendChat(
+          {
+            customerid: props.sender,
+            message: text,
+            projectid: parseInt(props.projectid),
+            messageType: "media",
+          },
+          chatData
+        )
+      );
+      setText("");
     } catch (error) {
       console.log(error);
     }
   };
 
-  return(
-  <Flex
-    minH="100px"
-    h="100px"
-    w="100%"
-    backgroundColor="wocman.wocmanCategories"
-    mt={8}
-    px={[4, 8]}
-    // position="sticky"
-    zIndex="1"
-    bottom="0"
-  >
-    <Flex align="center" pr={[4, 8]}>
-      <Image src={send} size="20px" />
+  return (
+    <Flex
+      minH="100px"
+      h="100px"
+      w="100%"
+      backgroundColor="wocman.wocmanCategories"
+      mt={8}
+      px={[4, 8]}
+      // position="sticky"
+      zIndex="1"
+      bottom="0"
+    >
+      <Flex align="center" pr={[4, 8]}>
+        <Image src={send} size="20px" />
+      </Flex>
+      <Flex align="center" flex="1">
+        <Input
+          w="100%"
+          placeholder="Type your Message"
+          minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
+          fontFamily="Poppins"
+          fontSize="0.7rem"
+          border="none"
+          backgroundColor="transparent"
+          color="wocman.typography1"
+          _focus={{ outline: "none", border: "none" }}
+          _placeholder={{ color: "wocman.typography1" }}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+      </Flex>
+      <Flex align="center" onClick={handleSendText} cursor="pointer">
+        <Text fontFamily="Poppins" fontSize="0.7rem" mr={[2, 4]}>
+          Send
+        </Text>
+        <Image src={sendArrow} size="12px" />
+      </Flex>
     </Flex>
-    <Flex align="center" flex="1">
-      <Input
-        w="100%"
-        placeholder="Type your Message"
-        minHeight={["3.5rem", "3.5rem", "3.5rem", "4.5rem", "5rem"]}
-        fontFamily="Poppins"
-        fontSize="0.7rem"
-        border="none"
-        backgroundColor="transparent"
-        color="wocman.typography1"
-        _focus={{ outline: "none", border: "none" }}
-        _placeholder={{ color: "wocman.typography1" }}
-        value={text}
-        onChange={(e)=>setText(e.target.value)}
-      />
-    </Flex>
-    <Flex align="center" onClick={handleSendText} cursor="pointer">
-      <Text fontFamily="Poppins" fontSize="0.7rem" mr={[2, 4]}>
-        Send
-      </Text>
-      <Image src={sendArrow} size="12px" />
-    </Flex>
-  </Flex>
-
-  )
+  );
 };

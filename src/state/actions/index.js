@@ -72,3 +72,12 @@ export * from "./customerChatsAction";
 
 // wocman wocstation wocman-project
 export * from "./wocmanProjectActions";
+
+// customer wocstation customer-chat
+export * from "./wocmanChatAction";
+
+// customer wocstation customer-chat
+export * from "./customerSendChat";
+
+// customer wocstation customer-chat
+export * from "./jobContactAction";
