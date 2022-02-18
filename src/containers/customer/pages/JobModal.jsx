@@ -180,7 +180,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             name="topic"
             onChange={handleChange}
             value={state.topic}
-            label="Topic"
+            label="Job name"
             width="100%"
           />
         </Box>
@@ -235,7 +235,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
         </Flex>
         <Box mt="2rem">
           <Text fontFamily="Gilroy-Bold" fontSize="1.3rem" as="label">
-            Description
+            Work description
           </Text>
           <Textarea
             focusBorderColor="#552D1E"
