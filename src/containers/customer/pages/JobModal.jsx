@@ -286,7 +286,13 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
 
         <Flex justify="space-between" flexWrap="wrap" w="100%">
           {imageUrls.map((imageSrc) => (
-            <Image key={imageSrc} w="48%" mb="2rem" h="109px" src={imageSrc} />
+            <Image
+              key={imageSrc}
+              w="48%"
+              mb={{ base: "1rem", lg: "2rem" }}
+              h="109px"
+              src={imageSrc}
+            />
           ))}
         </Flex>
         <Flex w="100%" justify="center" pb={{ base: "3rem", lg: "0rem" }}>
@@ -297,7 +303,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             color="#FFFFFF"
             backgroundColor="#552D1E"
             borderRadius="4px"
-            h="5rem"
+            h={{ base: "3rem", lg: "5rem" }}
             w={["15rem"]}
             _hover={{ opacity: "0.7" }}
             _active={{ transform: "scale(0.98)" }}
