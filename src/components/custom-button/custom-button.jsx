@@ -1,6 +1,6 @@
 import { Button, Text } from "@chakra-ui/core";
 
-export const CustomButton = ({ children, onClick, mt,mb }) => (
+export const CustomButton = ({ children, onClick, mt,mb,...rest }) => (
 	<Button
 		_focus={{ outline: "none" }}
 		h="70px"
@@ -9,6 +9,7 @@ export const CustomButton = ({ children, onClick, mt,mb }) => (
 		onClick={onClick}
 		mt={mt}
 		mb={mb}
+		{...rest}
 	>
 		<Text
 			fontFamily="Poppins"

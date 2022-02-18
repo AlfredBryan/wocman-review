@@ -19,8 +19,6 @@ export const MiniProfile = () => {
         bg="transparent"
         position="relative"
         bgSize="cover"
-        //   mr={8}
-        //   ml={8}
         mx="auto"
         py={8}
         h="150px"

@@ -1,7 +1,7 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
 import purse from "../../../assets/images/purse.svg";
 import { TransactionList } from "../components/transaction";
-import { WalletChart } from "../components/wallet-chart";
+// import { WalletChart } from "../components/wallet-chart";
 
 const Wallet = () => {
   return (
@@ -158,7 +158,7 @@ const Wallet = () => {
       </Flex>
       <Flex flexDirection={{ base: "column", xl: "row" }}>
         <Box flex="1.8" minH="100%" h="100%" alignSelf="stretch">
-          <WalletChart />
+          {/* <WalletChart /> */}
         </Box>
         <Box flex="1.2" ml={{ base: 0, xl: 8 }}>
           <TransactionList />

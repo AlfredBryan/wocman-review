@@ -51,12 +51,6 @@ export const CustomerSideNav = (props) => {
       icon_active: wocstationActive,
     },
     {
-      name: "Wallet",
-      to: "/wallet",
-      icon: wallet,
-      icon_active: walletActive,
-    },
-    {
       name: "Messaging",
       to: "/messaging",
       icon: messaging,
@@ -152,7 +146,7 @@ export const CustomerSideNav = (props) => {
               />
               <Link
                 as={ReactLink}
-                to={"/wocman" + item.to}
+                to={"/customer" + item.to}
                 lineHeight="27px"
                 onClick={props.close}
                 ml={{ base: 4, md: 8 }}

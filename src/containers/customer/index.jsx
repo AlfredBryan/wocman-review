@@ -59,10 +59,10 @@ const Customer = () => {
   React.useEffect(() => {
     let isMounted = true;
     const getUserProfile = async () => {
-      setAuthToken(localStorage["customer_token"]);
+      setAuthToken(localStorage["wocman_token"]);
       setProfileLoading(true);
       try {
-        const { data } = await axios.post("/customer/profile");
+        const { data } = await axios.get("/customer/profile");
         if (data?.status) {
           if (isMounted) setProfile(data?.data);
         } else {

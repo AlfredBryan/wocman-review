@@ -144,7 +144,11 @@ function App() {
           <BrowserRouter history={history}>
             <Switch>
               {routes.map(({ path, Component }) => (
-                <Route key={path} exact={path !== "/wocman"} path={path}>
+                <Route
+                  key={path}
+                  exact={path !== "/wocman" && path !== "/customer"}
+                  path={path}
+                >
                   {({ match }) => (
                     <CSSTransition
                       in={match != null}

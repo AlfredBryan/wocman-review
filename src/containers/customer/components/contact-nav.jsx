@@ -1,10 +1,19 @@
-import { Box, Divider, Link, List, ListItem, Text } from "@chakra-ui/core";
+import {
+  Box,
+  Divider,
+  Flex,
+  Link,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/core";
 import { useLocation } from "react-router";
 import { NavLink as ReactLink } from "react-router-dom";
-import { memo, useEffect, useState } from "react";
-import { Fragment } from "react";
+import { memo, useEffect, useState, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { jobContacts } from "../../../state/actions";
 
-const PREPEND_LINK = "/wocman/messaging";
+const PREPEND_LINK = "/customer/messaging";
 
 const MOCK_AVATAR =
   "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246";
@@ -12,6 +21,20 @@ const MOCK_AVATAR =
 const RegularContactNav = (props) => {
   const [minHeight, setMinHeight] = useState(window.innerHeight);
   const location = useLocation();
+
+  const dispatch = useDispatch();
+
+  const { result } = useSelector(
+    ({ jobContacts: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+  useEffect(() => {
+    dispatch(jobContacts());
+  }, [dispatch]);
 
   useEffect(() => {
     function handleResize() {
@@ -26,28 +49,15 @@ const RegularContactNav = (props) => {
     };
   });
 
-  // const location = useLocation();
+  const dashboardLinks = result?.wocmen?.map((wocman) => {
+    return {
+      name: wocman.customerName,
+      to: `/contact/${wocman.customerId}/${wocman.projectId}`,
+      image: wocman.image || MOCK_AVATAR,
+      latestMessage: wocman.project,
+    };
+  });
 
-  const dashboardLinks = [
-    {
-      name: "Tayo Olajide",
-      to: "/contact/1",
-      image: MOCK_AVATAR,
-      latestMessage: "When will you come in",
-    },
-    {
-      name: "Musa Hassan",
-      to: "/contact/2",
-      image: MOCK_AVATAR,
-      latestMessage: "When will you come in",
-    },
-    {
-      name: "Joshua Maina",
-      to: "/contact/3",
-      image: MOCK_AVATAR,
-      latestMessage: "When will you come in",
-    },
-  ];
 
   return (
     <Box
@@ -84,62 +94,68 @@ const RegularContactNav = (props) => {
         align="center"
         pt={8}
       >
-        {dashboardLinks.map((item, index) => {
-          return (
-            <Fragment key={index}>
-              <ListItem
-                color={
-                  location.pathname !== PREPEND_LINK + item.to
-                    ? "#778899"
-                    : "#000000"
-                }
-                backgroundColor={
-                  location.pathname !== PREPEND_LINK + item.to
-                    ? "transparent"
-                    : "#FFFFFF"
-                }
-                px={{ base: 4, md: 8 }}
-                py={{ base: 2, md: 4 }}
-                w="100%"
-                d="flex"
-                alignItems="center"
-                _hover={{
-                  opacity:
-                    location.pathname === PREPEND_LINK + item.to ? "" : "0.7",
-                }}
-                opacity={
-                  location.pathname === PREPEND_LINK + item.to ? "" : "0.7"
-                }
-              >
-                <Avatar image={item.image} />
-                <Link
-                  as={ReactLink}
-                  to={PREPEND_LINK + item.to}
-                  lineHeight="27px"
-                  onClick={props.close}
-                  ml={{ base: 2, md: 4 }}
-                  _focus={{ outline: "none" }}
-                  _hover={{ textDecor: "none " }}
-                  // className={`link ${
-                  //   props.location.pathname === item.to ? "active" : ""
-                  // }`}
+        {result?.wocmen?.length === 0 ? (
+          <Flex justify="center">
+            <Text p="2">You have no Contact</Text>
+          </Flex>
+        ) : (
+          dashboardLinks?.map((item, index) => {
+            return (
+              <Fragment key={index}>
+                <ListItem
+                  color={
+                    location.pathname !== PREPEND_LINK + item.to
+                      ? "#778899"
+                      : "#000000"
+                  }
+                  backgroundColor={
+                    location.pathname !== PREPEND_LINK + item.to
+                      ? "transparent"
+                      : "#FFFFFF"
+                  }
+                  px={{ base: 4, md: 8 }}
+                  py={{ base: 2, md: 4 }}
+                  w="100%"
+                  d="flex"
+                  alignItems="center"
+                  _hover={{
+                    opacity:
+                      location.pathname === PREPEND_LINK + item.to ? "" : "0.7",
+                  }}
+                  opacity={
+                    location.pathname === PREPEND_LINK + item.to ? "" : "0.7"
+                  }
                 >
-                  <Text
-                    fontFamily="Poppins"
-                    fontSize={{ base: "0.7rem", md: "1rem" }}
-                    fontWeight="bold"
+                  <Avatar image={item.image} />
+                  <Link
+                    as={ReactLink}
+                    to={PREPEND_LINK + item.to}
+                    lineHeight="27px"
+                    onClick={props.close}
+                    ml={{ base: 2, md: 4 }}
+                    _focus={{ outline: "none" }}
+                    _hover={{ textDecor: "none " }}
+                    // className={`link ${
+                    //   props.location.pathname === item.to ? "active" : ""
+                    // }`}
                   >
-                    {item.name}
-                  </Text>
-                  <Text fontFamily="Poppins" as="small">
-                    {item.latestMessage}
-                  </Text>
-                </Link>
-              </ListItem>
-              <Divider borderColor="#778899" w="100%" d="block" my={0} />
-            </Fragment>
-          );
-        })}
+                    <Text
+                      fontFamily="Poppins"
+                      fontSize={{ base: "0.7rem", md: "1rem" }}
+                      fontWeight="bold"
+                    >
+                      {item.name}
+                    </Text>
+                    <Text fontFamily="Poppins" as="small">
+                      {item.latestMessage}
+                    </Text>
+                  </Link>
+                </ListItem>
+                <Divider borderColor="#778899" w="100%" d="block" my={0} />
+              </Fragment>
+            );
+          })
+        )}
       </List>
     </Box>
   );
@@ -154,15 +170,11 @@ const Avatar = (props) => (
     bgSize="cover"
     marginLeft="-10px"
     border="2px solid #552D1E"
-    //   mr={8}
-    //   ml={8}
     h={{ base: "25px", xl: "40px" }}
     width={{ base: "25px", xl: "40px" }}
     borderRadius="50%"
   ></Box>
 );
-
-// https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246
 
 const ContactNav = memo(RegularContactNav);
 

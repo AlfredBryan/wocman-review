@@ -15,12 +15,12 @@ axios.defaults.headers.common["Accept"] = "application/json";
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
 ReactDOM.render(
-	<React.StrictMode>
+	<React.Fragment>
 		<ThemeProvider theme={customTheme}>
 			<CSSReset />
 			<App />
 		</ThemeProvider>
-	</React.StrictMode>,
+	</React.Fragment>,
 	document.getElementById("root")
 );
 
