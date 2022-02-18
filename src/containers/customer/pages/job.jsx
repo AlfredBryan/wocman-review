@@ -121,10 +121,10 @@ const Job = () => {
         <Flex flexWrap="wrap">
           {jobs?.map((job, i) => (
             <Flex
-              ml={i > 0 ? "2rem" : "0rem"}
+              ml={{ base: "0rem", lg: i > 0 ? "2rem" : "0rem" }}
               mb="2rem"
               key={job.id}
-              w="30vh"
+              w={{ base: "100%", lg: "30vh" }}
               h="30vh"
               backgroundColor="#FCFDFD"
               boxShadow="0 0 10px #fff"
