@@ -58,9 +58,6 @@ const RegularContactNav = (props) => {
     };
   });
 
-  console.log("====================================");
-  console.log(result);
-  console.log("====================================");
 
   return (
     <Box

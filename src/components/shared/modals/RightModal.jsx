@@ -40,9 +40,9 @@ function RightModal(props) {
             <Box bg="#552D1E">
               <Flex
                 pl="2rem"
-                pb="3.7rem"
+                pb={{ base: "1rem", lg: "3.7rem" }}
                 pr="1.2rem"
-                pt="2.7rem"
+                pt={{ base: "1rem", lg: "2.7rem" }}
                 justify="space-between"
                 align="center"
               >
@@ -75,7 +75,7 @@ function RightModal(props) {
               pr="2rem"
               pt="2.1rem"
               pb="2rem"
-              h="70vh"
+              h="80vh"
               overflowY={{ base: "scroll", lg: "auto" }}
             >
               {children}
