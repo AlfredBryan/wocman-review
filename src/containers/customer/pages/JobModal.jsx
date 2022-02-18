@@ -204,8 +204,12 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             />
           </Box>
         </Flex>
-        <Flex w="100%" justify="space-between">
-          <Box width="48%">
+        <Flex
+          w="100%"
+          direction={{ base: "column", lg: "row" }}
+          justify="space-between"
+        >
+          <Box width={{ base: "100%", lg: "48%" }}>
             <BaseDropdown
               options={allOptions}
               onChange={handleSubChange}
@@ -213,7 +217,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
               w="100%"
             />
           </Box>
-          <Box width="48%">
+          <Box width={{ base: "100%", lg: "48%" }}>
             {state?.category !== "" && (
               <BaseDropdown
                 label="Sub category"
