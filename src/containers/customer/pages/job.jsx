@@ -117,35 +117,45 @@ const Job = () => {
         <Flex flex={[0, 0, 0, 1, 1]}></Flex>
       </Flex>
 
-      <Box w="100%" mt="5" backgroundColor="#F9F9F9" p="5">
-        {jobs?.map((job) => (
-          <Flex key={job.id} w="30vh" h="30vh" backgroundColor="#FCFDFD">
-            <Text pb="6px" textTransform="capitalize">
-              {job?.project}
-            </Text>
-            <Flex flex={1} justify="center" align="center" flexDir="column">
-              <Image src={customer} alt="face mask" my="3" />
-              <Text>{job?.description}</Text>
-              <Text color="#778899" mt="3">
-                {job?.project_subcategory?.name}
-              </Text>
-              <Button
-                backgroundColor="#E8E2E7"
-                color="#552D1E"
-                fontSize="0.6rem"
-                w="40"
-                mt="3"
-              >
-                View Details
-              </Button>
+      <Box w="100%" mt="5">
+        <Flex flexWrap="wrap">
+          {jobs?.map((job, i) => (
+            <Flex
+              ml={i > 0 ? "2rem" : "0rem"}
+              mb="2rem"
+              key={job.id}
+              w="30vh"
+              h="30vh"
+              backgroundColor="#FCFDFD"
+              boxShadow="0 0 10px #fff"
+            >
+              <Flex flex={1} justify="center" align="center" flexDir="column">
+                <Text wordBreak="break-all" textTransform="capitalize">
+                  {job?.project}
+                </Text>
+                <Image src={customer} alt="face mask" my="3" />
+                <Text>{job?.description}</Text>
+                <Text color="#778899" mt="3">
+                  {job?.project_subcategory?.name}
+                </Text>
+                <Button
+                  backgroundColor="#E8E2E7"
+                  color="#552D1E"
+                  fontSize="0.6rem"
+                  w="40"
+                  mt="3"
+                >
+                  View Details
+                </Button>
+              </Flex>
+              <Box mt="8" pr="3">
+                <Badge variant="none" color="#778899" backgroundColor="#F6F1F1">
+                  5.0 <StarIcon color="#FFC850" />
+                </Badge>
+              </Box>
             </Flex>
-            <Box mt="8" pr="3">
-              <Badge variant="none" color="#778899" backgroundColor="#F6F1F1">
-                5.0 <StarIcon color="#FFC850" />
-              </Badge>
-            </Box>
-          </Flex>
-        ))}
+          ))}
+        </Flex>
       </Box>
 
       <JobModal update={fetchJobs} isOpen={isOpen} setIsOpen={setIsOpen} />
