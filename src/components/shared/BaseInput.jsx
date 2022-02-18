@@ -19,8 +19,8 @@ export const BaseInput = ({
   ...rest
 }) => {
   return (
-    <Box>
-      <Text fontSize="1.5rem" as="label" htmlFor={id}>
+    <Box mt="1rem">
+      <Text fontFamily="Gilroy-Bold" fontSize="1.3rem" as="label" htmlFor={id}>
         {label}
       </Text>
       <InputGroup>
@@ -33,7 +33,7 @@ export const BaseInput = ({
           bg="#E8E2E7"
           border="none"
           borderRadius="3px"
-          h="4rem"
+          h="3rem"
           w={width || "27rem"}
           px="1.6rem"
           placeholder={placeholder}

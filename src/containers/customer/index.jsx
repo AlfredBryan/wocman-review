@@ -62,7 +62,7 @@ const Customer = () => {
       setAuthToken(localStorage["wocman_token"]);
       setProfileLoading(true);
       try {
-        const { data } = await axios.post("/customer/profile");
+        const { data } = await axios.get("/customer/profile");
         if (data?.status) {
           if (isMounted) setProfile(data?.data);
         } else {

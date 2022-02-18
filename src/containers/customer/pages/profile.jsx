@@ -2,7 +2,6 @@ import * as React from "react";
 import {
   Box,
   Button,
-  Divider,
   Flex,
   Input,
   PseudoBox,
@@ -26,27 +25,61 @@ const Profile = () => {
       pl={{ base: 0, md: 8 }}
       flexDir={{ base: "column", lg: "row" }}
     >
-      <>
-        <Box flex="1" mr={{ base: 0, lg: 8 }} h="100%" py={{ base: 8, lg: 0 }}>
-          <MiniProfile profile={profile} />
-          <UploadCertificate rate={profile?.rate ?? 5} />
+      <Flex
+        flexDir={{ base: "column", lg: "row" }}
+        w="100%"
+        justify="space-between"
+      >
+        <Box
+          w={{ base: "100%", lg: "35%" }}
+          mr={{ base: 0, lg: 8 }}
+          py={{ base: 8, lg: 0 }}
+        >
+          <MiniProfile profile={profile} setProfile={setProfile} />
+          {/* <UploadCertificate rate={profile?.rate ?? 5} /> */}
         </Box>
         <Box
-          flex="2"
           h={{ base: "auto", lg: "100%" }}
           background="#F9F9F9"
-          w="100%"
+          w={{ base: "100%", lg: "60%" }}
         >
-          <ProfileForm profile={profile} setProfile={setProfile} />
+          <ProfileForm profile={profile} />
         </Box>
-      </>
+      </Flex>
     </Flex>
   );
 };
 
 const MiniProfile = (props) => {
   const { profile } = props;
-  // const profilePicture = profile?.profile_picture?.[0]?.current?.[0]?.[0];
+  const profilePicture = profile?.image;
+
+  const toast = useToast();
+  const dummyPic =
+    "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246";
+
+  let fileTypes = ["image/jpeg", "image/jpg", "image/png"];
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (fileTypes.includes(file?.type)) {
+      var form = new FormData();
+      form.append("avatar", file, file.name);
+      try {
+        const { data } = await axios.post("/customer/profile/picture", form);
+        if (data.status) {
+          ShowMessage(
+            "Success",
+            "Profile picture changed successfully",
+            "success",
+            toast
+          );
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
   return (
     <Box
       backgroundColor="white"
@@ -58,7 +91,7 @@ const MiniProfile = (props) => {
       mb={{ base: 4, md: 8 }}
     >
       <Box
-        bgImage={`url(${"https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246"})`}
+        bgImage={`url(${profilePicture ? profilePicture : dummyPic})`}
         bgPos="center"
         bgRepeat="no-repeat"
         bg="transparent"
@@ -98,7 +131,6 @@ const MiniProfile = (props) => {
       <Text as="small" fontFamily="Poppins" my={2}>
         Client
       </Text>
-      {/* change the above to show Wocman's profession later */}
 
       <Button
         backgroundColor="#E8E2E7"
@@ -113,38 +145,23 @@ const MiniProfile = (props) => {
         _active={{ transform: "scale(0.98)" }}
         _focus={{ outline: "none" }}
       >
-        <Text as="small" fontFamily="Poppins" color=" #552D1E">
-          Edit Profile
-        </Text>
-      </Button>
-    </Box>
-  );
-};
-
-const UploadCertificate = ({ rate }) => {
-  return (
-    <Box
-      backgroundColor="white"
-      borderRadius="10px"
-      py="14rem"
-      px={{ base: 4, md: 8 }}
-      w="100%"
-    >
-      <Box>
-        <Text fontFamily="Poppins" w="80%">
-          Your rating based on Work assigned to Wocman
-        </Text>
         <Text
+          as="label"
+          htmlFor="pic-upload"
           fontFamily="Poppins"
-          w="80%"
-          mt={{ base: 2, md: 4 }}
-          fontWeight="bold"
-          fontSize={{ base: "1.4rem", md: "2rem" }}
-          color="wocman.typography1"
+          color=" #552D1E"
+          cursor="pointer"
         >
-          {rate} star(s)
+          Change photo
         </Text>
-      </Box>
+        <Input
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          id="pic-upload"
+          display="none"
+          onChange={(e) => handleImageChange(e)}
+        />
+      </Button>
     </Box>
   );
 };
@@ -155,14 +172,14 @@ const ProfileForm = (props) => {
   const toast = useToast();
 
   const [values, setValues] = React.useState({
-    firstname: profile?.firstname,
-    lastname: profile?.lastname,
-    username: profile?.username,
+    firstname: profile?.firstname || "",
+    lastname: profile?.lastname || "",
+    username: profile?.username || "",
     email: profile?.email,
-    phone: profile?.phone,
-    address: profile?.address,
-    country: profile?.country,
-    state: profile?.state,
+    phone: profile?.phone || "",
+    address: profile?.address || "",
+    country: profile?.country || "",
+    state: profile?.state || "",
   });
   const [submitLoading, setSubmitLoading] = React.useState(false);
 
@@ -178,7 +195,7 @@ const ProfileForm = (props) => {
     setAuthToken(localStorage["wocman_token"]);
     setSubmitLoading(true);
     try {
-      const { data } = await axios.post("/customer/profile/complete", {
+      const { data } = await axios.patch("/customer/profile/update", {
         ...values,
       });
       if (data?.status) {
@@ -322,6 +339,7 @@ const ProfileForm = (props) => {
       <Flex justify={{ base: "center", md: "flex-end" }} w="100%">
         <Button
           _focus={{ outline: "none" }}
+          _hover={{ opacity: "0.8" }}
           h="70px"
           w={{ base: "90%", md: "45%", xl: "25%" }}
           borderRadius="10px"

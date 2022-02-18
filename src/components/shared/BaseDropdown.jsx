@@ -16,14 +16,14 @@ export const BaseDropdown = ({
       ...styles,
       backgroundColor: bg || "#E8E2E7",
       width: w || "27rem",
-      height: h || "4rem",
+      height: h || "3rem",
       border: "none",
     }),
   };
 
   return (
-    <Box {...rest} className="dropDown">
-      <Text fontSize="1.5rem" mb="1.2rem">
+    <Box {...rest} mt="1rem" className="dropDown">
+      <Text fontFamily="Gilroy-Bold" fontSize="1.3rem" mb="1.2rem">
         {label}
       </Text>
       <Select

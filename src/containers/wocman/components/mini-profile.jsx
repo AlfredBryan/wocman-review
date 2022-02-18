@@ -1,6 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/core";
 import AuthBgImage from "../../../assets/images/auth.jpg";
-// import mission from "../../../assets/images/mission.jpg";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import {capitalize} from "../../../utils";
 
@@ -21,8 +20,6 @@ export const MiniProfile = ({projectResult}) => {
         bg="transparent"
         position="relative"
         bgSize="cover"
-        //   mr={8}
-        //   ml={8}
         mx="auto"
         py={8}
         h="150px"
@@ -42,8 +39,6 @@ export const MiniProfile = ({projectResult}) => {
           width="100px"
           borderRadius="50%"
           bottom="-45px"
-          //   transform="translate(-50%, 0)"
-          //   left="50%"
           left="0"
           right="0"
           margin="0 auto"
