@@ -249,7 +249,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
           />
         </Box>
         <Flex w="100%" justify="space-between" mt="2rem">
-          <Box w="48%">
+          <Box w={{ base: "100%", lg: "48%" }}>
             <PseudoBox
               as="label"
               htmlFor="certificate-upload"
@@ -289,7 +289,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             <Image key={imageSrc} w="48%" mb="2rem" h="109px" src={imageSrc} />
           ))}
         </Flex>
-        <Flex w="100%" justify="center">
+        <Flex w="100%" justify="center" pb={{ base: "3rem", lg: "0rem" }}>
           <Button
             borderColor="#552D1E"
             fontSize="1rem"

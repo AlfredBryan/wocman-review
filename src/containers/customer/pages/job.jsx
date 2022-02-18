@@ -16,6 +16,7 @@ import Fade from "react-reveal/Fade";
 import JobModal from "./JobModal";
 import { axios } from "../../../utils/axios";
 import { ShowMessage } from "../../../utils/alert";
+import { getCurrentUser } from "../../../utils/getCurrentUser";
 
 const Job = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,9 +50,6 @@ const Job = () => {
     fetchJobs();
   }, []);
 
-  console.log("====================================");
-  console.log(jobs);
-  console.log("====================================");
 
   return (
     <Box p="40px" w="100%">
