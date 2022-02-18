@@ -51,12 +51,6 @@ export const CustomerSideNav = (props) => {
       icon_active: wocstationActive,
     },
     {
-      name: "Wallet",
-      to: "/wallet",
-      icon: wallet,
-      icon_active: walletActive,
-    },
-    {
       name: "Messaging",
       to: "/messaging",
       icon: messaging,

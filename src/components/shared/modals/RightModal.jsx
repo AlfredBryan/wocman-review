@@ -39,7 +39,7 @@ function RightModal(props) {
           >
             <Box bg="#552D1E">
               <Flex
-                pl="4.2rem"
+                pl="2rem"
                 pb="3.7rem"
                 pr="1.2rem"
                 pt="2.7rem"
@@ -52,6 +52,7 @@ function RightModal(props) {
                     fontSize="2rem"
                     color="#FFFFFF"
                     textTransform="capitalize"
+                    fontFamily="Gilroy-Bold"
                   >
                     {title}
                   </Text>
@@ -74,8 +75,8 @@ function RightModal(props) {
               pr="2rem"
               pt="2.1rem"
               pb="2rem"
-              h="80vh"
-              overflow="auto"
+              h="70vh"
+              overflowY={{ base: "scroll", lg: "auto" }}
             >
               {children}
             </Box>

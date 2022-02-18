@@ -63,9 +63,6 @@ const MiniProfile = ({ profile }) => {
     if (fileTypes.includes(file?.type)) {
       var form = new FormData();
       form.append("avatar", file, file.name);
-
-      console.log("form:", form);
-      console.log(profileImage);
       try {
         const { data } = await axios.post("/wocman/profile/picture", form);
 

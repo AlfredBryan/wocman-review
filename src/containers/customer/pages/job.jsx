@@ -1,14 +1,57 @@
-import { Box, Button, Flex, Text, Image, Badge } from "@chakra-ui/core";
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  Image,
+  Badge,
+  useToast,
+} from "@chakra-ui/core";
 import { StarIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import electrician from "../../../assets/images/electrical.png";
 import customer from "../../../assets/images/customer.png";
 import Fade from "react-reveal/Fade";
 import JobModal from "./JobModal";
+import { axios } from "../../../utils/axios";
+import { ShowMessage } from "../../../utils/alert";
 
 const Job = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [jobs, setJobs] = useState([]);
+
+  const toast = useToast();
+
+  const fetchJobs = async () => {
+    try {
+      const { data } = await axios.get("/customer/jobs");
+
+      if (data?.status) {
+        setJobs(data.data);
+      } else {
+        ShowMessage(
+          "Error",
+          "An error occurred while fetching settings",
+          "error",
+          toast
+        );
+      }
+    } catch (error) {
+      const errorMessage = error?.response?.data?.message;
+      if (errorMessage) {
+        ShowMessage("Error", errorMessage, "error", toast);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  console.log("====================================");
+  console.log(jobs);
+  console.log("====================================");
 
   return (
     <Box p="40px" w="100%">
@@ -41,7 +84,7 @@ const Job = () => {
               fontFamily="Gilroy-Bold"
               color="white"
               fontSize={["1.5rem", "1.5rem", "1.5rem", "2rem", "2.28rem"]}
-              w="100vh"
+              w="100%"
             >
               Submit <br />
               Work Request
@@ -73,33 +116,39 @@ const Job = () => {
         </Flex>
         <Flex flex={[0, 0, 0, 1, 1]}></Flex>
       </Flex>
+
       <Box w="100%" mt="5" backgroundColor="#F9F9F9" p="5">
-        <Text pb="6px">Featured Wocmen</Text>
-        <Flex w="30vh" h="30vh" backgroundColor="#FCFDFD">
-          <Flex flex={1} justify="center" align="center" flexDir="column">
-            <Image src={customer} alt="face mask" my="3" />
-            <Text>Chibuzor Ozoho</Text>
-            <Text color="#778899" mt="3">
-              Carpnter
+        {jobs?.map((job) => (
+          <Flex key={job.id} w="30vh" h="30vh" backgroundColor="#FCFDFD">
+            <Text pb="6px" textTransform="capitalize">
+              {job?.project}
             </Text>
-            <Button
-              backgroundColor="#E8E2E7"
-              color="#552D1E"
-              fontSize="0.6rem"
-              w="40"
-              mt="3"
-            >
-              View Details
-            </Button>
+            <Flex flex={1} justify="center" align="center" flexDir="column">
+              <Image src={customer} alt="face mask" my="3" />
+              <Text>{job?.description}</Text>
+              <Text color="#778899" mt="3">
+                {job?.project_subcategory?.name}
+              </Text>
+              <Button
+                backgroundColor="#E8E2E7"
+                color="#552D1E"
+                fontSize="0.6rem"
+                w="40"
+                mt="3"
+              >
+                View Details
+              </Button>
+            </Flex>
+            <Box mt="8" pr="3">
+              <Badge variant="none" color="#778899" backgroundColor="#F6F1F1">
+                5.0 <StarIcon color="#FFC850" />
+              </Badge>
+            </Box>
           </Flex>
-          <Box mt="8" pr="3">
-            <Badge variant="none" color="#778899" backgroundColor="#F6F1F1">
-              5.0 <StarIcon color="#FFC850" />
-            </Badge>
-          </Box>
-        </Flex>
+        ))}
       </Box>
-      <JobModal isOpen={isOpen} setIsOpen={setIsOpen} />
+
+      <JobModal update={fetchJobs} isOpen={isOpen} setIsOpen={setIsOpen} />
     </Box>
   );
 };

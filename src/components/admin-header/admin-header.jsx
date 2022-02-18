@@ -25,6 +25,9 @@ export const AdminHeader = ({ toggle, profile }) => {
   };
 
   const { firstname, lastname, isProfileUpdated } = profile || {};
+  console.log("====================================");
+  console.log(profile, "profile");
+  console.log("====================================");
   return (
     <Flex
       px={{ base: 4, md: 8 }}
@@ -59,7 +62,6 @@ export const AdminHeader = ({ toggle, profile }) => {
       </Flex>
 
       <Flex d={{ base: "flex", lg: "none" }} onClick={toggle}>
-        {/* <Image src={menu} alt="menu-bar" mr={8} color="grey" /> */}
         <Icon
           name="burger"
           color="wocman.newsLetter"
@@ -93,11 +95,12 @@ export const AdminHeader = ({ toggle, profile }) => {
         <Menu>
           <MenuButton>
             <Image
-              src={mission}
+              src={profile?.image || mission}
               w="40px"
               h="40px"
               borderRadius="50%"
               alt="notifications"
+              border="2px solid black "
             />
           </MenuButton>
           <MenuList zIndex="500">
