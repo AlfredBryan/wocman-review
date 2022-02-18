@@ -304,7 +304,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             backgroundColor="#552D1E"
             borderRadius="4px"
             h={{ base: "3rem", lg: "5rem" }}
-            w={["15rem"]}
+            w={{ base: "100%", lg: "15rem" }}
             _hover={{ opacity: "0.7" }}
             _active={{ transform: "scale(0.98)" }}
             _focus={{ outline: "none" }}
