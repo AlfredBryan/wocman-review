@@ -1,22 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Box,
   Button,
   Flex,
   Text,
   Image,
-  Badge,
   useToast,
 } from "@chakra-ui/core";
-import { StarIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 
 import electrician from "../../../assets/images/electrical.png";
-import customer from "../../../assets/images/customer.png";
 import Fade from "react-reveal/Fade";
 import JobModal from "./JobModal";
 import { axios } from "../../../utils/axios";
 import { ShowMessage } from "../../../utils/alert";
-import { getCurrentUser } from "../../../utils/getCurrentUser";
 
 const Job = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +46,6 @@ const Job = () => {
   useEffect(() => {
     fetchJobs();
   }, []);
-
 
   return (
     <Box p="40px" w="100%">
@@ -131,7 +127,13 @@ const Job = () => {
                 <Text wordBreak="break-all" textTransform="capitalize">
                   {job?.project}
                 </Text>
-                <Image src={customer} alt="face mask" my="3" />
+                <Image
+                  src="https://logopond.com/logos/work.gif"
+                  alt="face mask"
+                  w="6rem"
+                  height="6rem"
+                  borderRadius="50%"
+                />
                 <Text>{job?.description}</Text>
                 <Text color="#778899" mt="3">
                   {job?.project_subcategory?.name}
@@ -141,16 +143,10 @@ const Job = () => {
                   color="#552D1E"
                   fontSize="0.6rem"
                   w="40"
-                  mt="3"
                 >
                   View Details
                 </Button>
               </Flex>
-              <Box mt="8" pr="3">
-                <Badge variant="none" color="#778899" backgroundColor="#F6F1F1">
-                  5.0 <StarIcon color="#FFC850" />
-                </Badge>
-              </Box>
             </Flex>
           ))}
         </Flex>

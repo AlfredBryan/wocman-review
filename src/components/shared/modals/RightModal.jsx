@@ -49,7 +49,7 @@ function RightModal(props) {
                 <Box>
                   <Text
                     fontWeight="bold"
-                    fontSize="2rem"
+                    fontSize={{ base: "1rem", lg: "2rem" }}
                     color="#FFFFFF"
                     textTransform="capitalize"
                     fontFamily="Gilroy-Bold"

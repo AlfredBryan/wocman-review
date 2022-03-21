@@ -4,13 +4,11 @@ import { NavLink as ReactLink } from "react-router-dom";
 import logo from "../../assets/icons/logo-colored.svg";
 import dashboard from "../../assets/icons/dashboard.svg";
 import wocstation from "../../assets/icons/wocstation.svg";
-import wallet from "../../assets/icons/wallet.svg";
 import messaging from "../../assets/icons/messaging.svg";
 import profile from "../../assets/icons/profile.svg";
 import settings from "../../assets/icons/settings.svg";
 import dashboardActive from "../../assets/icons/dashboard-white.svg";
 import wocstationActive from "../../assets/icons/wocstation-white.svg";
-import walletActive from "../../assets/icons/wallet-white.svg";
 import messagingActive from "../../assets/icons/messaging-white.svg";
 import profileActive from "../../assets/icons/profile-white.svg";
 import settingsActive from "../../assets/icons/settings-white.svg";
@@ -34,8 +32,6 @@ export const CustomerSideNav = (props) => {
       window.removeEventListener("orientationchange", handleResize);
     };
   });
-
-  // const location = useLocation();
 
   const dashboardLinks = [
     {
@@ -81,19 +77,15 @@ export const CustomerSideNav = (props) => {
       zIndex="10"
       overflowY="auto"
       position={{ base: "fixed", lg: "static" }}
-      //   transform={{ base: "translateX(-2000px)", lg: "translateX(0)" }}
       transition="translate ease-in 1s"
     >
       <Box px={{ base: 8, md: 16 }}>
         <Image
-          // objectFit="cover"
-          // alt="wocman logo"
           overflow="hidden"
           src={logo}
           outline="none"
           cursor="pointer"
           border="none"
-          // fallbackSrc="https://via.placeholder.com/30"
           onClick={() => history.push("/")}
           d={!loaded ? "none" : "block"}
           onLoad={() => setLoaded(true)}
@@ -152,9 +144,6 @@ export const CustomerSideNav = (props) => {
                 ml={{ base: 4, md: 8 }}
                 _focus={{ outline: "none" }}
                 _hover={{ textDecor: "none " }}
-                // className={`link ${
-                //   props.location.pathname === item.to ? "active" : ""
-                // }`}
               >
                 <Text
                   fontFamily="Poppins"

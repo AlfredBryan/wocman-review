@@ -180,7 +180,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             name="topic"
             onChange={handleChange}
             value={state.topic}
-            label="Topic"
+            label="Job name"
             width="100%"
           />
         </Box>
@@ -204,8 +204,12 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             />
           </Box>
         </Flex>
-        <Flex w="100%" justify="space-between">
-          <Box width="48%">
+        <Flex
+          w="100%"
+          direction={{ base: "column", lg: "row" }}
+          justify="space-between"
+        >
+          <Box width={{ base: "100%", lg: "48%" }}>
             <BaseDropdown
               options={allOptions}
               onChange={handleSubChange}
@@ -213,7 +217,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
               w="100%"
             />
           </Box>
-          <Box width="48%">
+          <Box width={{ base: "100%", lg: "48%" }}>
             {state?.category !== "" && (
               <BaseDropdown
                 label="Sub category"
@@ -231,7 +235,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
         </Flex>
         <Box mt="2rem">
           <Text fontFamily="Gilroy-Bold" fontSize="1.3rem" as="label">
-            Description
+            Work description
           </Text>
           <Textarea
             focusBorderColor="#552D1E"
@@ -286,7 +290,13 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
 
         <Flex justify="space-between" flexWrap="wrap" w="100%">
           {imageUrls.map((imageSrc) => (
-            <Image key={imageSrc} w="48%" mb="2rem" h="109px" src={imageSrc} />
+            <Image
+              key={imageSrc}
+              w="48%"
+              mb={{ base: "1rem", lg: "2rem" }}
+              h="109px"
+              src={imageSrc}
+            />
           ))}
         </Flex>
         <Flex w="100%" justify="center" pb={{ base: "3rem", lg: "0rem" }}>
@@ -297,8 +307,8 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             color="#FFFFFF"
             backgroundColor="#552D1E"
             borderRadius="4px"
-            h="5rem"
-            w={["15rem"]}
+            h={{ base: "3rem", lg: "5rem" }}
+            w={{ base: "100%", lg: "15rem" }}
             _hover={{ opacity: "0.7" }}
             _active={{ transform: "scale(0.98)" }}
             _focus={{ outline: "none" }}

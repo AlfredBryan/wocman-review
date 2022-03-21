@@ -28,7 +28,6 @@ export const BaseDropdown = ({
       </Text>
       <Select
         onChange={onChange}
-        menuPosition="fixed"
         options={options}
         styles={colourStyles}
         name={rest.name}

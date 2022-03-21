@@ -245,7 +245,7 @@ const ChatSection = forwardRef((props, ref) => {
           {props.index !== 1 && <Divider mt={[8, 12]} borderColor="#778899" />}
         </Flex>
       </Flex>
-      {props.seen == 1 && (
+      {props.seen === 1 && (
         <Flex>
           <Image src={props.seen && read} size="12px" />
         </Flex>

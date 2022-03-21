@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
 import { Card } from "../components/card";
 import { Notifications } from "../components/notifications";
@@ -94,7 +95,7 @@ const Dashboard = () => {
               ):(
             <Card text="Rating" number={ratingsResults?.rate } sub="stars" />
             )}
-            {completedResults?.Completion <= 0 || completedResults?.Completion == undefined ? (
+            {completedResults?.Completion <= 0 || completedResults?.Completion === undefined ? (
               <Card text="Completion %" />
               ):(
             <Card text="Completion %" number={completedResults?.Completion } sub="completion" noMargin />

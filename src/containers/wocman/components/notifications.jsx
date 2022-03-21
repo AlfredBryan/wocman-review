@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Button, Divider, Flex, Text } from "@chakra-ui/core";
 import { InfoOutlineIcon } from "@chakra-ui/icons"
 
@@ -33,7 +34,7 @@ export const Notifications = () => {
           Notifications
         </Text>
       </Box>
-        {result?.notice.length == 0 ? (
+        {result?.notice.length === 0 ? (
       <>
         <Divider borderColor="wocman.newsLetter" />
           <Flex px={{ base: 6, md: 16 }} py={2} flexDirection="column">
