@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Flex } from "@chakra-ui/core";
 import { MessageSection } from "../components/message-section";
 import { WorkDescription } from "../components/work-description";

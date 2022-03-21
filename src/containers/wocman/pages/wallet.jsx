@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
 import purse from "../../../assets/images/purse.svg";
 import { TransactionList } from "../components/transaction";
 import { getCurrentUser } from "../../../utils";
-// import { WalletChart } from "../components/wallet-chart";
 import { wallet } from "../../../state/actions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";

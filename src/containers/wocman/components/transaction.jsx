@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { Box, Flex, Image, Text } from "@chakra-ui/core";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import credit from "../../../assets/icons/credit.svg";
 import debit from "../../../assets/icons/debit.svg";
 import { formatAsMoney } from "../../../utils/format";
@@ -10,37 +12,39 @@ export const TransactionList = () => {
   const dispatch = useDispatch();
 
   const { result, error, isLoading, message } = useSelector(
-		({ history: { result, error, isLoading, message } = {} }) => ({
-			result,
-			error,
-			isLoading,
-			message,
-		})
-	);
-  const name = result?.name
+    ({ history: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
+  const name = result?.name;
 
   useEffect(() => {
     dispatch(history());
-	},[]);
-  
+  }, []);
+
   return (
-	  <Box p={{ base: 4, md: 8 }} backgroundColor="white" borderRadius="10px">
-		  <Text fontWeight="bold" fontFamily="Poppins" fontSize="1.6rem">Transaction History</Text>
-      {result?.history?.length == 0 
-        ? 
-        (
-          <Text textAlign="center" p="20">
-            You haven’t done a transaction,
-            Top up your account to see your 
-            transaction history.
-          </Text>
-          ) 
-          : 
-          (result?.history?.map((traxn, idx)=>(
-          <List src={traxn?.transactiontype == 'receive' ? credit : debit} user={name} action={traxn?.transactiontype} amount={traxn?.amount} key={idx} />
-          ))
-        // <List src={credit} user="Ogun Osun" action="Received" amount="20000" />
-        // <List src={debit} user="Weekly Payment" action="Sent" amount="70000" />
+    <Box p={{ base: 4, md: 8 }} backgroundColor="white" borderRadius="10px">
+      <Text fontWeight="bold" fontFamily="Poppins" fontSize="1.6rem">
+        Transaction History
+      </Text>
+      {result?.history?.length === 0 ? (
+        <Text textAlign="center" p="20">
+          You haven’t done a transaction, Top up your account to see your
+          transaction history.
+        </Text>
+      ) : (
+        result?.history?.map((traxn, idx) => (
+          <List
+            src={traxn?.transactiontype === "receive" ? credit : debit}
+            user={name}
+            action={traxn?.transactiontype}
+            amount={traxn?.amount}
+            key={idx}
+          />
+        ))
       )}
     </Box>
   );

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { Flex, Image, Text } from "@chakra-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -7,20 +9,21 @@ import purse from "../../../assets/images/purse.svg";
 
 export const Wallet = () => {
   const dispatch = useDispatch();
-  const user = localStorage.getItem('user')
+  const user = localStorage.getItem("user");
   const curUser = JSON.parse(user);
-	const { result, error, isLoading, message } = useSelector(
-		({ wallet: { result, error, isLoading, message } = {} }) => ({
-			result,
-			error,
-			isLoading,
-			message,
-		})
-	);
+  const { result, error, isLoading, message } = useSelector(
+    ({ wallet: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
 
-	useEffect(() => {
-		dispatch(wallet());
-		},[]);
+  useEffect(() => {
+    dispatch(wallet());
+  }, []);
+
   return (
     <Flex
       w="100%"

@@ -1,22 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Box,
   Button,
   Flex,
   Text,
   Image,
-  Badge,
   useToast,
 } from "@chakra-ui/core";
-import { StarIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 
 import electrician from "../../../assets/images/electrical.png";
-import customer from "../../../assets/images/customer.png";
 import Fade from "react-reveal/Fade";
 import JobModal from "./JobModal";
 import { axios } from "../../../utils/axios";
 import { ShowMessage } from "../../../utils/alert";
-import { getCurrentUser } from "../../../utils/getCurrentUser";
 
 const Job = () => {
   const [isOpen, setIsOpen] = useState(false);
