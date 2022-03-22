@@ -85,8 +85,10 @@ const MiniProfile = ({ profile }) => {
     }
     console.log(file);
   };
+
   const profilePicture = profile?.profile_picture?.[0]?.current?.[0]?.[0];
   const certificate = profile?.certificates[0]?.unverified[0]?.[2];
+  const profileSkill = profile?.skills[0]?.project_subcategory?.name;
   return (
     <Box
       backgroundColor="white"
@@ -136,7 +138,7 @@ const MiniProfile = ({ profile }) => {
         )}
       </Text>
       <Text as="small" fontFamily="Poppins" my={2}>
-        Plumber
+        {profileSkill}
       </Text>
       {/* change the above to show Wocman's profession later */}
 
@@ -182,9 +184,8 @@ const UploadCertificate = ({ rate, certificateImg }) => {
 
   const handleCertficateChange = async (e) => {
     const file = e.target.files[0];
-
+    const form = new FormData();
     if (fileTypes.includes(file?.type)) {
-      var form = new FormData();
       form.append("avatar", file, file.name);
       form.append("name", file.name);
       form.append("issued_date", file.lastModifiedDate);

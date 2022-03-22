@@ -130,7 +130,9 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
     formData.append("address", state.address);
     formData.append("city", state.city);
     formData.append("projecttypeid", state.projecttypeid);
-    formData.append("avatar", avatars);
+    formData.append("avatar", avatars[0]);
+    formData.append("avatar", avatars[1]);
+    formData.append("avatar", avatars[2]);
 
     setIsLoading(true);
     try {

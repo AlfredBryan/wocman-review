@@ -45,8 +45,8 @@ export const SideNav = (props) => {
       icon_active: dashboardActive,
     },
     {
-      name: "Wocstation",
-      to: "/wocstation",
+      name: "Projects",
+      to: "/projects",
       icon: wocstation,
       icon_active: wocstationActive,
     },
