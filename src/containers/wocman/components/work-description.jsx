@@ -148,7 +148,7 @@ export const WorkDescription = ({ id, project, getSingleProject }) => {
             _active={{ transform: "scale(0.98)" }}
             _focus={{ outline: "none" }}
             isLoading={isLoading}
-            onClick={completeProject}
+            onClick={() => alert("Job already completed")}
           >
             <Flex
               justify="center"
