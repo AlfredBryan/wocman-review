@@ -3,12 +3,10 @@ import { useHistory, useLocation } from "react-router";
 import { NavLink as ReactLink } from "react-router-dom";
 import logo from "../../assets/icons/logo-colored.svg";
 import dashboard from "../../assets/icons/dashboard.svg";
-import wocstation from "../../assets/icons/wocstation.svg";
 import messaging from "../../assets/icons/messaging.svg";
 import profile from "../../assets/icons/profile.svg";
 import settings from "../../assets/icons/settings.svg";
 import dashboardActive from "../../assets/icons/dashboard-white.svg";
-import wocstationActive from "../../assets/icons/wocstation-white.svg";
 import messagingActive from "../../assets/icons/messaging-white.svg";
 import profileActive from "../../assets/icons/profile-white.svg";
 import settingsActive from "../../assets/icons/settings-white.svg";
@@ -39,12 +37,6 @@ export const CustomerSideNav = (props) => {
       to: "/job",
       icon: dashboard,
       icon_active: dashboardActive,
-    },
-    {
-      name: "Wocstation",
-      to: "/wocstation",
-      icon: wocstation,
-      icon_active: wocstationActive,
     },
     {
       name: "Messaging",

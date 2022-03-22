@@ -8,18 +8,22 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/core";
+import { useState, useEffect } from "react";
+
 import professionals from "../../../assets/images/technicians.jpg";
 import tradesmen from "../../../assets/images/tradesmen.jpg";
 import technicians from "../../../assets/images/professionals.jpg";
 import { CustomButton } from "../../../components/custom-button/custom-button";
 import checkmark from "../../../assets/icons/check-circle.svg";
-import { useState } from "react";
 import { ShowMessage } from "../../../utils/alert";
 import { axios } from "../../../utils/axios";
+import loader from "../../../assets/images/wocman.gif";
 
 const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
   const toast = useToast();
   const [newCategory, setNewCategory] = useState(0);
+  const [jobCategory, setJobCategory] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [skill, setSkill] = useState(0);
 
@@ -28,7 +32,6 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
     try {
       const { data } = await axios.post("/wocman/profile/add/skill", {
         skillid: skill,
-        description: "I'm well skilled at this",
       });
       if (data?.status === 200 || 201) {
         ShowMessage("Success", "Skill added successfully", "success", toast);
@@ -51,71 +54,71 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
     }
   };
 
-  const handleSubmit = async () => {
-    setIsLoading(true);
-    try {
-      const { data } = await axios.post("/wocman/profile/add/category", {
-        categoryid: newCategory,
-      });
-      if (data?.status === 200 || 201) {
-        ShowMessage("Success", "Category added successfully", "success", toast);
+  useEffect(() => {
+    let isMounted = true;
+    const getJobTypes = async () => {
+      setIsFetching(true);
+      try {
+        const { data } = await axios.get("/customer/job/projects");
+        if (data?.status) {
+          if (isMounted) setJobCategory(data?.data);
+          setIsFetching(false);
+        } else {
+          ShowMessage(
+            "Error",
+            "An error occurred while fetching user",
+            "error",
+            toast
+          );
+        }
+      } catch (error) {
+        const errorMessage = error?.response?.data?.message;
+        if (errorMessage) {
+          ShowMessage("Error", errorMessage, "error", toast);
+        }
       }
-      setIsLoading(false);
-      setTimeout(handleSubmitSkill(), 5000);
-      nextStep();
-    } catch (error) {
-      setIsLoading(false);
-      let errorMessage = error?.response?.data?.message;
-      let fallbackErrorMessage =
-        error?.response?.data?.message?.details?.[0]?.message;
-      errorMessage =
-        typeof errorMessage === "string"
-          ? errorMessage
-          : typeof fallbackErrorMessage === "string"
-          ? fallbackErrorMessage
-          : "An error occurred.";
-      if (errorMessage) {
-        ShowMessage("Error", errorMessage, "error", toast);
-      }
-    }
-  };
+    };
+    getJobTypes();
+
+    // cleanup hack to avoid React's "Can't perform a React state update on an unmounted component" warning
+    return () => {
+      isMounted = false;
+    };
+  }, [toast]);
+
+  if (isFetching) {
+    return (
+      <Flex w="100vw" h="100vh" align="center" justify="center">
+        <Image src={loader} />
+      </Flex>
+    );
+  }
+
+  const allCategories = jobCategory?.map((job) =>
+    job?.sub_category?.map((category) => category)
+  );
+
+  const tradesmenData = allCategories[0]?.map((trade) => trade);
+
+  const techniciansData = allCategories[1]?.map((tech) => tech);
+
+  const professionalsData = allCategories[2]?.map((prof) => prof);
 
   const categories = [
     {
       title: "Technicians",
       img: technicians,
-      content: [
-        "Mason",
-        "Carpenter",
-        "Ironbender",
-        "Painter & Screeders",
-        "Aluminum Fabricators",
-        "Steel Fabricators",
-        "Solar Installers",
-        "Electricians",
-        "Plumbers",
-        "Polystyrene Technicians",
-        "A/C Technician",
-        "Tilers",
-        "Generator Mechanics",
-      ],
+      content: techniciansData,
     },
     {
       title: "Tradesmen",
       img: tradesmen,
-      content: [
-        "Barber",
-        "Gardener",
-        "Makeup Artist",
-        "Pedicurist",
-        "Cleaners",
-        "Hair Stylist",
-      ],
+      content: tradesmenData,
     },
     {
       title: "Professionals",
       img: professionals,
-      content: ["Engineers", "Geologist", "Architects", "Surveyors"],
+      content: professionalsData,
     },
   ];
 
@@ -265,13 +268,13 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
             flexWrap="wrap"
             justify={{ base: "center", md: "space-between" }}
           >
-            {categories.map((category, index) => (
+            {categories?.map((category, index) => (
               <Category
                 key={index}
-                image={category.img}
+                image={category?.img}
                 index={index}
-                heading={category.title}
-                content={category.content}
+                heading={category?.title}
+                content={category?.content}
                 category={newCategory}
                 onClick={() => setNewCategory(index + 1)}
                 setSkill={setSkill}
@@ -290,9 +293,9 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
             <CustomButton
               mt={{ base: 8, md: 0 }}
               mb={{ base: 4, md: 0 }}
-              onClick={handleSubmit}
+              onClick={handleSubmitSkill}
               isLoading={isLoading}
-              isDisabled={newCategory === 0 || skill === 0}
+              isDisabled={skill === 0}
             >
               Proceed
             </CustomButton>
@@ -331,9 +334,9 @@ const Category = (props) => {
       borderRadius="13.5px"
       flexDirection="column"
       overflow="hidden"
-      onClick={props.onClick}
+      onClick={props?.onClick}
     >
-      <Image src={props.image} alt={props.title} W="100%" />
+      <Image src={props?.image} alt={props?.title} W="100%" />
       <Flex
         flex="2"
         flexDirection="column"
@@ -354,19 +357,13 @@ const Category = (props) => {
             fontWeight="600"
             py={2}
             color={`${
-              props.index + 1 === props.category
+              props?.index + 1 === props?.category
                 ? "white"
                 : "wocman.heading_text"
             }`}
           >
-            {props.heading}
+            {props?.heading}
           </Text>
-          <Image
-            src={checkmark}
-            alt="check mark"
-            mr={{ base: 2, md: 4 }}
-            d={`${props.index + 1 === props.category ? "flex" : "none"}`}
-          />
         </Flex>
         <Flex
           flexDir="column"
@@ -377,38 +374,30 @@ const Category = (props) => {
           h="20rem"
           overflowY="scroll"
         >
-          {props.content.map((item, index) => (
+          {props?.content?.map((item, index) => (
             <div key={index}>
               <Divider borderColor="wocman.contact" />
               <Flex
                 justify="space-between"
                 py={2}
                 cursor="pointer"
-                onClick={() => props.setSkill(index + 1)}
+                onClick={() => props.setSkill(item?.id)}
               >
                 <Text
                   fontFamily="Poppins"
                   lineHeight="138.6%"
                   color={`${
-                    props.index + 1 === props.category &&
-                    index + 1 === props.skill
-                      ? "white"
-                      : "wocman.heading_text"
+                    item?.id === props?.skill ? "white" : "wocman.heading_text"
                   }`}
                   ml={{ base: 4, md: 8 }}
                 >
-                  {item}
+                  {item.name}
                 </Text>
                 <Image
                   src={checkmark}
                   alt="check mark"
                   mr={{ base: 2, md: 4 }}
-                  d={`${
-                    props.index + 1 === props.category &&
-                    index + 1 === props.skill
-                      ? "flex"
-                      : "none"
-                  }`}
+                  d={`${item?.id === props?.skill ? "flex" : "none"}`}
                 />
               </Flex>
             </div>

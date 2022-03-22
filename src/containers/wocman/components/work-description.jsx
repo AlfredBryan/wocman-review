@@ -1,75 +1,176 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import moment from "moment";
+import {
+  Box,
+  Flex,
+  Icon,
+  Image,
+  PseudoBox,
+  Text,
+  useToast,
+} from "@chakra-ui/core";
 
-import { Box, Flex, Icon, Image, PseudoBox, Text } from "@chakra-ui/core";
-import Slider from "react-slick";
 import briefcase from "../../../assets/icons/briefcase.svg";
 import calendar from "../../../assets/icons/calendar.svg";
 import clock from "../../../assets/icons/clock.svg";
 import whitecheck from "../../../assets/icons/check-white.svg";
 import wocstation from "../../../assets/images/wocstation.svg";
-import { services } from "../../../utils/constants";
-import {wocmanProject} from "../../../state/actions";
-import {capitalize} from "../../../utils";
+import { axios, capitalize } from "../../../utils";
 
-export const WorkDescription = () => {
-  const dispatch = useDispatch();
+export const WorkDescription = ({ id, project, getSingleProject }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
 
-  const { result: wocmanProjectResult, error: wocmanProjectError, isLoading: wocmanProjectIsLoading, message: wocmanProjectMessage} = useSelector(
-    ({ wocmanProject: { result, error, isLoading, message } = {} }) => ({
-      result,
-      error,
-      isLoading,
-      message,
-    })
-  );
-  useEffect(() => {
-    dispatch(wocmanProject(34));
-  }, []);
-  const settings = {
-    infinite: true,
-    speed: 500,
-    arrows: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    dots: true,
-    responsive: [
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 710,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-    ],
+  const beginProject = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.put(
+        `/wocman/project/accept/${id}?status=in-progress`
+      );
+      toast({
+        title: "Success",
+        description: "Project begin successful",
+        position: "top-right",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      setIsLoading(false);
+      getSingleProject();
+    } catch (error) {
+      toast({
+        title: "Failed",
+        description: error?.response?.data?.message,
+        position: "top-right",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      setIsLoading(false);
+    }
   };
+
+  const completeProject = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.put(
+        `/wocman/project/complete/${id}?status=completed`
+      );
+      toast({
+        title: "Success",
+        description: "Project complete successful",
+        position: "top-right",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      setIsLoading(false);
+      getSingleProject();
+    } catch (error) {
+      toast({
+        title: "Failed",
+        description: error?.response?.data?.message,
+        position: "top-right",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      setIsLoading(false);
+    }
+  };
+
+  const projectStep = (status) => {
+    switch (true) {
+      case status === "in-progress":
+        return (
+          <PseudoBox
+            as="button"
+            borderRadius="10px"
+            backgroundColor="wocman.typography1"
+            mb={{ base: 4, sm: 0 }}
+            _hover={{ opacity: "0.7" }}
+            _active={{ transform: "scale(0.98)" }}
+            _focus={{ outline: "none" }}
+            isLoading={isLoading}
+            onClick={completeProject}
+          >
+            <Flex
+              justify="center"
+              align="center"
+              flexDir="column"
+              px={[4, 8]}
+              py={[2]}
+            >
+              <Image src={whitecheck} alt="check" />
+              <Text fontFamily="Poppins" color="white">
+                {isLoading ? "Completing..." : "Complete"}
+              </Text>
+            </Flex>
+          </PseudoBox>
+        );
+      case status === "approved":
+        return (
+          <PseudoBox
+            as="button"
+            borderRadius="10px"
+            backgroundColor="wocman.typography1"
+            mb={{ base: 4, sm: 0 }}
+            _hover={{ opacity: "0.7" }}
+            _active={{ transform: "scale(0.98)" }}
+            _focus={{ outline: "none" }}
+            isLoading={isLoading}
+            onClick={completeProject}
+          >
+            <Flex
+              justify="center"
+              align="center"
+              flexDir="column"
+              px={[4, 8]}
+              py={[2]}
+            >
+              <Image src={whitecheck} alt="check" />
+              <Text fontFamily="Poppins" color="white">
+                {isLoading ? "Starting..." : "Begin"}
+              </Text>
+            </Flex>
+          </PseudoBox>
+        );
+      case status === "completed":
+        return (
+          <PseudoBox
+            as="button"
+            borderRadius="10px"
+            backgroundColor="wocman.typography1"
+            mb={{ base: 4, sm: 0 }}
+            _hover={{ opacity: "0.7" }}
+            _active={{ transform: "scale(0.98)" }}
+            _focus={{ outline: "none" }}
+            isLoading={isLoading}
+            onClick={() => alert("Job already completed")}
+          >
+            <Flex
+              justify="center"
+              align="center"
+              flexDir="column"
+              px={[4, 8]}
+              py={[2]}
+            >
+              <Image src={whitecheck} alt="check" />
+              <Text fontFamily="Poppins" color="white">
+                Project completed
+              </Text>
+            </Flex>
+          </PseudoBox>
+        );
+
+      default:
+        break;
+    }
+  };
+
+  console.log("begin>>>", project);
 
   return (
     <Box w="100%">
@@ -90,7 +191,7 @@ export const WorkDescription = () => {
               mt={{ base: 4, md: 6 }}
               fontWeight="600"
             >
-             {wocmanProjectResult?.project?.description}
+              {capitalize(project?.project)}
             </Text>
             <Text
               fontFamily="Poppins"
@@ -100,7 +201,7 @@ export const WorkDescription = () => {
               lineHeight="24px"
               isTruncated
             >
-              {wocmanProjectResult?.project?.description}
+              {capitalize(project?.description)}
             </Text>
             <Flex my={{ base: 4, md: 6 }} align="center">
               <Image src={briefcase} alt="briefcase" size="1.2rem" />
@@ -110,7 +211,9 @@ export const WorkDescription = () => {
                 ml={[4]}
                 fontSize="0.8rem"
               >
-                {wocmanProjectResult?.project?.address}. {wocmanProjectResult?.project?.city} { capitalize(wocmanProjectResult?.project?.country)}
+                {`${capitalize(project?.city)} ${project?.address} ${
+                  project?.country
+                }`}
               </Text>
             </Flex>
             <Flex w="100%" flexDir={{ base: "column", sm: "row" }}>
@@ -143,7 +246,9 @@ export const WorkDescription = () => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          {moment(wocmanProjectResult?.project?.datetimeset).format('LL')} 
+                          {project?.wocmanstartdatetime !== null
+                            ? moment(project?.wocmanstartdatetime).format("ll")
+                            : moment(project?.createdAt).format("ll")}
                         </Text>
                         <Text
                           as="small"
@@ -164,7 +269,9 @@ export const WorkDescription = () => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          {moment(wocmanProjectResult?.project?.datetimeset).format('LT')}
+                          {project?.wocmanstartdatetime !== null
+                            ? moment(project?.wocmanstartdatetime).format("LT")
+                            : moment(project?.createdAt).format("LT")}
                         </Text>
                         <Text
                           as="small"
@@ -177,31 +284,9 @@ export const WorkDescription = () => {
                       </Box>
                     </Flex>
                   </Flex>
-                  {/* <Flex flex="1"></Flex> */}
                 </Flex>
               </Flex>
-              <PseudoBox
-                as="button"
-                borderRadius="10px"
-                backgroundColor="wocman.typography1"
-                mb={{ base: 4, sm: 0 }}
-                _hover={{ opacity: "0.7" }}
-                _active={{ transform: "scale(0.98)" }}
-                _focus={{ outline: "none" }}
-              >
-                <Flex
-                  justify="center"
-                  align="center"
-                  flexDir="column"
-                  px={[4, 8]}
-                  py={[2]}
-                >
-                  <Image src={whitecheck} alt="check" />
-                  <Text fontFamily="Poppins" color="white">
-                    Begin
-                  </Text>
-                </Flex>
-              </PseudoBox>
+              {projectStep(project?.status)}
             </Flex>
           </Flex>
           <Flex flex={1} justify="center">
@@ -223,10 +308,10 @@ export const WorkDescription = () => {
           <Flex w="100%"></Flex>
         </Flex>
         <Box mb={[8, 4]}>
-          <Slider {...settings} className="h-full w-full">
-            {services.map((service, index) => (
+          <Flex direction={{ base: "column", lg: "row" }} w={"100%"}>
+            {project?.images?.map((img, index) => (
               <Box
-                bgImage={`url(${service.image})`}
+                bgImage={`url(${img})`}
                 bgPos="center"
                 key={index}
                 bgRepeat="no-repeat"
@@ -235,15 +320,13 @@ export const WorkDescription = () => {
                 bg="transparent"
                 bgSize="cover"
                 my={4}
-                //   mr={8}
-                //   ml={8}
-                mx="auto"
+                ml={{ base: "0rem", lg: index > 0 && "2rem" }}
+                width={{ base: "100%", lg: "40%" }}
                 py={8}
                 h="120px"
-                width="90%"
               ></Box>
             ))}
-          </Slider>
+          </Flex>
         </Box>
       </Flex>
     </Box>

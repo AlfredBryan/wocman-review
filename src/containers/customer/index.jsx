@@ -20,14 +20,14 @@ const Customer = () => {
 
   const routes = [
     {
+      path: "/job/:id",
+      name: "WocStation",
+      Component: lazy(() => import("./pages/wocstation")),
+    },
+    {
       path: "/job",
       name: "Job",
       Component: lazy(() => import("./pages/job")),
-    },
-    {
-      path: "/wocstation",
-      name: "WocStation",
-      Component: lazy(() => import("./pages/wocstation")),
     },
     {
       path: "/wallet",

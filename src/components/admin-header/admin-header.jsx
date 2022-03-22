@@ -24,10 +24,10 @@ export const AdminHeader = ({ toggle, profile }) => {
     history.replace("/login");
   };
 
-  const { firstname, lastname, isProfileUpdated } = profile || {};
-  console.log("====================================");
-  console.log(profile, "profile");
-  console.log("====================================");
+  const { firstname, lastname, isProfileUpdated, profile_picture } =
+    profile || {};
+  const profilePics = profile_picture?.map((pics) => pics?.current);
+
   return (
     <Flex
       px={{ base: 4, md: 8 }}
@@ -95,7 +95,7 @@ export const AdminHeader = ({ toggle, profile }) => {
         <Menu>
           <MenuButton>
             <Image
-              src={profile?.image || mission}
+              src={profilePics || mission}
               w="40px"
               h="40px"
               borderRadius="50%"

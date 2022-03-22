@@ -340,7 +340,7 @@ const Register = () => {
               </Flex>
               <Flex w="100%" px={[4, 4, 8, 12, 12]} mb={6}>
                 <Input
-                  placeholder="Email"
+                  placeholder="Password"
                   minHeight={["1.5rem", "1.5rem", "1.5rem", "2.5rem", "3rem"]}
                   px={6}
                   width="100%"

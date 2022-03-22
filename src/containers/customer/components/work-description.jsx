@@ -1,61 +1,88 @@
-import { Box, Flex, Icon, Image, PseudoBox, Text } from "@chakra-ui/core";
-import Slider from "react-slick";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {
+  Box,
+  Flex,
+  Icon,
+  Image,
+  PseudoBox,
+  Text,
+  useToast,
+} from "@chakra-ui/core";
+import { usePaystackPayment } from "react-paystack";
+import { useState, useEffect } from "react";
+import moment from "moment";
+
 import briefcase from "../../../assets/icons/briefcase.svg";
 import calendar from "../../../assets/icons/calendar.svg";
 import clock from "../../../assets/icons/clock.svg";
 import whitecheck from "../../../assets/icons/check-white.svg";
 import wocstation from "../../../assets/images/wocstation.svg";
-import { services } from "../../../utils/constants";
+import { axios } from "../../../utils/axios";
+import { capitalize } from "../../../utils";
 
-export const WorkDescription = () => {
-  const settings = {
-    infinite: true,
-    speed: 500,
-    arrows: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    dots: true,
-    responsive: [
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 710,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-    ],
+export const WorkDescription = ({ project }) => {
+  const [transaction, setTransaction] = useState(null);
+  const toast = useToast();
+
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: project?.customer?.email,
+    amount: project?.quoteamount * 100,
+    publicKey: "pk_test_630d6b7bedc29858c517c0c10ef799b0784d9bcc",
   };
+
+  const onSuccess = (reference) => {
+    setTransaction({
+      project_id: project?.id,
+      amount: project?.quoteamount,
+      reference: reference?.reference,
+      status: "success",
+      transaction_id: reference?.transaction,
+    });
+  };
+
+  const addPayment = async () => {
+    try {
+      await axios.post("/admin/dashboard/projects/payment", transaction);
+      toast({
+        title: "Success",
+        description: "Payment successful",
+        position: "top-right",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch (err) {
+      toast({
+        title: "Failed",
+        description: err?.response?.data?.message,
+        position: "top-right",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (transaction) {
+      addPayment();
+    }
+  }, [transaction]);
+
+  // you can call this function anything
+  const onClose = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log("closed");
+  };
+
+  const initializePayment = usePaystackPayment(config);
 
   return (
     <Box w="100%">
       <Flex w="100%" flexDir="column" background="white" p={{ base: 4, md: 8 }}>
         <Flex flexDir={{ base: "column", xl: "row" }}>
           <Flex flexDirection="column" flex={1} order={{ base: 1, xl: 0 }}>
-            {" "}
             <Text
               as="small"
               fontFamily="Poppins"
@@ -69,8 +96,9 @@ export const WorkDescription = () => {
               fontSize={{ base: "1.4rem", md: "1.6rem" }}
               mt={{ base: 4, md: 6 }}
               fontWeight="600"
+              textTransform={"capitalize"}
             >
-              I would Like to fix my sink
+              {capitalize(project?.project)}
             </Text>
             <Text
               fontFamily="Poppins"
@@ -79,8 +107,7 @@ export const WorkDescription = () => {
               fontWeight="200"
               lineHeight="24px"
             >
-              My Sink developed a hose problem which, i tried fixing myself but
-              ended up bringing my house down.
+              {capitalize(project?.description)}
             </Text>
             <Flex my={{ base: 4, md: 6 }} align="center">
               <Image src={briefcase} alt="briefcase" size="1.2rem" />
@@ -90,7 +117,9 @@ export const WorkDescription = () => {
                 ml={[4]}
                 fontSize="0.8rem"
               >
-                No 16, Adesanya street. Lagos Nigeria
+                {`${capitalize(project?.city)} ${project?.address} ${
+                  project?.country
+                }`}
               </Text>
             </Flex>
             <Flex w="100%" flexDir={{ base: "column", sm: "row" }}>
@@ -123,7 +152,7 @@ export const WorkDescription = () => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          7 June, 2018
+                          {moment(project?.createdAt).format("ll")}
                         </Text>
                         <Text
                           as="small"
@@ -144,7 +173,7 @@ export const WorkDescription = () => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          10:45AM
+                          {moment(project?.createdAt).format("LT")}
                         </Text>
                         <Text
                           as="small"
@@ -157,7 +186,6 @@ export const WorkDescription = () => {
                       </Box>
                     </Flex>
                   </Flex>
-                  {/* <Flex flex="1"></Flex> */}
                 </Flex>
               </Flex>
               <PseudoBox
@@ -168,6 +196,9 @@ export const WorkDescription = () => {
                 _hover={{ opacity: "0.7" }}
                 _active={{ transform: "scale(0.98)" }}
                 _focus={{ outline: "none" }}
+                onClick={() => {
+                  initializePayment(onSuccess, onClose);
+                }}
               >
                 <Flex
                   justify="center"
@@ -178,7 +209,7 @@ export const WorkDescription = () => {
                 >
                   <Image src={whitecheck} alt="check" />
                   <Text fontFamily="Poppins" color="white">
-                    Begin
+                    Proceed to payment
                   </Text>
                 </Flex>
               </PseudoBox>
@@ -200,30 +231,27 @@ export const WorkDescription = () => {
               ml={[4, 8]}
             />
           </Flex>
-          <Flex w="100%"></Flex>
         </Flex>
         <Box mb={[8, 4]}>
-          <Slider {...settings} className="h-full w-full">
-            {services.map((service, index) => (
+          <Flex direction={{ base: "column", lg: "row" }} w={"100%"}>
+            {project?.images?.map((img, index) => (
               <Box
-                bgImage={`url(${service.image})`}
+                bgImage={`url(${img})`}
                 bgPos="center"
                 key={index}
+                ml={{ base: "0rem", lg: index > 0 && "2rem" }}
+                width={{ base: "100%", lg: "20%" }}
                 bgRepeat="no-repeat"
                 className="override"
                 borderRadius="10px"
                 bg="transparent"
                 bgSize="cover"
                 my={4}
-                //   mr={8}
-                //   ml={8}
-                mx="auto"
                 py={8}
                 h="120px"
-                width="90%"
               ></Box>
             ))}
-          </Slider>
+          </Flex>
         </Box>
       </Flex>
     </Box>

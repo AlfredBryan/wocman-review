@@ -1,13 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  Image,
-  useToast,
-} from "@chakra-ui/core";
+import { Box, Button, Flex, Text, Image, useToast } from "@chakra-ui/core";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import electrician from "../../../assets/images/electrical.png";
 import Fade from "react-reveal/Fade";
@@ -18,7 +12,6 @@ import { ShowMessage } from "../../../utils/alert";
 const Job = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [jobs, setJobs] = useState([]);
-
   const toast = useToast();
 
   const fetchJobs = async () => {
@@ -138,14 +131,16 @@ const Job = () => {
                 <Text color="#778899" mt="3">
                   {job?.project_subcategory?.name}
                 </Text>
-                <Button
-                  backgroundColor="#E8E2E7"
-                  color="#552D1E"
-                  fontSize="0.6rem"
-                  w="40"
-                >
-                  View Details
-                </Button>
+                <Link to={`/customer/job/${job.id}`}>
+                  <Button
+                    backgroundColor="#E8E2E7"
+                    color="#552D1E"
+                    fontSize="0.6rem"
+                    w="40"
+                  >
+                    View Details
+                  </Button>
+                </Link>
               </Flex>
             </Flex>
           ))}
