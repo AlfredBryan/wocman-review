@@ -28,7 +28,7 @@ export const WorkDescription = ({ project }) => {
     reference: new Date().getTime().toString(),
     email: project?.customer?.email,
     amount: project?.quoteamount * 100,
-    publicKey: "pk_test_630d6b7bedc29858c517c0c10ef799b0784d9bcc",
+    publicKey: "pk_live_5dd8a991480b3bc5ce5419f5a8b159413b6bc344",
   };
 
   const onSuccess = (reference) => {
