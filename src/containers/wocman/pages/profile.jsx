@@ -140,8 +140,6 @@ const MiniProfile = ({ profile }) => {
       <Text as="small" fontFamily="Poppins" my={2}>
         {profileSkill}
       </Text>
-      {/* change the above to show Wocman's profession later */}
-
       <Button
         backgroundColor="#E8E2E7"
         d="block"

@@ -7,7 +7,7 @@ const CardMain = ({ title, description, body, status, color, id, view }) => {
     <Box
       boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;"
       p="2rem"
-      mb="2rem"
+      m="10px"
       borderRadius="5px"
       bg="#fff"
       w={{ base: "100%", lg: "32%" }}

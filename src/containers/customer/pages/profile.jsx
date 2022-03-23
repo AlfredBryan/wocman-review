@@ -195,7 +195,7 @@ const ProfileForm = (props) => {
     setAuthToken(localStorage["wocman_token"]);
     setSubmitLoading(true);
     try {
-      const { data } = await axios.patch("/customer/profile/update", {
+      const { data } = await axios.put("/customer/profile/update", {
         ...values,
       });
       if (data?.status) {

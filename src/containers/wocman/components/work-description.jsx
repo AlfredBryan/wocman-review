@@ -121,7 +121,7 @@ export const WorkDescription = ({ id, project, getSingleProject }) => {
             _active={{ transform: "scale(0.98)" }}
             _focus={{ outline: "none" }}
             isLoading={isLoading}
-            onClick={completeProject}
+            onClick={beginProject}
           >
             <Flex
               justify="center"
@@ -169,8 +169,6 @@ export const WorkDescription = ({ id, project, getSingleProject }) => {
         break;
     }
   };
-
-  console.log("begin>>>", project);
 
   return (
     <Box w="100%">
@@ -233,7 +231,11 @@ export const WorkDescription = ({ id, project, getSingleProject }) => {
                   color="wocman.typography2"
                   mb={[2, 4]}
                 >
-                  Appointment set for:
+                  {project?.status === "in-progress"
+                    ? "Project started on:"
+                    : project?.status === "completed"
+                    ? "Project completed on:"
+                    : "Appointment set for:"}
                 </Text>
                 <Flex>
                   <Flex flex="1">
@@ -248,7 +250,7 @@ export const WorkDescription = ({ id, project, getSingleProject }) => {
                         >
                           {project?.wocmanstartdatetime !== null
                             ? moment(project?.wocmanstartdatetime).format("ll")
-                            : moment(project?.createdAt).format("ll")}
+                            : moment(project?.startDate).format("ll")}
                         </Text>
                         <Text
                           as="small"
@@ -271,7 +273,7 @@ export const WorkDescription = ({ id, project, getSingleProject }) => {
                         >
                           {project?.wocmanstartdatetime !== null
                             ? moment(project?.wocmanstartdatetime).format("LT")
-                            : moment(project?.createdAt).format("LT")}
+                            : moment(project?.startDate).format("LT")}
                         </Text>
                         <Text
                           as="small"

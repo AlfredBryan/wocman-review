@@ -21,6 +21,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
     topic: "",
     description: "",
     address: "",
+    startDate: "",
     city: "",
     projecttypeid: "",
     category: "",
@@ -129,6 +130,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
     formData.append("description", state.description);
     formData.append("address", state.address);
     formData.append("city", state.city);
+    formData.append("startDate", state.startDate);
     formData.append("projecttypeid", state.projecttypeid);
     formData.append("avatar", avatars[0]);
     formData.append("avatar", avatars[1]);
@@ -167,6 +169,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
     state.topic === "" ||
     state.city === "" ||
     state.address === "" ||
+    state.startDate === "" ||
     state.projecttypeid === "" ||
     avatars.length < 1;
 
@@ -235,6 +238,16 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             )}
           </Box>
         </Flex>
+        <Box width="40%">
+          <BaseInput
+            name="startDate"
+            value={state.startDate}
+            onChange={handleChange}
+            label={"Start Date"}
+            type="date"
+            right={"0rem"}
+          />
+        </Box>
         <Box mt="2rem">
           <Text fontFamily="Gilroy-Bold" fontSize="1.3rem" as="label">
             Work description
@@ -254,6 +267,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
             onChange={handleChange}
           />
         </Box>
+
         <Flex w="100%" justify="space-between" mt="2rem">
           <Box w={{ base: "100%", lg: "48%" }}>
             <PseudoBox
@@ -297,6 +311,7 @@ const JobModal = ({ isOpen, setIsOpen, update }) => {
               w="48%"
               mb={{ base: "1rem", lg: "2rem" }}
               h="109px"
+              objectFit="cover"
               src={imageSrc}
             />
           ))}

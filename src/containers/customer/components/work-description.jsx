@@ -78,6 +78,10 @@ export const WorkDescription = ({ project }) => {
 
   const initializePayment = usePaystackPayment(config);
 
+  console.log("====================================");
+  console.log(project);
+  console.log("====================================");
+
   return (
     <Box w="100%">
       <Flex w="100%" flexDir="column" background="white" p={{ base: 4, md: 8 }}>
@@ -152,7 +156,9 @@ export const WorkDescription = ({ project }) => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          {moment(project?.createdAt).format("ll")}
+                          {project?.startDate
+                            ? moment(project?.startDate).format("ll")
+                            : moment(project?.wocmanstartdatetime).format("ll")}
                         </Text>
                         <Text
                           as="small"
@@ -173,7 +179,7 @@ export const WorkDescription = ({ project }) => {
                           fontWeight="800"
                           lineHeight="27px"
                         >
-                          {moment(project?.createdAt).format("LT")}
+                          {moment(project?.startDate).format("LT")}
                         </Text>
                         <Text
                           as="small"

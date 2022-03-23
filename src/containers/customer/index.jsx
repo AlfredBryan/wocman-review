@@ -110,7 +110,11 @@ const Customer = () => {
             </Flex>
           ) : (
             <Box position="relative" w="100%" h="100%">
-              <AdminHeader profile={profile} toggle={toggleSideNav} />
+              <AdminHeader
+                customer
+                customerProfile={profile}
+                toggle={toggleSideNav}
+              />
               <Flex flex={1} h="100%">
                 <Suspense
                   fallback={
