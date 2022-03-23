@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/core";
 import { SettingsNotifications } from "../components/settings-notifications";
 import { SettingsLogin } from "../components/settings-login";
-import { SettingsBank } from "../components/settings-bank";
 import loader from "../../../assets/images/wocman.gif";
 import { axios, setAuthToken } from "../../../utils/axios";
 import { ShowMessage } from "../../../utils/alert";
@@ -154,7 +153,7 @@ const Settings = () => {
                     Login & Security
                   </Text>
                 </Tab>
-                <Tab
+                {/* <Tab
                   d="flex"
                   flex="1"
                   flexDirection="column"
@@ -174,7 +173,7 @@ const Settings = () => {
                   >
                     Bank Settings
                   </Text>
-                </Tab>
+                </Tab> */}
               </TabList>
 
               {settingsLoading ? (
@@ -189,9 +188,9 @@ const Settings = () => {
                   <TabPanel>
                     <SettingsLogin />
                   </TabPanel>
-                  <TabPanel>
+                  {/* <TabPanel>
                     <SettingsBank />
-                  </TabPanel>
+                  </TabPanel> */}
                 </TabPanels>
               )}
             </Tabs>

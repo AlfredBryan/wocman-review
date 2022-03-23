@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../state/actions/loginAction";
 
-export const AdminHeader = ({ toggle, profile }) => {
+export const AdminHeader = ({ toggle, profile, customerProfile }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -27,6 +27,8 @@ export const AdminHeader = ({ toggle, profile }) => {
   const { firstname, lastname, isProfileUpdated, profile_picture } =
     profile || {};
   const profilePics = profile_picture?.map((pics) => pics?.current);
+
+  console.log("customerhead", customerProfile);
 
   return (
     <Flex
@@ -49,7 +51,17 @@ export const AdminHeader = ({ toggle, profile }) => {
           fontWeight="600"
           mr={8}
         >
-          Hello {firstname || lastname || "User"}.
+          Hello,{" "}
+          {customerProfile ? (
+            <>
+              {customerProfile?.firstname ||
+                customerProfile?.lastname ||
+                "Customer"}
+            </>
+          ) : (
+            <>{firstname || lastname || "Wocman"}</>
+          )}
+          .
         </Text>
         <Text
           as="small"
@@ -95,7 +107,11 @@ export const AdminHeader = ({ toggle, profile }) => {
         <Menu>
           <MenuButton>
             <Image
-              src={profilePics || mission}
+              src={
+                customerProfile
+                  ? customerProfile?.image || mission
+                  : profilePics || mission
+              }
               w="40px"
               h="40px"
               borderRadius="50%"

@@ -76,11 +76,11 @@ const Projects = () => {
           </Heading>
         </Flex>
 
-        <Flex w="100%" justify={"space-between"} flexWrap="wrap">
-          {projects?.map((d) => (
+        <Flex padding={"5px"} w="100%" flexWrap="wrap">
+          {projects?.map((d, idx) => (
             <CardMain
               id={d.id}
-              key={d.id}
+              key={idx}
               view
               title={d.project}
               description={d.description}
