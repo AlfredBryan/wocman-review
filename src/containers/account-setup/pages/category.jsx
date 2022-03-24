@@ -37,6 +37,7 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
         ShowMessage("Success", "Skill added successfully", "success", toast);
       }
       setIsLoading(false);
+      nextStep();
     } catch (error) {
       setIsLoading(false);
       let errorMessage = error?.response?.data?.message;
