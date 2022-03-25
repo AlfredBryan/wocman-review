@@ -38,11 +38,6 @@ export const NavBar = (props) => {
       name: "Privacy Policy",
       to: "/privacy-policy",
     },
-    {
-      name: "Dashboard",
-      to: "/wocman", //might change later to accommodate customers
-      notDisplay: !localStorage["wocman_token"],
-    },
   ];
 
   return (
