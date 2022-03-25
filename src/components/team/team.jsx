@@ -26,76 +26,12 @@ export const Team = () => {
     },
     {
       image:
-        "https://res.cloudinary.com/wocman-technology/image/upload/v1607270488/wocman/CLKR4622_j1skvq.jpg",
+        "https://res.cloudinary.com/daviluiz/image/upload/v1648114105/Screenshot_2022-03-24_at_10.27.25.png",
       name: "Adamu Bwala",
-      designation: "Partner",
+      designation: "Co-founder",
       icons: [
         { icon: twitter, name: "twitter", href: "" },
         { icon: linkedin, name: "linkedin", href: "" },
-      ],
-    },
-    {
-      image:
-        "https://scontent-los2-1.cdninstagram.com/v/t51.2885-15/e35/c0.0.1439.1439a/s150x150/116583025_659529457982256_6712328410517649834_n.jpg?_nc_ht=scontent-los2-1.cdninstagram.com&_nc_cat=100&_nc_ohc=_-0yCFguyhwAX-59hkb&tp=1&oh=648e6d321031117ac7c492410ee56fbb&oe=602BE246",
-      name: "Abasifreke Ekwere",
-      designation: "Full Stack Developer",
-      icons: [
-        {
-          icon: twitter,
-          name: "twitter",
-          href: "https://twitter.com/kingabesh_",
-        },
-        // {
-        //   icon: instagram,
-        //   name: "instagram",
-        //   href: "https://www.instagram.com/king_abesh/",
-        // },
-        // { icon: github, name: "github", href: "https://github.com/kingabesh" },
-        {
-          icon: linkedin,
-          name: "linkedin",
-          href: "https://www.linkedin.com/in/abasifreke-ekwere",
-        },
-      ],
-    },
-    {
-      image:
-        "https://res.cloudinary.com/wocman-technology/image/upload/v1608893692/wocman/Snapchat-1934776076_k2y2xb.jpg",
-      name: "Lasisi Sodiq",
-      designation: "Designer",
-      icons: [
-        {
-          icon: twitter,
-          name: "twitter",
-          href: "https://twitter.com/LvzyEngine",
-        },
-        {
-          icon: linkedin,
-          name: "linkedin",
-          href: "https://www.linkedin.com/in/lasisi-sodiq/",
-        },
-        // { icon: behance, name: "behance", href: "" },
-        // { icon: instagram, name: "instagram", href: "" },
-      ],
-    },
-    {
-      image:
-        "https://res.cloudinary.com/wocman-technology/image/upload/v1608893690/wocman/tWKny5sH_400x400_zat3bu.jpg",
-      name: "Justice George",
-      designation: "Backend Developer",
-      icons: [
-        {
-          icon: twitter,
-          name: "twitter",
-          href: "https://mobile.twitter.com/JusticeGeo",
-        },
-        // { icon: instagram, name: "instagram", href: "" },
-        // { icon: github, name: "github", href: "" },
-        {
-          icon: linkedin,
-          name: "linkedin",
-          href: "https://www.linkedin.com/in/justice-george-33a50b184/",
-        },
       ],
     },
   ];

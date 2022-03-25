@@ -18,6 +18,27 @@ export const Faq = () => {
       answer: `You can join wocman by registering through the wocman online platform, upload a certificate for verification and vetting, take an online screening tests,undergo induction and get on-boarded on the wocman web app to start earning`,
     },
     {
+      question: "Am a customer, how do I register?",
+      answer: `You can register online through the Wocman Technology website and get started by updating your profile.`,
+    },
+    {
+      question: "How do I get my jobs done?",
+      answer: `You just need to submit a free work request on the Wocman Technology online platform to get started`,
+    },
+    {
+      question: "Can I make payment from anywhere in the world?",
+      answer: `Yes, you can through the online Wocman Technology platform`,
+    },
+    {
+      question:
+        "Can I execute my jobs from anywhere in the world back home in Nigeria?",
+      answer: `Absolutely yes, you can get your jobs done from any part of the world and even track every progress of your projects with no hassle`,
+    },
+    {
+      question: "How do I make payments?",
+      answer: `All payments by customers are made and secured through Paystack online payment system on the Wocman Technology platform.`,
+    },
+    {
       question: "What qualification do I need to join wocman?",
       answer: `You must be able to read and write, have a minimum of trade test certificate or its equivalent, to include freedom certificate, OND, HND, BSc, and other professional certifications.`,
     },

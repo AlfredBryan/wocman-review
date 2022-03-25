@@ -14,13 +14,9 @@ export const FooterComponent = (props) => {
       to: "/",
     },
     {
-      name: "About",
+      name: "About Us",
       to: "/about",
     },
-    // {
-    //   name: "Product",
-    //   to: "",
-    // },
     {
       name: "Services",
       to: "/services",
@@ -90,27 +86,25 @@ export const FooterComponent = (props) => {
             </Fade>
             {navStuff.map((item, index) => {
               return (
-								<Fade opposite delay={500} key={index} duration={2000}>
-									<ListItem className="mt-2 text-sm">
-										<Link
-											as={ReactLink}
-											to={item.to}
-											_focus={{ outline: "none" }}
-											className={`link ${
-												props.location.pathname === item.to ? "active" : ""
-											}`}
-											textDecor={
-												props.location.pathname === item.to ? "underline" : ""
-											}
-										>
-											{item.name}
-										</Link>
-									</ListItem>
-								</Fade>
-							);
+                <Fade opposite delay={500} key={index} duration={2000}>
+                  <ListItem className="mt-2 text-sm">
+                    <Link
+                      as={ReactLink}
+                      to={item.to}
+                      _focus={{ outline: "none" }}
+                      className={`link ${
+                        props.location.pathname === item.to ? "active" : ""
+                      }`}
+                      textDecor={
+                        props.location.pathname === item.to ? "underline" : ""
+                      }
+                    >
+                      {item.name}
+                    </Link>
+                  </ListItem>
+                </Fade>
+              );
             })}
-            {/* <ListItem className="mb-4 text-sm">Services</ListItem>
-            <ListItem className="mb-4 text-sm">Products</ListItem> */}
           </List>
           <List
             styleType="none"
@@ -119,12 +113,7 @@ export const FooterComponent = (props) => {
             fontWeight="normal"
             align="center"
             mb={[10, 8, 0, 0, 0]}
-          >
-            <Fade bottom delay={500} duration={2000}>
-              <ListItem className="mb-4 text-sm">About us</ListItem>
-            </Fade>
-            {/* <ListItem className="mb-4 text-sm">How it works</ListItem> */}
-          </List>
+          ></List>
         </Box>
         <Box flex="1.3" d="flex" justifyContent="center">
           <Fade right delay={100} duration={2000}>
