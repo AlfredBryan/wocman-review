@@ -1,8 +1,11 @@
 import { Button, Flex, Text } from "@chakra-ui/core";
+import { useHistory } from "react-router-dom";
+
 import gardener from "../../assets/images/gardener.jpg";
 import Fade from "react-reveal/Fade";
 
 export const Gardener = () => {
+  const location = useHistory();
   return (
     <Flex
       bgImage={`url(${gardener})`}
@@ -58,6 +61,7 @@ export const Gardener = () => {
             _hover={{ opacity: "0.7" }}
             _active={{ transform: "scale(0.98)" }}
             _focus={{ outline: "none" }}
+            onClick={() => location.push("/register")}
           >
             Get Wocman
           </Button>
@@ -71,6 +75,7 @@ export const Gardener = () => {
             _hover={{ opacity: "0.7" }}
             _active={{ transform: "scale(0.98)" }}
             _focus={{ outline: "none" }}
+            onClick={() => location.push("/register")}
           >
             Become Wocman
           </Button>

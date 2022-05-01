@@ -18,7 +18,7 @@ const Services = () => {
       <Header bgImage={landing} vh="50vh" placeholder={PLACE_HOLDER}>
         <GeneralHero
           heading="Services"
-          subHeading="We execute your domestic, repairs, and construction work where, when, and how you want it."
+          subHeading="We execute your domestic, retrofitting, and construction work where, when, and how you want it."
         />
       </Header>
       <WhyUs />

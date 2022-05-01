@@ -22,7 +22,7 @@ export const AboutSubsection = () => {
     {
       title: "Our Story",
       body:
-        "All domestic, repairs and construction work activities are mostly executed by the hands of tradesmen, technicians, and professionals who mostly get lesser credit for their work and earn little from the use of their skills. This is the spark to our quest as change agents to help the informal workforce earn more to become financially free and well appreciated for their skills. Wocman connects customers to the nearest tradesmen, technicians, and freelance professionals to help execute works with just a tap on a mobile phone when and where you need it, we fix it!",
+        "All domestic, retrofitting and construction work activities are mostly executed by the hands of tradesmen, technicians, and professionals who mostly get lesser credit for their work and earn little from the use of their skills. This is the spark to our quest as change agents to help the informal workforce earn more to become financially free and well appreciated for their skills. Wocman connects customers to the nearest tradesmen, technicians, and freelance professionals to help execute works with just a tap on a mobile phone when and where you need it, we fix it!",
       image: story,
     },
   ];
