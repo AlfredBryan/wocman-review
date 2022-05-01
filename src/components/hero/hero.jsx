@@ -44,7 +44,7 @@ export const Hero = () => {
           fontSize={["1.5rem", "1.5rem", "2.5rem", "3rem", "3rem"]}
           fontWeight="bold"
         >
-          Get your domestic, repairs, and construction works done on{" "}
+          Get your domestic, retrofitting, and construction works done on{" "}
           <Text
             as="span"
             color="wocman.color1"
