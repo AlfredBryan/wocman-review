@@ -1,6 +1,8 @@
 import { Box, Button, Divider, Flex, Text } from "@chakra-ui/core";
 
 export const Notifications = () => {
+  const user = localStorage.getItem("user");
+  const curUser = JSON.parse(user);
   return (
     <Flex
       w="100%"
@@ -27,8 +29,8 @@ export const Notifications = () => {
           <Flex w="100%" flexDir={{ base: "column", md: "row" }}>
             <Flex flex={1} mb={{ base: 4, md: 0 }}>
               <Text as="small" fontFamily="Poppins" fontWeight="300">
-                Dear kazeem, we wish to inform you of a job offfer that best
-                fits your profile, below are more ...
+                Dear {curUser?.firstname}, we wish to inform you of a job offfer
+                that best fits your profile, below are more ...
               </Text>
             </Flex>
             <Flex flex={1} justify="flex-end">
@@ -89,8 +91,8 @@ export const Notifications = () => {
           <Flex w="100%">
             <Flex flex={1}>
               <Text as="small" fontFamily="Poppins" fontWeight="300">
-                Dear Kazeem, your Wallet has been credited with a sum of
-                N30,000.
+                Dear {curUser?.firstname}, your Wallet has been credited with a
+                sum of N30,000.
               </Text>
             </Flex>
           </Flex>
