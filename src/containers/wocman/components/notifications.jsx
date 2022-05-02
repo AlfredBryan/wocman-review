@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Button, Divider, Flex, Text } from "@chakra-ui/core";
-import { InfoOutlineIcon } from "@chakra-ui/icons"
+import { InfoOutlineIcon } from "@chakra-ui/icons";
 
 import { useDispatch, useSelector } from "react-redux";
 import { notice } from "../../../state/actions";
@@ -8,19 +8,21 @@ import { useEffect } from "react";
 
 export const Notifications = () => {
   const dispatch = useDispatch();
+  const user = localStorage.getItem("user");
+  const curUser = JSON.parse(user);
 
   const { result } = useSelector(
-		({ notice: { result, error, isLoading, message } = {} }) => ({
-			result,
-			error,
-			isLoading,
-			message,
-		})
-	);
+    ({ notice: { result, error, isLoading, message } = {} }) => ({
+      result,
+      error,
+      isLoading,
+      message,
+    })
+  );
 
   useEffect(() => {
     dispatch(notice());
-	},[]);
+  }, []);
 
   return (
     <Flex
@@ -34,17 +36,18 @@ export const Notifications = () => {
           Notifications
         </Text>
       </Box>
-        {result?.notice.length === 0 ? (
-      <>
-        <Divider borderColor="wocman.newsLetter" />
+      {result?.notice.length === 0 ? (
+        <>
+          <Divider borderColor="wocman.newsLetter" />
           <Flex px={{ base: 6, md: 16 }} py={2} flexDirection="column">
             <Flex align="center" justify="space-between" w="100%" mb={4}>
               <Text fontFamily="Poppins" fontWeight="500">
-               Welcome Message
-               <Text pt="5" fontSize="12px" color="#192646">
-               Dear Kazeem, we wish to congratulate you and rejoice with you <br/>
-               in joining Wocman...
-               </Text>
+                Welcome Message
+                <Text pt="5" fontSize="12px" color="#192646">
+                  Dear {curUser?.firstname}, we wish to congratulate you and
+                  rejoice with you <br />
+                  in joining Wocman...
+                </Text>
               </Text>
               <Text as="small" fontFamily="Poppins">
                 <InfoOutlineIcon color="blue" />
@@ -52,15 +55,14 @@ export const Notifications = () => {
             </Flex>
           </Flex>
           <Divider borderColor="wocman.newsLetter" />
-        <Flex justifyContent="center" alignContent="center" p="6">
-          <Text as="small" fontFamily="Poppins" fontWeight="300">
-          No more Messages
-          </Text>
-        </Flex>
-      </>
-        ):(
-        
-      <>
+          <Flex justifyContent="center" alignContent="center" p="6">
+            <Text as="small" fontFamily="Poppins" fontWeight="300">
+              No more Messages
+            </Text>
+          </Flex>
+        </>
+      ) : (
+        <>
           <Flex px={{ base: 6, md: 16 }} py={2} flexDirection="column">
             <Flex align="center" justify="space-between" w="100%" mb={4}>
               <Text fontFamily="Poppins" fontWeight="500">
@@ -73,8 +75,8 @@ export const Notifications = () => {
             <Flex w="100%" flexDir={{ base: "column", md: "row" }}>
               <Flex flex={1} mb={{ base: 4, md: 0 }}>
                 <Text as="small" fontFamily="Poppins" fontWeight="300">
-                  Dear kazeem, we wish to inform you of a job offfer that best
-                  fits your profile, below are more ...
+                  Dear {curUser?.firstname}, we wish to inform you of a job
+                  offfer that best fits your profile, below are more ...
                 </Text>
               </Flex>
               <Flex flex={1} justify="flex-end">
@@ -120,27 +122,27 @@ export const Notifications = () => {
               </Flex>
             </Flex>
           </Flex>
-        <Divider borderColor="wocman.newsLetter" />
-        <Flex px={{ base: 6, md: 16 }} py={2} flexDirection="column">
-          <Flex align="center" justify="space-between" w="100%" mb={4}>
-            <Text fontFamily="Poppins" fontWeight="500">
-              Account Credited
-            </Text>
-            <Text as="small" fontFamily="Poppins">
-              Now
-            </Text>
-          </Flex>
-          <Flex w="100%">
-            <Flex flex={1}>
-              <Text as="small" fontFamily="Poppins" fontWeight="300">
-                Dear Kazeem, your Wallet has been credited with a sum of
-                N30,000.
+          <Divider borderColor="wocman.newsLetter" />
+          <Flex px={{ base: 6, md: 16 }} py={2} flexDirection="column">
+            <Flex align="center" justify="space-between" w="100%" mb={4}>
+              <Text fontFamily="Poppins" fontWeight="500">
+                Account Credited
+              </Text>
+              <Text as="small" fontFamily="Poppins">
+                Now
               </Text>
             </Flex>
+            <Flex w="100%">
+              <Flex flex={1}>
+                <Text as="small" fontFamily="Poppins" fontWeight="300">
+                  Dear {curUser?.firstname}, your Wallet has been credited with
+                  a sum of N30,000.
+                </Text>
+              </Flex>
+            </Flex>
           </Flex>
-        </Flex>
-      </>
-        )}
+        </>
+      )}
     </Flex>
   );
 };
