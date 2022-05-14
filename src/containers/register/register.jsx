@@ -142,7 +142,7 @@ const Register = () => {
           role: values.role,
           password: values.password,
           repeat_password: values.confirmPassword,
-          verifylink: "http://wocman-site.herokuapp.com/enter-otp",
+          verifylink: "http://wocmantech.com/enter-otp",
         };
         dispatch(register(body, !!queryParam));
     },
