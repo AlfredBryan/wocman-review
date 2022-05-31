@@ -66,7 +66,7 @@ export const ContactDetails = () => {
           </Fade>
           <Fade opposite delay={500} duration={2000}>
             <Text ml={4} fontFamily="Gilroy-Medium" lineHeight="20px">
-              hello@wocmantech.com
+              hello@wocman-admin.com
             </Text>
           </Fade>
         </Flex>
