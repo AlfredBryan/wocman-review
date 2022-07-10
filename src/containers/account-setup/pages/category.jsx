@@ -99,9 +99,9 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
     job?.sub_category?.map((category) => category)
   );
 
-  const tradesmenData = allCategories[0]?.map((trade) => trade);
+  const techniciansData = allCategories[0]?.map((trade) => trade);
 
-  const techniciansData = allCategories[1]?.map((tech) => tech);
+  const tradesmenData = allCategories[1]?.map((tech) => tech);
 
   const professionalsData = allCategories[2]?.map((prof) => prof);
 
@@ -122,6 +122,8 @@ const WorkCategory = ({ step, setStep, prevStep, nextStep, firstname }) => {
       content: professionalsData,
     },
   ];
+
+  console.log("here>>>>", allCategories);
 
   return (
     <Flex
