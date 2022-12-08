@@ -38,4 +38,4 @@ export const services = [
 	},
 ];
 
-export const BASE_URL = "https://wocman-api-prod.herokuapp.com/api/v1";
+export const BASE_URL = "https://wocman-api.onrender.com/api/v1";
