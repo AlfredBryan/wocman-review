@@ -31,6 +31,10 @@ export const NavBar = (props) => {
       to: "/services",
     },
     {
+      name: "Blog",
+      to: "/blog",
+    },
+    {
       name: "Contact us",
       to: "/contact",
     },

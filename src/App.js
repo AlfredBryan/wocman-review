@@ -63,6 +63,11 @@ function App() {
       Component: lazy(() => import("./containers/services/services")),
     },
     {
+      path: "/blog",
+      name: "Blog",
+      Component: lazy(() => import("./containers/blog/blog")),
+    },
+    {
       path: "/contact",
       name: "Contact",
       Component: lazy(() => import("./containers/contact/contact")),
